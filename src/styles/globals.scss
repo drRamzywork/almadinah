@@ -1,0 +1,65 @@
+:root {
+  --IBMP-font: __IBMPlexSans_701ead ", " __IBMPlexSans_Fallback_701ead;
+  --effra-re: 400;
+  --effra-Md: 500;
+  --effra-bold: 700;
+  --req3a-font: __Custom_1194e3, __Custom_Fallback_1194e3;
+
+  --main-white-color: #ffffff;
+  --main-green-color: #387a8a;
+  --main-purble-color: #383969;
+  --sec-purble-color: #313263;
+
+  --main-beige-color: #e6ddc6;
+  --main-sec-color: #f6f8fc;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #f3f3f4 !important;
+}
+
+// globable styles
+.sec_title {
+  h3 {
+    font-size: 68px;
+    font-weight: 800;
+    line-height: 68px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: var(--sec-purble-color);
+  }
+}
+
+// Override Bootstrap container widths
+.container {
+  @media screen and (min-width: 1400px) {
+    max-width: 1400px !important;
+  }
+}
+
+.form-control:focus {
+  box-shadow: none !important;
+}
+
+// swiper globale variables
+#explore {
+  .swiper-slide {
+    width: fit-content !important;
+  }
+}
+
+.mySwiper {
+  max-height: 250px;
+}
