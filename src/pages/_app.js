@@ -16,20 +16,14 @@ export default function App({ Component, pageProps }) {
         {/* Open Graph Meta Tags */}
         <meta property="og:title" content="المدينة" />
         <meta property="og:description" content="المدينة" />
-        <meta
-          property="og:image"
-          content="https://zamakanweb1.suwa.io/logo_mobile_footer.png"
-        />
-        <meta property="og:url" content="https://zamakanweb1.suwa.io" />
+        <meta property="og:image" content="/assets/images/dark_logo.png" />
+        <meta property="og:url" content="https://almadinah.io/" />
         <meta property="og:type" content="website" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="المدينة" />
         <meta name="twitter:description" content="المدينة" />
-        <meta
-          name="twitter:image"
-          content="https://zamakanweb1.suwa.io/logo_mobile_footer.png"
-        />
+        <meta name="twitter:image" content="/assets/images/dark_logo.png" />
       </Head>
       <Component {...pageProps} />
     </Layout>

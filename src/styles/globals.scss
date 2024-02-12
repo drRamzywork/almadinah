@@ -59,6 +59,11 @@ body {
     width: fit-content !important;
   }
 }
+#virtual_guide {
+  .swiper-slide {
+    height: fit-content !important;
+  }
+}
 
 .mySwiper {
   max-height: 250px;

@@ -1,0 +1,211 @@
+section.Share_Moment_Sec {
+  position: relative;
+  background-color: #f0f3f2;
+  z-index: 22;
+  padding: 65px;
+  .nosie {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    img {
+      width: 100%;
+      height: 100%;
+      opacity: 0.2;
+      object-fit: cover;
+    }
+  }
+
+  .sec_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .sec_title {
+      position: relative;
+
+      .star {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: -3;
+        img {
+        }
+      }
+      .title {
+        margin-top: 55px;
+        position: relative;
+        h3 {
+          font-size: 102px;
+          font-weight: 600;
+          line-height: 122px;
+          letter-spacing: 0em;
+          text-align: center;
+          color: #50a99a;
+          // text-shadow: 0px 9px 0 #50a99a;
+          position: relative;
+          z-index: -2;
+        }
+
+        h3.copy {
+          position: absolute;
+          top: -7px;
+          right: 0;
+        }
+        h3.copy1 {
+          position: absolute;
+          top: 4px;
+          right: 0;
+        }
+        h3.copy2 {
+          position: absolute;
+          top: -6px;
+          right: 0;
+        }
+      }
+
+      .icon_container {
+        position: absolute;
+        top: -24px;
+        left: 0;
+        width: 56.32px;
+        height: 56.32px;
+        display: flex;
+        background-color: var(--main-white-color);
+        border-radius: 57.67px;
+        img {
+          margin: auto;
+        }
+      }
+    }
+
+    .boxes_container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      margin-top: 48px;
+      .box {
+        margin: 24px;
+        overflow: hidden;
+        border-radius: 24px;
+        img {
+        }
+      }
+    }
+
+    .btn_container {
+      button {
+        background: linear-gradient(96.4deg, #50a99a -24.89%, #9596cc 114.67%);
+        box-shadow: 0px 16px 56px 0px #62a5a780;
+        padding: 8px 24px 8px 16px;
+        display: flex;
+        border: none;
+        border-radius: 32px;
+        p {
+          font-size: 24px;
+          font-weight: 600;
+          line-height: 36px;
+          letter-spacing: 0em;
+          text-align: right;
+          color: var(--main-white-color);
+          margin-bottom: 0;
+        }
+
+        .icon_container {
+          width: 32px;
+          height: 32px;
+          svg {
+            width: 100%;
+            height: 100%;
+            color: var(--main-white-color);
+          }
+        }
+      }
+    }
+
+    .app_card {
+      background: linear-gradient(0deg, #f7f7f7, #f7f7f7),
+        linear-gradient(0deg, #ffffff, #ffffff);
+      margin-top: 35px;
+      box-shadow: 0px 24px 64px 0px #3839690d;
+      padding: 24px;
+      padding-right: 32px;
+      padding-left: 32px;
+      display: flex;
+      border-radius: 32px;
+      width: 722px;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+
+      .logo {
+        width: 86.96px;
+        height: 86.96px;
+        display: flex;
+        border-radius: 24px;
+        background: #ffffff;
+
+        img {
+          margin: auto;
+          width: 70px;
+          height: 70px;
+        }
+      }
+
+      .desc {
+        p {
+          font-size: 28px;
+          font-weight: 800;
+          line-height: 36px;
+          letter-spacing: 0em;
+          text-align: right;
+          &:first-child {
+            color: #383969;
+          }
+
+          &:last-child {
+            color: #50a99a;
+          }
+        }
+      }
+
+      .link_container {
+        background: #50a99a;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: space-between;
+        width: 192px;
+        box-shadow: 0px 13.056640625px 39.169921875px 0px #50a99a80;
+
+        border-radius: 19.58px;
+        padding: 13.95px 16.33px 10.41px 15.99px;
+        height: 64px;
+
+        .icon_container {
+          img {
+          }
+        }
+
+        .text_container {
+          p {
+            margin-bottom: 0;
+            font-size: 15px;
+            font-weight: 450;
+            line-height: 22px;
+            letter-spacing: 0em;
+            text-align: center;
+            color: var(--main-white-color);
+            &:last-child {
+            }
+          }
+        }
+      }
+    }
+  }
+}

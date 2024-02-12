@@ -1,0 +1,36 @@
+import React from 'react'
+import styles from './index.module.scss'
+import Image from 'next/image'
+const Footer = () => {
+  return (
+    <footer id='footer' className={styles.footer}>
+      <div className="container">
+        <div className={styles.sec_container}>
+
+          <div className={styles.logo}>
+            <Image src='/assets/svgs/development_logo.svg' width={267.18} height={56} />
+            <Image src='/assets/svgs/dark_logo.svg' width={118.83} height={56} />
+
+          </div>
+
+          <hr />
+
+          <div className="d-flex justify-content-between">
+            <div className={`${styles.contact} d-flex`}>
+              <div className={styles.icon_container}>
+                <Image src='/assets/svgs/contact.svg' width={20} height={20} />
+              </div>
+              <p className='ms-4'>تواصل معنا</p>
+
+            </div>
+            <p className={styles.copyright}> &copy; الحقوق محفوظة لموقع المدينة</p>
+
+          </div>
+        </div>
+
+      </div>
+    </footer>
+  )
+}
+
+export default Footer
