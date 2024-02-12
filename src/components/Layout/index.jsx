@@ -36,7 +36,7 @@ const IBMPlexSans = localFont({
       weight: '600',
     },
     {
-      path: "../../../public/assets/fonts/IBMPlexSansArabic-thin.ttf",
+      path: "../../../public/assets/fonts/IBMPlexSansArabic-Thin.ttf",
       style: "normal",
       weight: '700',
     },
