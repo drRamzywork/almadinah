@@ -8,10 +8,16 @@
   --main-white-color: #ffffff;
   --main-green-color: #387a8a;
   --main-purble-color: #383969;
-  --sec-purble-color: #313263;
-
+  --main-gray-color:#8E8EAE
   --main-beige-color: #e6ddc6;
   --main-sec-color: #f6f8fc;
+  
+  --sec-green-color: #50A99A;
+  --sec-purble-color: #313263;
+
+
+  // Transitions
+  --main-transation:all 0.3s ease-in-out;
 }
 
 * {
@@ -62,6 +68,16 @@ body {
 #virtual_guide {
   .swiper-slide {
     height: fit-content !important;
+  }
+}
+
+#city_facilities{
+  .swiper-slide{
+    width: fit-content !important;
+  }
+
+  .swiper-wrapper{
+    align-items: center;
   }
 }
 

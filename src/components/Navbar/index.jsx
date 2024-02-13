@@ -2,14 +2,16 @@ import React from 'react'
 import styles from './index.module.scss';
 import Image from 'next/image';
 import { IoIosArrowDown } from "react-icons/io";
+import Link from 'next/link';
 
 const Navbar = () => {
+
   return (
     <div className='container '>
       <nav className="navbar  " id={styles.navbar}>
-        <a className="navbar-brand">
+        <Link href={'/'} className={`${styles.navbar_logo} navbar-brand`}>
           <Image className={styles.logo} src={'/assets/images/Logo_white.png'} width={118.64} height={56} />
-        </a>
+        </Link>
         <form className="d-flex " role="search" >
           <input className="form-control me-2 rounded bg-transparent border-1" type="search" placeholder="ابحث عن كل ما تريد عن المدينة.." aria-label="Search" />
           <button className="btn " type="submit">
