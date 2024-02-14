@@ -1,5 +1,6 @@
 nav#navbar {
   padding-top: 50px;
+  z-index: 9999;
 
   .navbar_logo {
     @media screen and (max-width: 450px) {
