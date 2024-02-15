@@ -145,10 +145,12 @@ header.header {
         border-radius: 200px 200px 0px 0px;
         transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
       }
+
       .main_img_container {
         position: relative;
         z-index: 3;
         min-width: 600px;
+
         &::after {
           content: "";
           position: absolute;
@@ -160,6 +162,7 @@ header.header {
           z-index: 2;
           background-color: #36788766;
         }
+
         img {
           position: relative;
           z-index: 4;

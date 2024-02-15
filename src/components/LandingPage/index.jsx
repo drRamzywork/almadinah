@@ -8,12 +8,22 @@ import ShareMomentSec from '../Home/ShareMomentSec'
 
 
 
-const LandingPage = () => {
+const LandingPage = ({ topics,
+  dataDrobTopic,
+  dataLandmarksTopic,
+  dataFacilitiesTopic
+
+
+}) => {
 
   return (
     <>
       <HeaderSection />
-      <ExploreSec />
+      <ExploreSec topics={topics}
+        dataDrobTopic={dataDrobTopic}
+        dataLandmarksTopic={dataLandmarksTopic}
+        dataFacilitiesTopic={dataFacilitiesTopic}
+      />
       <Map />
       <VirtualGuide />
       <ShareMomentSec />

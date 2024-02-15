@@ -1,7 +1,15 @@
 section.explore {
+  position: relative;
   .sec_title {
-    position: relative;
+    position: absolute;
+    top: 0;
+    right: 50%;
+    left: 50%;
     margin-top: 60px;
+    width: 100%;
+    transform: translate(50%, 50%);
+
+    z-index: 99;
     h3 {
     }
 
@@ -17,19 +25,10 @@ section.explore {
       }
     }
   }
-
   .boxes_container {
-    // display: flex;
-    // align-items: center;
-    // justify-content: space-between;
-    // width: 100%;
-    // margin-top: -170px;
-    // position: relative;
-    // z-index: -2;
-
     display: flex;
     justify-content: center;
-    gap: 20px; // Spacing between boxes
+    margin-top: -0px;
     .box {
       overflow: hidden;
       border-radius: 24px;
@@ -38,10 +37,33 @@ section.explore {
       align-items: center;
       justify-content: center;
       position: relative;
-      background-color: #fff;
       transition: all 0.3s ease;
-      // z-index: 99999;
       cursor: pointer;
+      padding: 24px;
+      &:hover {
+        .inner_container {
+          width: 100%;
+        }
+        .text_container {
+          margin-right: 24px;
+          align-items: flex-start;
+          justify-content: flex-start;
+        }
+
+        .icon_container {
+          img {
+            margin-right: 24px;
+          }
+        }
+
+        .desc,
+        .title {
+          p,
+          h5 {
+            text-align: right !important;
+          }
+        }
+      }
 
       &:first-child {
         .title {
@@ -67,6 +89,26 @@ section.explore {
         }
       }
 
+      &:first-child {
+        .inner_boxes_container {
+          .small_box {
+            .category_container {
+              display: none;
+            }
+          }
+        }
+      }
+
+      &:not(:first-child) {
+        .inner_boxes_container {
+          .small_box {
+            .hours_container {
+              display: none;
+            }
+          }
+        }
+      }
+
       .background_image {
         position: absolute;
         top: 0;
@@ -80,14 +122,25 @@ section.explore {
       }
 
       .icon_container {
-        width: 64px;
-        height: 64px;
         margin-bottom: 24px;
+        width: 100%;
+        display: flex;
+
         img {
-          width: 100%;
-          height: 100%;
+          transition: all 0.3s ease;
+
+          margin: auto;
+          width: 64px;
+          height: 64px;
+
           object-fit: contain;
         }
+      }
+      .box_container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .text_container {
@@ -95,37 +148,175 @@ section.explore {
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        transition: all 0.3s ease;
       }
       .title {
         margin-bottom: 16px;
-
+        min-width: 300px;
         h5 {
           font-size: 56px;
           font-weight: 800;
           line-height: 56px;
           letter-spacing: 0em;
-          text-align: right;
+
+          text-align: center;
         }
       }
 
       .desc {
-        max-width: fit-content;
+        min-width: 300px;
+
         p {
           font-size: 24px;
-          font-weight: 400;
+          font-weight: 500;
           line-height: 34px;
           letter-spacing: 0em;
-          text-align: center;
           color: #828295;
+          text-align: center;
         }
       }
 
-      .innerBoxes {
+      .inner_boxes_container {
         display: flex;
-        justify-content: space-around; // Spacing out the small boxes
+        justify-content: space-between;
         align-items: center;
         width: 100%;
-        height: 100%;
+        position: relative;
+
+        .small_box {
+          border-radius: 24px;
+          width: 190px;
+          height: 200px;
+          overflow: hidden;
+          position: relative;
+          transition: all 0.3s ease-in-out;
+          &:hover {
+            transform: translateY(-21px) rotate(2deg);
+          }
+
+          &:not(:first-child) {
+            margin-right: 16px;
+          }
+
+          .img_container {
+            width: 100%;
+            height: 100%;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+
+          .hours_container,
+          .category_container {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .category {
+            }
+            p {
+              margin-bottom: 0;
+              color: var(--main-white-color);
+              font-weight: 600;
+              font-size: 16px;
+            }
+
+            .icon_container {
+              width: fit-content;
+              margin-bottom: 0;
+              svg {
+                width: 23px;
+                height: 23px;
+                path {
+                  fill: var(--main-green-color);
+                }
+              }
+            }
+          }
+          .hours_container {
+            background-color: #ffffff5e;
+            padding: 4px 10px 4px;
+            border-radius: 24px;
+          }
+
+          .category_container {
+            flex-direction: row-reverse;
+
+            background-color: #fff;
+            padding: 4px 10px 4px;
+            border-radius: 24px;
+            display: flex;
+            p {
+              color: var(--main-purble-color);
+            }
+          }
+
+          .card_bottom {
+            width: 100%;
+            padding: 14px;
+            padding-top: 0;
+            padding-bottom: 0;
+            position: absolute;
+            bottom: 16px;
+            // left: -16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .title {
+              min-width: auto;
+              margin-bottom: 0;
+              p {
+                color: var(--main-white-color);
+                font-size: 14px;
+                font-weight: 600;
+                margin-bottom: 0;
+              }
+            }
+
+            .icon_container {
+              margin-bottom: 0;
+              width: fit-content;
+              svg {
+                color: var(--main-white-color);
+
+                width: 16px;
+                height: 16px;
+              }
+            }
+          }
+        }
+
+        .btn_container {
+          position: absolute;
+          bottom: -80px;
+          left: 0;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 8px;
+          background-color: rgb(56 122 138 / 9%);
+          border-radius: 24px;
+
+          a {
+            color: var(--main-green-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+          }
+          .arrow_container {
+            svg {
+              color: var(--main-green-color);
+              width: 23px;
+              height: 23px;
+            }
+          }
+        }
       }
 
       .innerBoxes div {
@@ -137,51 +328,3 @@ section.explore {
     }
   }
 }
-
-// +++++++++++==========================+++++++++++++++++++++++==
-// .explore {
-//   .boxes_container {
-//     display: flex;
-//     justify-content: center;
-//     gap: 20px; // Spacing between boxes
-//   }
-
-//   .box {
-//     border-radius: 24px;
-//     overflow: hidden;
-//     position: relative;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     background-color: #fff; // or any other default color
-//     cursor: pointer;
-//     transition: all 0.5s ease; // Smooth transition for size changes
-//   }
-
-//   .innerBoxes {
-//     display: flex;
-//     justify-content: space-around; // Spacing out the small boxes
-//     align-items: center;
-//     width: 100%;
-//     height: 100%;
-//   }
-
-//   // Styles for the small red boxes
-//   .innerBoxes div {
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     border-radius: 10px; // Small border radius for aesthetics
-//   }
-
-//   .icon_container {
-//     position: absolute;
-//     width: 64px; // Or size of your icon
-//     height: 64px; // Or size of your icon
-//     img {
-//       width: 100%;
-//       height: 100%;
-//       object-fit: contain;
-//     }
-//   }
-// }

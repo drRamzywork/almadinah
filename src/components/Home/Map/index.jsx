@@ -37,8 +37,6 @@ const Map = () => {
   const [places, setPlaces] = React.useState([]);
   const [selectedPlace, setSelectedPlace] = React.useState(null);
 
-  console.log(places, "places")
-  console.log(selectedPlace, "selectedPlace")
   React.useEffect(() => {
     if (!isLoaded) return;
 
@@ -68,10 +66,7 @@ const Map = () => {
           >
             {places.map((place) => (
               <>
-                {
-                  console.log(place.photos && place.photos, "photosz")
 
-                }
 
 
                 <Marker

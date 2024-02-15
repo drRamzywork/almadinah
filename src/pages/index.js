@@ -1,9 +1,13 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "@/styles/Home.module.scss";
 import LandingPage from "@/components/LandingPage";
 
-export default function Home() {
+export default function Home({
+  topics,
+  dataDrobTopic,
+  dataLandmarksTopic,
+  dataFacilitiesTopic,
+}) {
   return (
     <>
       <Head>
@@ -13,7 +17,44 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <LandingPage />
+      <LandingPage
+        topics={topics}
+        dataDrobTopic={dataDrobTopic}
+        dataLandmarksTopic={dataLandmarksTopic}
+        dataFacilitiesTopic={dataFacilitiesTopic}
+      />
     </>
   );
+}
+
+export async function getStaticProps() {
+  const apiUrl =
+    "https://api.almadinah.io/api/Topics/GetMainTopics?lang=2&ContentSamplesToReturn=0&pagenum=1&pagesize=50";
+
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+
+  const responseDrobTopic = await fetch(
+    `https://api.almadinah.io/api/Contents/GetContents?topicId=${2}&lang=2&pagenum=1&pagesize=50&withLatLng=false`
+  );
+  const dataDrobTopic = await responseDrobTopic.json();
+
+  const responseLandmarksTopic = await fetch(
+    `https://api.almadinah.io/api/Contents/GetContents?topicId=${1}&lang=2&pagenum=1&pagesize=50&withLatLng=false`
+  );
+  const dataLandmarksTopic = await responseLandmarksTopic.json();
+
+  const responseFacilitiesTopic = await fetch(
+    `https://api.almadinah.io/api/Contents/GetContents?topicId=${13}&lang=2&pagenum=1&pagesize=50&withLatLng=false`
+  );
+  const dataFacilitiesTopic = await responseFacilitiesTopic.json();
+
+  return {
+    props: {
+      topics: data,
+      dataDrobTopic,
+      dataLandmarksTopic,
+      dataFacilitiesTopic,
+    },
+  };
 }

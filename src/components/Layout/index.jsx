@@ -3,6 +3,7 @@
 import localFont from 'next/font/local'
 import { useRouter } from "next/router";
 import Footer from '../Footer';
+import styles from "@/styles/Home.module.scss";
 
 const IBMPlexSans = localFont({
   src: [
@@ -57,7 +58,7 @@ export default function Layout({ children }) {
       {/* {router.pathname !== '/search' &&
         <Navbar />
       } */}
-      <main style={combinedStyles} dir='rtl'>
+      <main style={combinedStyles} dir='rtl' className={styles.main}>
         {children}
       </main >
       <Footer />

@@ -4,7 +4,7 @@ import Image from 'next/image'
 import styles from './index.module.scss'
 import Mosque from '@/svgs/Mosque.svg'
 import { IoIosArrowBack } from "react-icons/io";
-import { useRouter } from 'next/router'
+import { Router, useRouter } from 'next/router'
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link'
 
@@ -20,7 +20,7 @@ const images2 =
 
 
 
-const HeaderSection = () => {
+const HeaderSection = ({ parentName }) => {
   const route = useRouter()
 
 
@@ -40,7 +40,7 @@ const HeaderSection = () => {
     hidden: { opacity: 0.5, scale: 0.95 },
     visible: { opacity: 1, scale: 1 },
   };
-
+  const router = useRouter()
 
   return (
     <>
@@ -49,12 +49,10 @@ const HeaderSection = () => {
       >
         <Navbar />
 
-
         <div className={styles.top_cloud}>
           <Image src={'/assets/bannerImgs/cloud2.png'} width={1440} height={413} />
 
         </div>
-
 
         <div className="container">
 
@@ -62,15 +60,30 @@ const HeaderSection = () => {
 
 
 
-            <div className={styles.right_side}>
+            <motion.div
+              initial={{ opacity: 0, x: -100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1 }}
+
+              className={styles.right_side}>
 
 
               <div className={styles.main_title}>
-                <h2>المدينة المنورة</h2>
+                <h2>
+                  {router.pathname === '/' ?
+
+                    "المدينة المنورة"
+                    :
+                    parentName
+
+                  }
+
+                </h2>
               </div>
 
 
-            </div>
+            </motion.div>
 
 
             <div className={`${styles.left_side}`} >
@@ -104,10 +117,6 @@ const HeaderSection = () => {
 
         </div>
 
-
-
-
-
         <motion.div
           key={currentImage.imgSrc} // Key changes on image change, triggering re-render
           initial="hidden"
@@ -121,17 +130,14 @@ const HeaderSection = () => {
           <Image src={currentImage.imgSrc} width={1440} height={413} />
         </motion.div>
 
-
         <div className={styles.lines}>
           <Image src={'/assets/bannerImgs/lines.svg'} width={8169.95} height={2105.82} />
 
         </div>
 
-
         <div className={styles.cloud}>
           <Image src={'/assets/bannerImgs/cloud2.png'} width={1440} height={413} />
         </div>
-
 
       </header >
 
