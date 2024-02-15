@@ -14,8 +14,8 @@ const Topic = ({ dataMainTopic }) => {
 
   return (
     <>
-      <HeaderSection parentName={dataMainTopic[0].parentName} />
 
+      <HeaderSection parentName={dataMainTopic[0]?.parentName} />
       <section id='city_facilities' className={styles.city_facilities}>
         <div className="container">
           <div className={styles.sec_container}>
@@ -150,6 +150,7 @@ const Topic = ({ dataMainTopic }) => {
         </div>
 
       </section>
+
     </>
 
 

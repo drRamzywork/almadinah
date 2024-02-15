@@ -75,7 +75,7 @@ const HeaderSection = ({ parentName }) => {
 
                     "المدينة المنورة"
                     :
-                    parentName
+                    parentName && parentName
 
                   }
 
