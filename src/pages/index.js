@@ -40,12 +40,12 @@ export async function getStaticProps() {
   const dataDrobTopic = await responseDrobTopic.json();
 
   const responseLandmarksTopic = await fetch(
-    `https://api.almadinah.io/api/Contents/GetContents?topicId=${1}&lang=2&pagenum=1&pagesize=50&withLatLng=false`
+    `https://api.almadinah.io/api/Contents/GetContents?topicId=8&lang=2&pagenum=1&pagesize=50&withLatLng=false    `
   );
   const dataLandmarksTopic = await responseLandmarksTopic.json();
 
   const responseFacilitiesTopic = await fetch(
-    `https://api.almadinah.io/api/Contents/GetContents?topicId=${13}&lang=2&pagenum=1&pagesize=50&withLatLng=false`
+    `https://api.almadinah.io/api/Contents/GetContents?topicId=14&lang=2&pagenum=1&pagesize=50&withLatLng=false`
   );
   const dataFacilitiesTopic = await responseFacilitiesTopic.json();
 

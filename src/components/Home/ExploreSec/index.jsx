@@ -148,7 +148,6 @@ const ExploreSec = ({ topics,
   return (
     <section id='explore' className={styles.explore}>
 
-
       <div className="container">
         <div className={`${styles.sec_title}  sec_title`}>
           <h3>استكشف المدينة المنورة</h3>
@@ -231,8 +230,9 @@ const ExploreSec = ({ topics,
 
                     {box?.subTopics?.map((subTopic, idx) =>
                       <Link href={`/${idx}`} className={styles.small_box}>
+                        {console.log(subTopic, "subTopic")}
                         <div className={styles.img_container}>
-                          <img src={subTopic.icon} alt="" />
+                          <img src={subTopic.icon.includes(',') ? subTopic.icon.split(',')[0] : subTopic.icon} alt={subTopic.name} />
                         </div>
 
                         <div className={styles.hours_container}>

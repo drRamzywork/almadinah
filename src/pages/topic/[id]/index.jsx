@@ -9,13 +9,14 @@ import 'swiper/css';
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
-const Topic = ({ dataMainTopic }) => {
+const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory }) => {
   const getRandomWidth = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+  const mergedTopics = dataMainTopic.concat(dataSubTopic);
 
+  console.log(dataSubCategory.secondaryTopics, "2222222222222")
   return (
     <>
-
-      <HeaderSection parentName={dataMainTopic[0]?.parentName} />
+      <HeaderSection parentName={mergedTopics[0]?.parentName} />
       <section id='city_facilities' className={styles.city_facilities}>
         <div className="container">
           <div className={styles.sec_container}>
@@ -54,6 +55,7 @@ const Topic = ({ dataMainTopic }) => {
                 dir={`rtl`}
                 className={styles.swiper_container}
               >
+
                 <SwiperSlide className={styles.swiper_slide_box}>
 
                   <div className={`${styles.box} ${styles.active}`}>
@@ -63,35 +65,29 @@ const Topic = ({ dataMainTopic }) => {
                   </div>
 
                 </SwiperSlide>
+                {dataSubCategory.secondaryTopics.map((secTopic, index) =>
 
-                <SwiperSlide className={styles.swiper_slide_box}>
-                  <div className={styles.box}>
-                    <div className={styles.icon_container}>
-                      <PalmTree />
+                  <SwiperSlide key={index} className={styles.swiper_slide_box}>
+                    <div className={styles.box}>
+                      <div className={styles.icon_container}>
+                        <img src={secTopic.icon} alt={secTopic.name} />
+                      </div>
+                      <div className={styles.title}>
+                        <p>{secTopic.name}</p>
+                      </div>
                     </div>
-                    <div className={styles.title}>
-                      <p>متنزهات ومماشي</p>
-                    </div>
-                  </div>
-                </SwiperSlide>
+                  </SwiperSlide>
 
-                <SwiperSlide className={styles.swiper_slide_box}>
-                  <div className={styles.box}>
-                    <div className={styles.icon_container}>
-                      <Calendar />
-                    </div>
-                    <div className={styles.title}>
-                      <p>تجارب وفعاليات</p>
-                    </div>
-                  </div>
-                </SwiperSlide>
+
+                )}
+
 
               </Swiper>
             </motion.div>
 
             <div className={styles.boxes_container}>
 
-              {dataMainTopic.map((topic, index) => (
+              {mergedTopics.map((topic, index) => (
 
 
                 <motion.div
@@ -104,7 +100,7 @@ const Topic = ({ dataMainTopic }) => {
                   className={styles.box}>
                   <Link href='topic:id'>
                     <div className={styles.img_container}>
-                      <Image src={topic.icon} width={233} height={166} />
+                      <Image src={topic.icon.includes(',') ? topic.icon.split(',')[0] : topic.icon} width={233} height={166} />
                     </div>
                     <div className={styles.title}>
                       <h5>{topic.name} </h5>
@@ -150,10 +146,7 @@ const Topic = ({ dataMainTopic }) => {
         </div>
 
       </section>
-
     </>
-
-
   )
 }
 export default Topic
@@ -171,15 +164,63 @@ export async function getStaticPaths() {
 }
 
 
+// export async function getStaticProps({ params }) {
+
+
+//   const responseMainTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${params.id}&lang=2&pagenum=1&pagesize=50&withLatLng=false`);
+//   const dataMainTopic = await responseMainTopic.json();
+
+//   const responseSubTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=8&lang=2&pagenum=1&pagesize=50&withLatLng=false`);
+//   const dataSubTopic = await responseSubTopic.json();
+
+//   const responseSubCategory = await fetch(`https://api.almadinah.io/api/Topics/GetSubCategories?topicId=${params.id}&lang=2&ContentSamplesToReturn=0&pagenum=1&pagesize=50
+//   `);
+//   const dataSubCategory = await responseSubCategory.json();
+
+
+//   return {
+//     props: {
+//       dataMainTopic,
+//       dataSubTopic,
+//       dataSubCategory
+
+//     },
+//   };
+// }
+
+
 export async function getStaticProps({ params }) {
+  // Fetch main topics with the initial topicId
+  let responseMainTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${params.id}&lang=2&pagenum=1&pagesize=50&withLatLng=false`);
+  let dataMainTopic = await responseMainTopic.json();
 
+  const responseSubCategory = await fetch(`https://api.almadinah.io/api/Topics/GetSubCategories?topicId=${params.id}&lang=2&ContentSamplesToReturn=0&pagenum=1&pagesize=50`);
+  const dataSubCategory = await responseSubCategory.json();
+  // If dataMainTopic array is empty, fetch the subcategory to get a new topicId
+  if (!dataMainTopic.length) { // Assuming dataMainTopic is an array and checking its length
+    const responseSubCategory = await fetch(`https://api.almadinah.io/api/Topics/GetSubCategories?topicId=${params.id}&lang=2&ContentSamplesToReturn=0&pagenum=1&pagesize=50`);
+    const dataSubCategory = await responseSubCategory.json();
 
-  const responseMainTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${params.id}&lang=2&pagenum=1&pagesize=50&withLatLng=false`);
-  const dataMainTopic = await responseMainTopic.json();
+    // Check if secondaryTopics array is not empty and has an id
+    if (dataSubCategory.secondaryTopics && dataSubCategory.secondaryTopics.length > 0) {
+      const newTopicId = dataSubCategory.secondaryTopics[0].id;
+
+      // Use the newTopicId to fetch main topics again
+      responseMainTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${newTopicId}&lang=2&pagenum=1&pagesize=50&withLatLng=false`);
+      dataMainTopic = await responseMainTopic.json();
+    }
+  }
+
+  // Fetch subtopics (assuming this is necessary regardless of the previous condition)
+  const responseSubTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=8&lang=2&pagenum=1&pagesize=50&withLatLng=false`);
+  const dataSubTopic = await responseSubTopic.json();
+
   return {
     props: {
       dataMainTopic,
-
+      dataSubTopic,
+      dataSubCategory
+      // dataSubCategory is not included here since it's only used conditionally
     },
   };
 }
