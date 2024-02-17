@@ -75,7 +75,7 @@ const SubTopic = ({ dataMainTopic, dataSubTopic, dataSubCategory }) => {
 
                 </SwiperSlide>
 
-                {dataSubCategory.secondaryTopics.map((secTopic, index) =>
+                {dataSubCategory?.secondaryTopics?.map((secTopic, index) =>
 
                   <SwiperSlide key={index} className={styles.swiper_slide_box}>
                     <Link scroll={false} href={`/subtopic/${secTopic.id}`} className={`${styles.box}  ${Number(query) === secTopic.id && styles.active}`}>
@@ -97,7 +97,7 @@ const SubTopic = ({ dataMainTopic, dataSubTopic, dataSubCategory }) => {
 
             <div className={styles.boxes_container}>
 
-              {dataSubTopic.map((topic, index) => (
+              {dataSubTopic?.map((topic, index) => (
                 <motion.div
                   initial={{ opacity: 0, x: -100 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -126,7 +126,7 @@ const SubTopic = ({ dataMainTopic, dataSubTopic, dataSubCategory }) => {
             </div>
 
             <div className={styles.boxes_container_mobile}>
-              {dataSubTopic.map((topic, index) => (
+              {dataSubTopic?.map((topic, index) => (
                 <div
                   className={styles.box} key={index}
                   style={{
@@ -160,7 +160,7 @@ export async function getStaticPaths() {
   const response = await fetch('https://api.almadinah.io/api/Topics/GetMainTopics?lang=2&ContentSamplesToReturn=0&pagenum=1&pagesize=50');
   const topics = await response.json();
 
-  const paths = topics.map(topic => ({
+  const paths = topics?.map(topic => ({
     params: { id: topic.id.toString() },
   }));
 
