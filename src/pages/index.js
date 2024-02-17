@@ -29,7 +29,7 @@ export default function Home({
 
 export async function getStaticProps() {
   const apiUrl =
-    "https://api.almadinah.io/api/Topics/GetMainTopics?lang=2&ContentSamplesToReturn=0&pagenum=1&pagesize=50";
+    "https://api.almadinah.io/api/Topics/GetMainTopics?lang=2&ContentSamplesToReturn=6&pagenum=1&pagesize=50";
 
   const response = await fetch(apiUrl);
   const data = await response.json();

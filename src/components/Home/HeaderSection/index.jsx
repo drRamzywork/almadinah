@@ -20,13 +20,16 @@ const images2 =
 
 
 
-const HeaderSection = ({ parentName }) => {
-  const route = useRouter()
-
-
-
+const HeaderSection = ({ parentName, topics }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentImage = images2[currentIndex];
+  const route = useRouter()
+
+  const masjedData = topics?.filter((topic) => topic.id === 20)[0];
+  const m3alemData = topics?.filter((topic) => topic.id === 1)[0];
+  const guidData = topics?.filter((topic) => topic.id === 4)[0];
+  const marafeqData = topics?.filter((topic) => topic.id === 13)[0];
+  console.log(topics, "TOTO")
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -131,7 +134,7 @@ const HeaderSection = ({ parentName }) => {
         </motion.div>
 
         <div className={styles.lines}>
-          <Image src={'/assets/bannerImgs/lines.svg'} width={8169.95} height={2105.82} />
+          <Image src={'/assets/bannerImgs/Lines.svg'} width={8169.95} height={2105.82} />
 
         </div>
 
@@ -147,21 +150,21 @@ const HeaderSection = ({ parentName }) => {
           <div className="container">
 
             <div className={styles.boxes_container}>
-              <div className={styles.box}>
+              <Link href={`/topic/${masjedData.id}`} className={styles.box}>
                 <div className={styles.icon_container}>
-                  <Image src={Mosque} width={20} height={24} />
+                  <Image src={masjedData?.icon} width={20} height={24} />
                 </div>
-                <div className={styles.text_container}>
-                  <p>المسجد النبوي</p>
+                <div className={styles.text_container} >
+                  <p >{masjedData?.name}</p>
                   <div className={styles.arrow_container}>
                     <IoIosArrowBack />
                   </div>
                 </div>
-              </div>
+              </Link>
 
-              <div className={styles.box}>
+              <Link href={`/topic/${m3alemData.id}`} className={styles.box}>
                 <div className={styles.background_image}>
-                  <Image src={'/assets/images/tourist_attractions.png'} width={
+                  <Image src={m3alemData.imageForSecBackground} width={
                     201} height={165} />
                 </div>
 
@@ -169,14 +172,14 @@ const HeaderSection = ({ parentName }) => {
 
                 <div className={styles.text_container}>
                   <p>
-                    معالم <br /> المدينة
+                    {m3alemData.name}
                   </p>
                   <div className={styles.arrow_container}>
                     <IoIosArrowBack />
                   </div>
                 </div>
 
-              </div>
+              </Link>
             </div>
 
             <div className={styles.boxes_container2}>
@@ -189,7 +192,7 @@ const HeaderSection = ({ parentName }) => {
                 </div>
 
                 <div className={styles.text_container}>
-                  <p>المرشد <br /> الافتراضي</p>
+                  <p style={{ width: '100px ' }}>{guidData.name}</p>
                   <div className={styles.arrow_container}>
                     <IoIosArrowBack />
                   </div>
@@ -202,7 +205,7 @@ const HeaderSection = ({ parentName }) => {
               </Link>
 
 
-              <div className={styles.box}>
+              <Link href={`/chapter/${marafeqData.id}`} className={styles.box}>
                 <div className={styles.background_image}>
                   <Image src={'/assets/images/tourist_attractions2.png'} width={
                     201} height={165} />
@@ -214,10 +217,11 @@ const HeaderSection = ({ parentName }) => {
 
 
                 <div className={styles.text_container}>
-                  <p>مرافق المدينة</p>
+                  <p>{marafeqData.name}</p>
 
                 </div>
-              </div>
+
+              </Link>
 
             </div>
           </div>

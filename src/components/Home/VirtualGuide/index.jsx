@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './index.module.scss'
 import Image from 'next/image'
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -9,7 +9,27 @@ import 'swiper/css/pagination';
 
 // import required modules
 
-const VirtualGuide = () => {
+const VirtualGuide = ({ guidData }) => {
+  const [currentVideoSrc, setCurrentVideoSrc] = useState("https://almadinah.io/Areas/07122023501009265.mp4");
+  const [activeVideoId, setActiveVideoId] = useState(null);
+
+  function chunkArray(myArray, chunkSize) {
+    const results = [];
+    while (myArray.length) {
+      results.push(myArray.splice(0, chunkSize));
+    }
+    return results;
+  }
+
+
+  const handleSlideClick = (videoUrl, videoId) => {
+    setActiveVideoId(videoId)
+    setCurrentVideoSrc(videoUrl);
+
+  };
+
+  console.log(currentVideoSrc)
+
   return (
     <>
       <section id='virtual_guide' className={styles.virtual_guide}>
@@ -41,131 +61,32 @@ const VirtualGuide = () => {
 
                   className={styles.swiper_container}
                 >
-
-                  <SwiperSlide className={styles.swiper_slide_box}>
-                    <div className="d-flex ">
-
-                      <div className={styles.box}>
-                        <div className={styles.img_container}>
-                          <Image src={'/assets/images/place.png'} width={233} height={166} />
+                  {
+                    chunkArray([...guidData], 2).map((pair, index) => (
+                      <SwiperSlide
+                        className={styles.swiper_slide_box} key={index}>
+                        <div className="d-flex ">
+                          {pair.map((topic) => (
+                            <div
+                              onClick={() => handleSlideClick(topic.tourGuide, topic.id)}
+                              className={`${styles.box} ${activeVideoId === topic.id ? styles.active : ''}`} key={topic.id}>
+                              <div className={styles.img_container}>
+                                <Image src={topic.icon.includes(',') ? topic.icon.split(',')[0] : topic.icon} width={233} height={166} />
+                              </div>
+                              <div className={styles.title}>
+                                <h5>{topic.name}</h5> {/* Assuming each topic has a name */}
+                                <div className={styles.icon_container}>
+                                  <Image src={'/assets/svgs/guide_icon.svg'} width={233} height={166} />
+                                </div>
+                              </div>
+                            </div>
+                          ))}
                         </div>
-                        <div className={styles.title}>
-                          <h5>الخندق </h5>
-                          <div className={styles.icon_container}>
-                            <Image src={'/assets/svgs/guide_icon.svg'} width={233} height={166} />
-                          </div>
-                        </div>
+                      </SwiperSlide>
+                    ))
+                  }
 
-                      </div>
 
-                      <div className={styles.box}>
-                        <div className={styles.img_container}>
-                          <Image src={'/assets/images/place.png'} width={233} height={166} />
-                        </div>
-                        <div className={styles.title}>
-                          <h5>الخندق </h5>
-                          <div className={styles.icon_container}>
-                            <Image src={'/assets/svgs/guide_icon.svg'} width={233} height={166} />
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-
-                  </SwiperSlide>
-                  <SwiperSlide className={styles.swiper_slide_box}>
-                    <div className="d-flex ">
-
-                      <div className={styles.box}>
-                        <div className={styles.img_container}>
-                          <Image src={'/assets/images/place.png'} width={233} height={166} />
-                        </div>
-                        <div className={styles.title}>
-                          <h5>الخندق </h5>
-                          <div className={styles.icon_container}>
-                            <Image src={'/assets/svgs/guide_icon.svg'} width={233} height={166} />
-                          </div>
-                        </div>
-
-                      </div>
-
-                      <div className={styles.box}>
-                        <div className={styles.img_container}>
-                          <Image src={'/assets/images/place.png'} width={233} height={166} />
-                        </div>
-                        <div className={styles.title}>
-                          <h5>الخندق </h5>
-                          <div className={styles.icon_container}>
-                            <Image src={'/assets/svgs/guide_icon.svg'} width={233} height={166} />
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-
-                  </SwiperSlide>
-                  <SwiperSlide className={styles.swiper_slide_box}>
-                    <div className="d-flex ">
-
-                      <div className={styles.box}>
-                        <div className={styles.img_container}>
-                          <Image src={'/assets/images/place.png'} width={233} height={166} />
-                        </div>
-                        <div className={styles.title}>
-                          <h5>الخندق </h5>
-                          <div className={styles.icon_container}>
-                            <Image src={'/assets/svgs/guide_icon.svg'} width={233} height={166} />
-                          </div>
-                        </div>
-
-                      </div>
-
-                      <div className={styles.box}>
-                        <div className={styles.img_container}>
-                          <Image src={'/assets/images/place.png'} width={233} height={166} />
-                        </div>
-                        <div className={styles.title}>
-                          <h5>الخندق </h5>
-                          <div className={styles.icon_container}>
-                            <Image src={'/assets/svgs/guide_icon.svg'} width={233} height={166} />
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-
-                  </SwiperSlide>
-                  <SwiperSlide className={styles.swiper_slide_box}>
-                    <div className="d-flex ">
-
-                      <div className={styles.box}>
-                        <div className={styles.img_container}>
-                          <Image src={'/assets/images/place.png'} width={233} height={166} />
-                        </div>
-                        <div className={styles.title}>
-                          <h5>الخندق </h5>
-                          <div className={styles.icon_container}>
-                            <Image src={'/assets/svgs/guide_icon.svg'} width={233} height={166} />
-                          </div>
-                        </div>
-
-                      </div>
-
-                      <div className={styles.box}>
-                        <div className={styles.img_container}>
-                          <Image src={'/assets/images/place.png'} width={233} height={166} />
-                        </div>
-                        <div className={styles.title}>
-                          <h5>الخندق </h5>
-                          <div className={styles.icon_container}>
-                            <Image src={'/assets/svgs/guide_icon.svg'} width={233} height={166} />
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-
-                  </SwiperSlide>
 
 
 
@@ -182,16 +103,16 @@ const VirtualGuide = () => {
               <div className={styles.img_container}>
 
                 <video
+                  key={currentVideoSrc}
                   muted
                   loop
                   autoPlay
                   controls
                 >
-                  <source src="https://amana-md.gov.sa/visitmadinah/Areas/27112023124504981.mp4" type="video/mp4" />
+                  <source src={currentVideoSrc} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
-
             </div>
 
 

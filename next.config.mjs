@@ -8,6 +8,11 @@ const nextConfig = {
       { protocol: "https", hostname: "almadinah.io" },
     ],
   },
+
+  i18n: {
+    defaultLocale: "ar",
+    locales: ["ar", "en"],
+  },
 };
 
 export default nextConfig;

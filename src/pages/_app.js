@@ -2,8 +2,9 @@ import Layout from "@/components/Layout";
 import "@/styles/globals.scss";
 import Head from "next/head";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { appWithTranslation } from "next-i18next";
 
-export default function App({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   return (
     <Layout>
       <Head>
@@ -29,3 +30,5 @@ export default function App({ Component, pageProps }) {
     </Layout>
   );
 }
+
+export default appWithTranslation(App);

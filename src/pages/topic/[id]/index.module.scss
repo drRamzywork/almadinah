@@ -25,7 +25,7 @@ section.city_facilities {
         cursor: pointer;
         min-height: 60px;
         transition: var(--main-transation);
-
+        text-decoration: none;
         .title {
           p {
             margin-bottom: 0;

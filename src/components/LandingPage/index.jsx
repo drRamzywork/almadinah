@@ -15,17 +15,18 @@ const LandingPage = ({ topics,
 
 
 }) => {
+  const guidData = topics?.filter((topic) => topic.id === 4)[0].contents;
 
   return (
     <>
-      <HeaderSection />
+      <HeaderSection topics={topics} />
       <ExploreSec topics={topics}
         dataDrobTopic={dataDrobTopic}
         dataLandmarksTopic={dataLandmarksTopic}
         dataFacilitiesTopic={dataFacilitiesTopic}
       />
       <Map />
-      <VirtualGuide />
+      <VirtualGuide guidData={guidData} />
       <ShareMomentSec />
     </>
   )
