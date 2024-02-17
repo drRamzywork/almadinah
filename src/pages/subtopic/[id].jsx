@@ -16,8 +16,7 @@ const SubTopic = ({ dataMainTopic, dataSubTopic, dataSubCategory }) => {
   const getRandomWidth = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
   // const mergedTopics = dataMainTopic.concat(dataSubTopic);
   const query = router.query.id
-  console.log(dataSubTopic[0].parentId, 'routere')
-  const title = dataSubCategory.secondaryTopics.filter((category) => category.id === Number(query))[0].name;
+  const title = dataSubCategory?.secondaryTopics?.filter((category) => category.id === Number(query))[0]?.name;
 
 
   return (
