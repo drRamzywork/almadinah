@@ -67,7 +67,7 @@ const SubTopic = ({ dataMainTopic, dataSubTopic, dataSubCategory }) => {
               >
 
                 <SwiperSlide className={styles.swiper_slide_box}>
-                  <Link href={`/topic/${dataSubTopic[0].parentId}`} scroll={false} className={`${styles.box}`}>
+                  <Link href={`/topic/${dataSubTopic[0]?.parentId}`} scroll={false} className={`${styles.box}`}>
                     <div className={styles.title}>
                       <p>الكل</p>
                     </div>
@@ -80,10 +80,10 @@ const SubTopic = ({ dataMainTopic, dataSubTopic, dataSubCategory }) => {
                   <SwiperSlide key={index} className={styles.swiper_slide_box}>
                     <Link scroll={false} href={`/subtopic/${secTopic.id}`} className={`${styles.box}  ${Number(query) === secTopic.id && styles.active}`}>
                       <div className={styles.icon_container}>
-                        <img src={secTopic.icon} alt={secTopic.name} />
+                        <img src={secTopic.icon} alt={secTopic?.name} />
                       </div>
                       <div className={styles.title}>
-                        <p>{secTopic.name}</p>
+                        <p>{secTopic?.name}</p>
                       </div>
                     </Link>
                   </SwiperSlide>
@@ -111,7 +111,7 @@ const SubTopic = ({ dataMainTopic, dataSubTopic, dataSubCategory }) => {
                       <Image src={topic.icon.includes(',') ? topic.icon.split(',')[0] : topic.icon} width={233} height={166} />
                     </div>
                     <div className={styles.title}>
-                      <h5>{topic.name} </h5>
+                      <h5>{topic?.name} </h5>
 
                     </div>
 
@@ -140,7 +140,7 @@ const SubTopic = ({ dataMainTopic, dataSubTopic, dataSubCategory }) => {
 
                   </div>
                   <div className={styles.title}>
-                    <h5>{topic.name} </h5>
+                    <h5>{topic?.name} </h5>
                   </div>
                 </div>
               ))}
