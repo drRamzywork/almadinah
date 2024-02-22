@@ -173,47 +173,36 @@ export async function getStaticProps({ params, locale }) {
   const languagesConfig = require("../../../public/locales/languagesDetails.json");
   const langId = languagesConfig.filter((lang) => lang.shortCut === locale)[0].id;
   // languagesConfig[locale]?.id ||
-  try {
 
-    const responseStaticWords = await fetch(`https://api.almadinah.io/api/Settings/GetStaticWords?lang=${langId}`);
-    const dataStaticWords = await responseStaticWords.json();
+  const responseStaticWords = await fetch(`https://api.almadinah.io/api/Settings/GetStaticWords?lang=${langId}`);
+  const dataStaticWords = await responseStaticWords.json();
 
-    // Fetch main topics with the initial topicId
-    const responseMainTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${params.id}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
-    const dataMainTopic = await responseMainTopic.json();
+  // Fetch main topics with the initial topicId
+  const responseMainTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${params.id}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
+  const dataMainTopic = await responseMainTopic.json();
 
-    const responseSubCategory = await fetch(`https://api.almadinah.io/api/Topics/GetSubCategories?topicId=${dataMainTopic[0]?.parentId}&lang=${langId}&ContentSamplesToReturn=0&pagenum=1&pagesize=50`);
-    const dataSubCategory = await responseSubCategory.json();
+  const responseSubCategory = await fetch(`https://api.almadinah.io/api/Topics/GetSubCategories?topicId=${dataMainTopic[0]?.parentId}&lang=${langId}&ContentSamplesToReturn=0&pagenum=1&pagesize=50`);
+  const dataSubCategory = await responseSubCategory.json();
 
-    const responseSubTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${params.id}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
-    const dataSubTopic = await responseSubTopic.json();
+  const responseSubTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${params.id}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
+  const dataSubTopic = await responseSubTopic.json();
 
-    console.log(dataSubCategory, "SS");
-    console.log(dataSubTopic, "SS");
+  console.log(dataSubCategory, "SS");
+  console.log(dataSubTopic, "SS");
 
-    return {
-      props: {
-        dataMainTopic,
-        dataSubTopic,
-        dataSubCategory,
-        dataStaticWords
-      },
+  return {
+    props: {
+      dataMainTopic,
+      dataSubTopic,
+      dataSubCategory,
+      dataStaticWords
+    },
 
-      revalidate: 10,
-    };
+    revalidate: 10,
+  };
 
 
-  } catch {
-    return {
-      props: {
-        dataMainTopic: [],
-        dataSubTopic: [],
-        dataSubCategory: [],
-        dataStaticWords: []
-      },
-      revalidate: 1,
-    };
-  }
+
 
 }
 
