@@ -2,12 +2,14 @@ import React from 'react'
 import styles from './index.module.scss'
 import Image from 'next/image'
 import { IoIosArrowBack } from "react-icons/io";
+import { useRouter } from 'next/router';
 
 const ShareMomentSec = () => {
+  const router = useRouter();
   const getRandomWidth = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
   return (
-    <section id='Share_Moment_Sec' className={styles.Share_Moment_Sec}>
+    <section id='Share_Moment_Sec' className={styles.Share_Moment_Sec} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
       <div className={styles.nosie}>
         <Image src={'/assets/svgs/Noise.svg'} width={1440} height={888} />
 

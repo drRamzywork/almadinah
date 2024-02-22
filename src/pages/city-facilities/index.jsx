@@ -119,7 +119,7 @@ const CityFacilities = () => {
                   }}>
                   <div className={styles.img_container}>
                     {/* <Image src={'/assets/images/place.png'} width={233} height={166} />
-                     */}
+                      */}
                     <Image src="/assets/images/place.png" layout="fill" objectFit="cover" />
 
                   </div>

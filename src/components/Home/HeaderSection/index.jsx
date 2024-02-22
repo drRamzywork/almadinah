@@ -49,6 +49,7 @@ const HeaderSection = ({ parentName, topics }) => {
     <>
       <header id={'header'} className={styles.header}
         style={{ background: currentImage.bgColor }}
+        dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
       >
         <Navbar />
 
@@ -146,7 +147,7 @@ const HeaderSection = ({ parentName, topics }) => {
 
       {
         route.pathname === '/' &&
-        <section id='hero' className={styles.hero}>
+        <section id='hero' className={styles.hero} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
           <div className="container">
 
             <div className={styles.boxes_container}>

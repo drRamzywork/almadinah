@@ -7,12 +7,17 @@ import PalmTree from '@/svgs/PalmTree';
 import { FaArrowLeft } from 'react-icons/fa';
 import { IoIosArrowBack } from 'react-icons/io';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const ExploreSec = ({ topics,
   dataDrobTopic,
   dataLandmarksTopic,
-  dataFacilitiesTopic }) => {
+  dataFacilitiesTopic,
+  dataStaticWords
+}) => {
   const [hoveredIndex, setHoveredIndex] = useState(-1);
+
+  const router = useRouter();
 
 
 
@@ -146,7 +151,7 @@ const ExploreSec = ({ topics,
 
 
   return (
-    <section id='explore' className={styles.explore}>
+    <section id='explore' className={styles.explore} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
 
       <div className="container">
         <div className={`${styles.sec_title}  sec_title`}>
@@ -267,10 +272,11 @@ const ExploreSec = ({ topics,
                         </div>
                       </Link>
                     )}
+                    {console.log(dataStaticWords, "dataStaticWords")}
 
                     <div className={styles.btn_container}>
                       <Link href={`/topic/${box.id}`}>
-                        {` `}        كل     {` `}
+                        {` `}       {dataStaticWords.displayAll}    {` `}
                         {box.name}
                       </Link>
 

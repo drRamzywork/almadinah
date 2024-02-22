@@ -242,7 +242,6 @@ section.hero {
         margin-right: 25px;
         border: none;
         background-color: #dfc4b485;
-        width: 202px;
         height: 166px;
         box-shadow: inset 0px -20px 9px 20px #dfc4b47a;
         .text_container {
@@ -347,6 +346,294 @@ section.hero {
     }
   }
 }
+
+// +++++++++++++ LTR +++++++++++++
+
+header.header[dir="ltr"] {
+  .blur_img {
+    right: unset;
+    left: -69px;
+
+    img {
+    }
+  }
+
+  .top_cloud {
+    right: unset;
+    left: 0;
+    transform: scaleY(-1);
+  }
+
+  .lines {
+    left: 20%;
+    transform: scaleY(-1);
+    img {
+      width: 1835px;
+      height: 955px;
+    }
+  }
+
+  .cloud {
+    position: absolute;
+    bottom: -161px;
+    left: 0;
+    z-index: 4;
+    img {
+      width: 831px;
+      object-fit: contain;
+      animation: moveCloud 60s linear infinite,
+        scaleCloud 8s ease-in-out infinite alternate;
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    height: 368px;
+    border-radius: 0px 0px 32px 32px;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    background-image: url("/assets/svgs/Noise.svg");
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    z-index: 22;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 500px;
+    height: 100%;
+    background: linear-gradient(
+      239deg,
+      #d4c9c4 -0.57%,
+      rgba(212, 201, 196, 0) 52.4%,
+      rgba(209, 198, 188, 0) 102.15%
+    );
+
+    z-index: -22;
+  }
+
+  .banner_container {
+    margin-top: 104px;
+    height: 100%;
+    width: 100%;
+    transition: "background-color 1s ease";
+    position: relative;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    height: 568px;
+
+    .right_side {
+      position: relative;
+      z-index: 2;
+
+      .cloud {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 222;
+        img {
+          width: 500px;
+          height: 500px;
+          object-fit: cover;
+        }
+      }
+
+      .main_title {
+        h2 {
+          color: var(--main-white-color);
+          font-size: 156px;
+          font-weight: 800;
+          line-height: 156px;
+          letter-spacing: 0em;
+          text-align: right;
+        }
+      }
+    }
+
+    .left_side {
+      // overflow: hidden;
+      // height: 100%;
+      margin-bottom: 72px;
+      position: relative;
+      align-self: flex-end;
+      .shape {
+        content: "";
+        position: absolute;
+        bottom: -20%;
+        right: 0;
+        width: 369px;
+        height: 622px;
+        border-radius: 200px 200px 0px 0px;
+        transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      }
+
+      .main_img_container {
+        position: relative;
+        z-index: 3;
+        min-width: 600px;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 539px;
+          height: 197.22px;
+          border-radius: 98.61px;
+          z-index: 2;
+          background-color: #36788766;
+        }
+
+        img {
+          position: relative;
+          z-index: 4;
+          // width: 601px;
+          // height: 353px;
+
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 0px 0px 98.61px 98.61px;
+          opacity: 0.9;
+        }
+
+        .birds {
+          display: none;
+          img {
+            position: "absolute";
+            left: 0;
+            bottom: 0;
+            animation: "moveAnimation 5s infinite";
+          }
+        }
+      }
+    }
+  }
+}
+
+section.hero {
+  .boxes_container2,
+  .boxes_container {
+    .box {
+      .background_image {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        img {
+        }
+      }
+
+      &:first-child {
+        .text_container {
+          p {
+          }
+        }
+      }
+      &:nth-child(2) {
+        margin-right: 0px;
+        margin-left: 25px;
+        .text_container {
+          p {
+          }
+        }
+      }
+      .icon_container {
+        img {
+        }
+      }
+      .text_container {
+        p {
+        }
+
+        .arrow_container {
+          margin-right: 0px;
+          margin-left: 21px;
+          transform: rotate(180deg);
+          svg {
+            width: 32px;
+            height: 32px;
+            color: var(--main-white-color);
+          }
+        }
+      }
+    }
+  }
+
+  .boxes_container2 {
+    .box {
+      background-color: var(--main-white-color);
+      &:first-child {
+        width: 405px;
+        height: 224px;
+        overflow: hidden;
+        flex-direction: row;
+        justify-content: space-between;
+        border: none !important;
+        position: relative;
+        z-index: 1111;
+        text-decoration: none;
+        .text_container {
+          flex-direction: column;
+          align-items: flex-start;
+
+          p {
+            color: var(--main-green-color);
+          }
+          .arrow_container {
+            background-color: rgb(56 122 138 / 20%);
+            width: 48px;
+            height: 48px;
+            border-radius: 24px;
+            display: flex;
+            margin: 0;
+            svg {
+              margin: auto;
+            }
+          }
+        }
+
+        .image_container {
+          img {
+            width: 124.45px;
+            height: 178.6px;
+            object-fit: contain;
+          }
+        }
+      }
+
+      &:last-child {
+        width: 342px;
+        height: 190px;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-color: rgb(56 57 105 / 70%);
+        box-shadow: none;
+        .text_container {
+          margin-top: 8px;
+          justify-content: center;
+          p {
+            color: var(--main-white-color);
+          }
+        }
+      }
+    }
+  }
+}
+
+// +++++++++++++ LTR +++++++++++++
 
 // animation keys
 @keyframes moveAnimation {

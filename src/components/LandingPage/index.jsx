@@ -11,7 +11,8 @@ import ShareMomentSec from '../Home/ShareMomentSec'
 const LandingPage = ({ topics,
   dataDrobTopic,
   dataLandmarksTopic,
-  dataFacilitiesTopic
+  dataFacilitiesTopic,
+  dataStaticWords
 
 
 }) => {
@@ -21,6 +22,7 @@ const LandingPage = ({ topics,
     <>
       <HeaderSection topics={topics} />
       <ExploreSec topics={topics}
+        dataStaticWords={dataStaticWords}
         dataDrobTopic={dataDrobTopic}
         dataLandmarksTopic={dataLandmarksTopic}
         dataFacilitiesTopic={dataFacilitiesTopic}

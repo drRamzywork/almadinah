@@ -58,7 +58,7 @@ export default function Layout({ children }) {
       {/* {router.pathname !== '/search' &&
         <Navbar />
       } */}
-      <main style={combinedStyles} dir='rtl' className={styles.main}>
+      <main style={combinedStyles} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} className={styles.main}>
         {children}
       </main >
       <Footer />
