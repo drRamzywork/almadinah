@@ -17,8 +17,6 @@ const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords }) => {
   const getRandomWidth = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
   const query = router.query.id
   const title = dataSubCategory?.secondaryTopics?.filter((category) => category.id === Number(query))[0]?.name;
-  console.log(dataSubCategory, "SS");
-  console.log(dataSubTopic, "SS");
 
 
   return (
@@ -187,8 +185,6 @@ export async function getStaticProps({ params, locale }) {
   const responseSubTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${params.id}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
   const dataSubTopic = await responseSubTopic.json();
 
-  console.log(dataSubCategory, "SS");
-  console.log(dataSubTopic, "SS");
 
   return {
     props: {

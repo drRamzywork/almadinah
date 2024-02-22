@@ -235,7 +235,6 @@ const ExploreSec = ({ topics,
 
                     {box?.subTopics?.map((subTopic, idx) =>
                       <Link href={`/${idx}`} className={styles.small_box}>
-                        {console.log(subTopic, "subTopic")}
                         <div className={styles.img_container}>
                           <img src={subTopic.icon.includes(',') ? subTopic.icon.split(',')[0] : subTopic.icon} alt={subTopic.name} />
                         </div>
@@ -272,7 +271,6 @@ const ExploreSec = ({ topics,
                         </div>
                       </Link>
                     )}
-                    {console.log(dataStaticWords, "dataStaticWords")}
 
                     <div className={styles.btn_container}>
                       <Link href={`/topic/${box.id}`}>

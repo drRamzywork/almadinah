@@ -30,7 +30,6 @@ const VirtualGuide = ({ guidData }) => {
 
   };
 
-  console.log(currentVideoSrc)
 
   return (
     <>

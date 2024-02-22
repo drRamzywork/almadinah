@@ -16,7 +16,6 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords }
   const getRandomWidth = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
   // const mergedTopics = dataMainTopic.concat(dataSubTopic);
 
-  console.log(dataSubCategory, "33333333333333")
 
   return (
     <>
