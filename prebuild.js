@@ -1,4 +1,4 @@
-// prebuild.js
+require("dotenv").config(); // Load environment variables
 const fs = require("fs");
 const https = require("https");
 
@@ -9,27 +9,26 @@ https
   .get(apiURL, (resp) => {
     let data = "";
 
-    // A chunk of data has been received.
     resp.on("data", (chunk) => {
       data += chunk;
     });
 
-    // The whole response has been received.
     resp.on("end", () => {
       const languages = JSON.parse(data);
+      // Generate an array of shortcuts only
       const locales = languages.map((lang) => lang.shortCut);
 
-      // Update your configuration object for i18n
-      const i18nConfig = {
-        defaultLocale: "en", // or dynamically set this based on your conditions
-        locales,
-        localeDetection: true,
-      };
+      const languagesDetails = languages.map((lang) => lang);
 
-      // Write this config to a separate JSON file or directly into next.config.js as needed
+      // Write this array to the JSON file
       fs.writeFileSync(
-        "./i18nConfig.json",
-        JSON.stringify(i18nConfig, null, 2),
+        "./public/locales/allLanguages.json",
+        JSON.stringify(locales, null, 2),
+        "utf-8"
+      );
+      fs.writeFileSync(
+        "./public/locales/languagesDetails.json",
+        JSON.stringify(languagesDetails, null, 2),
         "utf-8"
       );
 

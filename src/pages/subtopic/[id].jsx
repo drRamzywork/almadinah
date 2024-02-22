@@ -11,12 +11,14 @@ import { motion } from 'framer-motion'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-const SubTopic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords }) => {
+
+const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords }) => {
   const router = useRouter();
   const getRandomWidth = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-  // const mergedTopics = dataMainTopic.concat(dataSubTopic);
   const query = router.query.id
   const title = dataSubCategory?.secondaryTopics?.filter((category) => category.id === Number(query))[0]?.name;
+  console.log(dataSubCategory, "SS");
+  console.log(dataSubTopic, "SS");
 
 
   return (
@@ -27,7 +29,7 @@ const SubTopic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWord
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <HeaderSection parentName={title} />
-      <section id='city_facilities' className={styles.city_facilities}>
+      <section id='city_facilities' className={styles.city_facilities} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
         <div className="container">
           <div className={styles.sec_container}>
             <motion.div
@@ -94,9 +96,7 @@ const SubTopic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWord
 
               </Swiper>
             </motion.div>
-
             <div className={styles.boxes_container}>
-
               {dataSubTopic?.map((topic, index) => (
                 <motion.div
                   initial={{ opacity: 0, x: -100 }}
@@ -170,39 +170,51 @@ export async function getStaticPaths() {
 
 
 export async function getStaticProps({ params, locale }) {
+  const languagesConfig = require("../../../public/locales/languagesDetails.json");
+  const langId = languagesConfig.filter((lang) => lang.shortCut === locale)[0].id;
+  // languagesConfig[locale]?.id ||
+  try {
+
+    const responseStaticWords = await fetch(`https://api.almadinah.io/api/Settings/GetStaticWords?lang=${langId}`);
+    const dataStaticWords = await responseStaticWords.json();
+
+    // Fetch main topics with the initial topicId
+    const responseMainTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${params.id}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
+    const dataMainTopic = await responseMainTopic.json();
+
+    const responseSubCategory = await fetch(`https://api.almadinah.io/api/Topics/GetSubCategories?topicId=${dataMainTopic[0]?.parentId}&lang=${langId}&ContentSamplesToReturn=0&pagenum=1&pagesize=50`);
+    const dataSubCategory = await responseSubCategory.json();
+
+    const responseSubTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${params.id}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
+    const dataSubTopic = await responseSubTopic.json();
+
+    console.log(dataSubCategory, "SS");
+    console.log(dataSubTopic, "SS");
+
+    return {
+      props: {
+        dataMainTopic,
+        dataSubTopic,
+        dataSubCategory,
+        dataStaticWords
+      },
+
+      revalidate: 10,
+    };
 
 
+  } catch {
+    return {
+      props: {
+        dataMainTopic: [],
+        dataSubTopic: [],
+        dataSubCategory: [],
+        dataStaticWords: []
+      },
+      revalidate: 1,
+    };
+  }
 
-
-
-  // Use the fetchLanguages function
-  const langId = locale || 2;
-
-  const responseStaticWords = await fetch(
-    `https://api.almadinah.io/api/Settings/GetStaticWords?lang=${langId}
-    `
-  );
-  const dataStaticWords = await responseStaticWords.json();
-
-  // Fetch main topics with the initial topicId
-  const responseMainTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${params.id}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
-  const dataMainTopic = await responseMainTopic.json();
-
-  const responseSubCategory = await fetch(`https://api.almadinah.io/api/Topics/GetSubCategories?topicId=${dataMainTopic[0]?.parentId}&lang=${langId}&ContentSamplesToReturn=0&pagenum=1&pagesize=50`);
-  const dataSubCategory = await responseSubCategory.json();
-
-  const responseSubTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${params.id}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
-  const dataSubTopic = await responseSubTopic.json();
-
-  return {
-    props: {
-      dataMainTopic,
-      dataSubTopic,
-      dataSubCategory,
-      dataStaticWords
-      // dataSubCategory is not included here since it's only used conditionally
-    },
-  };
 }
 
 

@@ -25,8 +25,9 @@ const localesFilePath = path.resolve("./public/locales/allLanguages.json");
 let locales = ["en", "ar"]; // Default locales in case the file read fails
 
 try {
-  const localesFile = fs.readFileSync(localesFilePath, "utf-8");
-  locales = JSON.parse(localesFile);
+  const localesConfig = JSON.parse(fs.readFileSync(localesFilePath, "utf-8"));
+  // Extract the keys (shortcuts) as the locales array
+  locales = Object.keys(localesConfig);
 } catch (error) {
   console.error(
     "Failed to load locales from file. Using default locales.",

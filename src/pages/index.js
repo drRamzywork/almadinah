@@ -13,7 +13,6 @@ export default function Home({
 }) {
   const router = useRouter();
 
-  console.log(router.locale, "Localesss");
   return (
     <>
       <Head>
@@ -35,7 +34,9 @@ export default function Home({
 }
 
 export async function getStaticProps({ locale }) {
-  const langId = locale || 1;
+  const languagesConfig = require("../../public/locales/languagesDetails.json");
+  const langId = languagesConfig.filter((lang) => lang.shortCut === locale)[0]
+    .id;
 
   const apiUrl = `https://api.almadinah.io/api/Topics/GetMainTopics?lang=${langId}&ContentSamplesToReturn=6&pagenum=1&pagesize=50`;
 

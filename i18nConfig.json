@@ -1,0 +1,12 @@
+{
+  "defaultLocale": "en",
+  "locales": [
+    "ar",
+    "en",
+    "fr",
+    "tr",
+    "id",
+    "ur"
+  ],
+  "localeDetection": true
+}

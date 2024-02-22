@@ -24,12 +24,10 @@ const HeaderSection = ({ parentName, topics }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentImage = images2[currentIndex];
   const route = useRouter()
-
   const masjedData = topics?.filter((topic) => topic.id === 20)[0];
   const m3alemData = topics?.filter((topic) => topic.id === 1)[0];
   const guidData = topics?.filter((topic) => topic.id === 4)[0];
   const marafeqData = topics?.filter((topic) => topic.id === 13)[0];
-  console.log(topics, "TOTO")
 
   useEffect(() => {
     const interval = setInterval(() => {

@@ -430,11 +430,12 @@ header.header[dir="ltr"] {
     align-items: start;
     justify-content: space-between;
     height: 568px;
+    flex-direction: row;
 
     .right_side {
       position: relative;
       z-index: 2;
-
+      max-width: 40%;
       .cloud {
         position: absolute;
         top: 0;
@@ -450,11 +451,11 @@ header.header[dir="ltr"] {
       .main_title {
         h2 {
           color: var(--main-white-color);
-          font-size: 156px;
+          font-size: 80px;
           font-weight: 800;
-          line-height: 156px;
+          line-height: 80px;
           letter-spacing: 0em;
-          text-align: right;
+          text-align: left;
         }
       }
     }
@@ -520,7 +521,7 @@ header.header[dir="ltr"] {
   }
 }
 
-section.hero {
+section.hero[dir="ltr"] {
   .boxes_container2,
   .boxes_container {
     .box {

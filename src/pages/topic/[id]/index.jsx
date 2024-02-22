@@ -14,7 +14,7 @@ import { useRouter } from 'next/router'
 const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords }) => {
   const router = useRouter();
   const getRandomWidth = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-  const mergedTopics = dataMainTopic.concat(dataSubTopic);
+  // const mergedTopics = dataMainTopic.concat(dataSubTopic);
 
   console.log(dataSubCategory, "33333333333333")
 
@@ -171,7 +171,8 @@ export async function getStaticPaths() {
 
 
 export async function getStaticProps({ params, locale }) {
-  const langId = locale || 2;
+  const languagesConfig = require("../../../../public/locales/languagesDetails.json");
+  const langId = languagesConfig.filter((lang) => lang.shortCut === locale)[0].id;
 
   const responseStaticWords = await fetch(
     `https://api.almadinah.io/api/Settings/GetStaticWords?lang=${langId}
