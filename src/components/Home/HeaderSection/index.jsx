@@ -32,7 +32,7 @@ const HeaderSection = ({ parentName, topics }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((currentIndex) => (currentIndex + 1) % images2.length);
-    }, 5000); // Rotate images every 9 seconds
+    }, 2225000); // Rotate images every 9 seconds
     return () => clearInterval(interval);
   }, []);
 

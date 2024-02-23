@@ -8,6 +8,10 @@ import { FaArrowLeft } from 'react-icons/fa';
 import { IoIosArrowBack } from 'react-icons/io';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Alarm } from '@/svgs/Alarm';
 
 const ExploreSec = ({ topics,
   dataDrobTopic,
@@ -213,10 +217,10 @@ const ExploreSec = ({ topics,
                         className={styles.title}>
                         <h5>{box?.name}</h5>
                       </motion.div>
-                      <motion.div
+                      <div
                         className={styles.desc}>
                         <p>{box?.translatedDesc}</p>
-                      </motion.div>
+                      </div>
                     </div>
 
                   </motion.div>
@@ -286,6 +290,13 @@ const ExploreSec = ({ topics,
                   </motion.div>}
 
 
+
+
+
+
+
+
+
               </div >
 
 
@@ -297,6 +308,107 @@ const ExploreSec = ({ topics,
         }
 
       </div >
+
+
+
+      <motion.div
+        initial={{ opacity: 0, x: -100 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+
+        id="slider_container">
+
+        <Swiper
+          direction={'vertical'}
+          pagination={{
+            clickable: true,
+          }}
+          slidesPerView={2.3}
+          spaceBetween={16}
+
+          className={styles.swiper_container}
+        >
+          {orderedCombinedTopics?.map((box, index) => (
+
+
+            <SwiperSlide
+              className={styles.swiper_slide_box} >
+
+              <div className="arrow_container">
+                <FaArrowLeft />
+              </div>
+
+              <div className={styles.background_image}>
+                <img width={208.76} height={209.51} src={box?.imagePath} />
+              </div>
+
+              <div className="topic_icon">
+                <motion.img
+                  initial={{ opacity: 0, }}
+                  animate={{ opacity: 1, }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+
+
+
+                  width={208.76} height={209.51} src={box?.iconSlide} />
+
+              </div>
+
+              <div className="title">
+                <h5>{box?.name}</h5>
+              </div>
+
+
+              <div
+                className={styles.desc}>
+                <p>{box?.translatedDesc}</p>
+              </div>
+
+              {box?.subTopics?.map((subTopic, idx) =>
+                <Link href={`/${idx}`} className={styles.small_box}>
+                  <div className={styles.img_container}>
+                    <img src={subTopic.icon.includes(',') ? subTopic.icon.split(',')[0] : subTopic.icon} alt={subTopic.name} />
+                  </div>
+
+                  <div className={styles.text_container}>
+                    <div className={styles.title}>
+                      <p>
+                        {subTopic.name}
+                      </p>
+
+                    </div>
+                    {console.log(box, "subTopic")}
+                    {box.tourHours !== null &&
+                      <div className="horus_container">
+                        <div className="clock">
+                          <Alarm />
+                        </div>
+                        <p>{box.tourHours}</p>
+                      </div>
+
+                    }
+
+                  </div>
+
+
+                  <div className={styles.arrow_container}>
+                    <FaArrowLeft />
+                  </div>
+
+
+                </Link>
+              )}
+
+            </SwiperSlide>
+
+          ))
+          }
+        </Swiper>
+      </motion.div>
+
+
     </section >
 
   );
