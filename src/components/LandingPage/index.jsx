@@ -12,7 +12,8 @@ const LandingPage = ({ topics,
   dataDrobTopic,
   dataLandmarksTopic,
   dataFacilitiesTopic,
-  dataStaticWords
+  dataStaticWords,
+  dataAllLangs
 
 
 }) => {
@@ -20,7 +21,7 @@ const LandingPage = ({ topics,
 
   return (
     <>
-      <HeaderSection topics={topics} />
+      <HeaderSection dataAllLangs={dataAllLangs} topics={topics} />
       <ExploreSec topics={topics}
         dataStaticWords={dataStaticWords}
         dataDrobTopic={dataDrobTopic}

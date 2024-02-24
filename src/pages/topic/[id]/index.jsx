@@ -15,7 +15,7 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords }
   const router = useRouter();
   const getRandomWidth = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
   // const mergedTopics = dataMainTopic.concat(dataSubTopic);
-
+  console.log(dataMainTopic, "dataSubTopic")
 
   return (
     <>
@@ -25,7 +25,7 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords }
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <HeaderSection parentName={dataSubTopic[0]?.parentName} />
+      <HeaderSection parentName={dataMainTopic[0]?.parentName} />
 
       <section id='city_facilities' className={styles.city_facilities} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
         <div className="container">
@@ -97,7 +97,7 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords }
 
             <div className={styles.boxes_container}>
 
-              {dataSubTopic.map((topic, index) => (
+              {dataMainTopic.map((topic, index) => (
                 <motion.div
                   initial={{ opacity: 0, x: -100 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -126,7 +126,7 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords }
             </div>
 
             <div className={styles.boxes_container_mobile}>
-              {Array.from({ length: 50 }).map((_, index) => (
+              {dataMainTopic.map((topic, index) => (
                 <div
                   className={styles.box} key={index}
                   style={{
@@ -136,11 +136,12 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords }
                   <div className={styles.img_container}>
                     {/* <Image src={'/assets/images/place.png'} width={233} height={166} />
                      */}
-                    <Image src="/assets/images/place.png" layout="fill" objectFit="cover" />
+                    {/* <Image src="/assets/images/place.png" /> */}
+                    <Image src={topic.icon.includes(',') ? topic.icon.split(',')[0] : topic.icon} layout="fill" objectFit="cover" />
 
                   </div>
                   <div className={styles.title}>
-                    <h5>الخندق </h5>
+                    <h5>{topic.name} </h5>
                   </div>
                 </div>
               ))}

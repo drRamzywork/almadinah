@@ -20,7 +20,7 @@ const images2 =
 
 
 
-const HeaderSection = ({ parentName, topics }) => {
+const HeaderSection = ({ parentName, topics, dataAllLangs }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentImage = images2[currentIndex];
   const route = useRouter()
@@ -49,7 +49,7 @@ const HeaderSection = ({ parentName, topics }) => {
         style={{ background: currentImage.bgColor }}
         dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
       >
-        <Navbar />
+        <Navbar dataAllLangs={dataAllLangs} />
 
         <div className={styles.top_cloud}>
           <Image src={'/assets/bannerImgs/cloud2.png'} width={1440} height={413} />
@@ -204,7 +204,7 @@ const HeaderSection = ({ parentName, topics }) => {
               </Link>
 
 
-              <Link href={`/chapter/${marafeqData.id}`} className={styles.box}>
+              <Link href={`/topic/${marafeqData.id}`} className={styles.box}>
                 <div className={styles.background_image}>
                   <Image src={'/assets/images/tourist_attractions2.png'} width={
                     201} height={165} />

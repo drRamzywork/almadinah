@@ -85,6 +85,7 @@ nav#navbar {
     padding-left: 13px;
     background: rgba(255, 255, 255, 0.3);
     cursor: pointer;
+    position: relative;
     .icon_container {
       svg {
         width: 24px;
@@ -106,6 +107,46 @@ nav#navbar {
       img {
         width: 18px;
         height: 18px;
+      }
+    }
+
+    .nav_menu_container {
+      position: absolute;
+      right: -81%;
+      top: 120%;
+      .links {
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 24px;
+        padding: 24px;
+        align-items: center;
+        width: 260px;
+      }
+      .link {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        text-decoration: none;
+        p {
+          font-family: var(--IBMP-font);
+          font-size: 18px;
+          color: #ffffff;
+          font-weight: 600;
+          margin-bottom: 0;
+        }
+        border-radius: 24px;
+        padding: 8px;
+
+        align-items: center;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+          background-color: rgb(28 26 26 / 11%);
+        }
+        .icon_container {
+          img {
+            width: 24px;
+            height: 24px;
+          }
+        }
       }
     }
   }
@@ -165,6 +206,46 @@ nav#navbar[dir="ltr"] {
 
     .img_container {
       img {
+      }
+    }
+
+    .nav_menu_container {
+      right: 10%;
+      top: 120%;
+
+      .links {
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 24px;
+        padding: 24px;
+        align-items: center;
+        width: 260px;
+      }
+      .link {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        text-decoration: none;
+        p {
+          font-family: var(--IBMP-font);
+          font-size: 18px;
+          color: #ffffff;
+          font-weight: 600;
+          margin-bottom: 0;
+        }
+        border-radius: 24px;
+        padding: 8px;
+
+        align-items: center;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+          background-color: rgb(28 26 26 / 11%);
+        }
+        .icon_container {
+          img {
+            width: 24px;
+            height: 24px;
+          }
+        }
       }
     }
   }

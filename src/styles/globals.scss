@@ -45,12 +45,11 @@ body {
     letter-spacing: 0em;
     text-align: center;
     color: var(--sec-purble-color);
-    @media screen and (max-height:992px) {
-        font-size: 28px;
-        font-style: normal;
-line-height: 100%; 
-
-    }
+@media screen and (max-width:992px) {
+  font-size: 28px;
+  font-style: normal;
+  line-height: 100%; 
+}
   }
 }
 

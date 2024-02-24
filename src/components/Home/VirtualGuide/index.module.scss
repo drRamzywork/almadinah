@@ -9,11 +9,14 @@ section.virtual_guide {
 
   .shape {
     position: absolute;
-    left: 0;
+    left: unset !important;
+    right: 0;
     bottom: 138px;
     z-index: -1;
+
     img {
       object-fit: contain;
+      transform: scale(-1);
       @media screen and (max-width: 992px) {
         width: 338px;
         height: 125px;
@@ -156,6 +159,7 @@ section.virtual_guide {
               text-align: right;
             }
             .icon_container {
+              display: none !important;
               width: 40px;
               height: 40px;
               display: flex;
@@ -322,6 +326,10 @@ section.virtual_guide[dir="ltr"] {
   position: relative;
   margin-top: 128px;
   padding-bottom: 128px;
+  @media screen and (max-width: 992px) {
+    margin-top: 60px;
+    padding-bottom: 0px;
+  }
 
   .shape {
     position: absolute;
@@ -330,6 +338,10 @@ section.virtual_guide[dir="ltr"] {
     z-index: -1;
     img {
       object-fit: contain;
+      @media screen and (max-width: 992px) {
+        width: 338px;
+        height: 125px;
+      }
     }
   }
   .sec_container {
@@ -339,10 +351,20 @@ section.virtual_guide[dir="ltr"] {
     width: 100%;
     position: relative;
 
+    @media screen and (max-width: 992px) {
+      flex-direction: column-reverse;
+    }
+
     .topics_container {
       max-height: fit-content;
       position: relative;
       overflow: hidden;
+      @media screen and (max-width: 992px) {
+        max-width: unset;
+        // position: relative;
+        overflow: unset;
+        width: 100%;
+      }
 
       .shadow {
         // position: absolute;
@@ -360,7 +382,7 @@ section.virtual_guide[dir="ltr"] {
 
         position: absolute;
         bottom: -2px;
-        right: unset !important;
+        right: unset;
         left: -10px;
         background: linear-gradient(
           180deg,
@@ -372,23 +394,33 @@ section.virtual_guide[dir="ltr"] {
         z-index: 222;
         transform: rotate(180deg);
         border-radius: 0 0 32px 32px;
+
+        @media screen and (max-width: 992px) {
+          display: none;
+        }
       }
 
       .guide {
         margin-bottom: 16px;
-
+        @media screen and (max-width: 992px) {
+          display: none;
+        }
         p {
           font-size: 32px;
           font-weight: 500;
           line-height: 38px;
           letter-spacing: 0em;
-          text-align: left !important;
+          text-align: right;
           color: #9fa0b9;
         }
       }
 
       .sec_title {
         margin-bottom: 32px;
+        @media screen and (max-width: 992px) {
+          display: none;
+        }
+
         h3 {
         }
       }
@@ -397,7 +429,13 @@ section.virtual_guide[dir="ltr"] {
         height: 686px;
       }
 
+      .mobile_Slider,
       .boxes_container {
+        display: block;
+        @media screen and (max-width: 992px) {
+          display: none;
+        }
+
         .box {
           width: 265px;
           // height: 256px;
@@ -434,12 +472,6 @@ section.virtual_guide[dir="ltr"] {
             margin-top: 16px;
 
             h5 {
-              color: var(--main-purble-color);
-              transition: color 0.3s ease-in-out;
-              font-size: 24px;
-              font-weight: 600;
-              line-height: 24px;
-              letter-spacing: 0em;
               text-align: left;
             }
             .icon_container {
@@ -470,11 +502,61 @@ section.virtual_guide[dir="ltr"] {
           }
         }
       }
+
+      .mobile_Slider {
+        display: none;
+        @media screen and (max-width: 992px) {
+          display: block;
+        }
+
+        .box {
+          width: 164px !important;
+          .img_container {
+            img {
+              width: 132px;
+              height: 111px;
+            }
+          }
+          .title {
+            h5 {
+              font-size: 16px;
+            }
+          }
+        }
+      }
     }
 
     .video_container {
+      // position: relative;
+      // width: 100%;
+
+      @media screen and (max-width: 992px) {
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+
       .img_container {
+        transform: scaleX(-1);
+
+        img {
+          width: 100px;
+          height: 220px;
+          @media screen and (min-width: 992px) {
+            display: none;
+          }
+
+          @media screen and (max-width: 992px) {
+            width: 196px;
+            height: 419px;
+            object-fit: contain;
+          }
+        }
+
         // min-width: 372px;
+
         width: 504px;
         height: 768px;
         object-fit: contain;
@@ -482,6 +564,13 @@ section.virtual_guide[dir="ltr"] {
         background-position: center;
         background-repeat: no-repeat;
         position: relative;
+
+        @media screen and (max-width: 992px) {
+          background-image: unset;
+          width: 198px;
+          height: 300px;
+          object-fit: contain;
+        }
         video {
           // position: absolute;
           // top: 26px;
@@ -502,6 +591,48 @@ section.virtual_guide[dir="ltr"] {
           object-fit: cover;
           object-position: top;
           margin-bottom: 0px;
+
+          @media screen and (max-width: 992px) {
+            position: absolute;
+            top: 71px;
+            left: 65px;
+            border-radius: 14px 14px 14px 24px;
+            height: 72%;
+            width: 51%;
+            object-fit: cover;
+            object-position: top;
+            margin-bottom: 0px;
+          }
+        }
+      }
+
+      .sec_title {
+        margin-bottom: 32px;
+        @media screen and (min-width: 992px) {
+          display: none;
+        }
+        p {
+          @media screen and (min-width: 992px) {
+            display: none;
+          }
+          color: #9fa0b9;
+          text-align: right;
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 120%;
+        }
+
+        h3 {
+          @media screen and (max-width: 992px) {
+            color: #383969;
+            text-align: right;
+            font-size: 32.5px;
+            font-style: normal;
+            font-weight: 800;
+            line-height: 120%; /* 39px */
+            max-width: 180px;
+          }
         }
       }
     }

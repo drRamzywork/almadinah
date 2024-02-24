@@ -10,6 +10,9 @@ section.city_facilities {
     display: flex;
     width: fit-content;
     align-items: center;
+    @media screen and (max-width: 992px) {
+      margin-top: 2px;
+    }
     .swiper_container {
       align-items: center;
     }
@@ -26,6 +29,11 @@ section.city_facilities {
         min-height: 60px;
         transition: var(--main-transation);
         text-decoration: none;
+
+        @media screen and (max-width: 992px) {
+          padding: 5.36px 10.7px 5.36px 16px;
+          border: 1px solid var(--main-white-color);
+        }
         .title {
           p {
             margin-bottom: 0;
@@ -37,6 +45,9 @@ section.city_facilities {
             letter-spacing: 0em;
             text-align: right;
             color: var(--main-white-color);
+            @media screen and (max-width: 992px) {
+              font-size: 16.071px;
+            }
           }
         }
 
@@ -46,6 +57,10 @@ section.city_facilities {
           img {
             width: 40px;
             height: 40px;
+            @media screen and (max-width: 992px) {
+              width: 26.786px;
+              height: 26.786px;
+            }
           }
         }
       }
@@ -217,7 +232,8 @@ section.city_facilities {
 }
 // +++++++++++++++++++++ LTR +++++++++++++++++++++
 section.city_facilities[dir="ltr"] {
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 992px) {
+    margin-top: -81px;
   }
   .filter_container {
     .swiper_container {
@@ -235,7 +251,16 @@ section.city_facilities[dir="ltr"] {
         min-height: 60px;
         transition: var(--main-transation);
         text-decoration: none;
+
+        @media screen and (max-width: 992px) {
+          padding: 2.36px 7.7px 5.36px 4px;
+          border: 1px solid var(--main-white-color);
+          min-height: 48px;
+        }
         .title {
+          @media screen and (max-width: 992px) {
+            margin-left: 8px;
+          }
           p {
             margin-bottom: 0;
             transition: var(--main-transation);
@@ -245,7 +270,9 @@ section.city_facilities[dir="ltr"] {
             line-height: 24px;
             letter-spacing: 0em;
             text-align: left !important;
-            color: var(--main-white-color);
+            @media screen and (max-width: 992px) {
+              font-size: 16.071px;
+            }
           }
         }
 

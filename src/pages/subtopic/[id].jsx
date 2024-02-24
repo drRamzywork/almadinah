@@ -19,6 +19,7 @@ const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords }) => {
   const title = dataSubCategory?.secondaryTopics?.filter((category) => category.id === Number(query))[0]?.name;
 
 
+  console.log(dataSubTopic, "dataSubTopic")
   return (
     <>
       <Head>
@@ -185,7 +186,7 @@ export async function getStaticProps({ params, locale }) {
   const responseSubTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${params.id}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
   const dataSubTopic = await responseSubTopic.json();
 
-
+  console.log(params.id, "ICDXZZZ")
   return {
     props: {
       dataMainTopic,

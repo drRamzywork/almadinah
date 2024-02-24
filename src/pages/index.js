@@ -10,9 +10,8 @@ export default function Home({
   dataLandmarksTopic,
   dataFacilitiesTopic,
   dataStaticWords,
+  dataAllLangs,
 }) {
-  const router = useRouter();
-
   return (
     <>
       <Head>
@@ -28,6 +27,7 @@ export default function Home({
         dataDrobTopic={dataDrobTopic}
         dataLandmarksTopic={dataLandmarksTopic}
         dataFacilitiesTopic={dataFacilitiesTopic}
+        dataAllLangs={dataAllLangs}
       />
     </>
   );
@@ -63,6 +63,11 @@ export async function getStaticProps({ locale }) {
   );
   const dataFacilitiesTopic = await responseFacilitiesTopic?.json();
 
+  const responseAllLangs = await fetch(
+    `https://api.almadinah.io/api/Settings/GetAllLanguages?pagenum=1&pagesize=50`
+  );
+  const dataAllLangs = await responseAllLangs?.json();
+
   return {
     props: {
       topics: data,
@@ -70,6 +75,7 @@ export async function getStaticProps({ locale }) {
       dataLandmarksTopic,
       dataFacilitiesTopic,
       dataStaticWords,
+      dataAllLangs,
     },
   };
 }

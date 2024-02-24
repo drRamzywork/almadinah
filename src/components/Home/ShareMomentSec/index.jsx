@@ -18,14 +18,11 @@ const ShareMomentSec = () => {
         <div className={styles.sec_container}>
 
           <div className={styles.sec_title}>
-            <div className={styles.star}>
+            {/* <div className={styles.star}>
               <Image src={'/assets/svgs/Star.svg'} width={300} height={300} />
-            </div>
+            </div> */}
             <div className={styles.title}>
               <h3>شارك لحظاتك في المدينة</h3>
-              <h3 className={styles.copy}>شارك لحظاتك في المدينة</h3>
-              <h3 className={styles.copy1}>شارك لحظاتك في المدينة</h3>
-              <h3 className={styles.copy2}>شارك لحظاتك في المدينة</h3>
             </div>
 
             <div className={styles.icon_container}>

@@ -274,9 +274,9 @@ const ExploreSec = ({ topics,
                 <div className={styles.background_image}>
                   <img width={208.76} height={209.51} src={box?.imagePath} />
                 </div>
-                <div className={styles.arrow_container}>
+                <Link href={`/topic/${box.id}`} className={styles.arrow_container}>
                   <IoIosArrowBack />
-                </div>
+                </Link>
 
 
 

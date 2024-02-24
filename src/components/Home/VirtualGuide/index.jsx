@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './index.module.scss'
 import Image from 'next/image'
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -28,6 +28,33 @@ const VirtualGuide = ({ guidData }) => {
     setCurrentVideoSrc(videoUrl);
 
   };
+
+
+  useEffect(() => {
+    const videoElement = document.querySelector('video'); // Adjust the selector if needed
+
+    const handleScroll = async () => {
+      if (document.pictureInPictureElement) {
+        return; // Do nothing if already in PiP mode
+      }
+
+      try {
+        if (videoElement && !videoElement.paused && document.pictureInPictureEnabled && !document.pictureInPictureElement) {
+          await videoElement.requestPictureInPicture();
+        }
+      } catch (error) {
+        console.error('Error trying to toggle Picture-in-Picture mode:', error);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup on component unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [currentVideoSrc]); // Empty dependency array means this effect runs once on mount
+
 
 
   return (
@@ -122,7 +149,7 @@ const VirtualGuide = ({ guidData }) => {
                             <Image src={topic.icon.includes(',') ? topic.icon.split(',')[0] : topic.icon} width={233} height={166} />
                           </div>
                           <div className={styles.title}>
-                            <h5>{topic.name}</h5> {/* Assuming each topic has a name */}
+                            <h5>{topic.name}</h5>
                             <div className={styles.icon_container}>
                               <Image src={'/assets/svgs/guide_icon.svg'} width={233} height={166} />
                             </div>
