@@ -8,9 +8,9 @@ import { FaArrowLeft } from 'react-icons/fa';
 import { IoIosArrowBack } from 'react-icons/io';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { Alarm } from '@/svgs/Alarm';
 
 const ExploreSec = ({ topics,
@@ -22,65 +22,6 @@ const ExploreSec = ({ topics,
   const [hoveredIndex, setHoveredIndex] = useState(-1);
 
   const router = useRouter();
-
-
-
-  const boxData = [
-    {
-      id: 1,
-      title: 'دروب المدينة',
-      description: 'جولات معدة بعناية وفق اهتماماتك واحتياجاتك.',
-      image: '/assets/images/roads.png',
-      icon: '/assets/svgs/location_flag.svg',
-      smallBox: [
-        {
-          title: 'درب القباء', descColor: '', boxDesc: 'ساعتين'
-        },
-        {
-          title: '12 ساعة حول المدينة', descColor: '', boxDesc: '12 ساعة'
-        },
-        {
-          title: 'التسوق والأكل في المدينة', descColor: '', boxDesc: '6 ساعات'
-        },
-      ]
-    },
-    {
-      id: 2,
-      title: 'معالم المدينة',
-      description: 'زر أشهر معالم المدينة التاريخية والحديثة',
-      image: '/assets/images/Bage_middle.png',
-      icon: '/assets/svgs/castle_icon_purble.svg',
-      smallBox: [
-        {
-          title: 'متحف سكة الحجاز', bgImg: '', category: '', boxDesc: 'معارض ومتاحف'
-        },
-        {
-          title: 'بئر عذق', bgImg: '', category: '', boxDesc: 'ابار وبستان'
-        },
-        {
-          title: 'مسجد الميقات ', bgImg: '', category: '', boxDesc: 'مساجد أثرية'
-        },
-      ]
-    },
-    {
-      id: 3,
-      title: 'مرافق المدينة ',
-      description: 'استمتع بزيارة عدة مرافق متنوعة.',
-      image: '/assets/images/Bage_Left.png',
-      icon: '/assets/svgs/Vector_icon.svg',
-      smallBox: [
-        {
-          title: 'جادة قباء ', bgImg: '', category: '', boxDesc: ''
-        },
-        {
-          title: 'محمية الأوسية', bgImg: '', category: '', boxDesc: ''
-        },
-        {
-          title: 'التسويق والأكل في المدينة', bgImg: '', category: '', boxDesc: ''
-        },
-      ]
-    },
-  ];
 
   const boxVariants = {
     normal: {
@@ -201,8 +142,6 @@ const ExploreSec = ({ topics,
               </motion.div>
 
               <div className={styles.box_container}>
-
-
                 {hoveredIndex === null || hoveredIndex === index ? (
                   <motion.div
                     initial={{ opacity: 0, x: -100 }}
@@ -227,7 +166,6 @@ const ExploreSec = ({ topics,
                 ) :
                   ''
                 }
-
                 {hoveredIndex === index &&
                   <motion.div
                     initial={{ opacity: 0, x: -100 }}
@@ -298,8 +236,6 @@ const ExploreSec = ({ topics,
 
 
               </div >
-
-
             </motion.div >
 
 
@@ -316,90 +252,87 @@ const ExploreSec = ({ topics,
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
-
-        id="slider_container">
+        id={styles.slider_container}>
 
         <Swiper
-          direction={'vertical'}
+          slidesPerView={1.3}
+          spaceBetween={16}
+          centeredSlides={true}
           pagination={{
             clickable: true,
           }}
-          slidesPerView={2.3}
-          spaceBetween={16}
-
           className={styles.swiper_container}
         >
           {orderedCombinedTopics?.map((box, index) => (
 
 
-            <SwiperSlide
-              className={styles.swiper_slide_box} >
+            <SwiperSlide className={styles.slider}>
 
-              <div className="arrow_container">
-                <FaArrowLeft />
-              </div>
+              <div className={styles.swiper_slide_box}>
 
-              <div className={styles.background_image}>
-                <img width={208.76} height={209.51} src={box?.imagePath} />
-              </div>
-
-              <div className="topic_icon">
-                <motion.img
-                  initial={{ opacity: 0, }}
-                  animate={{ opacity: 1, }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5 }}
+                <div className={styles.background_image}>
+                  <img width={208.76} height={209.51} src={box?.imagePath} />
+                </div>
+                <div className={styles.arrow_container}>
+                  <IoIosArrowBack />
+                </div>
 
 
 
-                  width={208.76} height={209.51} src={box?.iconSlide} />
+                <div className={styles.topic_icon}>
+                  <motion.img
+                    initial={{ opacity: 0, }}
+                    animate={{ opacity: 1, }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    width={208.76} height={209.51} src={box?.iconSlide} />
 
-              </div>
+                </div>
 
-              <div className="title">
-                <h5>{box?.name}</h5>
-              </div>
+                <div className={styles.title}>
+                  <h5>{box?.name}</h5>
+                </div>
 
 
-              <div
-                className={styles.desc}>
-                <p>{box?.translatedDesc}</p>
-              </div>
+                <div
+                  className={styles.desc}>
+                  <p>{box?.translatedDesc}</p>
+                </div>
 
-              {box?.subTopics?.map((subTopic, idx) =>
-                <Link href={`/${idx}`} className={styles.small_box}>
-                  <div className={styles.img_container}>
-                    <img src={subTopic.icon.includes(',') ? subTopic.icon.split(',')[0] : subTopic.icon} alt={subTopic.name} />
-                  </div>
+                {box?.subTopics?.map((subTopic, idx) =>
+                  <Link href={`/${idx}`} className={styles.small_box}>
+                    <div className={styles.img_container}>
+                      <img src={subTopic.icon.includes(',') ? subTopic.icon.split(',')[0] : subTopic.icon} alt={subTopic.name} />
+                    </div>
+                    {console.log(subTopic, "subTopic")}
+                    <div className={styles.text_container}>
+                      <div className={styles.title}>
+                        <p >
+                          {subTopic.name}
+                        </p>
 
-                  <div className={styles.text_container}>
-                    <div className={styles.title}>
-                      <p>
-                        {subTopic.name}
-                      </p>
+                      </div>
+                      {subTopic.tourHours !== null &&
+                        <div className={styles.horus_container}>
+                          <div className={styles.clock}>
+                            <Alarm />
+                          </div>
+                          <p>h{subTopic.tourHours}</p>
+                        </div>
+
+                      }
 
                     </div>
-                    {console.log(box, "subTopic")}
-                    {box.tourHours !== null &&
-                      <div className="horus_container">
-                        <div className="clock">
-                          <Alarm />
-                        </div>
-                        <p>{box.tourHours}</p>
-                      </div>
-
-                    }
-
-                  </div>
 
 
-                  <div className={styles.arrow_container}>
-                    <FaArrowLeft />
-                  </div>
+                    <div className={styles.arrow_containerr}>
+                      <FaArrowLeft />
+                    </div>
 
 
-                </Link>
-              )}
+                  </Link>
+                )}
+              </div>
 
             </SwiperSlide>
 
