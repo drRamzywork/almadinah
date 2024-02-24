@@ -12,6 +12,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Alarm } from '@/svgs/Alarm';
+import ArrowLeft from '@/svgs/ArrowLeft';
 
 const ExploreSec = ({ topics,
   dataDrobTopic,
@@ -326,7 +327,7 @@ const ExploreSec = ({ topics,
 
 
                     <div className={styles.arrow_containerr}>
-                      <FaArrowLeft />
+                      <ArrowLeft />
                     </div>
 
 

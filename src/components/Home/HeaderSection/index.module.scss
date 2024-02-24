@@ -165,12 +165,13 @@ header.header {
         // left: -177px;
         // top: 0;
         align-self: flex-start;
-        margin-top: -183px;
+        margin-top: auto;
 
         position: absolute;
-        left: -30px;
-        top: 8px;
+        left: -80px;
+        top: -16px;
         z-index: 1;
+        margin-bottom: 0;
       }
       .shape {
         content: "";
@@ -235,9 +236,9 @@ header.header {
             // height: 200px;
 
             border-radius: 0px 0px 98.61px 62.61px;
-            width: 367px;
-            // height: 300px;
-            height: 379px;
+            width: 374px;
+            height: 218px;
+            object-fit: contain;
           }
         }
 

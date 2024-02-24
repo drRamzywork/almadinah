@@ -68,8 +68,10 @@ line-height: 100%;
 // swiper globale variables
 
 #virtual_guide {
-  .swiper-slide {
-    height: fit-content !important;
+  #vertical_swiper{
+    .swiper-slide {
+      height: fit-content !important;
+    }
   }
 }
 
