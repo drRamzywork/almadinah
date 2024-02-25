@@ -1,8 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
 import LandingPage from "@/components/LandingPage";
-import { useLanguages } from "@/contexts/LanguageContext";
-import { useRouter } from "next/router";
 
 export default function Home({
   topics,
@@ -12,6 +10,9 @@ export default function Home({
   dataStaticWords,
   dataAllLangs,
 }) {
+  const foods = topics.filter((topic) => topic.id === 7)[0];
+  const industries = topics.filter((topic) => topic.id === 6)[0];
+
   return (
     <>
       <Head>
@@ -28,6 +29,8 @@ export default function Home({
         dataLandmarksTopic={dataLandmarksTopic}
         dataFacilitiesTopic={dataFacilitiesTopic}
         dataAllLangs={dataAllLangs}
+        foods={foods}
+        industries={industries}
       />
     </>
   );

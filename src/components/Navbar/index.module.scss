@@ -114,18 +114,22 @@ nav#navbar {
       position: absolute;
       right: -81%;
       top: 120%;
+      z-index: 999990;
       .links {
-        background-color: rgba(255, 255, 255, 0.3);
+        background-color: #387a8ad9;
         border-radius: 24px;
         padding: 24px;
         align-items: center;
         width: 260px;
+        border: 2px solid white;
       }
       .link {
         width: 100%;
         display: flex;
         justify-content: space-between;
         text-decoration: none;
+        border: 1px solid #50a99a;
+        margin-bottom: 8px;
         p {
           font-family: var(--IBMP-font);
           font-size: 18px;
@@ -142,6 +146,9 @@ nav#navbar {
           background-color: rgb(28 26 26 / 11%);
         }
         .icon_container {
+          width: 24px;
+          height: 24px;
+
           img {
             width: 24px;
             height: 24px;
@@ -214,7 +221,6 @@ nav#navbar[dir="ltr"] {
       top: 120%;
 
       .links {
-        background-color: rgba(255, 255, 255, 0.3);
         border-radius: 24px;
         padding: 24px;
         align-items: center;

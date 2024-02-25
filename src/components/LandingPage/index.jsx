@@ -5,6 +5,7 @@ import ExploreSec from '../Home/ExploreSec'
 import Map from '../Home/Map'
 import VirtualGuide from '../Home/VirtualGuide'
 import ShareMomentSec from '../Home/ShareMomentSec'
+import Industries from '../Home/Industries'
 
 
 
@@ -13,7 +14,9 @@ const LandingPage = ({ topics,
   dataLandmarksTopic,
   dataFacilitiesTopic,
   dataStaticWords,
-  dataAllLangs
+  dataAllLangs,
+  foods,
+  industries
 
 
 }) => {
@@ -30,6 +33,12 @@ const LandingPage = ({ topics,
       />
       <Map />
       <VirtualGuide guidData={guidData} />
+      <Industries
+        foods={foods}
+        industries={industries}
+        dataStaticWords={dataStaticWords}
+      />
+
       <ShareMomentSec />
     </>
   )

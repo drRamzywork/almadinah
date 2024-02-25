@@ -41,7 +41,7 @@ section.Share_Moment_Sec {
         position: relative;
         h3 {
           font-size: 102px;
-          font-weight: 600;
+          font-weight: 800;
           line-height: 122px;
           letter-spacing: 0em;
           text-align: center;
@@ -49,7 +49,6 @@ section.Share_Moment_Sec {
           // text-shadow: 0px 9px 0 #50a99a;
           position: relative;
           z-index: -2;
-          font-weight: bold;
           @media screen and (max-width: 992px) {
             font-size: 41px !important;
             line-height: normal !important;
@@ -252,7 +251,6 @@ section.Share_Moment_Sec[dir="ltr"] {
         position: relative;
         h3 {
           font-size: 102px;
-          font-weight: 600;
           line-height: 122px;
           letter-spacing: 0em;
           text-align: center;
@@ -260,22 +258,7 @@ section.Share_Moment_Sec[dir="ltr"] {
           // text-shadow: 0px 9px 0 #50a99a;
           position: relative;
           z-index: -2;
-        }
-
-        h3.copy {
-          position: absolute;
-          top: -7px;
-          right: 0;
-        }
-        h3.copy1 {
-          position: absolute;
-          top: 4px;
-          right: 0;
-        }
-        h3.copy2 {
-          position: absolute;
-          top: -6px;
-          right: 0;
+          font-weight: 800 !important;
         }
       }
 

@@ -12,7 +12,7 @@ header.header {
 
   transition: all 0.3s ease-in-out;
   @media screen and (max-width: 992px) {
-    height: 364px;
+    height: 456px;
     border-radius: 0px 0px 32px 32px;
   }
 
@@ -118,7 +118,7 @@ header.header {
     height: 568px;
 
     @media screen and (max-width: 992px) {
-      margin-top: 50px;
+      margin-top: 80px;
     }
     .right_side {
       position: relative;
@@ -168,9 +168,13 @@ header.header {
 
         position: absolute;
         left: -80px;
-        top: -16px;
+        top: 44px;
         z-index: 1;
         margin-bottom: 0;
+      }
+
+      @media screen and (max-width: 400px) {
+        top: -38px;
       }
       .shape {
         content: "";
@@ -259,9 +263,9 @@ section.hero {
   position: relative;
   z-index: 4444;
   margin-top: -300px;
-
+  z-index: 999;
   @media screen and (max-width: 992px) {
-    margin-top: -73px;
+    margin-top: -83px;
     position: absolute;
   }
   .boxes_container2,
@@ -593,7 +597,7 @@ header.header[dir="ltr"] {
     flex-direction: row;
     position: relative;
     @media screen and (max-width: 992px) {
-      margin-top: unset;
+      margin-top: 50px;
     }
     .right_side {
       position: relative;
@@ -641,8 +645,12 @@ header.header[dir="ltr"] {
       @media screen and (max-width: 992px) {
         margin-top: unset;
         left: unset;
-        right: -51px;
-        top: 36px;
+        right: -118px;
+        top: 80px;
+      }
+      @media screen and (max-width: 400px) {
+        top: -9px;
+        right: -35px;
       }
 
       .shape {
