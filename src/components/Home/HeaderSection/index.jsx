@@ -179,7 +179,12 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, }) => {
       {
         route.pathname === '/' &&
         <section id='hero' className={styles.hero} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
-          <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: -100 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+            className="container">
 
             <div className={styles.boxes_container}>
               <Link href={`/topic/${masjedData.id}`} className={styles.box}>
@@ -256,7 +261,7 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, }) => {
               </Link>
 
             </div>
-          </div>
+          </motion.div>
         </section>
       }
 

@@ -85,7 +85,7 @@ const Industries = ({
             {
               foods.contents.map((food, index) => (
                 <SwiperSlide className={styles.swiper_slide_box} key={index}>
-                  <div className={styles.box}>
+                  <Link href={`/details/${food.id}`} className={styles.box}>
                     <div className={styles.img_container}>
                       <img src={food.icon.includes(',') ? food.icon.split(',')[0] : food.icon} width={164.5} height={200} alt={food.name} />
                     </div>
@@ -95,7 +95,7 @@ const Industries = ({
                         {food.name}
                       </h5>
                     </div>
-                  </div>
+                  </Link>
 
                 </SwiperSlide>
               ))
@@ -159,19 +159,19 @@ const Industries = ({
             className={styles.swiper}
           >
             {
-              industries.contents.map((food, index) => (
+              industries.contents.map((industry, index) => (
                 <SwiperSlide className={styles.swiper_slide_box} key={index}>
-                  <div className={styles.box}>
+                  <Link href={`/details/${industry.id}`} className={styles.box}>
                     <div className={styles.img_container}>
-                      <img src={food.icon.includes(',') ? food.icon.split(',')[0] : food.icon} width={164.5} height={200} alt={food.name} />
+                      <img src={industry.icon.includes(',') ? industry.icon.split(',')[0] : industry.icon} width={164.5} height={200} alt={industry.name} />
                     </div>
 
                     <div className={styles.title}>
                       <h5>
-                        {food.name}
+                        {industry.name}
                       </h5>
                     </div>
-                  </div>
+                  </Link>
 
                 </SwiperSlide>
               ))
