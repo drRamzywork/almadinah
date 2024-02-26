@@ -2,14 +2,26 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../../Navbar'
 import Image from 'next/image'
 import styles from './index.module.scss'
-import Mosque from '@/svgs/Mosque.svg'
 import { IoIosArrowBack } from "react-icons/io";
-import { Router, useRouter } from 'next/router'
-import { AnimatePresence, motion } from 'framer-motion';
+import { useRouter } from 'next/router'
+import { motion } from 'framer-motion';
 import Link from 'next/link'
+import Microphone from '@/svgs/Microphone'
+import Guide from '@/svgs/Guide'
+
+// Swiper
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
+import { Autoplay, Pagination, Navigation, EffectFade } from 'swiper/modules';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Swiper
 
 
-const images2 =
+const images =
   [
     { imgSrc: '/assets/bannerImgs/mosque.svg', shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)' },
     { imgSrc: '/assets/bannerImgs/bulding.svg', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
@@ -19,19 +31,29 @@ const images2 =
 
 
 
-
-const HeaderSection = ({ parentName, topics, dataAllLangs }) => {
+const HeaderSection = ({ parentName, topics, dataAllLangs, icon, categoryName }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const currentImage = images2[currentIndex];
+  const currentImage = images[currentIndex];
   const route = useRouter()
   const masjedData = topics?.filter((topic) => topic.id === 20)[0];
   const m3alemData = topics?.filter((topic) => topic.id === 1)[0];
   const guidData = topics?.filter((topic) => topic.id === 4)[0];
   const marafeqData = topics?.filter((topic) => topic.id === 13)[0];
 
+  const images1 = icon.includes(',') ? icon.split(',') : icon;
+  const currentPageImage = images1[currentIndex];
+  console.log(currentPageImage, "currentPageImage")
+
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((currentIndex) => (currentIndex + 1) % images2.length);
+      setCurrentIndex((currentIndex) => (currentIndex + 1) % images.length);
+    }, 5000); // Rotate images every 9 seconds
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((currentIndex) => (currentIndex + 1) % images1.length);
     }, 5000); // Rotate images every 9 seconds
     return () => clearInterval(interval);
   }, []);
@@ -45,103 +67,204 @@ const HeaderSection = ({ parentName, topics, dataAllLangs }) => {
 
   return (
     <>
-      <header id={'header'} className={styles.header}
-        style={{ background: currentImage.bgColor }}
-        dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
-      >
-        <Navbar dataAllLangs={dataAllLangs} />
+      {
+        router.pathname === '/details/[id]' ?
+          <header className={'header_details'} id={styles.inner_header}>
+            <Navbar dataAllLangs={dataAllLangs} />
 
-        <div className={styles.top_cloud}>
-          <Image src={'/assets/bannerImgs/cloud2.png'} width={1440} height={413} />
+            <div className={styles.details_image}>
 
-        </div>
 
-        <div className="container">
 
-          <div className={styles.banner_container} >
 
+              <Swiper
+                // centeredSlides={true}
+                autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
+                }}
+                effect={'fade'}
+                spaceBetween={30}
+
+                modules={[Autoplay, Pagination, Navigation, EffectFade]}
+
+                className="mySwiper"
+              >
+                {images1.map((image, index) => (
+                  <SwiperSlide key={index}>
+                    <img src={image} alt="" />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+
+            <div className="container">
+              <div className={styles.banner_container}>
+                <motion.div
+                  initial={{ opacity: 0, x: -100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1 }}
+                  className={styles.right_side}>
+                  <div className={styles.main_title}>
+
+                    <p>{categoryName}</p>
+
+                    <h2>
+                      {parentName && parentName}
+                    </h2>
+
+
+                  </div>
+
+                  <div className={styles.icons_container}>
+                    <Link href={'#'} className={styles.icon}>
+                      <Microphone />
+                      <p className={styles.guide}>
+                        التسجيل الصوتي
+                      </p>
+                    </Link>
+
+                    <Link href={'#'} className={styles.icon}>
+                      <Guide />
+                      <p className={styles.guide}>
+                        المرشد الافتراضي
+                      </p>
+                    </Link>
+
+
+                  </div>
+                </motion.div>
+
+              </div>
+            </div>
+
+
+            <div className={`${styles.top_cloud_right} `}>
+              <Image src={'/assets/bannerImgs/cloud2.png'} width={1440} height={413} />
+
+            </div>
+
+            < div className={styles.lines}>
+              <Image src={'/assets/bannerImgs/Lines.svg'} width={8169.95} height={2105.82} />
+
+            </div>
+
+            <div className={styles.cloud}>
+              <Image src={'/assets/bannerImgs/cloud2.png'} width={1440} height={413} />
+            </div>
+
+          </header>
+
+          :
+
+          <header id={'header'} className={styles.header}
+            style={{ background: currentImage.bgColor, height: router.pathname === '/details/[id]' && '519px' }}
+            dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
+          >
+            <Navbar dataAllLangs={dataAllLangs} />
+
+
+            <div className={`${styles.top_cloud} ${router.pathname === '/details/[id]' && styles.right}`}>
+              <Image src={'/assets/bannerImgs/cloud2.png'} width={1440} height={413} />
+
+            </div>
+
+            <div className="container">
+
+              <div className={styles.banner_container} >
+
+
+
+                <motion.div
+                  initial={{ opacity: 0, x: -100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1 }}
+
+                  className={styles.right_side}>
+
+
+                  <div className={styles.main_title}>
+                    <h2>
+                      {router.pathname === '/' ?
+
+                        "المدينة المنورة"
+                        :
+                        parentName && parentName
+
+                      }
+                    </h2>
+
+                  </div>
+
+
+                </motion.div>
+
+                {router.pathname !== '/details/[id]' &&
+
+                  <div className={`${styles.left_side}`} >
+                    <motion.div
+                      key={currentImage.imgSrc} // Key changes on image change, triggering re-render
+                      initial="hidden"
+                      animate="visible"
+                      variants={imageVariants}
+                      transition={{ duration: 1 }} // Smooth transition over 1 second
+
+
+                      className={`${styles.main_img_container}`}>
+
+                      <img src={currentImage.imgSrc} width={539} height={546.45} alt="Banner Image"
+                      />
+
+                      <div className={styles.birds}>
+                        <Image src={'/assets/bannerImgs/birds.svg'} width={128} height={82} />
+                      </div>
+
+
+
+                    </motion.div>
+
+
+                    <div className={styles.shape} style={{ background: currentImage.shapeColor }} />
+
+
+                  </div>
+
+                }
+
+              </div>
+
+            </div>
 
 
             <motion.div
-              initial={{ opacity: 0, x: -100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1 }}
+              key={currentImage.imgSrc} // Key changes on image change, triggering re-render
+              initial="hidden"
+              animate="visible"
+              variants={imageVariants}
+              transition={{ duration: 1 }} // Smooth transition over 1 second
 
-              className={styles.right_side}>
+              className={`${styles.blur_img}`}
 
-
-              <div className={styles.main_title}>
-                <h2>
-                  {router.pathname === '/' ?
-
-                    "المدينة المنورة"
-                    :
-                    parentName && parentName
-
-                  }
-
-                </h2>
-              </div>
-
-
+            >
+              <Image src={currentImage.imgSrc} width={1440} height={413} />
             </motion.div>
 
 
-            <div className={`${styles.left_side}`} >
-              <motion.div
-                key={currentImage.imgSrc} // Key changes on image change, triggering re-render
-                initial="hidden"
-                animate="visible"
-                variants={imageVariants}
-                transition={{ duration: 1 }} // Smooth transition over 1 second
-
-
-                className={`${styles.main_img_container}`}>
-
-                <img src={currentImage.imgSrc} width={539} height={546.45} alt="Banner Image"
-                />
-
-                <div className={styles.birds}>
-                  <Image src={'/assets/bannerImgs/birds.svg'} width={128} height={82} />
-                </div>
-
-
-
-              </motion.div>
-
-
-              <div className={styles.shape} style={{ background: currentImage.shapeColor }} />
-
+            < div className={styles.lines}>
+              <Image src={'/assets/bannerImgs/Lines.svg'} width={8169.95} height={2105.82} />
 
             </div>
-          </div>
 
-        </div>
+            <div className={styles.cloud}>
+              <Image src={'/assets/bannerImgs/cloud2.png'} width={1440} height={413} />
+            </div>
 
-        <motion.div
-          key={currentImage.imgSrc} // Key changes on image change, triggering re-render
-          initial="hidden"
-          animate="visible"
-          variants={imageVariants}
-          transition={{ duration: 1 }} // Smooth transition over 1 second
+          </header >
 
-          className={`${styles.blur_img}`}
+      }
 
-        >
-          <Image src={currentImage.imgSrc} width={1440} height={413} />
-        </motion.div>
-
-        <div className={styles.lines}>
-          <Image src={'/assets/bannerImgs/Lines.svg'} width={8169.95} height={2105.82} />
-
-        </div>
-
-        <div className={styles.cloud}>
-          <Image src={'/assets/bannerImgs/cloud2.png'} width={1440} height={413} />
-        </div>
-
-      </header >
 
       {
         route.pathname === '/' &&

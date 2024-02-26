@@ -1,7 +1,10 @@
 
 import React from 'react';
 import { GoogleMap, Marker, InfoWindow, useLoadScript } from '@react-google-maps/api';
-import styles from './index.module.scss'
+import styles from './index.module.scss';
+import { motion } from 'framer-motion';
+
+
 const mapContainerStyle = {
   width: '100%',
   height: '100%',
@@ -56,7 +59,12 @@ const Map = () => {
   return (
     <>
       <div className={styles.map_container}>
-        <div className={styles.map}>
+
+        <motion.div
+          initial={{ opacity: 0, y: -100 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }} className={styles.map}>
           <GoogleMap
             mapContainerStyle={mapContainerStyle}
             center={center}
@@ -100,7 +108,7 @@ const Map = () => {
               </InfoWindow>
             )}
           </GoogleMap>
-        </div>
+        </motion.div>
 
       </div>
 
