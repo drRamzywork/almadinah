@@ -74,21 +74,22 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords }
                   </div>
 
                 </SwiperSlide>
-                {dataSubCategory.secondaryTopics.map((secTopic, index) =>
+                {
 
-                  <SwiperSlide key={index} className={styles.swiper_slide_box}>
-                    <Link href={`/subtopic/${secTopic.id}`} className={styles.box}>
-                      <div className={styles.icon_container}>
-                        <img src={secTopic.icon} alt={secTopic.name} />
-                      </div>
-                      <div className={styles.title}>
-                        <p>{secTopic.name}</p>
-                      </div>
-                    </Link>
-                  </SwiperSlide>
+                  dataSubCategory?.secondaryTopics?.map((secTopic, index) =>
+                    <SwiperSlide key={index} className={styles.swiper_slide_box}>
+                      <Link href={`/subtopic/${secTopic.id}`} className={styles.box}>
+                        <div className={styles.icon_container}>
+                          <img src={secTopic.icon} alt={secTopic.name} />
+                        </div>
+                        <div className={styles.title}>
+                          <p>{secTopic.name}</p>
+                        </div>
+                      </Link>
+                    </SwiperSlide>
 
 
-                )}
+                  )}
 
 
               </Swiper>
@@ -126,12 +127,13 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords }
 
             <div className={styles.boxes_container_mobile}>
               {dataMainTopic.map((topic, index) => (
-                <Link href={`/subtopic/${secTopic.id}`}
+                <Link href={`/details/${topic.id}`}
                   className={styles.box} key={index}
                   style={{
                     width: `164px`,
                     height: `${getRandomWidth(144, 340)}px`,
                   }}>
+                  {console.log(topic.id, "topic")}
                   <div className={styles.img_container}>
                     {/* <Image src={'/assets/images/place.png'} width={233} height={166} />
                      */}

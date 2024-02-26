@@ -18,6 +18,11 @@ section.details {
       margin-top: -100px;
       position: relative;
       z-index: 999;
+
+      @media screen and (max-width: 992px) {
+        padding: 16px 8px;
+        margin-top: -25px;
+      }
       p {
         align-self: stretch;
         color: #8e8eae;
@@ -26,6 +31,10 @@ section.details {
         font-style: normal;
         font-weight: 500;
         line-height: 150%; /* 36px */
+
+        @media screen and (max-width: 992px) {
+          font-size: 16px;
+        }
       }
     }
 
@@ -35,6 +44,11 @@ section.details {
       padding-top: 70px;
       border-top: 1px solid #8e8eae4c;
       margin-bottom: 128px;
+      @media screen and (max-width: 992px) {
+        margin-top: 34px;
+        padding-top: 34px;
+        margin-bottom: 34px;
+      }
 
       h4 {
         margin-bottom: 16px;
@@ -44,6 +58,9 @@ section.details {
         font-style: normal;
         font-weight: 500;
         line-height: 100%; /* 32px */
+        @media screen and (max-width: 992px) {
+          font-size: 24px;
+        }
       }
 
       span,
@@ -55,6 +72,9 @@ section.details {
         font-style: normal;
         font-weight: 500;
         line-height: 150%; /* 36px */
+        @media screen and (max-width: 992px) {
+          font-size: 16px;
+        }
       }
     }
   }

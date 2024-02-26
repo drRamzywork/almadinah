@@ -105,7 +105,7 @@ const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords }) => {
 
                   key={index}
                   className={styles.box}>
-                  <Link href='topic:id'>
+                  <Link href={`/details/${topic.id}`}>
                     <div className={styles.img_container}>
                       <Image src={topic.icon.includes(',') ? topic.icon.split(',')[0] : topic.icon} width={233} height={166} />
                     </div>
@@ -126,7 +126,7 @@ const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords }) => {
 
             <div className={styles.boxes_container_mobile}>
               {dataSubTopic?.map((topic, index) => (
-                <div
+                <Link href={`/details/${topic.id}`}
                   className={styles.box} key={index}
                   style={{
                     width: `164px`,
@@ -141,7 +141,7 @@ const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords }) => {
                   <div className={styles.title}>
                     <h5>{topic?.name} </h5>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
 
