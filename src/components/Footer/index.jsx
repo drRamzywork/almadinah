@@ -8,7 +8,7 @@ const Footer = () => {
         <div className={styles.sec_container}>
 
           <div className={styles.logo}>
-            <Image src='/assets/svgs/development_logo.svg' width={267.18} height={56} />
+            <Image src='/assets/svgs/development_logo.svg' width={267.18} height={60} />
             <Image src='/assets/svgs/dark_logo.svg' width={118.83} height={56} />
 
           </div>

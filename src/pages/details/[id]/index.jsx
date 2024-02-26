@@ -66,7 +66,7 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic }) => {
       </section>
 
       <section id='map_location'>
-        <Map />
+        <Map dataContentDetails={dataContentDetails.currentContent} />
       </section>
 
     </>

@@ -1,8 +1,9 @@
 
 import React from 'react';
-import { GoogleMap, Marker, InfoWindow, useLoadScript } from '@react-google-maps/api';
+import { GoogleMap, Marker, InfoWindow, useLoadScript, OverlayView } from '@react-google-maps/api';
 import styles from './index.module.scss';
 import { motion } from 'framer-motion';
+import { FaLocationDot } from "react-icons/fa6";
 
 
 const mapContainerStyle = {
@@ -10,23 +11,22 @@ const mapContainerStyle = {
   height: '100%',
 };
 
-const center = {
-  lat: 24.7136,
-  lng: 46.6753,
-};
+
 
 const options = {
   disableDefaultUI: true,
   zoomControl: true,
 };
 
-// Function to generate the URL for the place's photo
-const getPlacePhotoUrl = (photoReference, maxWidth) => {
-  return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=${maxWidth}&photo_reference=${photoReference}&key=AIzaSyC0fUYASQXlqfp1d5EFSIT7_0lg0_OIxq0`;
 
-};
 
-const Map = () => {
+const Map = ({ dataContentDetails }) => {
+
+  const center = {
+    lat: dataContentDetails ? parseFloat(dataContentDetails.lat) : 24.7136,
+    lng: dataContentDetails ? parseFloat(dataContentDetails.lng) : 46.6753,
+  };
+
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyC0fUYASQXlqfp1d5EFSIT7_0lg0_OIxq0",
     libraries: ["places"],
@@ -56,8 +56,15 @@ const Map = () => {
 
   if (!isLoaded) return "Loading Maps";
 
+  const getPixelPositionOffset = (width, height) => ({
+    x: -(width / 2),
+    y: -(height / 2),
+  });
+
+
   return (
     <>
+
       <div className={styles.map_container}>
 
         <motion.div
@@ -72,41 +79,23 @@ const Map = () => {
             options={options}
             onLoad={onMapLoad}
           >
-            {places.map((place) => (
-              <>
+
+            {/* 
+            <Marker
+              position={center}
+            // icon={<FaLocationDot style={{ color: 'red' }} />}
+            /> */}
+
+            <OverlayView
+              position={center}
+              mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+            >
+              <div className={styles.marker} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <FaLocationDot size={102} color="red" />
+              </div>
+            </OverlayView>
 
 
-
-                <Marker
-                  key={place.place_id}
-                  position={place.geometry.location}
-                  onClick={() => setSelectedPlace(place)}
-                  icon={{
-                    url: place.photos && place.photos.length > 0 ? getPlacePhotoUrl(place.photos[0].photo_reference, 50) : place.icon,
-                    scaledSize: new window.google.maps.Size(50, 50),
-                  }}
-
-                />
-              </>
-            ))}
-
-            {selectedPlace && (
-              <InfoWindow
-                position={selectedPlace.geometry.location}
-                onCloseClick={() => setSelectedPlace(null)}
-              >
-                <div className='detaislssszzzzzzz'>
-                  <h2>{selectedPlace.name}</h2>
-                  {selectedPlace.photos && selectedPlace.photos.length > 0 && (
-                    <img
-                      src={getPlacePhotoUrl(selectedPlace.photos[0].html_attributions, 150)} // Adjust size as needed
-                      alt={selectedPlace.name}
-                      style={{ width: '150px', height: '150px' }}
-                    />
-                  )}
-                </div>
-              </InfoWindow>
-            )}
           </GoogleMap>
         </motion.div>
 
@@ -119,3 +108,70 @@ const Map = () => {
 };
 
 export default Map;
+
+// import React from 'react';
+// import { GoogleMap, Marker, InfoWindow, useLoadScript } from '@react-google-maps/api';
+// import styles from './index.module.scss';
+// import { motion } from 'framer-motion';
+// import { FaLocationDot } from "react-icons/fa6";
+
+
+// const Map = ({ dataContentDetails }) => {
+//   const { isLoaded, loadError } = useLoadScript({
+//     googleMapsApiKey: "AIzaSyC0fUYASQXlqfp1d5EFSIT7_0lg0_OIxq0",
+//     libraries: ["places"],
+//   });
+
+//   const mapRef = useRef(null);
+//   const onMapLoad = useCallback((map) => {
+//     mapRef.current = map;
+//   }, []);
+
+//   const center = {
+//     lat: parseFloat(dataContentDetails.lat),
+//     lng: parseFloat(dataContentDetails.lng),
+//   };
+
+//   // Define markerIcon inside the component after confirming the API has loaded
+//   let markerIcon;
+//   if (isLoaded) {
+//     markerIcon = {
+//       // path: google.maps.SymbolPath.CIRCLE,
+//       fillColor: 'red',
+//       fillOpacity: 0.8,
+//       scale: 8,
+//       strokeColor: 'white',
+//       strokeWeight: 2,
+//     };
+//   }
+
+//   if (loadError) return "Error loading maps";
+//   if (!isLoaded) return "Loading Maps";
+
+//   return (
+//     <div className={styles.map_container}>
+//       <motion.div
+//         initial={{ opacity: 0, y: -100 }}
+//         animate={{ opacity: 1, y: 0 }}
+//         exit={{ opacity: 0 }}
+//         transition={{ duration: 1 }}
+//         className={styles.map}
+//       >
+//         <GoogleMap
+//           mapContainerStyle={mapContainerStyle}
+//           center={center}
+//           zoom={13}
+//           options={options}
+//           onLoad={onMapLoad}
+//         >
+//           {isLoaded && (
+//             <Marker
+//               position={center}
+//               icon={<FaLocationDot />}
+//             />
+//           )}
+//         </GoogleMap>
+//       </motion.div>
+//     </div>
+//   );
+// };

@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   @media screen and (max-width: 992px) {
-    margin-top: 64px;
+    margin-top: 24px;
   }
 
   .map {
@@ -15,10 +15,14 @@
     box-shadow: 0px 16px 176px 0px #38396926;
 
     @media screen and (max-width: 992px) {
-      width: 345px;
-      height: 590px;
-      background: #fff;
+      width: 445px;
+      height: 250px;
+      border-radius: 16px;
       box-shadow: 0px 16px 176px 0px rgba(56, 57, 105, 0.15);
+    }
+
+    @media screen and (max-width: 400px) {
+      width: 100%;
     }
   }
 }

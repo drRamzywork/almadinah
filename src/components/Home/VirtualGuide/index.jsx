@@ -178,7 +178,7 @@ const VirtualGuide = ({ guidData }) => {
                   key={currentVideoSrc}
                   muted
                   loop
-                  autoPlay
+                  // autoPlay
                   controls
                 >
                   <source src={currentVideoSrc} type="video/mp4" />

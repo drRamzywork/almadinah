@@ -258,7 +258,7 @@ const ExploreSec = ({ topics,
         <Swiper
           slidesPerView={1.3}
           spaceBetween={16}
-          centeredSlides={true}
+          // centeredSlides={true}
           pagination={{
             clickable: true,
           }}
@@ -295,7 +295,7 @@ const ExploreSec = ({ topics,
                 </Link>
 
                 {box?.subTopics?.map((subTopic, idx) =>
-                  <Link href={`/details/${subTopic.id}`} className={styles.small_box}>
+                  <Link href={`/details/${subTopic.id}`} key={idx} className={styles.small_box}>
                     <div className={styles.img_container}>
                       <img src={subTopic.icon.includes(',') ? subTopic.icon.split(',')[0] : subTopic.icon} alt={subTopic.name} />
                     </div>
