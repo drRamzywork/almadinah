@@ -10,11 +10,11 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic }) => {
   return (
     <>
 
-      <HederPages dataAllLangs={dataAllLangs} icon={icon} parentName={dataContentDetails.
+      <HederPages dataContentDetails={dataContentDetails.currentContent} dataAllLangs={dataAllLangs} icon={icon} parentName={dataContentDetails.
         currentContent.name} categoryName={dataMainTopic[0]?.parentName} />
 
       <section id='details' className={styles.details}>
-        <div className="container">
+        <div className="container-fluid p-3">
           <div className={styles.sec_container}>
             <motion.div
               initial={{ opacity: 0, y: -100 }}

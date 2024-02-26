@@ -20,7 +20,7 @@ import Navbar from '../Navbar';
 
 
 
-const HederPages = ({ icon, dataAllLangs, categoryName, parentName }) => {
+const HederPages = ({ dataContentDetails, icon, dataAllLangs, categoryName, parentName }) => {
   const images1 = icon?.includes(',') ? icon.split(',') : [icon];
   const router = useRouter();
 
@@ -72,24 +72,27 @@ const HederPages = ({ icon, dataAllLangs, categoryName, parentName }) => {
 
 
             </div>
+            {dataContentDetails.guideDescList !== null &&
+              <div className={styles.icons_container}>
+                <Link href={'#'} className={styles.icon}>
+                  <Microphone />
+                  <p className={styles.guide}>
+                    التسجيل الصوتي
+                  </p>
+                </Link>
 
-            <div className={styles.icons_container}>
-              <Link href={'#'} className={styles.icon}>
-                <Microphone />
-                <p className={styles.guide}>
-                  التسجيل الصوتي
-                </p>
-              </Link>
-
-              <Link href={'#'} className={styles.icon}>
-                <Guide />
-                <p className={styles.guide}>
-                  المرشد الافتراضي
-                </p>
-              </Link>
+                <Link href={'#'} className={styles.icon}>
+                  <Guide />
+                  <p className={styles.guide}>
+                    المرشد الافتراضي
+                  </p>
+                </Link>
 
 
-            </div>
+              </div>
+            }
+
+
           </motion.div>
 
         </div>

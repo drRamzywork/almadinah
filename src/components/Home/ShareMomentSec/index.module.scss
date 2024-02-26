@@ -85,6 +85,9 @@ section.Share_Moment_Sec {
         margin: 24px;
         overflow: hidden;
         border-radius: 24px;
+        &:last-child {
+        }
+
         img {
         }
       }

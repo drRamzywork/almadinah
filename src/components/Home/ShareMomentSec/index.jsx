@@ -34,7 +34,7 @@ const ShareMomentSec = () => {
 
           <div className={styles.boxes_container}>
 
-            {Array.from({ length: 9 }).map((_, index) => (
+            {Array.from({ length: 4 }).map((_, index) => (
               <div
                 key={index}
                 className={styles.box}
