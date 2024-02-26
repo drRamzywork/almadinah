@@ -78,6 +78,14 @@ section.details {
           font-size: 16px;
         }
       }
+
+      li {
+        color: red;
+        color: var(--main-blue-color);
+        font-size: 16px;
+        font-weight: 600;
+        margin-top: 14px;
+      }
     }
   }
 }

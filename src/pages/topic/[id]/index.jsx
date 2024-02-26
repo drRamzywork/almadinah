@@ -29,71 +29,74 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
       <section id='city_facilities' className={styles.city_facilities} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
         <div className="container">
           <div className={styles.sec_container}>
-            <motion.div
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1 }} className={styles.filter_container}>
-              <Swiper
-                breakpoints={{
-                  300: {
-                    slidesPerView: 1,
-                    spaceBetween: 0,
-                  },
-                  400: {
-                    slidesPerView: 2,
-                    spaceBetween: 0,
-                  },
-                  414: {
-                    slidesPerView: 2,
-                    spaceBetween: 0,
-                  },
-                  640: {
-                    slidesPerView: 2,
-                    spaceBetween: 0,
-                  },
-                  768: {
-                    slidesPerView: 2,
-                    spaceBetween: 0,
-                  },
-                  1024: {
-                    slidesPerView: 3,
-                    spaceBetween: 0,
-                  },
-                }}
-                dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
-                className={styles.swiper_container}
-              >
+            {dataSubCategory?.secondaryTopics.length > 0 &&
+              <motion.div
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1 }} className={styles.filter_container}>
+                <Swiper
+                  breakpoints={{
+                    300: {
+                      slidesPerView: 1,
+                      spaceBetween: 0,
+                    },
+                    400: {
+                      slidesPerView: 2,
+                      spaceBetween: 0,
+                    },
+                    414: {
+                      slidesPerView: 2,
+                      spaceBetween: 0,
+                    },
+                    640: {
+                      slidesPerView: 2,
+                      spaceBetween: 0,
+                    },
+                    768: {
+                      slidesPerView: 2,
+                      spaceBetween: 0,
+                    },
+                    1024: {
+                      slidesPerView: 3,
+                      spaceBetween: 0,
+                    },
+                  }}
+                  dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
+                  className={styles.swiper_container}
+                >
 
-                <SwiperSlide className={styles.swiper_slide_box}>
+                  <SwiperSlide className={styles.swiper_slide_box}>
 
-                  <div className={`${styles.box} ${styles.active}`}>
-                    <div className={styles.title}>
-                      <p>{dataStaticWords.displayAll}</p>
+                    <div className={`${styles.box} ${styles.active}`}>
+                      <div className={styles.title}>
+                        <p>{dataStaticWords.displayAll}</p>
+                      </div>
                     </div>
-                  </div>
 
-                </SwiperSlide>
-                {
+                  </SwiperSlide>
+                  {
 
-                  dataSubCategory?.secondaryTopics?.map((secTopic, index) =>
-                    <SwiperSlide key={index} className={styles.swiper_slide_box}>
-                      <Link href={`/subtopic/${secTopic.id}`} className={styles.box}>
-                        <div className={styles.icon_container}>
-                          <img src={secTopic.icon} alt={secTopic.name} />
-                        </div>
-                        <div className={styles.title}>
-                          <p>{secTopic.name}</p>
-                        </div>
-                      </Link>
-                    </SwiperSlide>
-
-
-                  )}
+                    dataSubCategory?.secondaryTopics?.map((secTopic, index) =>
+                      <SwiperSlide key={index} className={styles.swiper_slide_box}>
+                        <Link href={`/subtopic/${secTopic.id}`} className={styles.box}>
+                          <div className={styles.icon_container}>
+                            <img src={secTopic.icon} alt={secTopic.name} />
+                          </div>
+                          <div className={styles.title}>
+                            <p>{secTopic.name}</p>
+                          </div>
+                        </Link>
+                      </SwiperSlide>
 
 
-              </Swiper>
-            </motion.div>
+                    )}
+
+
+                </Swiper>
+              </motion.div>
+
+            }
 
             <div className={styles.boxes_container}>
 

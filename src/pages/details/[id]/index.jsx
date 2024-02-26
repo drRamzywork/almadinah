@@ -7,6 +7,7 @@ import HederPages from '@/components/HeaderPages'
 const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic }) => {
 
   const icon = dataContentDetails.currentContent.icon;
+  console.log(dataContentDetails, "dataContentDetails")
   return (
     <>
 
@@ -49,6 +50,8 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic }) => {
                       transition={{ duration: 1 }} key={index}>{item.tagContent}</motion.p>;
                   case 'span':
                     return <span key={index}>{` `}{item.tagContent}{` `}</span>;
+                  case 'li':
+                    return <li key={index}>{` `}{item.tagContent}{` `}</li>;
                   // Add more cases for different tags if needed.
                   default:
                     return <span key={index}>Unknown tag</span>;
@@ -65,9 +68,11 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic }) => {
         </div>
       </section>
 
-      <section id='map_location'>
-        <Map dataContentDetails={dataContentDetails.currentContent} />
-      </section>
+      {dataContentDetails.currentContent.lat !== null &&
+        <section id='map_location'>
+          <Map dataContentDetails={dataContentDetails.currentContent} />
+        </section>
+      }
 
     </>
   )
