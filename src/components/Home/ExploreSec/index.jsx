@@ -265,22 +265,17 @@ const ExploreSec = ({ topics,
           className={styles.swiper_container}
         >
           {orderedCombinedTopics?.map((box, index) => (
-
-
             <SwiperSlide className={styles.slider}>
-
               <div className={styles.swiper_slide_box}>
-
                 <div className={styles.background_image}>
                   <img width={208.76} height={209.51} src={box?.imagePath} />
                 </div>
+
                 <Link href={`/topic/${box.id}`} className={styles.arrow_container}>
                   <IoIosArrowBack />
                 </Link>
 
-
-
-                <div className={styles.topic_icon}>
+                <Link href={`/topic/${box.id}`} className={styles.topic_icon}>
                   <motion.img
                     initial={{ opacity: 0, }}
                     animate={{ opacity: 1, }}
@@ -288,17 +283,16 @@ const ExploreSec = ({ topics,
                     transition={{ duration: 0.5 }}
                     width={208.76} height={209.51} src={box?.iconSlide} />
 
-                </div>
+                </Link>
 
-                <div className={styles.title}>
+                <Link href={`/topic/${box.id}`} className={styles.title}>
                   <h5>{box?.name}</h5>
-                </div>
+                </Link>
 
 
-                <div
-                  className={styles.desc}>
+                <Link href={`/topic/${box.id}`} className={styles.desc}>
                   <p>{box?.translatedDesc}</p>
-                </div>
+                </Link>
 
                 {box?.subTopics?.map((subTopic, idx) =>
                   <Link href={`/details/${subTopic.id}`} className={styles.small_box}>
