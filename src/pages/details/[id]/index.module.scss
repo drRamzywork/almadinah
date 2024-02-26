@@ -45,11 +45,13 @@ section.details {
       border-top: 1px solid #8e8eae4c;
       margin-bottom: 128px;
       text-align: justify;
+      width: 70%;
 
       @media screen and (max-width: 992px) {
         margin-top: 34px;
         padding-top: 34px;
         margin-bottom: 34px;
+        width: 100%;
       }
 
       h4 {
