@@ -11,19 +11,19 @@ const Navbar = ({ dataAllLangs }) => {
   const router = useRouter();
   const currentLangData = dataAllLangs?.find(lang => lang.shortCut === router.locale);
 
-  console.log(currentLangData?.image, "currentLangData")
   const [navMenu, setNavMenu] = useState(false);
   const navMenuRef = useRef(null);
 
   const variants = {
     open: { opacity: 1, y: 0 },
-    closed: { opacity: 0, y: "-100%" },
+    closed: { opacity: 0, y: "-150%" },
   };
 
   useEffect(() => {
     function handleClickOutside(event) {
       // Check if the click is outside of the navMenuRef and the menu is open
-      if (navMenuRef.current && !navMenuRef.current.contains(event.target) && navMenu) {
+      if (navMenuRef.current && !navMenuRef.current.contains(event.target)) {
+
         setNavMenu(false); // Close the nav menu
       }
     }
@@ -36,6 +36,21 @@ const Navbar = ({ dataAllLangs }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [navMenu]); // Depend on navMenu so that the effect runs when it changes
+
+
+  // useEffect(() => {
+  //   function handleClickOutside(event) {
+  //     if (navMenuRef.current && !navMenuRef.current.contains(event.target)) {
+  //       setNavMenu(false);
+  //     }
+  //   }
+
+  //   document.addEventListener("mousedown", handleClickOutside);
+
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, [navMenuRef]);
 
 
   return (
@@ -64,9 +79,11 @@ const Navbar = ({ dataAllLangs }) => {
               </button>
             </form>
 
-            <div className={styles.lang_container} onClick={() => setNavMenu(!navMenu)}>
+            <div className={styles.lang_container}
+              ref={navMenuRef}
+              onClick={() => setNavMenu((prev) => !prev)}>
               <div className={styles.icon_container}>
-                <IoIosArrowDown />
+                <IoIosArrowDown className={navMenu === true && styles.active} />
               </div>
 
               <div className={styles.lang}>
@@ -86,14 +103,16 @@ const Navbar = ({ dataAllLangs }) => {
               }
 
               <motion.div
-                ref={navMenuRef}
                 initial="closed"
                 animate={navMenu ? "open" : "closed"}
                 variants={variants}
                 transition={{ duration: 0.5, type: "tween" }}
                 className={styles.nav_menu_container}
+
               >
-                <div className={styles.links} onClick={() => setNavMenu(false)}>
+                <div className={styles.links} onClick={() => setNavMenu(false)}
+
+                >
 
 
 

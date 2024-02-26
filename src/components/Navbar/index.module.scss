@@ -86,11 +86,17 @@ nav#navbar {
     background: rgba(255, 255, 255, 0.3);
     cursor: pointer;
     position: relative;
+    z-index: 999999;
     .icon_container {
       svg {
         width: 24px;
         height: 24px;
         color: #ffffff;
+        transition: all 0.3s ease-in-out;
+      }
+
+      svg.active {
+        transform: rotate(180deg);
       }
     }
 
@@ -112,16 +118,21 @@ nav#navbar {
 
     .nav_menu_container {
       position: absolute;
-      right: -81%;
+      right: -29%;
       top: 120%;
-      z-index: 999990;
+      z-index: 999;
       .links {
         background-color: #387a8ad9;
         border-radius: 24px;
-        padding: 24px;
+        padding: 16px;
         align-items: center;
-        width: 260px;
+        width: 160px;
         border: 2px solid white;
+
+        @media screen and (max-width: 992px) {
+          height: 200px;
+          overflow: scroll;
+        }
       }
       .link {
         width: 100%;
