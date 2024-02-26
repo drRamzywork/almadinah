@@ -11,7 +11,7 @@ import { motion } from 'framer-motion'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords }) => {
+const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, dataAllLangs }) => {
   const router = useRouter();
   const getRandomWidth = (min, max) => Math.floor(Math.random() * (max - min + 40)) + min;
   // const mergedTopics = dataMainTopic.concat(dataSubTopic);
@@ -24,7 +24,7 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords }
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <HeaderSection parentName={dataMainTopic[0]?.parentName} />
+      <HeaderSection parentName={dataMainTopic[0]?.parentName} dataAllLangs={dataAllLangs} />
 
       <section id='city_facilities' className={styles.city_facilities} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
         <div className="container">
@@ -208,12 +208,20 @@ export async function getStaticProps({ params, locale }) {
   const responseSubTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=8&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
   const dataSubTopic = await responseSubTopic.json();
 
+
+
+  const responseAllLangs = await fetch(
+    `https://api.almadinah.io/api/Settings/GetAllLanguages?pagenum=1&pagesize=50`
+  );
+  const dataAllLangs = await responseAllLangs?.json();
+
   return {
     props: {
       dataMainTopic,
       dataSubTopic,
       dataSubCategory,
-      dataStaticWords
+      dataStaticWords,
+      dataAllLangs
       // dataSubCategory is not included here since it's only used conditionally
     },
   };

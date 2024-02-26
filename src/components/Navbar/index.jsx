@@ -9,6 +9,8 @@ import { motion } from 'framer-motion';
 
 const Navbar = ({ dataAllLangs }) => {
   const router = useRouter();
+  const { asPath, locale } = router;
+
   const currentLangData = dataAllLangs?.find(lang => lang.shortCut === router.locale);
 
   const [navMenu, setNavMenu] = useState(false);
@@ -38,19 +40,17 @@ const Navbar = ({ dataAllLangs }) => {
   }, [navMenu]); // Depend on navMenu so that the effect runs when it changes
 
 
-  // useEffect(() => {
-  //   function handleClickOutside(event) {
-  //     if (navMenuRef.current && !navMenuRef.current.contains(event.target)) {
-  //       setNavMenu(false);
-  //     }
-  //   }
+  const buildLocaleSwitchUrl = (targetLocale) => {
+    let basePath = asPath;
 
-  //   document.addEventListener("mousedown", handleClickOutside);
+    // Check if the current path includes the current locale, and remove it
+    if (basePath.startsWith(`/${locale}`)) {
+      basePath = basePath.replace(`/${locale}`, '');
+    }
 
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleClickOutside);
-  //   };
-  // }, [navMenuRef]);
+    // Construct the new path with the target locale
+    return `/${targetLocale}${basePath}`;
+  };
 
 
   return (
@@ -119,7 +119,7 @@ const Navbar = ({ dataAllLangs }) => {
                   {dataAllLangs?.map((language) => {
                     if (router.locale !== language.shortCut) {
                       return (
-                        <a href={`/${language.shortCut}${router.asPath}`} key={language.id} className={`${styles.link}`}>
+                        <a href={buildLocaleSwitchUrl(language.shortCut)} key={language.id} className={`${styles.link}`}>
 
 
                           <p >
