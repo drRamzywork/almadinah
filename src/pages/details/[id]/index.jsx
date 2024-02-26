@@ -1,8 +1,8 @@
-import HeaderSection from '@/components/Home/HeaderSection'
 import React from 'react'
 import styles from './index.module.scss'
 import { motion } from 'framer-motion'
 import Map from '@/components/Home/Map'
+import HederPages from '@/components/HeaderPages'
 
 const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic }) => {
 
@@ -10,7 +10,7 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic }) => {
   return (
     <>
 
-      <HeaderSection dataAllLangs={dataAllLangs} icon={icon} parentName={dataContentDetails.
+      <HederPages dataAllLangs={dataAllLangs} icon={icon} parentName={dataContentDetails.
         currentContent.name} categoryName={dataMainTopic[0]?.parentName} />
 
       <section id='details' className={styles.details}>
@@ -31,7 +31,7 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic }) => {
 
 
             <div className={styles.text_container}>
-              {dataContentDetails.currentContent.descriptionBigList.map((item, index) => {
+              {dataContentDetails?.currentContent?.descriptionBigList?.map((item, index) => {
                 // Use a switch statement if you have a limited set of tags
                 // or use React.createElement if you have many different tags.
                 switch (item.tagName) {

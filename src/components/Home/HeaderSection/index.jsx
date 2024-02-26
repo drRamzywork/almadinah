@@ -31,7 +31,9 @@ const images =
 
 
 
-const HeaderSection = ({ parentName, topics, dataAllLangs, icon, categoryName }) => {
+const HeaderSection = ({ parentName, topics, dataAllLangs, }) => {
+  const router = useRouter()
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentImage = images[currentIndex];
   const route = useRouter()
@@ -40,9 +42,8 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, icon, categoryName })
   const guidData = topics?.filter((topic) => topic.id === 4)[0];
   const marafeqData = topics?.filter((topic) => topic.id === 13)[0];
 
-  const images1 = icon.includes(',') ? icon.split(',') : icon;
-  const currentPageImage = images1[currentIndex];
-  console.log(currentPageImage, "currentPageImage")
+
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -51,110 +52,19 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, icon, categoryName })
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((currentIndex) => (currentIndex + 1) % images1.length);
-    }, 5000); // Rotate images every 9 seconds
-    return () => clearInterval(interval);
-  }, []);
+
 
   // Animation variants for framer-motion
   const imageVariants = {
     hidden: { opacity: 0.5, scale: 0.95 },
     visible: { opacity: 1, scale: 1 },
   };
-  const router = useRouter()
 
   return (
     <>
       {
         router.pathname === '/details/[id]' ?
-          <header className={'header_details'} id={styles.inner_header}>
-            <Navbar dataAllLangs={dataAllLangs} />
-
-            <div className={styles.details_image}>
-
-
-
-
-              <Swiper
-                // centeredSlides={true}
-                autoplay={{
-                  delay: 3000,
-                  disableOnInteraction: false,
-                }}
-                effect={'fade'}
-                spaceBetween={30}
-
-                modules={[Autoplay, Pagination, Navigation, EffectFade]}
-
-                className="mySwiper"
-              >
-                {images1.map((image, index) => (
-                  <SwiperSlide key={index}>
-                    <img src={image} alt="" />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
-
-            <div className="container">
-              <div className={styles.banner_container}>
-                <motion.div
-                  initial={{ opacity: 0, x: -100 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 1 }}
-                  className={styles.right_side}>
-                  <div className={styles.main_title}>
-
-                    <p>{categoryName}</p>
-
-                    <h2>
-                      {parentName && parentName}
-                    </h2>
-
-
-                  </div>
-
-                  <div className={styles.icons_container}>
-                    <Link href={'#'} className={styles.icon}>
-                      <Microphone />
-                      <p className={styles.guide}>
-                        التسجيل الصوتي
-                      </p>
-                    </Link>
-
-                    <Link href={'#'} className={styles.icon}>
-                      <Guide />
-                      <p className={styles.guide}>
-                        المرشد الافتراضي
-                      </p>
-                    </Link>
-
-
-                  </div>
-                </motion.div>
-
-              </div>
-            </div>
-
-
-            <div className={`${styles.top_cloud_right} `}>
-              <Image src={'/assets/bannerImgs/cloud2.png'} width={1440} height={413} />
-
-            </div>
-
-            < div className={styles.lines}>
-              <Image src={'/assets/bannerImgs/Lines.svg'} width={8169.95} height={2105.82} />
-
-            </div>
-
-            <div className={styles.cloud}>
-              <Image src={'/assets/bannerImgs/cloud2.png'} width={1440} height={413} />
-            </div>
-
-          </header>
+          <></>
 
           :
 

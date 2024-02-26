@@ -177,7 +177,7 @@ const ExploreSec = ({ topics,
                     className={`${styles.inner_boxes_container} d-flex`}>
 
                     {box?.subTopics?.map((subTopic, idx) =>
-                      <Link href={`/${idx}`} className={styles.small_box}>
+                      <Link href={`/details/${subTopic.id}`} className={styles.small_box}>
                         <div className={styles.img_container}>
                           <img src={subTopic.icon.includes(',') ? subTopic.icon.split(',')[0] : subTopic.icon} alt={subTopic.name} />
                         </div>
@@ -301,11 +301,10 @@ const ExploreSec = ({ topics,
                 </div>
 
                 {box?.subTopics?.map((subTopic, idx) =>
-                  <Link href={`/${idx}`} className={styles.small_box}>
+                  <Link href={`/details/${subTopic.id}`} className={styles.small_box}>
                     <div className={styles.img_container}>
                       <img src={subTopic.icon.includes(',') ? subTopic.icon.split(',')[0] : subTopic.icon} alt={subTopic.name} />
                     </div>
-                    {console.log(subTopic, "subTopic")}
                     <div className={styles.text_container}>
                       <div className={styles.title}>
                         <p >
