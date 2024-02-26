@@ -146,7 +146,6 @@ header#inner_header {
           font-size: 126px;
           font-weight: 800;
           letter-spacing: 0em;
-          text-align: right;
 
           @media screen and (max-width: 992px) {
             font-size: 44px;
@@ -570,7 +569,6 @@ header#inner_header {
           font-size: 126px;
           font-weight: 800;
           letter-spacing: 0em;
-          text-align: right;
 
           @media screen and (max-width: 992px) {
             font-size: 40px;
@@ -685,6 +683,7 @@ header#inner_header {
 
 // +++++++++++++ LTR +++++++++++++
 
+.header#inner_header,
 header.header[dir="ltr"] {
   .blur_img {
     right: unset;
@@ -803,7 +802,7 @@ header.header[dir="ltr"] {
           font-weight: 800;
           line-height: 80px;
           letter-spacing: 0em;
-          text-align: left;
+          text-align: left !important;
           @media screen and (max-width: 992px) {
             font-size: 44px;
             line-height: 100%;

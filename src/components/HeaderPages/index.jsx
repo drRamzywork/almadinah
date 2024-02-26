@@ -22,10 +22,10 @@ import Navbar from '../Navbar';
 
 const HederPages = ({ icon, dataAllLangs, categoryName, parentName }) => {
   const images1 = icon?.includes(',') ? icon.split(',') : [icon];
-
+  const router = useRouter();
 
   return (
-    <header className={'header_details'} id={styles.inner_header}>
+    <header className={'header_details'} id={styles.inner_header} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
       <Navbar dataAllLangs={dataAllLangs} />
 
       <div className={styles.details_image}>
