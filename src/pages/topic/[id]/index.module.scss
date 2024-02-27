@@ -8,7 +8,9 @@ section.city_facilities {
   .filter_container {
     margin-bottom: 32px;
     display: flex;
-    width: fit-content;
+    // width: fit-content;
+    width: auto;
+
     align-items: center;
     @media screen and (max-width: 992px) {
       margin-top: 2px;
@@ -17,21 +19,46 @@ section.city_facilities {
       align-items: center;
     }
     .swiper_slide_box {
+      width: fit-content;
+
       .box {
+        // background-color: transparent;
+        // padding: 8px 16px 8px 24px;
+        // display: flex;
+        // align-items: center;
+        // justify-content: space-between;
+        // border-radius: 40px;
+        // border: 3px solid var(--main-white-color);
+        // cursor: pointer;
+        // min-height: 60px;
+        // transition: var(--main-transation);
+        // text-decoration: none;
+        // width: fit-content;
+
         background-color: transparent;
-        padding: 8px 16px 8px 24px;
+        /* padding: 8px 16px 8px 24px; */
         display: flex;
-        align-items: center;
-        justify-content: space-between;
+        /* align-items: center; */
+        /* justify-content: space-between; */
         border-radius: 40px;
         border: 3px solid var(--main-white-color);
         cursor: pointer;
         min-height: 60px;
         transition: var(--main-transation);
         text-decoration: none;
+        width: -moz-fit-content;
+        /* width: fit-content; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        // width: 100px;
+        // height: 80px;
+        // background-color: red !important;
 
         @media screen and (max-width: 992px) {
-          padding: 5.36px 10.7px 5.36px 16px;
+          padding: 5.36px 10.7px 5.36px 10px;
+          width: 167px;
           border: 1px solid var(--main-white-color);
         }
         .title {
@@ -259,7 +286,9 @@ section.city_facilities[dir="ltr"] {
     margin-top: -81px;
   }
   .filter_container {
+    width: 100%;
     .swiper_container {
+      width: 100%;
     }
     .swiper_slide_box {
       .box {

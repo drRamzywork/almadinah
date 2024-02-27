@@ -7,7 +7,8 @@ import HederPages from '@/components/HeaderPages'
 const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic }) => {
 
   const icon = dataContentDetails.currentContent.icon;
-  console.log(dataContentDetails, "dataContentDetails")
+  const features = dataContentDetails.currentContent.relatedFeatures;
+
   return (
     <>
 
@@ -30,6 +31,19 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic }) => {
               </p>
             </motion.div>
 
+            <div className={styles.boxes_container}>
+              {features &&
+                features.map((f, idx) =>
+                  <div className={styles.box} key={idx}>
+                    <div className={styles.icon_container}>
+                      <img src={f.icon} alt={f.name} />
+                    </div>
+                    <p>{f.name}</p>
+                  </div>
+                )
+
+              }
+            </div>
 
             <div className={styles.text_container}>
               {dataContentDetails?.currentContent?.descriptionBigList?.map((item, index) => {

@@ -76,11 +76,12 @@ body {
 
 #city_facilities{
   .swiper-slide{
-    width: fit-content !important;
+    // width: auto !important;
+    width: 100%;
   }
 
   .swiper-wrapper{
-    align-items: center;
+    // align-items: center;
   }
 }
 

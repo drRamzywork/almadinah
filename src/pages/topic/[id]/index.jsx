@@ -2,19 +2,49 @@ import HeaderSection from '@/components/Home/HeaderSection'
 import React from 'react'
 import styles from './index.module.scss'
 import Image from 'next/image'
-import PalmTree from '@/svgs/PalmTree'
-import Calendar from '@/svgs/Calendar'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import 'swiper/css/pagination';
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
+
+
+
+
+
 const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, dataAllLangs }) => {
   const router = useRouter();
   const getRandomWidth = (min, max) => Math.floor(Math.random() * (max - min + 40)) + min;
+  const breakpoints = {
+    300: {
+      slidesPerView: 2.2,
+      spaceBetween: 16,
+    },
+    400: {
+      slidesPerView: 2.2,
+      spaceBetween: 16,
+    },
+    607: {
+      slidesPerView: 2.2,
+      spaceBetween: 16,
+    },
+    700: {
+      slidesPerView: 2.2,
+      spaceBetween: 16,
+    },
+    1200: {
+      slidesPerView: 5,
+      spaceBetween: 24,
+    },
+    1300: {
+      slidesPerView: 5,
+      spaceBetween: 24,
+    },
 
+  }
 
   return (
     <>
@@ -36,33 +66,9 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
                 exit={{ opacity: 0 }}
                 transition={{ duration: 1 }} className={styles.filter_container}>
                 <Swiper
-                  breakpoints={{
-                    300: {
-                      slidesPerView: 1,
-                      spaceBetween: 0,
-                    },
-                    400: {
-                      slidesPerView: 2,
-                      spaceBetween: 0,
-                    },
-                    414: {
-                      slidesPerView: 2,
-                      spaceBetween: 0,
-                    },
-                    640: {
-                      slidesPerView: 2,
-                      spaceBetween: 0,
-                    },
-                    768: {
-                      slidesPerView: 2,
-                      spaceBetween: 0,
-                    },
-                    1024: {
-                      slidesPerView: 3,
-                      spaceBetween: 0,
-                    },
-                  }}
+                  breakpoints={breakpoints}
                   dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
+
                   className={styles.swiper_container}
                 >
 
