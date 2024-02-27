@@ -6,19 +6,8 @@ import { IoIosArrowBack } from "react-icons/io";
 import { useRouter } from 'next/router'
 import { motion } from 'framer-motion';
 import Link from 'next/link'
-import Microphone from '@/svgs/Microphone'
-import Guide from '@/svgs/Guide'
 
-// Swiper
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/effect-fade';
-import { Autoplay, Pagination, Navigation, EffectFade } from 'swiper/modules';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Swiper
 
 
 const images =
@@ -48,7 +37,7 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((currentIndex) => (currentIndex + 1) % images.length);
-    }, 225000); // Rotate images every 9 seconds
+    }, 5000); // Rotate images every 9 seconds
     return () => clearInterval(interval);
   }, []);
 
