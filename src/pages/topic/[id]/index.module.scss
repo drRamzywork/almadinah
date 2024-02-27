@@ -161,6 +161,12 @@ section.city_facilities {
     flex-wrap: wrap;
     gap: 16px;
 
+    @media screen and (max-width: 992px) {
+      column-count: 2;
+      column-gap: 16px;
+      width: 100%;
+      display: block;
+    }
     .box {
       break-inside: avoid;
       display: inline-block;
@@ -177,6 +183,12 @@ section.city_facilities {
       padding: 16px;
       margin-left: 0px;
       margin-bottom: 16px;
+
+      @media screen and (max-width: 992px) {
+        break-inside: avoid; // Prevents the box from being split across columns
+        margin-bottom: 16px; // Spacing between boxes
+        // width: 100%;
+      }
 
       &::after {
         content: "";
@@ -202,16 +214,14 @@ section.city_facilities {
         z-index: -1;
         width: 100%;
         height: 100%;
-        &::after {
-          position: absolute;
-          top: 0;
-          right: 0;
-          width: 100%;
-          height: 100%;
-          background-color: red;
-        }
+
         img {
           object-fit: cover;
+
+          @media screen and (max-width: 992px) {
+            width: 100%;
+            height: 100%;
+          }
         }
       }
 
@@ -228,13 +238,13 @@ section.city_facilities {
     }
   }
 
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 992px) {
     .boxes_container {
       display: none;
     }
   }
 
-  @media screen and (min-width: 450px) {
+  @media screen and (min-width: 992px) {
     .boxes_container {
       display: flex;
     }

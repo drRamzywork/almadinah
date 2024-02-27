@@ -14,7 +14,7 @@ import { useRouter } from 'next/router'
 const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, dataAllLangs }) => {
   const router = useRouter();
   const getRandomWidth = (min, max) => Math.floor(Math.random() * (max - min + 40)) + min;
-  // const mergedTopics = dataMainTopic.concat(dataSubTopic);
+
 
   return (
     <>
@@ -133,17 +133,16 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
                 <Link href={`/details/${topic.id}`}
                   className={styles.box} key={index}
                   style={{
-                    width: `164px`,
+                    width: `100%`,
                     height: `${getRandomWidth(144, 340)}px`,
                   }}>
                   {console.log(topic.id, "topic")}
                   <div className={styles.img_container}>
-                    {/* <Image src={'/assets/images/place.png'} width={233} height={166} />
-                     */}
-                    {/* <Image src="/assets/images/place.png" /> */}
-                    <Image src={topic.icon.includes(',') ? topic.icon.split(',')[0] : topic.icon} layout="fill" objectFit="cover"
 
-                    />
+                    {/* <Image src={topic.icon.includes(',') ? topic.icon.split(',')[0] : topic.icon} layout="fill" objectFit="cover"/> */}
+
+
+                    <img src={topic.icon.includes(',') ? topic.icon.split(',')[0] : topic.icon} alt={`Image ${index}`} />
 
                   </div>
                   <div className={styles.title}>
@@ -152,7 +151,6 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
                 </Link>
               ))}
             </div>
-
           </div>
         </div>
 
