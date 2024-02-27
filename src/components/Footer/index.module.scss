@@ -3,8 +3,12 @@ footer.footer {
   border-radius: 48px 48px 0px 0px;
   padding-top: 56px;
   padding-bottom: 56px;
+  margin-top: 24px;
+
   @media screen and (max-width: 450px) {
     border-radius: 32px 24px 64px 24px;
+    padding-top: 34px;
+    padding-bottom: 34px;
   }
   .sec_container {
     .logo {

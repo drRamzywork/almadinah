@@ -99,7 +99,11 @@ const ExploreSec = ({ topics,
   return (
     <section id='explore' className={styles.explore} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
 
-      <div className="container">
+      <motion.div
+        initial={{ opacity: 0, x: -100 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1 }} className="container">
         <div className={`${styles.sec_title}  sec_title`}>
           <h3>استكشف المدينة المنورة</h3>
 
@@ -107,8 +111,15 @@ const ExploreSec = ({ topics,
             <Image width={208.76} height={209.51} src='/assets/svgs/Safe_Icon.svg' />
           </div>
         </div>
-      </div>
-      <div className={styles.boxes_container}>
+      </motion.div>
+
+
+      <motion.div
+        initial={{ opacity: 0, }}
+        animate={{ opacity: 1, }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1 }}
+        className={styles.boxes_container}>
         {orderedCombinedTopics?.map((box, index) => (
 
 
@@ -143,7 +154,8 @@ const ExploreSec = ({ topics,
               </motion.div>
 
               <div className={styles.box_container}>
-                {hoveredIndex === null || hoveredIndex === index ? (
+                {console.log(hoveredIndex, "hoveredIndex")}
+                {hoveredIndex === null || hoveredIndex === -1 || hoveredIndex === index ? (
                   <motion.div
                     initial={{ opacity: 0, x: -100 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -244,7 +256,7 @@ const ExploreSec = ({ topics,
         ))
         }
 
-      </div >
+      </motion.div >
 
 
 
@@ -258,14 +270,13 @@ const ExploreSec = ({ topics,
         <Swiper
           slidesPerView={1.3}
           spaceBetween={16}
-          // centeredSlides={true}
           pagination={{
             clickable: true,
           }}
           className={styles.swiper_container}
         >
           {orderedCombinedTopics?.map((box, index) => (
-            <SwiperSlide className={styles.slider}>
+            <SwiperSlide className={styles.slider} key={index}>
               <div className={styles.swiper_slide_box}>
                 <div className={styles.background_image}>
                   <img width={208.76} height={209.51} src={box?.imagePath} />

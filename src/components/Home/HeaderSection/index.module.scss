@@ -76,7 +76,7 @@ header#inner_header {
     }
   }
 
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 400px) {
     height: 368px;
     border-radius: 0px 0px 32px 32px;
   }
@@ -721,11 +721,6 @@ header.header[dir="ltr"] {
       animation: moveCloud 60s linear infinite,
         scaleCloud 8s ease-in-out infinite alternate;
     }
-  }
-
-  @media screen and (max-width: 450px) {
-    // height: 368px;
-    // border-radius: 0px 0px 32px 32px;
   }
 
   &::after {
