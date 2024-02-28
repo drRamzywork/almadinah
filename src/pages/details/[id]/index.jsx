@@ -109,7 +109,7 @@ export async function getServerSideProps({ params, locale }) {
 
   // Fetch main topics with the initial topicId
 
-  const responseContentDetails = await fetch(`https://api.almadinah.io/api/Contents/GetContentDetails?contentId=${params.id}&lang=${langId}&suggestions=0&video360=false&guide=false`);
+  const responseContentDetails = await fetch(`https://api.almadinah.io/api/Contents/GetContentDetails?contentId=${params.id}&lang=${langId}&suggestions=0&video360=true&guide=true`);
   const dataContentDetails = await responseContentDetails.json();
 
 

@@ -9,14 +9,12 @@ section.virtual_guide {
 
   .shape {
     position: absolute;
-    left: unset !important;
-    right: 0;
+    left: 0;
     bottom: 138px;
     z-index: -1;
 
     img {
       object-fit: contain;
-      transform: scale(-1);
       @media screen and (max-width: 992px) {
         width: 338px;
         height: 125px;
@@ -332,12 +330,15 @@ section.virtual_guide[dir="ltr"] {
   }
 
   .shape {
-    position: absolute;
-    left: 0;
+    right: 0;
+    left: unset;
     bottom: 138px;
+    background-color: red;
     z-index: -1;
     img {
       object-fit: contain;
+      transform: scale(-1);
+
       @media screen and (max-width: 992px) {
         width: 338px;
         height: 125px;

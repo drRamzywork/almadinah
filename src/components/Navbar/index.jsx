@@ -55,7 +55,7 @@ const Navbar = ({ dataAllLangs }) => {
 
   return (
     <div className='container '>
-      <nav className={`navbar ${router.pathname.includes('/topic-details')} p-5`} id={styles.navbar} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
+      <nav className={`navbar ${router.pathname.includes('/topic-details') && 'p-5'} `} id={styles.navbar} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
         <Link href={'/'} className={`${styles.navbar_logo} navbar-brand`}>
           <Image className={styles.logo} src={'/assets/images/Logo_white.png'} width={118.64} height={56} />
         </Link>

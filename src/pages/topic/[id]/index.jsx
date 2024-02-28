@@ -68,7 +68,7 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
                 <Swiper
                   breakpoints={breakpoints}
                   dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
-
+                  centeredSlides={false}
                   className={styles.swiper_container}
                 >
 

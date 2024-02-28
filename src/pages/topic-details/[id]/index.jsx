@@ -3,61 +3,61 @@ import TopicDetailsHeader from '@/components/Home/Topic/TopicDetails/TopicDetail
 import Navbar from '@/components/Navbar'
 import React from 'react'
 import styles from './index.module.scss'
-const TopicDetails = () => {
+const TopicDetails = ({ dataStaticWords,
+  dataMainTopic,
+  dataAllLangs,
+  dataContentDetails,
+  dataSubTopic,
+  dataSubCategory }) => {
+  console.log(dataContentDetails, 'dataContentDetails')
+
+
+
   return (
     <>
       <Navbar />
-      <TopicDetailsHeader />
+      <TopicDetailsHeader dataContentDetails={dataContentDetails} />
 
     </>
   )
 }
 
+
 export default TopicDetails
 
-export async function getStaticPaths() {
-  const response = await fetch('https://api.almadinah.io/api/Topics/GetMainTopics?lang=2&ContentSamplesToReturn=0&pagenum=1&pagesize=50');
-  const topics = await response.json();
-
-  const paths = topics.map(topic => ({
-    params: { id: topic.id.toString() },
-  }));
-
-  return { paths, fallback: 'blocking' };
-}
 
 
-export async function getStaticProps({ params }) {
+
+export async function getServerSideProps({ params, locale }) {
+  const languagesConfig = require("../../../../public/locales/languagesDetails.json");
+  const langId = languagesConfig.filter((lang) => lang.shortCut === locale)[0].id;
+  // languagesConfig[locale]?.id ||
+  const responseAllLangs = await fetch(
+    `https://api.almadinah.io/api/Settings/GetAllLanguages?pagenum=1&pagesize=50`
+  );
+  const dataAllLangs = await responseAllLangs?.json();
+
+  const responseStaticWords = await fetch(`https://api.almadinah.io/api/Settings/GetStaticWords?lang=${langId}`);
+  const dataStaticWords = await responseStaticWords.json();
+
   // Fetch main topics with the initial topicId
-  let responseMainTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${params.id}&lang=2&pagenum=1&pagesize=50&withLatLng=false`);
-  let dataMainTopic = await responseMainTopic.json();
 
-  const responseSubCategory = await fetch(`https://api.almadinah.io/api/Topics/GetSubCategories?topicId=${params.id}&lang=2&ContentSamplesToReturn=0&pagenum=1&pagesize=50`);
-  const dataSubCategory = await responseSubCategory.json();
-  // If dataMainTopic array is empty, fetch the subcategory to get a new topicId
-  if (!dataMainTopic.length) { // Assuming dataMainTopic is an array and checking its length
-    const responseSubCategory = await fetch(`https://api.almadinah.io/api/Topics/GetSubCategories?topicId=${params.id}&lang=2&ContentSamplesToReturn=0&pagenum=1&pagesize=50`);
-    const dataSubCategory = await responseSubCategory.json();
+  const responseContentDetails = await fetch(`https://api.almadinah.io/api/Contents/GetContentDetails?contentId=${params.id}&lang=${langId}&suggestions=0&video360=false&guide=false`);
+  const dataContentDetails = await responseContentDetails.json();
 
-    // Check if secondaryTopics array is not empty and has an id
-    if (dataSubCategory.secondaryTopics && dataSubCategory.secondaryTopics.length > 0) {
-      const newTopicId = dataSubCategory.secondaryTopics[0].id;
-      // Use the newTopicId to fetch main topics again
-      responseMainTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${newTopicId}&lang=2&pagenum=1&pagesize=50&withLatLng=false`);
-      dataMainTopic = await responseMainTopic.json();
-    }
-  }
 
-  // Fetch subtopics (assuming this is necessary regardless of the previous condition)
-  const responseSubTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=8&lang=2&pagenum=1&pagesize=50&withLatLng=false`);
-  const dataSubTopic = await responseSubTopic.json();
+  const responseMainTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${dataContentDetails.currentContent.topicIdFk}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
+  const dataMainTopic = await responseMainTopic.json();
+
+
+
 
   return {
     props: {
+      dataStaticWords,
       dataMainTopic,
-      dataSubTopic,
-      dataSubCategory
-      // dataSubCategory is not included here since it's only used conditionally
+      dataAllLangs,
+      dataContentDetails
     },
   };
 }
