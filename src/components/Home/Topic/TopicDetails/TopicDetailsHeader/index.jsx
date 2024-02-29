@@ -388,6 +388,7 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
                       <p>
                         {dataContentDetails.currentContent.tourHours <= 1 && (`${dataContentDetails.currentContent.tourHours} ${dataStaticWords.hour}`)}
                         {dataContentDetails.currentContent.tourHours > 1 && (`${dataContentDetails.currentContent.tourHours} ${dataStaticWords.hours}`)}
+                        {console.log(dataContentDetails.currentContent.tourHours, "tourHours")}
                       </p>
                     </div>
 
@@ -536,52 +537,62 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
 
 
                       <div className={styles.details_container}>
-                        <div className="hours">
-                          <div className="icon_container">
+                        <div className={styles.hours}>
+                          <div className={styles.icon_container}>
                             <Alarm />
+
                           </div>
 
-                          <p>ساعتين</p>
+                          <p>
+                            {step.tourHours <= 1 && (`${step.tourHours} ${dataStaticWords.hour}`)}
+                            {step.tourHours > 1 && (`${step.tourHours} ${dataStaticWords.hours}`)}
+                            {step.totalMinutes && (`${step.totalMinutes} ${dataStaticWords.minute}`)}
+
+
+
+                          </p>
                         </div>
 
-                        <div id="vertical_swiper">
+                        <div id="vertical_swiper" className={styles.vertical_swiper}>
                           <div className={styles.boxes_container}>
-
                             <Swiper
+                              // direction={'vertical'}
+                              // ref={wheelREf}
+                              // pagination={{
+                              //   clickable: true,
+                              // }}
+                              // slidesPerView={5}
+                              // spaceBetween={16}
+                              // mousewheel={true}
+                              // modules={[Mousewheel, Scrollbar]}
+                              // scrollbar={true}
+                              // className={styles.swiper_container}
+
                               direction={'vertical'}
+                              ref={wheelREf} // Make sure the ref name matches what you've defined
                               pagination={{
                                 clickable: true,
                               }}
-                              slidesPerView={2.3}
+                              slidesPerView={5}
                               spaceBetween={16}
-
+                              mousewheel={true}
+                              modules={[Mousewheel, Scrollbar]} // Add Scrollbar to modules
+                              scrollbar={{
+                                el: '.swiper-scrollbar', // This is a CSS selector for the scrollbar element
+                                draggable: true, // This allows dragging the scrollbar to scroll
+                                hide: false, // Set to true if you want the scrollbar to be hidden automatically
+                              }}
                               className={styles.swiper_container}
-                            >
-                              <SwiperSlide
-                                className={styles.swiper_slide_box}>
-                                <div className="img_container">
-                                  <img src="/assets/images/places.png" alt="" />
-                                </div>
-                              </SwiperSlide>
-                              <SwiperSlide
-                                className={styles.swiper_slide_box}>
-                                <div className="img_container">
-                                  <img src="/assets/images/places.png" alt="" />
-                                </div>
-                              </SwiperSlide>
-                              <SwiperSlide
-                                className={styles.swiper_slide_box}>
-                                <div className="img_container">
-                                  <img src="/assets/images/places.png" alt="" />
-                                </div>
-                              </SwiperSlide>
-                              <SwiperSlide
-                                className={styles.swiper_slide_box}>
-                                <div className="img_container">
-                                  <img src="/assets/images/places.png" alt="" />
-                                </div>
-                              </SwiperSlide>
 
+
+                            >
+                              {firstStep?.image?.split(',').map((imageUrl, index) => (
+                                <SwiperSlide key={index} className={styles.swiper_slide_box}>
+                                  <div className={styles.img_container}>
+                                    <img src={imageUrl} alt={`Image ${index + 1}`} />
+                                  </div>
+                                </SwiperSlide>
+                              ))}
 
 
 
@@ -594,14 +605,15 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
 
                           </div>
                         </div>
+
                       </div>
 
 
                     </div>
                   </div>
                 </div>
-              </motion.div>
-            </SwiperSlide>
+              </motion.div >
+            </SwiperSlide >
           )
         })}
 
@@ -611,11 +623,11 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
 
 
 
-      </Swiper>
+      </Swiper >
 
 
 
-    </header>
+    </header >
 
   );
 };
