@@ -234,7 +234,6 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
   const swiperRef = useRef(null);
   const wheelREf = useRef(null);
 
-  console.log(currentIndex, 'currentIndex')
 
   const handleSlideChange = (swiper) => {
     setCurrentIndex(swiper.realIndex);
@@ -248,11 +247,9 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
     if (swiperRef.current && swiper) {
       if (swiper.realIndex === 0) {
         swiper.disable()
-        console.log('disabled')
 
       } else {
         swiper.enable()
-        console.log('enabled')
       }
     }
 
@@ -279,7 +276,6 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
     },
   };
 
-  console.log(currentIndex, "currentIndex")
 
 
 
@@ -292,7 +288,6 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
   const stepsDataFiltred = stepsData.filter((step) => step !== lastStep);
 
   const features = currentContent.relatedFeatures;
-  console.log(dataContentDetails, 'firstSssssssstep')
 
   // Steps control
 
@@ -393,7 +388,6 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
                       <p>
                         {dataContentDetails.currentContent.tourHours <= 1 && (`${dataContentDetails.currentContent.tourHours} ${dataStaticWords.hour}`)}
                         {dataContentDetails.currentContent.tourHours > 1 && (`${dataContentDetails.currentContent.tourHours} ${dataStaticWords.hours}`)}
-                        {console.log(dataContentDetails.currentContent.tourHours, "tourHours")}
                       </p>
                     </div>
 

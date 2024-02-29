@@ -10,7 +10,6 @@ const TopicDetails = ({ dataStaticWords,
   dataSubTopic,
   dataSubCategory,
   dataDrobTopic }) => {
-  console.log(dataContentDetails, 'dataContentDetails')
 
 
 

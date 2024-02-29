@@ -53,7 +53,6 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic }) => {
   };
 
   const contentID = dataDrobTopic?.find(topic => topic.contentIdFK === Number(router.query.id));
-  console.log(contentID?.parentName, "dataDrobTopic");
 
   return (
     <nav className={`navbar ${router.pathname.includes('/topic-details') && cName} `} id={styles.navbar} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>

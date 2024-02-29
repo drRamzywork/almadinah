@@ -46,7 +46,6 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
 
   }
 
-  console.log(dataMainTopic, "dataMainTopic")
 
   return (
     <>
@@ -144,7 +143,6 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
                     width: `100%`,
                     height: `${getRandomWidth(144, 340)}px`,
                   }}>
-                  {console.log(topic.id, "topic")}
                   <div className={styles.img_container}>
 
                     {/* <Image src={topic.icon.includes(',') ? topic.icon.split(',')[0] : topic.icon} layout="fill" objectFit="cover"/> */}

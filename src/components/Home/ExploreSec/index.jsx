@@ -154,7 +154,6 @@ const ExploreSec = ({ topics,
               </motion.div>
 
               <div className={styles.box_container}>
-                {console.log(hoveredIndex, "hoveredIndex")}
                 {hoveredIndex === null || hoveredIndex === -1 || hoveredIndex === index ? (
                   <motion.div
                     initial={{ opacity: 0, x: -100 }}
