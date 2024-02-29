@@ -18,7 +18,33 @@ const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords }) => {
   const query = router.query.id
   const title = dataSubCategory?.secondaryTopics?.filter((category) => category.id === Number(query))[0]?.name;
 
+  const breakpoints = {
+    300: {
+      slidesPerView: 2.2,
+      spaceBetween: 16,
+    },
+    400: {
+      slidesPerView: 2.2,
+      spaceBetween: 16,
+    },
+    607: {
+      slidesPerView: 2.2,
+      spaceBetween: 16,
+    },
+    700: {
+      slidesPerView: 2.2,
+      spaceBetween: 16,
+    },
+    1200: {
+      slidesPerView: 5,
+      spaceBetween: 24,
+    },
+    1300: {
+      slidesPerView: 5,
+      spaceBetween: 24,
+    },
 
+  }
   return (
     <>
       <Head>
@@ -37,32 +63,7 @@ const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords }) => {
               exit={{ opacity: 0 }}
               transition={{ duration: 1 }} className={styles.filter_container}>
               <Swiper
-                breakpoints={{
-                  300: {
-                    slidesPerView: 1,
-                    spaceBetween: 0,
-                  },
-                  400: {
-                    slidesPerView: 2,
-                    spaceBetween: 0,
-                  },
-                  414: {
-                    slidesPerView: 2,
-                    spaceBetween: 0,
-                  },
-                  640: {
-                    slidesPerView: 2,
-                    spaceBetween: 0,
-                  },
-                  768: {
-                    slidesPerView: 2,
-                    spaceBetween: 0,
-                  },
-                  1024: {
-                    slidesPerView: 3,
-                    spaceBetween: 0,
-                  },
-                }}
+                breakpoints={breakpoints}
                 dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
                 className={styles.swiper_container}
               >

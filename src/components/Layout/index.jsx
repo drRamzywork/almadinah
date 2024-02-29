@@ -61,7 +61,11 @@ export default function Layout({ children }) {
       <main style={combinedStyles} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} className={styles.main}>
         {children}
       </main >
-      <Footer />
+
+      {!router.pathname.includes('/topic-details/[id]') &&
+        <Footer />
+
+      }
 
     </>
   )

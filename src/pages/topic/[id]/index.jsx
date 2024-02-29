@@ -46,6 +46,8 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
 
   }
 
+  console.log(dataMainTopic, "dataMainTopic")
+
   return (
     <>
       <Head>
@@ -115,7 +117,7 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
 
                   key={index}
                   className={styles.box}>
-                  <Link href={`/details/${topic.id}`}>
+                  <Link href={`${Number(router.query.id) === 2 ? `/topic-details/${topic.id}` : `/details/${topic.id}`}  `}>
                     <div className={styles.img_container}>
                       <Image src={topic.icon.includes(',') ? topic.icon.split(',')[0] : topic.icon} width={233} height={166} />
                     </div>

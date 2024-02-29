@@ -8,15 +8,16 @@ const TopicDetails = ({ dataStaticWords,
   dataAllLangs,
   dataContentDetails,
   dataSubTopic,
-  dataSubCategory }) => {
+  dataSubCategory,
+  dataDrobTopic }) => {
   console.log(dataContentDetails, 'dataContentDetails')
 
 
 
   return (
     <>
-      <Navbar />
-      <TopicDetailsHeader dataContentDetails={dataContentDetails} />
+      <Navbar cName={'absolute_nav'} dataDrobTopic={dataDrobTopic} />
+      <TopicDetailsHeader dataContentDetails={dataContentDetails} dataStaticWords={dataStaticWords} />
 
     </>
   )
@@ -51,13 +52,19 @@ export async function getServerSideProps({ params, locale }) {
 
 
 
+  const responseDrobTopic = await fetch(
+    `https://api.almadinah.io/api/Contents/GetContents?topicId=${2}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`
+  );
+  const dataDrobTopic = await responseDrobTopic.json();
+
 
   return {
     props: {
       dataStaticWords,
       dataMainTopic,
       dataAllLangs,
-      dataContentDetails
+      dataContentDetails,
+      dataDrobTopic
     },
   };
 }

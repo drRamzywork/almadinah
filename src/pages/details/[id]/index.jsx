@@ -3,20 +3,42 @@ import styles from './index.module.scss'
 import { motion } from 'framer-motion'
 import Map from '@/components/Home/Map'
 import HederPages from '@/components/HeaderPages'
+import Head from 'next/head'
 
 const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic }) => {
 
   const icon = dataContentDetails.currentContent.icon;
   const features = dataContentDetails.currentContent.relatedFeatures;
-
   return (
     <>
+      <Head>
+        <title>{dataMainTopic[0]?.parentName}</title>
+        <meta charSet="UTF-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0"
+        />
+        <meta name="description" content="المدينة" />
+        <link rel="icon" href="/favicon.ico" />
+
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="المدينة" />
+        <meta property="og:description" content="المدينة" />
+        <meta property="og:image" content="/assets/images/dark_logo.png" />
+        <meta property="og:url" content="https://almadinah.io/" />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="المدينة" />
+        <meta name="twitter:description" content="المدينة" />
+        <meta name="twitter:image" content="/assets/images/dark_logo.png" />
+      </Head>
 
       <HederPages dataContentDetails={dataContentDetails.currentContent} dataAllLangs={dataAllLangs} icon={icon} parentName={dataContentDetails.
         currentContent.name} categoryName={dataMainTopic[0]?.parentName} />
 
       <section id='details' className={styles.details}>
-        <div className="container-fluid p-3">
+        <div className="container p-3">
           <div className={styles.sec_container}>
             <motion.div
               initial={{ opacity: 0, y: -100 }}
@@ -109,11 +131,11 @@ export async function getServerSideProps({ params, locale }) {
 
   // Fetch main topics with the initial topicId
 
-  const responseContentDetails = await fetch(`https://api.almadinah.io/api/Contents/GetContentDetails?contentId=${params.id}&lang=${langId}&suggestions=0&video360=true&guide=true`);
+  const responseContentDetails = await fetch(`https://api.almadinah.io/api/Contents/GetContentDetails?contentId=${params.id}&lang=${langId}&suggestions=0`);
   const dataContentDetails = await responseContentDetails.json();
 
 
-  const responseMainTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${dataContentDetails.currentContent.topicIdFk}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
+  const responseMainTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${dataContentDetails.currentContent.topicIdFk}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=true`);
   const dataMainTopic = await responseMainTopic.json();
 
 

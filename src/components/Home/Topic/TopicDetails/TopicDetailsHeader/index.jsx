@@ -16,8 +16,8 @@
 //   const [Step, setStep] = useState(0);
 
 //   const router = useRouter();
-//   const features = dataContentDetails.currentContent.relatedFeatures;
-//   const stepsData = dataContentDetails.currentContent.drobSteps;
+//   const features = currentContent.relatedFeatures;
+//   const stepsData = currentContent.drobSteps;
 //   console.log(stepsData, "dataContentDetails")
 
 
@@ -211,27 +211,76 @@
 
 
 
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './index.module.scss';
 import { motion } from 'framer-motion';
-import { Mousewheel, Pagination } from 'swiper/modules';
+import { Mousewheel, Pagination, Scrollbar } from 'swiper/modules';
 import { FaLocationDot } from "react-icons/fa6";
 import { Rings } from 'react-loader-spinner'
+import ArrowDown from '@/svgs/ArrowDown';
+import { Alarm } from '@/svgs/Alarm';
+import Mouse from '@/svgs/Mouse';
+import Link from 'next/link';
+import { IoIosArrowBack } from 'react-icons/io';
 
-const TopicDetailsHeader = ({ dataContentDetails }) => {
-  const stepsData = dataContentDetails.currentContent.drobSteps;
+const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
+  const currentContent = dataContentDetails.currentContent;
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const stepsData = currentContent.drobSteps;
   const swiperRef = useRef(null);
+  const wheelREf = useRef(null);
 
+  console.log(currentIndex, 'currentIndex')
 
+  const handleSlideChange = (swiper) => {
+    setCurrentIndex(swiper.realIndex);
+
+    // Directly use the swiper instance passed to the function
+
+  };
+
+  useEffect(() => {
+    const swiper = swiperRef.current.swiper
+    if (swiperRef.current && swiper) {
+      if (swiper.realIndex === 0) {
+        swiper.disable()
+        console.log('disabled')
+
+      } else {
+        swiper.enable()
+        console.log('enabled')
+      }
+    }
+
+  }, [currentIndex])
+
+  const handleSlideControls = () => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.enable()
+      swiperRef.current.swiper.slideTo(1)
+    }
+  }
   const pagination = {
     clickable: true,
     renderBullet: function (index, className) {
-      return '<span class="' + className + '"><p>' + (index + 1) + '</p></span>';
+      // Ensure stepsData[index] is valid and has a property `placeName`
+      return `
+      <span class="${className}">
+
+      <p>${index !== currentIndex ? index !== stepsData.length + 1 ? index : '' : ''}</p>
+        </span>
+        </div>
+
+        `;
     },
   };
+
+  console.log(currentIndex, "currentIndex")
+
 
 
 
@@ -240,60 +289,190 @@ const TopicDetailsHeader = ({ dataContentDetails }) => {
   const firstStep = stepsData[0];
   const lastStep = stepsData[stepsData.length - 1];
 
-  const stepsDataFiltred = stepsData.filter((step) => step !== firstStep && step !== lastStep);
+  const stepsDataFiltred = stepsData.filter((step) => step !== lastStep);
 
-  console.log(lastStep, "pagination1")
-  console.log(stepsData, "pagination1")
+  const features = currentContent.relatedFeatures;
+  console.log(dataContentDetails, 'firstSssssssstep')
+
   // Steps control
+
+
 
   return (
     <header className={styles.topic_details_header} id='topic_details_header'>
 
 
-      <div className="container">
 
-        <Swiper
-          direction={'vertical'}
-          slidesPerView={1}
-          spaceBetween={30}
-          mousewheel={true}
-          pagination={pagination}
-          modules={[Mousewheel, Pagination]}
-          className="mySwiper"
-          ref={swiperRef}
-        >
-          <SwiperSlide >
-            <motion.div
-              initial={{ opacity: 0, y: -50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className={styles.swiper_container}
-            >
-
+      <Swiper
+        direction={'vertical'}
+        slidesPerView={1}
+        spaceBetween={30}
+        mousewheel={true}
+        pagination={pagination}
+        modules={[Mousewheel, Pagination]}
+        className="mySwiper"
+        onSlideChange={(swiper) => handleSlideChange(swiper)}
+        ref={swiperRef}
+      >
+        <SwiperSlide >
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className={styles.swiper_container}
+          >
+            {firstStep.image !== null &&
               <div className={styles.main_image_slider}>
-                <img src="" alt="" />
+                <img src={currentContent.icon.includes(',') ? currentContent.icon.split(',')[0] : currentContent.icon} alt="" />
               </div>
-              <div className="sec_container">
+            }
+
+            <div className={styles.sec_container}>
+              <div className="container d-flex h-100">
                 <div className={styles.slideContent}>
-                  <div className={styles.box}>
-                    <div className="icon_container">
-                      <FaLocationDot />
+                  <div className={styles.text_container}>
+                    <div className={styles.title}>
+                      <h2>{currentContent.name}</h2>
                     </div>
-                    <h2>{firstStep.stepName}</h2>
-                    <p>{firstStep.placeDescription}</p>
-                    <p>Duration: {firstStep.totalMinutes} minutes</p>
-                    <p>Link: {firstStep.link}</p>
-                    <img src={firstStep.image} alt={firstStep.name} />
+
+                    <div className={styles.boxes_container}>
+                      {features &&
+                        features.map((f, idx) =>
+                          <div className={styles.box} key={idx}>
+                            <div className={styles.icon_container}>
+                              <img src={f.icon} alt={f.name} />
+                            </div>
+                            <p>{f.name}</p>
+                          </div>
+                        )
+                      }
+                    </div>
+
+
+
+                    <div className={styles.middle_box}>
+                      <div className={styles.icon_container} >
+                        <FaLocationDot />
+                      </div>
+
+                      <div className={styles.start} >
+                        <p>{dataStaticWords.startoftour}</p>
+
+                      </div>
+
+                      <div className={styles.box_desc}>
+                        <p> {firstStep.name}</p>
+                      </div>
+
+
+                      <button className={styles.btn_container}
+                        onClick={handleSlideControls}
+                      >
+                        <p>{firstStep.stepName}</p>
+                      </button>
+
+                      <div className={styles.arrow_container}
+                        onClick={handleSlideControls}
+                      >
+                        <ArrowDown />
+                      </div>
+                    </div>
+
+
                   </div>
+
+
+
+                  <div className={styles.details_container}>
+                    <div className={styles.hours}>
+                      <div className={styles.icon_container}>
+                        <Alarm />
+
+                      </div>
+
+                      <p>
+                        {dataContentDetails.currentContent.tourHours <= 1 && (`${dataContentDetails.currentContent.tourHours} ${dataStaticWords.hour}`)}
+                        {dataContentDetails.currentContent.tourHours > 1 && (`${dataContentDetails.currentContent.tourHours} ${dataStaticWords.hours}`)}
+                        {console.log(dataContentDetails.currentContent.tourHours, "tourHours")}
+                      </p>
+                    </div>
+
+                    <div id="vertical_swiper" className={styles.vertical_swiper}>
+                      <div className={styles.boxes_container}>
+                        <Swiper
+                          // direction={'vertical'}
+                          // ref={wheelREf}
+                          // pagination={{
+                          //   clickable: true,
+                          // }}
+                          // slidesPerView={5}
+                          // spaceBetween={16}
+                          // mousewheel={true}
+                          // modules={[Mousewheel, Scrollbar]}
+                          // scrollbar={true}
+                          // className={styles.swiper_container}
+
+                          direction={'vertical'}
+                          ref={wheelREf} // Make sure the ref name matches what you've defined
+                          pagination={{
+                            clickable: true,
+                          }}
+                          slidesPerView={5}
+                          spaceBetween={16}
+                          mousewheel={true}
+                          modules={[Mousewheel, Scrollbar]} // Add Scrollbar to modules
+                          scrollbar={{
+                            el: '.swiper-scrollbar', // This is a CSS selector for the scrollbar element
+                            draggable: true, // This allows dragging the scrollbar to scroll
+                            hide: false, // Set to true if you want the scrollbar to be hidden automatically
+                          }}
+                          className={styles.swiper_container}
+
+
+                        >
+                          {firstStep?.image?.split(',').map((imageUrl, index) => (
+                            <SwiperSlide key={index} className={styles.swiper_slide_box}>
+                              <div className={styles.img_container}>
+                                <img src={imageUrl} alt={`Image ${index + 1}`} />
+                              </div>
+                            </SwiperSlide>
+                          ))}
+
+
+
+
+
+
+                        </Swiper>
+
+
+
+                      </div>
+                    </div>
+                  </div>
+
+
                 </div>
               </div>
+            </div>
 
 
-            </motion.div>
-          </SwiperSlide>
+          </motion.div>
+        </SwiperSlide>
 
 
-          {stepsDataFiltred.map((step, index) => (
+        {stepsDataFiltred.map((step, index) => {
+          // Split the link string by '&' to get each parameter separately
+          const params = step?.link?.split('&');
+
+          // Find the parameter that starts with "parent="
+          const parentParam = params?.find(param => param?.startsWith('parent='));
+
+          // Extract the number following "parent="; assume default is 0 if not found
+          const parentId = parentParam ? Number(parentParam?.split('=')[1]) : 0;
+
+
+          return (
             <SwiperSlide key={step.id}>
               <motion.div
                 initial={{ opacity: 0, y: -50 }}
@@ -301,67 +480,145 @@ const TopicDetailsHeader = ({ dataContentDetails }) => {
                 transition={{ duration: 0.5 }}
                 className={styles.swiper_container}
               >
+                {step.image !== null &&
+                  <div className={styles.main_image_slider}>
+                    <img src={step?.image?.includes(',') ? step?.image?.split(',')[0] : step?.image} alt="" />
+                  </div>
+                }
 
-                <div className={styles.main_image_slider}>
-                  <img src="" alt="" />
-                </div>
 
-
-                <div className="container">
-                  <div className={styles.sec_container}>
+                <div className={styles.sec_container}>
+                  <div className="container d-flex h-100">
                     <div className={styles.slideContent}>
-                      <div className={styles.box}>
-                        <h2>{step.name}</h2>
-                        <p>{step.placeDescription}</p>
-                        <p>Duration: {step.totalMinutes} minutes</p>
-                        <p>Link: {step.link}</p>
-                        <img src={step.image} alt={step.name} />
+                      <div className={styles.text_container}>
+                        <div className={styles.title}>
+                          <h2>{step.placeName}</h2>
+                        </div>
+
+                        <div className={styles.middle_box2}>
+
+
+                          <div className={styles.desc}>
+
+                            <p>{step.placeDescription}
+
+                              الإنطلاق من منطقة مصليات العيد في الجهة الجنوبية
+                              من المسجد النبوي
+                            </p>
+
+                          </div>
+
+
+
+                          <Link href={`/details/${step.linkContentId}`} className={styles.btn_container}>
+                            <p>{dataStaticWords.more}</p>
+
+                            <div className={styles.arrow_container}>
+                              <IoIosArrowBack />
+                            </div>
+                          </Link>
+
+
+                          <div className={styles.desc2}>
+
+                            <p>{step.name}
+                              الإنطلاق من منطقة مصليات العيد في الجهة الجنوبية
+                              من المسجد النبوي
+                            </p>
+
+                          </div>
+
+                          <div className={styles.mouse_container}>
+                            <Mouse />
+                          </div>
+
+
+
+                        </div>
+
+
                       </div>
+
+
+
+                      <div className={styles.details_container}>
+                        <div className="hours">
+                          <div className="icon_container">
+                            <Alarm />
+                          </div>
+
+                          <p>ساعتين</p>
+                        </div>
+
+                        <div id="vertical_swiper">
+                          <div className={styles.boxes_container}>
+
+                            <Swiper
+                              direction={'vertical'}
+                              pagination={{
+                                clickable: true,
+                              }}
+                              slidesPerView={2.3}
+                              spaceBetween={16}
+
+                              className={styles.swiper_container}
+                            >
+                              <SwiperSlide
+                                className={styles.swiper_slide_box}>
+                                <div className="img_container">
+                                  <img src="/assets/images/places.png" alt="" />
+                                </div>
+                              </SwiperSlide>
+                              <SwiperSlide
+                                className={styles.swiper_slide_box}>
+                                <div className="img_container">
+                                  <img src="/assets/images/places.png" alt="" />
+                                </div>
+                              </SwiperSlide>
+                              <SwiperSlide
+                                className={styles.swiper_slide_box}>
+                                <div className="img_container">
+                                  <img src="/assets/images/places.png" alt="" />
+                                </div>
+                              </SwiperSlide>
+                              <SwiperSlide
+                                className={styles.swiper_slide_box}>
+                                <div className="img_container">
+                                  <img src="/assets/images/places.png" alt="" />
+                                </div>
+                              </SwiperSlide>
+
+
+
+
+
+
+
+                            </Swiper>
+
+
+
+                          </div>
+                        </div>
+                      </div>
+
+
                     </div>
                   </div>
                 </div>
               </motion.div>
             </SwiperSlide>
-          ))}
+          )
+        })}
 
 
 
 
 
 
-          <SwiperSlide >
-            <motion.div
-              initial={{ opacity: 0, y: -50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className={styles.swiper_container}
-            >
-              <div className={styles.main_image_slider}>
-                <img src="" alt="" />
-              </div>
-              <div className="container">
-                <div className="sec_container">
-                  <div className={styles.slideContent}>
-                    <div className={styles.box}>
-                      <div className="icon_container">
-                        <FaLocationDot />
-                      </div>
-                      <h2>{lastStep.name}</h2>
-                      <p>{lastStep.placeDescription}</p>
-                      <p>Duration: {lastStep.totalMinutes} minutes</p>
-                      <p>Link: {lastStep.link}</p>
-                      <img src={lastStep.image} alt={lastStep.name} />
-                    </div>
-                  </div>
-                </div>
-              </div>
 
+      </Swiper>
 
-            </motion.div>
-          </SwiperSlide>
-        </Swiper>
-
-      </div>
 
 
     </header>
