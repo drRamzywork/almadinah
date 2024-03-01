@@ -5,10 +5,11 @@ import Map from '@/components/Home/Map'
 import HederPages from '@/components/HeaderPages'
 import Head from 'next/head'
 
-const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic }) => {
+const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentDetailsGuide }) => {
 
   const icon = dataContentDetails.currentContent.icon;
   const features = dataContentDetails.currentContent.relatedFeatures;
+  console.log(dataContentDetailsGuide, "dataContentDetailsGuides")
   return (
     <>
       <Head>
@@ -34,7 +35,7 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic }) => {
         <meta name="twitter:image" content="/assets/images/dark_logo.png" />
       </Head>
 
-      <HederPages dataContentDetails={dataContentDetails.currentContent} dataAllLangs={dataAllLangs} icon={icon} parentName={dataContentDetails.
+      <HederPages dataContentDetailsGuide={dataContentDetailsGuide.currentContent} dataContentDetails={dataContentDetails.currentContent} dataAllLangs={dataAllLangs} icon={icon} parentName={dataContentDetails.
         currentContent.name} categoryName={dataMainTopic[0]?.parentName} />
 
       <section id='details' className={styles.details}>
@@ -134,6 +135,10 @@ export async function getServerSideProps({ params, locale }) {
   const responseContentDetails = await fetch(`https://api.almadinah.io/api/Contents/GetContentDetails?contentId=${params.id}&lang=${langId}&suggestions=0`);
   const dataContentDetails = await responseContentDetails.json();
 
+  const responseContentDetailsGuide = await fetch(`https://api.almadinah.io/api/Contents/GetContentDetails?contentId=${params.id}&lang=${langId}&suggestions=0&video360=true&guide=true
+  `);
+  const dataContentDetailsGuide = await responseContentDetailsGuide.json();
+
 
   const responseMainTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${dataContentDetails.currentContent.topicIdFk}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=true`);
   const dataMainTopic = await responseMainTopic.json();
@@ -146,7 +151,8 @@ export async function getServerSideProps({ params, locale }) {
       dataStaticWords,
       dataMainTopic,
       dataAllLangs,
-      dataContentDetails
+      dataContentDetails,
+      dataContentDetailsGuide
     },
   };
 }

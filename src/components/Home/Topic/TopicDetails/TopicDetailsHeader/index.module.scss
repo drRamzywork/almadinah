@@ -76,14 +76,33 @@ header.topic_details_header {
       position: relative;
       // margin: auto;
       display: flex;
-      align-items: center;
-      justify-content: flex-start;
+      align-items: flex-start;
+      // justify-content: flex-start;
       padding-right: 172px;
       height: 100%;
       width: 100%;
+      margin-top: 172px;
+
+      .fullScreenImage {
+        position: fixed;
+        top: 110px;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 4Q; /* High value to ensure it's above everything */
+
+        background: rgba(255, 255, 255, 0.01);
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+
+        img {
+          object-fit: contain;
+          width: 100%;
+          height: 100%;
+        }
+      }
 
       .text_container {
-        margin-top: 72px;
         display: flex;
         flex-direction: column;
         flex-grow: 1;
@@ -232,7 +251,7 @@ header.topic_details_header {
               height: 4px;
               background-color: #fff;
               border-radius: 50%;
-              z-index: 5;
+              z-index: 0;
             }
 
             &::after {
@@ -247,7 +266,7 @@ header.topic_details_header {
               height: 8px;
               background-color: #fff;
               border-radius: 50%;
-              z-index: 5;
+              z-index: 0;
             }
             p {
               margin: auto;
@@ -268,12 +287,13 @@ header.topic_details_header {
 
           .desc {
             p {
+              max-width: 70%;
+
               color: rgba(255, 255, 255, 0.8);
               font-size: 18px;
               font-style: normal;
               font-weight: 500;
               line-height: 130%; /* 23.4px */
-
               text-align: unset !important  ;
             }
           }
@@ -372,11 +392,10 @@ header.topic_details_header {
 
         .vertical_swiper {
           margin-top: 50px;
-          width: 150px;
           display: flex;
-          height: 340px;
           overflow: hidden;
           padding-top: 5px;
+          height: 380px;
           border-radius: 24px;
           border: 1px solid rgba(255, 255, 255, 0.2);
           background: rgba(255, 255, 255, 0.1);
@@ -396,8 +415,10 @@ header.topic_details_header {
             z-index: 22;
           }
           .boxes_container {
-            margin: auto;
+            height: 100%;
             .swiper_container {
+              height: 100%;
+
               .swiper_slide_box {
                 .img_container {
                   border-radius: 16px;
@@ -405,8 +426,8 @@ header.topic_details_header {
                   padding: 10px;
                   img {
                     border-radius: 16px;
-                    width: 100%;
-                    height: 100%;
+                    width: 85px;
+                    height: 75px;
                     object-fit: cover;
                   }
                 }

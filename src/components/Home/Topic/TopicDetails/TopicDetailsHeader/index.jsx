@@ -289,9 +289,13 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
 
   const features = currentContent.relatedFeatures;
 
-  // Steps control
+  // images control
 
+  const [activeImage, setActiveImage] = useState(null);
 
+  const toggleActive = (imageUrl) => {
+    setActiveImage(activeImage === imageUrl ? null : imageUrl);
+  };
 
   return (
     <header className={styles.topic_details_header} id='topic_details_header'>
@@ -388,7 +392,6 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
                       <p>
                         {dataContentDetails.currentContent.tourHours <= 1 && (`${dataContentDetails.currentContent.tourHours} ${dataStaticWords.hour}`)}
                         {dataContentDetails.currentContent.tourHours > 1 && (`${dataContentDetails.currentContent.tourHours} ${dataStaticWords.hours}`)}
-                        {console.log(dataContentDetails.currentContent.tourHours, "tourHours")}
                       </p>
                     </div>
 
@@ -412,22 +415,18 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
                           pagination={{
                             clickable: true,
                           }}
-                          slidesPerView={5}
+                          slidesPerView={3.1}
                           spaceBetween={16}
                           mousewheel={true}
-                          modules={[Mousewheel, Scrollbar]} // Add Scrollbar to modules
-                          scrollbar={{
-                            el: '.swiper-scrollbar', // This is a CSS selector for the scrollbar element
-                            draggable: true, // This allows dragging the scrollbar to scroll
-                            hide: false, // Set to true if you want the scrollbar to be hidden automatically
-                          }}
+                          modules={[Mousewheel,]} // Add Scrollbar to modules
+
                           className={styles.swiper_container}
 
 
                         >
                           {firstStep?.image?.split(',').map((imageUrl, index) => (
                             <SwiperSlide key={index} className={styles.swiper_slide_box}>
-                              <div className={styles.img_container}>
+                              <div className={styles.img_container} onClick={() => toggleActive(imageUrl)}>
                                 <img src={imageUrl} alt={`Image ${index + 1}`} />
                               </div>
                             </SwiperSlide>
@@ -446,7 +445,13 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
                     </div>
                   </div>
 
-
+                  {
+                    activeImage && (
+                      <div className={styles.fullScreenImage} onClick={() => setActiveImage(null)}>
+                        <img src={activeImage} alt="Expanded view" />
+                      </div>
+                    )
+                  }
                 </div>
               </div>
             </div>
@@ -457,14 +462,7 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
 
 
         {stepsDataFiltred.map((step, index) => {
-          // Split the link string by '&' to get each parameter separately
-          const params = step?.link?.split('&');
 
-          // Find the parameter that starts with "parent="
-          const parentParam = params?.find(param => param?.startsWith('parent='));
-
-          // Extract the number following "parent="; assume default is 0 if not found
-          const parentId = parentParam ? Number(parentParam?.split('=')[1]) : 0;
 
 
           return (
@@ -472,13 +470,19 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
               <motion.div
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 1 }}
                 className={styles.swiper_container}
               >
                 {step.image !== null &&
-                  <div className={styles.main_image_slider}>
-                    <img src={step?.image?.includes(',') ? step?.image?.split(',')[0] : step?.image} alt="" />
-                  </div>
+                  <motion.div
+
+
+                    className={styles.main_image_slider}>
+                    <motion.img initial={{ opacity: 0, y: -50 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1 }}
+                      src={step?.image?.includes(',') ? step?.image?.split(',')[0] : step?.image} alt="" />
+                  </motion.div>
                 }
 
 
@@ -586,14 +590,14 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
 
 
                             >
-                              {firstStep?.image?.split(',').map((imageUrl, index) => (
+
+                              {step?.image?.split(',').map((imageUrl, index) => (
                                 <SwiperSlide key={index} className={styles.swiper_slide_box}>
-                                  <div className={styles.img_container}>
+                                  <div className={styles.img_container} onClick={() => toggleActive(imageUrl)}>
                                     <img src={imageUrl} alt={`Image ${index + 1}`} />
                                   </div>
                                 </SwiperSlide>
                               ))}
-
 
 
 
@@ -607,7 +611,13 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
                         </div>
 
                       </div>
-
+                      {
+                        activeImage && (
+                          <div className={styles.fullScreenImage} onClick={() => setActiveImage(null)}>
+                            <img src={activeImage} alt="Expanded view" />
+                          </div>
+                        )
+                      }
 
                     </div>
                   </div>

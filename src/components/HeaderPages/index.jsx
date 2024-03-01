@@ -20,9 +20,11 @@ import Navbar from '../Navbar';
 
 
 
-const HederPages = ({ dataContentDetails, icon, dataAllLangs, categoryName, parentName }) => {
+const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAllLangs, categoryName, parentName }) => {
   const images1 = icon?.includes(',') ? icon.split(',') : [icon];
   const router = useRouter();
+  const [showAudio, setShowAudio] = useState(false)
+  const [showGuide, setShowGuide] = useState(false)
 
   return (
     <header className={'header_details'} id={styles.inner_header} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
@@ -72,25 +74,64 @@ const HederPages = ({ dataContentDetails, icon, dataAllLangs, categoryName, pare
 
 
             </div>
-            {dataContentDetails.guideDescList !== null &&
+            {dataContentDetailsGuide !== null &&
               <div className={styles.icons_container}>
-                <Link href={'#'} className={styles.icon}>
+                <Link href={'#'} className={styles.icon} onClick={() => setShowAudio(prev => !prev)}>
                   <Microphone />
                   <p className={styles.guide}>
                     التسجيل الصوتي
                   </p>
+
+
+                  {showAudio &&
+                    <motion.div
+                      initial={{ opacity: 0, y: -100 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 1 }}
+                      className={styles.audio}>
+
+                      <audio controls src={dataContentDetailsGuide.sound}>
+                        Your browser does not support the audio element.
+                      </audio>
+
+                    </motion.div>
+
+                  }
                 </Link>
 
-                <Link href={'#'} className={styles.icon}>
+                <Link href={'#'} className={styles.icon} onClick={() => setShowGuide(prev => !prev)}>
                   <Guide />
-                  <p className={styles.guide}>
+                  <p className={styles.guide} >
                     المرشد الافتراضي
                   </p>
+
+
+
+
                 </Link>
 
+                {showGuide &&
+                  <motion.div
+                    initial={{ opacity: 0, y: -100 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 1 }}
+                    className={styles.video}>
 
+                    <video controls src={dataContentDetailsGuide.tourGuide}>
+                      Your browser does not support the audio element.
+                    </video>
+
+                  </motion.div>
+
+                }
               </div>
+
+
             }
+
+
 
 
           </motion.div>
