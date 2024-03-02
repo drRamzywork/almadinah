@@ -39,7 +39,6 @@ const Header = ({ dataContentDetails, dataStaticWords, dataContentDetailsGuide }
 
   const details = dataContentDetails.currentContent;
 
-  console.log(dataContentDetails.currentContent.description, "ss")
 
   // images control
 
@@ -204,15 +203,11 @@ const Header = ({ dataContentDetails, dataStaticWords, dataContentDetailsGuide }
                     <Swiper
                       direction={'vertical'}
                       ref={wheelREf}
-                      slidesPerView={5}
+                      slidesPerView={3.1}
                       spaceBetween={16}
                       mousewheel={true}
-                      modules={[Mousewheel, Pagination, Scrollbar]}
-                      scrollbar={{
-                        el: '.swiper-scrollbar',
-                        draggable: true,
-                        hide: false,
-                      }}
+                      modules={[Mousewheel, Pagination,]}
+
                       className={styles.swiper_container}
 
                     >
