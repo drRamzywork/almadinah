@@ -301,10 +301,10 @@ const ExploreSec = ({ topics,
 
                 <Link href={`/topic/${box.id}`} className={styles.desc}>
                   <p>{box?.translatedDesc}</p>
+                  {console.log(box, "subTopics")}
                 </Link>
-
                 {box?.subTopics?.map((subTopic, idx) =>
-                  <Link href={`${`/topic-details/${subTopic.id}`}`} key={idx} className={styles.small_box}>
+                  <Link href={`${subTopic.parentId === 2 ? `/topic-details/${subTopic.id}` : `/subdetails/${subTopic.id}`}`} key={idx} className={styles.small_box}>
                     {/* {console.log(, "subTopic")} */}
                     <div className={styles.img_container}>
                       <img src={subTopic.icon.includes(',') ? subTopic.icon.split(',')[0] : subTopic.icon} alt={subTopic.name} />

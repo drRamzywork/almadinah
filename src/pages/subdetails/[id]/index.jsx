@@ -23,7 +23,7 @@ const Subdetails = (
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head> */}
       {/* parentName={ } */}
-      <Navbar cName={'absolute_nav'} dataDrobTopic={dataDrobTopic} parentName={dataMainTopic[0].parentName} />
+      <Navbar cName={'absolute_nav'} dataDrobTopic={dataDrobTopic} parentName={dataMainTopic[0].parentName} dataMainTopic={dataMainTopic} />
       <Header dataContentDetails={dataContentDetails} dataStaticWords={dataStaticWords} dataContentDetailsGuide={dataContentDetailsGuide} />
 
     </>

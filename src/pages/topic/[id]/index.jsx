@@ -116,7 +116,7 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
 
                   key={index}
                   className={styles.box}>
-                  <Link href={`${Number(router.query.id) === 2 ? `/topic-details/${topic.id}` : `/details/${topic.id}`}  `}>
+                  <Link href={Number(router.query.id) === 2 ? `/topic-details/${topic.id}` : (Number(router.query.id) === 1 || 13 ? `/subdetails/${topic.id}` : `/details/${topic.id}`)}>
                     <div className={styles.img_container}>
                       <Image src={topic.icon.includes(',') ? topic.icon.split(',')[0] : topic.icon} width={233} height={166} />
                     </div>

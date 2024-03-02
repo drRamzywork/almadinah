@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import { IoIosClose } from 'react-icons/io';
 import { motion } from 'framer-motion';
 
-const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName }) => {
+const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic }) => {
   const router = useRouter();
   const { asPath, locale } = router;
 
@@ -53,6 +53,7 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName }) => {
   };
 
   const contentID = dataDrobTopic?.find(topic => topic.contentIdFK === Number(router.query.id));
+  const contentID2 = dataMainTopic?.find(topic => topic.contentIdFK === Number(router.query.id));
 
   return (
     <nav className={`navbar ${cName}`} id={styles.navbar} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
@@ -63,8 +64,8 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName }) => {
         </Link>
 
         {router.pathname.includes('/topic-details') || router.pathname.includes('/subdetails') ?
-          <>
-            <Link href={`/topic/${contentID?.parentId}`} className={styles.main_title}>
+          <>{console.log(contentID, "contentID")}
+            <Link href={`${contentID !== undefined ? `/topic/${contentID?.parentId}` : `/topic/${contentID2.parentId}`}`} className={styles.main_title}>
               <h1>{contentID?.parentName} {parentName}</h1>
             </Link>
             <div className={styles.close_icon}>
