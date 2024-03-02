@@ -1,9 +1,11 @@
 import React from 'react'
 import styles from './index.module.scss'
 import Image from 'next/image'
+import { useRouter } from 'next/router';
 const Footer = () => {
+  const router = useRouter();
   return (
-    <footer id='footer' className={styles.footer}>
+    <footer id='footer' className={`${styles.footer} ${router.pathname.includes('/subdetails/') && styles.top} `}>
       <div className="container">
         <div className={styles.sec_container}>
 

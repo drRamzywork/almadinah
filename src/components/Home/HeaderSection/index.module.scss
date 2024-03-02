@@ -658,6 +658,7 @@ header#inner_header {
 
             path {
               fill: var(--main-white-color);
+              transition: all 0.3s ease-in-out;
             }
           }
 
@@ -682,6 +683,14 @@ header#inner_header {
           &:hover .guide {
             visibility: visible;
             opacity: 1;
+          }
+        }
+
+        .active {
+          svg {
+            path {
+              fill: var(--main-green-color);
+            }
           }
         }
       }

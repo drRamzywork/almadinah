@@ -25,7 +25,6 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
   const router = useRouter();
   const [showAudio, setShowAudio] = useState(false)
   const [showGuide, setShowGuide] = useState(false)
-
   return (
     <header className={'header_details'} id={styles.inner_header} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
       <Navbar dataAllLangs={dataAllLangs} />
@@ -74,9 +73,9 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
 
 
             </div>
-            {dataContentDetailsGuide !== null &&
+            {dataContentDetails.tourGuide !== null &&
               <div className={styles.icons_container}>
-                <Link href={'#'} className={styles.icon} onClick={() => setShowAudio(prev => !prev)}>
+                <Link href={'#'} className={`${styles.icon} ${showAudio ? styles.active : ''}`} onClick={() => setShowAudio(prev => !prev)}>
                   <Microphone />
                   <p className={styles.guide}>
                     التسجيل الصوتي
@@ -100,7 +99,9 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
                   }
                 </Link>
 
-                <Link href={'#'} className={styles.icon} onClick={() => setShowGuide(prev => !prev)}>
+                <Link href={'#'}
+                  className={`${styles.icon} ${showGuide ? styles.active : ''}`}
+                  onClick={() => setShowGuide(prev => !prev)}>
                   <Guide />
                   <p className={styles.guide} >
                     المرشد الافتراضي

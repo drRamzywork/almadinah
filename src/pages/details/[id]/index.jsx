@@ -9,7 +9,7 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
 
   const icon = dataContentDetails.currentContent.icon;
   const features = dataContentDetails.currentContent.relatedFeatures;
-  console.log(dataContentDetailsGuide, "dataContentDetailsGuides")
+  console.log(dataContentDetails, "dataContentDetailsGuides")
   return (
     <>
       <Head>

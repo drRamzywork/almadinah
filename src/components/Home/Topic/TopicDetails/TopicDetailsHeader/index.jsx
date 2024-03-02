@@ -226,8 +226,10 @@ import { Alarm } from '@/svgs/Alarm';
 import Mouse from '@/svgs/Mouse';
 import Link from 'next/link';
 import { IoIosArrowBack } from 'react-icons/io';
+import { useRouter } from 'next/router';
 
 const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
+  const router = useRouter();
   const currentContent = dataContentDetails.currentContent;
   const [currentIndex, setCurrentIndex] = useState(0)
   const stepsData = currentContent.drobSteps;
@@ -282,10 +284,10 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
 
 
   // Steps control
-  const firstStep = stepsData[0];
-  const lastStep = stepsData[stepsData.length - 1];
 
-  const stepsDataFiltred = stepsData.filter((step) => step !== lastStep);
+  const firstStep = stepsData !== null ? stepsData[0] : dataContentDetails.currentContent;
+  const lastStep = stepsData !== null ? stepsData[stepsData.length - 1] : [];
+  const stepsDataFiltred = stepsData !== null ? stepsData.filter((step) => step !== lastStep) : [];
 
   const features = currentContent.relatedFeatures;
 
@@ -299,6 +301,10 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
 
   return (
     <header className={styles.topic_details_header} id='topic_details_header'>
+
+
+
+
 
 
 
@@ -458,6 +464,10 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
 
 
           </motion.div>
+
+
+
+
         </SwiperSlide>
 
 
@@ -634,8 +644,6 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
 
 
       </Swiper >
-
-
 
     </header >
 
