@@ -311,7 +311,7 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
       <Swiper
         direction={'vertical'}
         slidesPerView={1}
-        spaceBetween={30}
+        spaceBetween={0}
         mousewheel={true}
         pagination={pagination}
         modules={[Mousewheel, Pagination]}

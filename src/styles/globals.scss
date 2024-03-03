@@ -183,8 +183,8 @@ backdrop-filter: blur(8px);
 @media screen and (max-width:992px) {
   padding: 16px !important;
   border-bottom: none !important;
-  background-color: transparent;
-
+  background: transparent;
+  backdrop-filter: blur(0);
   .navbar-brand{
     display: none;
   }
@@ -224,9 +224,13 @@ right: var(--swiper-pagination-right, auto) !important;
   backdrop-filter: blur(0);
   bottom: 0;
   padding: 0;
-  height: auto;
   gap:0 !important;
   justify-content: flex-start;
+
+
+  top: 50%;
+  transform: translate(3px, -18%);
+
 
 }
 

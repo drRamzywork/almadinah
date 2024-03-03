@@ -10,6 +10,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { FreeMode } from 'swiper/modules';
 
 
 const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords }) => {
@@ -55,6 +56,7 @@ const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords }) => {
 
       <HeaderSection parentName={title} />
       <section id='city_facilities' className={styles.city_facilities} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
+
         <div className="container">
           <div className={styles.sec_container}>
             <motion.div
@@ -66,6 +68,9 @@ const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords }) => {
                 breakpoints={breakpoints}
                 dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
                 className={styles.swiper_container}
+                FreeMode={true}
+                modules={[FreeMode,]}
+
               >
 
                 <SwiperSlide className={styles.swiper_slide_box}>

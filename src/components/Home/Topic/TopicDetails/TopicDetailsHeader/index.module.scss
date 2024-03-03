@@ -302,6 +302,7 @@ header.topic_details_header {
           margin-bottom: 16px;
           @media screen and (max-width: 992px) {
             align-self: flex-start;
+            margin-bottom: 24px;
           }
           h2 {
             color: #fff;
@@ -312,7 +313,8 @@ header.topic_details_header {
             line-height: 100%; /* 108px */
 
             @media screen and (max-width: 992px) {
-              font-size: 48px;
+              font-size: 35px;
+              margin-bottom: 0;
             }
           }
         }
@@ -324,6 +326,7 @@ header.topic_details_header {
           @media screen and (max-width: 992px) {
             padding-bottom: 0px;
             gap: 16px;
+            width: 100%;
             overflow: scroll;
           }
           .box {
@@ -452,6 +455,10 @@ header.topic_details_header {
             font-weight: 800;
             line-height: 150%;
             position: relative;
+
+            @media screen and (max-width: 992px) {
+              padding: 8px 48px;
+            }
             &:hover {
               // background: #fff;
               // color: #50a99a;
@@ -633,7 +640,8 @@ header.topic_details_header {
             max-width: 50%;
             align-self: center;
             @media screen and (max-width: 992px) {
-              max-width: 100%;
+              max-width: unset;
+              width: 80%;
             }
             p {
               color: #fff;

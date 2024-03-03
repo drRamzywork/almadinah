@@ -2,7 +2,7 @@ import HeaderSection from '@/components/Home/HeaderSection'
 import React from 'react'
 import styles from './index.module.scss'
 import Image from 'next/image'
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide, } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import Link from 'next/link'
@@ -10,6 +10,7 @@ import { motion } from 'framer-motion'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
+import { FreeMode } from 'swiper/modules';
 
 
 
@@ -67,6 +68,9 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
                 exit={{ opacity: 0 }}
                 transition={{ duration: 1 }} className={styles.filter_container}>
                 <Swiper
+                  FreeMode={true}
+                  modules={[FreeMode,]}
+
                   breakpoints={breakpoints}
                   dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
                   centeredSlides={false}
