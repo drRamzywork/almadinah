@@ -218,7 +218,7 @@ import 'swiper/css/scrollbar';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './index.module.scss';
 import { motion } from 'framer-motion';
-import { Mousewheel, Pagination, Scrollbar } from 'swiper/modules';
+import { Mousewheel, Pagination, Scrollbar, FreeMode } from 'swiper/modules';
 import { FaLocationDot } from "react-icons/fa6";
 import { Rings } from 'react-loader-spinner'
 import ArrowDown from '@/svgs/ArrowDown';
@@ -263,20 +263,6 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
       swiperRef.current.swiper.slideTo(1)
     }
   }
-  const pagination = {
-    clickable: true,
-    renderBullet: function (index, className) {
-      // Ensure stepsData[index] is valid and has a property `placeName`
-      return `
-      <span class="${className}">
-
-      <p>${index !== currentIndex ? index !== stepsData.length + 1 ? index : '' : ''}</p>
-        </span>
-        </div>
-
-        `;
-    },
-  };
 
 
 
@@ -299,15 +285,28 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
     setActiveImage(activeImage === imageUrl ? null : imageUrl);
   };
 
+
+
+  const pagination = {
+    clickable: true,
+
+    renderBullet: function (index, className) {
+      // ${placeNameStr ? `<div class='text'>${placeNameStr}</div>` : ''}
+
+      const placeNameStr = stepsData[index] && stepsData[index].placeName ? stepsData[index].placeName : '';
+      console.log(placeNameStr, "placeNameStr")
+      return `
+
+      <span class="${className}">
+        <p>${index !== currentIndex ? index !== stepsData.length - 1 ? index : '' : ''}</p>
+      </span >
+  `;
+    },
+  };
+
+
   return (
     <header className={styles.topic_details_header} id='topic_details_header'>
-
-
-
-
-
-
-
       <Swiper
         direction={'vertical'}
         slidesPerView={1}
@@ -396,8 +395,8 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
                       </div>
 
                       <p>
-                        {dataContentDetails.currentContent.tourHours <= 1 && (`${dataContentDetails.currentContent.tourHours} ${dataStaticWords.hour}`)}
-                        {dataContentDetails.currentContent.tourHours > 1 && (`${dataContentDetails.currentContent.tourHours} ${dataStaticWords.hours}`)}
+                        {dataContentDetails.currentContent.tourHours <= 1 && (`${dataContentDetails.currentContent.tourHours} ${dataStaticWords.hour} `)}
+                        {dataContentDetails.currentContent.tourHours > 1 && (`${dataContentDetails.currentContent.tourHours} ${dataStaticWords.hours} `)}
                       </p>
                     </div>
 
@@ -424,8 +423,8 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
                           slidesPerView={3.1}
                           spaceBetween={16}
                           mousewheel={true}
-                          modules={[Mousewheel,]} // Add Scrollbar to modules
-
+                          modules={[Mousewheel, FreeMode]} // Add Scrollbar to modules
+                          freeMode={true}
                           className={styles.swiper_container}
 
 
@@ -433,7 +432,7 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
                           {firstStep?.image?.split(',').map((imageUrl, index) => (
                             <SwiperSlide key={index} className={styles.swiper_slide_box}>
                               <div className={styles.img_container} onClick={() => toggleActive(imageUrl)}>
-                                <img src={imageUrl} alt={`Image ${index + 1}`} />
+                                <img src={imageUrl} alt={`Image ${index + 1} `} />
                               </div>
                             </SwiperSlide>
                           ))}
@@ -521,7 +520,7 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
 
                           <div className={styles.info_container}>
 
-                            <Link href={`/details/${step.linkContentId}`} className={styles.btn_container}>
+                            <Link href={`/ details / ${step.linkContentId} `} className={styles.btn_container}>
                               <p>{dataStaticWords.more}</p>
 
                               <div className={styles.arrow_container}>
@@ -570,9 +569,9 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
                           </div>
 
                           <p>
-                            {step.tourHours <= 1 && (`${step.tourHours} ${dataStaticWords.hour}`)}
-                            {step.tourHours > 1 && (`${step.tourHours} ${dataStaticWords.hours}`)}
-                            {step.totalMinutes && (`${step.totalMinutes} ${dataStaticWords.minute}`)}
+                            {step.tourHours <= 1 && (`${step.tourHours} ${dataStaticWords.hour} `)}
+                            {step.tourHours > 1 && (`${step.tourHours} ${dataStaticWords.hours} `)}
+                            {step.totalMinutes && (`${step.totalMinutes} ${dataStaticWords.minute} `)}
 
 
 
@@ -593,7 +592,7 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
                               // modules={[Mousewheel, Scrollbar]}
                               // scrollbar={true}
                               // className={styles.swiper_container}
-
+                              freeMode={true}
                               direction={'vertical'}
                               ref={wheelREf} // Make sure the ref name matches what you've defined
                               pagination={{
@@ -602,11 +601,11 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
                               slidesPerView={5}
                               spaceBetween={16}
                               mousewheel={true}
-                              modules={[Mousewheel, Scrollbar]} // Add Scrollbar to modules
+                              modules={[Mousewheel, FreeMode]}
                               scrollbar={{
-                                el: '.swiper-scrollbar', // This is a CSS selector for the scrollbar element
-                                draggable: true, // This allows dragging the scrollbar to scroll
-                                hide: false, // Set to true if you want the scrollbar to be hidden automatically
+                                el: '.swiper-scrollbar',
+                                draggable: true,
+                                hide: true,
                               }}
                               className={styles.swiper_container}
 
@@ -616,7 +615,7 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
                               {step?.image?.split(',').map((imageUrl, index) => (
                                 <SwiperSlide key={index} className={styles.swiper_slide_box}>
                                   <div className={styles.img_container} onClick={() => toggleActive(imageUrl)}>
-                                    <img src={imageUrl} alt={`Image ${index + 1}`} />
+                                    <img src={imageUrl} alt={`Image ${index + 1} `} />
                                   </div>
                                 </SwiperSlide>
                               ))}
