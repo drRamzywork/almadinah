@@ -173,13 +173,27 @@ a{
   width: 100%;
   right: 0;
   z-index: 1;
-
   padding: 24px 0px 24px 0px!important;
-
 
   border-bottom: 2px solid rgba(255, 255, 255, 0.30);
 background: rgba(250, 250, 250, 0.01);
 backdrop-filter: blur(8px);
+
+
+@media screen and (max-width:992px) {
+  padding: 16px !important;
+  border-bottom: none !important;
+  background-color: transparent;
+
+  .navbar-brand{
+    display: none;
+  }
+    
+  h1{
+    font-size: 20px !important;
+  }
+}
+
 
 }
 header#topic_details_header{
@@ -203,6 +217,19 @@ background: rgba(255, 255, 255, 0.01);
 backdrop-filter: blur(8px);
 right: var(--swiper-pagination-right, auto) !important;
 
+@media screen and (max-width:992px) {
+  border-left: 0;
+  padding-right: 12px !important;  
+  background: unset;
+  backdrop-filter: blur(0);
+  bottom: 0;
+  padding: 0;
+  height: auto;
+  gap:0 !important;
+  justify-content: flex-start;
+
+}
+
 
   }
 
@@ -219,6 +246,14 @@ right: var(--swiper-pagination-right, auto) !important;
     background: rgba(255, 255, 255, 0.30) !important;
     backdrop-filter: blur(4px) ;
     transition: all 0.3s ease-in-out;
+
+
+    @media screen and (max-width:992px) {
+  margin-bottom: 12px ;
+      
+    }
+
+
     p{
       margin-bottom: 0;
       margin: auto;

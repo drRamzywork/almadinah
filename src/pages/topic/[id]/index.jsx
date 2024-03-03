@@ -137,16 +137,13 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
 
             <div className={styles.boxes_container_mobile}>
               {dataMainTopic.map((topic, index) => (
-                <Link href={`/details/${topic.id}`}
+                <Link href={Number(router.query.id) === 2 ? `/topic-details/${topic.id}` : (Number(router.query.id) === 1 || 13 ? `/subdetails/${topic.id}` : `/details/${topic.id}`)}
                   className={styles.box} key={index}
                   style={{
                     width: `100%`,
                     height: `${getRandomWidth(144, 340)}px`,
                   }}>
                   <div className={styles.img_container}>
-
-                    {/* <Image src={topic.icon.includes(',') ? topic.icon.split(',')[0] : topic.icon} layout="fill" objectFit="cover"/> */}
-
 
                     <img src={topic.icon.includes(',') ? topic.icon.split(',')[0] : topic.icon} alt={`Image ${index}`} />
 

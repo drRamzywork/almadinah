@@ -17,7 +17,6 @@ const TopicDetails = ({ dataStaticWords,
     <>
       <Navbar cName={'absolute_nav'} dataDrobTopic={dataDrobTopic} />
       <TopicDetailsHeader dataContentDetails={dataContentDetails} dataStaticWords={dataStaticWords} />
-
     </>
   )
 }

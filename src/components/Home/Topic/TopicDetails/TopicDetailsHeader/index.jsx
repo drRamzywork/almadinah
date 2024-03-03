@@ -519,31 +519,43 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
 
 
 
-                          <Link href={`/details/${step.linkContentId}`} className={styles.btn_container}>
-                            <p>{dataStaticWords.more}</p>
+                          <div className={styles.info_container}>
 
-                            <div className={styles.arrow_container}>
-                              <IoIosArrowBack />
+                            <Link href={`/details/${step.linkContentId}`} className={styles.btn_container}>
+                              <p>{dataStaticWords.more}</p>
+
+                              <div className={styles.arrow_container}>
+                                <IoIosArrowBack />
+                              </div>
+                            </Link>
+
+
+                            <div className={styles.desc2}>
+
+                              <p>{step.name}
+                                الإنطلاق من منطقة مصليات العيد في الجهة الجنوبية
+                                من المسجد النبوي
+                              </p>
+
                             </div>
-                          </Link>
+
+                            <div className={styles.mouse_container}>
+                              <Mouse />
+                            </div>
+
+                            <button className={styles.btn_container}>
+                              <p>اسحب</p>
+                            </button>
 
 
-                          <div className={styles.desc2}>
-
-                            <p>{step.name}
-                              الإنطلاق من منطقة مصليات العيد في الجهة الجنوبية
-                              من المسجد النبوي
-                            </p>
-
+                            <span className={styles.arrow_container}>
+                              <ArrowDown />
+                            </span>
                           </div>
-
-                          <div className={styles.mouse_container}>
-                            <Mouse />
-                          </div>
-
-
 
                         </div>
+
+
 
 
                       </div>
