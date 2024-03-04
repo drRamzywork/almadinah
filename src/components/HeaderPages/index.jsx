@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowBack, IoIosClose } from "react-icons/io";
 import { useRouter } from 'next/router'
 import { motion } from 'framer-motion';
 import Link from 'next/link'
@@ -84,21 +84,7 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
                   </p>
 
 
-                  {showAudio &&
-                    <motion.div
-                      initial={{ opacity: 0, y: -100 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 1 }}
-                      className={styles.audio}>
 
-                      <audio controls src={dataContentDetailsGuide.sound}>
-                        Your browser does not support the audio element.
-                      </audio>
-
-                    </motion.div>
-
-                  }
                 </Link>
 
                 <Link href={'#'}
@@ -114,21 +100,6 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
 
                 </Link>
 
-                {showGuide &&
-                  <motion.div
-                    initial={{ opacity: 0, y: -100 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 1 }}
-                    className={styles.video}>
-
-                    <video controls src={dataContentDetailsGuide.tourGuide}>
-                      Your browser does not support the audio element.
-                    </video>
-
-                  </motion.div>
-
-                }
               </div>
 
 
@@ -138,6 +109,47 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
 
 
           </motion.div>
+
+          {showAudio &&
+            <motion.div
+              initial={{ opacity: 0, }}
+              animate={{ opacity: 1, }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1 }}
+              className={styles.audio}>
+
+              <audio controls src={dataContentDetailsGuide.sound}>
+                Your browser does not support the audio element.
+              </audio>
+
+              <div className={styles.close_icon} onClick={() => setShowAudio(false)}>
+                <IoIosClose />
+              </div>
+
+            </motion.div>
+
+          }
+
+
+          {showGuide &&
+            <motion.div
+              initial={{ opacity: 0, y: -100 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1 }}
+              className={styles.video}>
+
+              <video controls src={dataContentDetailsGuide.tourGuide}>
+                Your browser does not support the audio element.
+              </video>
+
+
+              <div className={styles.close_icon} onClick={() => setShowGuide(false)}>
+                <IoIosClose />
+              </div>
+            </motion.div>
+
+          }
 
         </div>
       </div>

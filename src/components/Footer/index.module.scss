@@ -6,7 +6,7 @@ footer.footer {
   margin-top: 24px;
 
   @media screen and (max-width: 450px) {
-    border-radius: 32px 24px 64px 24px;
+    border-radius: 32px 24px 0px 0px;
     padding-top: 34px;
     padding-bottom: 34px;
   }
@@ -23,7 +23,9 @@ footer.footer {
       }
       img {
         object-fit: contain;
+
         @media screen and (max-width: 992px) {
+          width: 62%;
           // height: 50px;
           // width: 300px;
         }

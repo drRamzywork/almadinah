@@ -5,17 +5,16 @@ import 'swiper/css/scrollbar';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from '../../TopicDetails/TopicDetailsHeader/index.module.scss';
 import { motion } from 'framer-motion';
-import { Mousewheel, Pagination, Scrollbar } from 'swiper/modules';
-import { Alarm } from '@/svgs/Alarm';
-import Mouse from '@/svgs/Mouse';
+import { Mousewheel, Pagination, } from 'swiper/modules';
 import Link from 'next/link';
 import { IoIosArrowBack } from 'react-icons/io';
 import { useRouter } from 'next/router';
 import Microphone from '@/svgs/Microphone';
 import Gallery from '@/svgs/Gallery';
 import Threehundred from '@/svgs/Threehundred';
+import { IoIosClose } from 'react-icons/io';
 
-const Header = ({ dataContentDetails, dataStaticWords, dataContentDetailsGuide }) => {
+const Header = ({ dataContentDetails, dataStaticWords, }) => {
   const router = useRouter();
   const currentContent = dataContentDetails.currentContent;
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -87,19 +86,7 @@ const Header = ({ dataContentDetails, dataStaticWords, dataContentDetailsGuide }
                         المرشد الافتراضي
                       </p>
 
-                      {showGuide &&
-                        <motion.div
-                          initial={{ opacity: 0, x: 100 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 1 }}
-                          className={styles.video}>
-                          <video controls src={details.tourGuide}>
-                            Your browser does not support the audio element.
-                          </video>
 
-                        </motion.div>
-                      }
 
                     </Link>
                   </div>
@@ -111,20 +98,7 @@ const Header = ({ dataContentDetails, dataStaticWords, dataContentDetailsGuide }
                         التسجيل الصوتي
                       </p>
 
-                      {showAudio &&
-                        <motion.div
-                          initial={{ opacity: 0, x: -100 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 1 }}
-                          className={styles.audio}>
 
-                          <audio controls src={details?.sound}>
-                            Your browser does not support the audio element.
-                          </audio>
-
-                        </motion.div>
-                      }
 
                     </Link>
                   </div>
@@ -144,8 +118,42 @@ const Header = ({ dataContentDetails, dataStaticWords, dataContentDetailsGuide }
                   </div>
                 </div>
 
+                {showAudio &&
+                  <motion.div
+                    initial={{ opacity: 0, }}
+                    animate={{ opacity: 1, }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className={styles.audio}>
+
+                    <audio controls src={details?.sound}>
+                      Your browser does not support the audio element.
+                    </audio>
+
+                    <div className={styles.close_icon} onClick={() => setShowAudio(false)}>
+                      <IoIosClose />
+                    </div>
+
+                  </motion.div>
+                }
 
 
+
+                {showGuide &&
+                  <motion.div
+                    initial={{ opacity: 0, y: 100 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 1 }}
+                    className={styles.video}>
+                    <video controls src={details.tourGuide}>
+                      Your browser does not support the audio element.
+                    </video>
+                    <div className={styles.close_icon} onClick={() => setShowGuide(false)}>
+                      <IoIosClose />
+                    </div>
+                  </motion.div>
+                }
 
 
                 <div className={styles.title}>
@@ -186,7 +194,7 @@ const Header = ({ dataContentDetails, dataStaticWords, dataContentDetailsGuide }
                         <div className={styles.icon_container}>
                           <img src={f.icon} alt={f.name} />
                         </div>
-                        <p>{f.name}</p>
+                        {/* <p>{f.name}</p> */}
                       </div>
                     )
                   }
