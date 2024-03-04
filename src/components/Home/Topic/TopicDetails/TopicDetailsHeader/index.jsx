@@ -296,11 +296,10 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
       const placeNameStr = stepsData[index] && stepsData[index].placeName ? stepsData[index].placeName : '';
       console.log(placeNameStr, "placeNameStr")
       return `
-
       <span class="${className}">
         <p>${index !== currentIndex ? index !== stepsData.length - 1 ? index : '' : ''}</p>
       </span >
-  `;
+      `;
     },
   };
 

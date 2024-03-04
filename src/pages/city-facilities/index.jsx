@@ -23,30 +23,31 @@ const CityFacilities = () => {
                 breakpoints={{
                   300: {
                     slidesPerView: 1,
-                    spaceBetween: 0,
                   },
                   400: {
                     slidesPerView: 2,
-                    spaceBetween: 0,
                   },
                   414: {
                     slidesPerView: 2,
-                    spaceBetween: 0,
                   },
                   640: {
                     slidesPerView: 2,
-                    spaceBetween: 0,
                   },
                   768: {
                     slidesPerView: 2,
-                    spaceBetween: 0,
                   },
                   1024: {
                     slidesPerView: 3,
-                    spaceBetween: 0,
                   },
+
+
                 }}
-                dir={`rtl`}
+
+
+
+
+
+                dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}
                 className={styles.swiper_container}
               >
                 <SwiperSlide className={styles.swiper_slide_box}>

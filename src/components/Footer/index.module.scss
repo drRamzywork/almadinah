@@ -10,6 +10,7 @@ footer.footer {
     padding-top: 34px;
     padding-bottom: 34px;
   }
+
   .sec_container {
     .logo {
       display: flex;
@@ -67,6 +68,12 @@ footer.footer {
       color: #9595a7;
     }
   }
+}
+
+footer.home {
+  margin-top: -45px !important;
+  position: relative;
+  z-index: 999;
 }
 
 .top {

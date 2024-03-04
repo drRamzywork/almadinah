@@ -1,7 +1,7 @@
 header.header,
 header#inner_header {
   width: 100%;
-  height: 798px;
+  height: 612px;
   position: relative;
   overflow: hidden;
   z-index: 999;
@@ -111,7 +111,8 @@ header#inner_header {
   }
 
   .banner_container {
-    margin-top: 104px;
+    // margin-top: 104px;
+    margin-top: 12px;
     height: 100%;
     width: 100%;
     transition: "background-color 1s ease";
@@ -127,6 +128,12 @@ header#inner_header {
     .right_side {
       position: relative;
       z-index: 2;
+
+      @media screen and (min-width: 992px) {
+        margin-top: auto;
+        transform: none;
+        margin-bottom: 25%;
+      }
 
       .cloud {
         position: absolute;
@@ -158,7 +165,8 @@ header#inner_header {
     .left_side {
       // overflow: hidden;
       // height: 100%;
-      margin-bottom: 72px;
+      margin-bottom: 90px;
+      // margin-bottom: auto;
       position: relative;
       align-self: flex-end;
 
@@ -719,7 +727,7 @@ header#inner_header {
 
 // +++++++++++++ LTR +++++++++++++
 
-.header#inner_header,
+.header#inner_header[dir="ltr"],
 header.header[dir="ltr"] {
   .blur_img {
     right: unset;
@@ -748,8 +756,10 @@ header.header[dir="ltr"] {
   .cloud {
     position: absolute;
     bottom: -161px;
-    left: 0;
+    left: unset;
     z-index: 4;
+    right: 0;
+    opacity: 0.5;
 
     img {
       width: 831px;
@@ -789,7 +799,7 @@ header.header[dir="ltr"] {
   }
 
   .banner_container {
-    margin-top: 104px;
+    margin-top: 12px;
     height: 100%;
     width: 100%;
     transition: "background-color 1s ease";
@@ -843,7 +853,6 @@ header.header[dir="ltr"] {
     }
 
     .left_side {
-      margin-bottom: 72px;
       align-self: flex-end;
 
       @media screen and (max-width: 992px) {
@@ -861,7 +870,8 @@ header.header[dir="ltr"] {
         content: "";
         position: absolute;
         bottom: -20%;
-        right: 0;
+        right: unset;
+        left: 0;
         width: 369px;
         height: 622px;
         border-radius: 200px 200px 0px 0px;
@@ -910,6 +920,7 @@ header.header[dir="ltr"] {
           object-fit: cover;
           border-radius: 0px 0px 98.61px 98.61px;
           opacity: 0.9;
+          transform: scaleX(-1);
 
           @media screen and (max-width: 992px) {
             // width: 350px;
@@ -919,7 +930,6 @@ header.header[dir="ltr"] {
             width: 374px;
             height: 218px;
             object-fit: contain;
-            transform: scaleX(-1);
           }
         }
 

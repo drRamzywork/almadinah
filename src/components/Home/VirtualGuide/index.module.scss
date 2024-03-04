@@ -3,7 +3,7 @@ section.virtual_guide {
   margin-top: 128px;
   padding-bottom: 128px;
   @media screen and (max-width: 992px) {
-    margin-top: 60px;
+    margin-top: -10px;
     padding-bottom: 0px;
   }
 
@@ -325,7 +325,7 @@ section.virtual_guide[dir="ltr"] {
   margin-top: 128px;
   padding-bottom: 128px;
   @media screen and (max-width: 992px) {
-    margin-top: 60px;
+    margin-top: -24px;
     padding-bottom: 0px;
   }
 
@@ -333,7 +333,6 @@ section.virtual_guide[dir="ltr"] {
     right: 0;
     left: unset;
     bottom: 138px;
-    background-color: red;
     z-index: -1;
     img {
       object-fit: contain;
@@ -423,6 +422,7 @@ section.virtual_guide[dir="ltr"] {
         }
 
         h3 {
+          text-align: left;
         }
       }
 
@@ -585,8 +585,8 @@ section.virtual_guide[dir="ltr"] {
 
           position: absolute;
           top: 26px;
-          left: 166px;
-          border-radius: 48px 48px 36px 68px;
+          left: 167px;
+          border-radius: 22px 18px 51px 58px;
           height: 74%;
           width: 51%;
           object-fit: cover;

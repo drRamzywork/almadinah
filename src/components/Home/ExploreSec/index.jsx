@@ -105,7 +105,7 @@ const ExploreSec = ({ topics,
         exit={{ opacity: 0 }}
         transition={{ duration: 1 }} className="container">
         <div className={`${styles.sec_title}  sec_title`}>
-          <h3>استكشف المدينة المنورة</h3>
+          <h3>{dataStaticWords.discover} {dataStaticWords.siteName}</h3>
 
           <div className={styles.icon_container}>
             <Image width={208.76} height={209.51} src='/assets/svgs/Safe_Icon.svg' />
@@ -121,8 +121,6 @@ const ExploreSec = ({ topics,
         transition={{ duration: 1 }}
         className={styles.boxes_container}>
         {orderedCombinedTopics?.map((box, index) => (
-
-
           <>
             <motion.div
               key={box?.id}
@@ -258,92 +256,96 @@ const ExploreSec = ({ topics,
 
 
 
-      <motion.div
-        initial={{ opacity: 0, x: -100 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
-        id={styles.slider_container}>
+      <div className="container">
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          id={styles.slider_container}>
 
-        <Swiper
-          slidesPerView={1.3}
-          spaceBetween={16}
-          pagination={{
-            clickable: true,
-          }}
-          className={styles.swiper_container}
-        >
-          {orderedCombinedTopics?.map((box, index) => (
-            <SwiperSlide className={styles.slider} key={index}>
-              <div className={styles.swiper_slide_box}>
-                <div className={styles.background_image}>
-                  <img width={208.76} height={209.51} src={box?.imagePath} />
-                </div>
+          <Swiper
+            slidesPerView={1.3}
+            spaceBetween={16}
+            pagination={{
+              clickable: true,
+            }}
+            className={styles.swiper_container}
+            centeredSlides={false}
+            dir={`${router.locale === 'ar' ? 'rlt' : 'ltr'}`}
+          >
+            {orderedCombinedTopics?.map((box, index) => (
+              <SwiperSlide className={styles.slider} key={index}>
+                <div className={styles.swiper_slide_box}>
+                  <div className={styles.background_image}>
+                    <img width={208.76} height={209.51} src={box?.imagePath} />
+                  </div>
 
-                <Link href={`/topic/${box.id}`} className={styles.arrow_container}>
-                  <IoIosArrowBack />
-                </Link>
+                  <Link href={`/topic/${box.id}`} className={styles.arrow_container}>
+                    <IoIosArrowBack />
+                  </Link>
 
-                <Link href={`/topic/${box.id}`} className={styles.topic_icon}>
-                  <motion.img
-                    initial={{ opacity: 0, }}
-                    animate={{ opacity: 1, }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
-                    width={208.76} height={209.51} src={box?.iconSlide} />
-
-                </Link>
-
-                <Link href={`/topic/${box.id}`} className={styles.title}>
-                  <h5>{box?.name}</h5>
-                </Link>
-
-
-                <Link href={`/topic/${box.id}`} className={styles.desc}>
-                  <p>{box?.translatedDesc}</p>
-                  {console.log(box, "subTopics")}
-                </Link>
-                {box?.subTopics?.map((subTopic, idx) =>
-                  <Link href={`${subTopic.parentId === 2 ? `/topic-details/${subTopic.id}` : `/subdetails/${subTopic.id}`}`} key={idx} className={styles.small_box}>
-                    {/* {console.log(, "subTopic")} */}
-                    <div className={styles.img_container}>
-                      <img src={subTopic.icon.includes(',') ? subTopic.icon.split(',')[0] : subTopic.icon} alt={subTopic.name} />
-                    </div>
-                    <div className={styles.text_container}>
-                      <div className={styles.title}>
-                        <p >
-                          {subTopic.name}
-                        </p>
-
-                      </div>
-                      {subTopic.tourHours !== null &&
-                        <div className={styles.horus_container}>
-                          <div className={styles.clock}>
-                            <Alarm />
-                          </div>
-                          <p>h{subTopic.tourHours}</p>
-                        </div>
-
-                      }
-
-                    </div>
-
-
-                    <div className={styles.arrow_containerr}>
-                      <ArrowLeft />
-                    </div>
-
+                  <Link href={`/topic/${box.id}`} className={styles.topic_icon}>
+                    <motion.img
+                      initial={{ opacity: 0, }}
+                      animate={{ opacity: 1, }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.5 }}
+                      width={208.76} height={209.51} src={box?.iconSlide} />
 
                   </Link>
-                )}
-              </div>
 
-            </SwiperSlide>
+                  <Link href={`/topic/${box.id}`} className={styles.title}>
+                    <h5>{box?.name}</h5>
+                  </Link>
 
-          ))
-          }
-        </Swiper>
-      </motion.div>
+
+                  <Link href={`/topic/${box.id}`} className={styles.desc}>
+                    <p>{box?.translatedDesc}</p>
+                    {console.log(box, "subTopics")}
+                  </Link>
+                  {box?.subTopics?.map((subTopic, idx) =>
+                    <Link href={`${subTopic.parentId === 2 ? `/topic-details/${subTopic.id}` : `/subdetails/${subTopic.id}`}`} key={idx} className={styles.small_box}>
+                      {/* {console.log(, "subTopic")} */}
+                      <div className={styles.img_container}>
+                        <img src={subTopic.icon.includes(',') ? subTopic.icon.split(',')[0] : subTopic.icon} alt={subTopic.name} />
+                      </div>
+                      <div className={styles.text_container}>
+                        <div className={styles.title}>
+                          <p >
+                            {subTopic.name}
+                          </p>
+
+                        </div>
+                        {subTopic.tourHours !== null &&
+                          <div className={styles.horus_container}>
+                            <div className={styles.clock}>
+                              <Alarm />
+                            </div>
+                            <p>h{subTopic.tourHours}</p>
+                          </div>
+
+                        }
+
+                      </div>
+
+
+                      <div className={styles.arrow_containerr}>
+                        <ArrowLeft />
+                      </div>
+
+
+                    </Link>
+                  )}
+                </div>
+
+              </SwiperSlide>
+
+            ))
+            }
+          </Swiper>
+        </motion.div>
+      </div>
 
 
     </section >

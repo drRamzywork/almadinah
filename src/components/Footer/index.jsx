@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 const Footer = () => {
   const router = useRouter();
   return (
-    <footer id='footer' className={`${styles.footer} ${router.pathname.includes('/subdetails/') && styles.top} `}>
+    <footer id='footer' className={`${styles.footer} ${router.pathname === '/' ? styles.home : ''} ${router.pathname.includes('/subdetails/') && styles.top} `}>
       <div className="container">
         <div className={styles.sec_container}>
 
@@ -18,7 +18,7 @@ const Footer = () => {
           <hr />
 
           <div className="d-flex justify-content-between">
-            <div className={`${styles.contact} d-flex`}>
+            <div className={`${styles.contact} d - flex`}>
               <div className={styles.icon_container}>
                 <Image src='/assets/svgs/contact.svg' width={20} height={20} />
               </div>

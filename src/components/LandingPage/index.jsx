@@ -24,7 +24,7 @@ const LandingPage = ({ topics,
 
   return (
     <>
-      <HeaderSection dataAllLangs={dataAllLangs} topics={topics} />
+      <HeaderSection dataAllLangs={dataAllLangs} topics={topics} dataStaticWords={dataStaticWords} />
       <ExploreSec topics={topics}
         dataStaticWords={dataStaticWords}
         dataDrobTopic={dataDrobTopic}

@@ -21,29 +21,25 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
   const getRandomWidth = (min, max) => Math.floor(Math.random() * (max - min + 40)) + min;
   const breakpoints = {
     300: {
-      slidesPerView: 2.2,
       spaceBetween: 16,
     },
     400: {
-      slidesPerView: 2.2,
       spaceBetween: 16,
     },
     607: {
-      slidesPerView: 2.2,
       spaceBetween: 16,
     },
     700: {
-      slidesPerView: 2.2,
       spaceBetween: 16,
     },
     1200: {
-      slidesPerView: 5,
       spaceBetween: 24,
     },
     1300: {
-      slidesPerView: 5,
       spaceBetween: 24,
     },
+
+
 
   }
 
@@ -74,6 +70,8 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
                   breakpoints={breakpoints}
                   dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
                   centeredSlides={false}
+                  slidesPerView={'auto'}
+
                   className={styles.swiper_container}
                 >
 

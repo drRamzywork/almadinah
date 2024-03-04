@@ -3,6 +3,11 @@ section.Share_Moment_Sec {
   background-color: #f0f3f2;
   z-index: 22;
   padding: 65px;
+
+  @media screen and (max-width: 992px) {
+    padding: 0;
+  }
+
   .nosie {
     position: absolute;
     top: 0;
@@ -24,6 +29,7 @@ section.Share_Moment_Sec {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
     .sec_title {
       position: relative;
 
@@ -81,12 +87,11 @@ section.Share_Moment_Sec {
       align-items: center;
       justify-content: center;
       margin-top: 48px;
+
       .box {
         margin: 24px;
         overflow: hidden;
         border-radius: 24px;
-        &:last-child {
-        }
 
         img {
         }
@@ -216,7 +221,7 @@ section.Share_Moment_Sec[dir="ltr"] {
   position: relative;
   background-color: #f0f3f2;
   z-index: 22;
-  padding: 65px;
+
   .nosie {
     position: absolute;
     top: 0;

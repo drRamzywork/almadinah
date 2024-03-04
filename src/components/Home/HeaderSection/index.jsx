@@ -20,7 +20,7 @@ const images =
 
 
 
-const HeaderSection = ({ parentName, topics, dataAllLangs, }) => {
+const HeaderSection = ({ parentName, topics, dataAllLangs, dataStaticWords }) => {
   const router = useRouter()
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -88,7 +88,7 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, }) => {
                     <h2>
                       {router.pathname === '/' ?
 
-                        "المدينة المنورة"
+                        dataStaticWords.siteName
                         :
                         parentName && parentName
 
