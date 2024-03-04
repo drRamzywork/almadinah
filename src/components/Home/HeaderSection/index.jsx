@@ -81,7 +81,7 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, dataStaticWords }) =>
                   exit={{ opacity: 0 }}
                   transition={{ duration: 1 }}
 
-                  className={styles.right_side}>
+                  className={`${styles.right_side} ${router.pathname !== '/' ? styles.right_side2 : ''}`}>
 
 
                   <div className={styles.main_title}>

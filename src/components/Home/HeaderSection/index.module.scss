@@ -130,9 +130,11 @@ header#inner_header {
       z-index: 2;
 
       @media screen and (min-width: 992px) {
-        margin-top: auto;
-        transform: none;
-        margin-bottom: 25%;
+        .right_side2 {
+          margin-top: auto;
+          transform: none;
+          margin-bottom: 25%;
+        }
       }
 
       .cloud {
