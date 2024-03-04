@@ -64,7 +64,7 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic 
         </Link>
 
         {router.pathname.includes('/topic-details') || router.pathname.includes('/subdetails') ?
-          <>{console.log(contentID, "contentID")}
+          <>
             <Link href={`${contentID !== undefined ? `/topic/${contentID?.parentId}` : `/topic/${contentID2.parentId}`}`} className={styles.main_title}>
               <h1>{contentID?.parentName} {parentName}</h1>
             </Link>

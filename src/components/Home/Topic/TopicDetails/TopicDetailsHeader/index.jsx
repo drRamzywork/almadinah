@@ -519,7 +519,7 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
 
                           <div className={styles.info_container}>
 
-                            <Link href={`/ details / ${step.linkContentId} `} className={styles.btn_container}>
+                            <Link href={`/details/${step.linkContentId} `} className={styles.btn_container}>
                               <p>{dataStaticWords.more}</p>
 
                               <div className={styles.arrow_container}>
