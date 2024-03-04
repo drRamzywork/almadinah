@@ -22,7 +22,7 @@ const fs = require("fs");
 const path = require("path");
 
 const localesFilePath = path.resolve("./public/locales/allLanguages.json");
-let locales = ["en", "ar"]; // Default locales in case the file read fails
+let locales = ["ar"]; // Default locales in case the file read fails
 
 try {
   const localesFile = fs.readFileSync(localesFilePath, "utf-8");
