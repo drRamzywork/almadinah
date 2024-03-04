@@ -63,9 +63,11 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
             exit={{ opacity: 0 }}
             transition={{ duration: 1 }}
             className={styles.right_side}>
-            <div className={styles.main_title}>
+            <div className={styles.main_title2}>
+              {categoryName &&
 
-              <p>{categoryName}</p>
+                <p>{categoryName}</p>
+              }
 
               <h2>
                 {parentName && parentName}

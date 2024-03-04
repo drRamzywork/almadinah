@@ -98,6 +98,8 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, dataStaticWords }) =>
                   </div>
 
 
+
+
                 </motion.div>
 
                 {router.pathname !== '/details/[id]' &&
