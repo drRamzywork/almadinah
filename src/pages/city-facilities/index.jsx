@@ -6,8 +6,10 @@ import PalmTree from '@/svgs/PalmTree'
 import Calendar from '@/svgs/Calendar'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import { useRouter } from 'next/router'
 
 const CityFacilities = () => {
+  const router = useRouter();
   const getRandomWidth = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 
