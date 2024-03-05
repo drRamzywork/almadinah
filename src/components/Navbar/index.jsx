@@ -68,7 +68,7 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic 
             <Link href={`${contentID !== undefined ? `/topic/${contentID?.parentId}` : `/topic/${contentID2.parentId}`}`} className={styles.main_title}>
               <h1>{contentID?.parentName} {parentName}</h1>
             </Link>
-            <Link href={`/topic/${contentID?.parentId}`} className={styles.close_icon} >
+            <Link href={`${contentID !== undefined ? `/topic/${contentID?.parentId}` : `/topic/${contentID2.parentId}`}`} className={styles.close_icon} >
               <IoIosClose />
             </Link>
           </>
