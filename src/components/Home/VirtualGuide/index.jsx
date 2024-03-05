@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 
 // import required modules
 
-const VirtualGuide = ({ guidData }) => {
+const VirtualGuide = ({ guidData, dataStaticWords }) => {
   const router = useRouter();
   const [currentVideoSrc, setCurrentVideoSrc] = useState("https://almadinah.io/Areas/07122023501009265.mp4");
   const [activeVideoId, setActiveVideoId] = useState(null);
@@ -70,7 +70,7 @@ const VirtualGuide = ({ guidData }) => {
             <div className={styles.topics_container}>
               <div className={styles.shadow} />
               <div className={styles.guide}>
-                <p>مرشدك الافتراضي</p>
+                <p>{dataStaticWords.guideVirtual}</p>
               </div>
               <div className={`${styles.sec_title} sec_title`}>
                 <h3>ماذا تريد أن تعرف عنه؟</h3>
@@ -187,7 +187,7 @@ const VirtualGuide = ({ guidData }) => {
               </div>
 
               <div className={`${styles.sec_title} sec_title`}>
-                <p>مرشدك الافتراضي</p>
+                <p>{dataStaticWords.guideVirtual}</p>
                 <h3>ماذا تريد أن تعرف عنه؟</h3>
               </div>
 

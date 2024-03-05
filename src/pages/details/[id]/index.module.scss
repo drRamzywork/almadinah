@@ -61,6 +61,7 @@ section.details {
           margin-right: 72px;
           @media screen and (max-width: 992px) {
             margin-right: 32px;
+            margin-top: 24px;
           }
         }
         .icon_container {
@@ -97,6 +98,8 @@ section.details {
         padding-top: 34px;
         margin-bottom: 34px;
         width: 100%;
+
+        padding-top: 0;
       }
 
       h4 {

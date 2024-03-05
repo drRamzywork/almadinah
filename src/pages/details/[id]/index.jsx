@@ -61,7 +61,7 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
                     <div className={styles.icon_container}>
                       <img src={f.icon} alt={f.name} />
                     </div>
-                    <p>{f.name}</p>
+                    {/* <p>{f.name}</p> */}
                   </div>
                 )
 

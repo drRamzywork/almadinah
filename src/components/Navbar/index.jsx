@@ -6,9 +6,44 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { IoIosClose } from 'react-icons/io';
 import { motion } from 'framer-motion';
+import { i18n } from 'next-i18next';
+import { parseCookies, setCookie, destroyCookie } from 'nookies'
 
 const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic }) => {
   const router = useRouter();
+
+  // User action setting language to the cookies
+  const changeLanguage = (lng) => {
+    // i18n.changeLanguage(language);
+    // const date = new Date();
+    // date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000)); // Set cookie to expire in 1 year
+    // const expires = "; expires=" + date.toUTCString();
+    // document.cookie = `NEXT_LOCALE=${language}; path=/; expires=${expires}; SameSite=Lax`; // Update your cookie setting line
+    localStorage?.setItem('NEXT_LOCALE', lng);
+    // sessionStorage.setItem('NEXT_LOCALE', lng);
+  };
+
+
+
+
+
+  function handleClick(lng) {
+    // Simply omit context parameter.
+    // Parse
+
+    // Set
+
+
+    setCookie(null, 'NEXT_LOCALE', lng.id, {
+      maxAge: 30 * 24 * 60 * 60,
+      path: '/',
+    })
+
+    // Destroy
+    // destroyCookie(null, 'cookieName')
+  }
+
+
   const { asPath, locale } = router;
 
   const currentLangData = dataAllLangs?.find(lang => lang.shortCut === router.locale);
@@ -118,7 +153,9 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic 
                   {dataAllLangs?.map((language) => {
                     if (router.locale !== language.shortCut) {
                       return (
-                        <a href={buildLocaleSwitchUrl(language.shortCut)} key={language.id} className={`${styles.link}`}>
+                        <a
+                          href={buildLocaleSwitchUrl(language.shortCut)}
+                          key={language.id} className={`${styles.link}`} onClick={() => handleClick(language)}>
 
 
                           <p >

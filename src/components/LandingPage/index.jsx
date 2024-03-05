@@ -32,7 +32,7 @@ const LandingPage = ({ topics,
         dataFacilitiesTopic={dataFacilitiesTopic}
       />
       <Map />
-      <VirtualGuide guidData={guidData} />
+      <VirtualGuide guidData={guidData} dataStaticWords={dataStaticWords} />
       <Industries
         foods={foods}
         industries={industries}
