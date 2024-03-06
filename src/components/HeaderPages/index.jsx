@@ -20,14 +20,18 @@ import Navbar from '../Navbar';
 
 
 
-const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAllLangs, categoryName, parentName }) => {
+const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAllLangs, categoryName, parentName, dir }) => {
   const images1 = icon?.includes(',') ? icon.split(',') : [icon];
   const router = useRouter();
   const [showAudio, setShowAudio] = useState(false)
   const [showGuide, setShowGuide] = useState(false)
+
   return (
 
-    <header className={'header_details'} id={styles.inner_header} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
+    <header className={'header_details'} id={styles.inner_header}
+
+      dir={dir}
+    >
       <Navbar dataAllLangs={dataAllLangs} />
       <div className={styles.details_image}>
         <Swiper

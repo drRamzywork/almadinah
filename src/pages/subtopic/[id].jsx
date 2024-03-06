@@ -13,7 +13,7 @@ import { useRouter } from 'next/router'
 import { FreeMode } from 'swiper/modules';
 
 
-const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords }) => {
+const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords, dir }) => {
   const router = useRouter();
   const getRandomWidth = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
   const query = router.query.id
@@ -55,7 +55,7 @@ const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords }) => {
       </Head>
 
       <HeaderSection parentName={title} />
-      <section id='city_facilities' className={styles.city_facilities} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
+      <section id='city_facilities' className={styles.city_facilities} dir={dir}>
 
         <div className="container">
           <div className={styles.sec_container}>
@@ -66,7 +66,7 @@ const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords }) => {
               transition={{ duration: 1 }} className={styles.filter_container}>
               <Swiper
                 breakpoints={breakpoints}
-                dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
+                dir={dir}
                 className={styles.swiper_container}
                 FreeMode={true}
                 modules={[FreeMode,]}

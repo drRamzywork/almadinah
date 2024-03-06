@@ -6,7 +6,7 @@ import HederPages from '@/components/HeaderPages'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentDetailsGuide }) => {
+const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentDetailsGuide, dir }) => {
   const icon = dataContentDetails.currentContent.icon;
   const features = dataContentDetails.currentContent.relatedFeatures;
   const router = useRouter();
@@ -36,7 +36,7 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
         <meta name="twitter:image" content="/assets/images/dark_logo.png" />
       </Head>
 
-      <HederPages dataContentDetailsGuide={dataContentDetailsGuide.currentContent} dataContentDetails={dataContentDetails.currentContent} dataAllLangs={dataAllLangs} icon={icon} parentName={dataContentDetails.
+      <HederPages dir={dir} dataContentDetailsGuide={dataContentDetailsGuide.currentContent} dataContentDetails={dataContentDetails.currentContent} dataAllLangs={dataAllLangs} icon={icon} parentName={dataContentDetails.
         currentContent.name} categoryName={dataMainTopic[0]?.parentName} />
 
       <section id='details' className={styles.details}>
@@ -145,15 +145,17 @@ export async function getServerSideProps({ params, locale }) {
   const dataMainTopic = await responseMainTopic.json();
 
 
+  const currentLanguage = languages.find((lang) => lang.shortCut === locale);
+  const dir = currentLanguage?.isRtl ? "rtl" : "ltr";
 
-  // dataContentDetails.currentContent.topicIdFk
   return {
     props: {
       dataStaticWords,
       dataMainTopic,
       dataAllLangs,
       dataContentDetails,
-      dataContentDetailsGuide
+      dataContentDetailsGuide,
+      dir
     },
   };
 }

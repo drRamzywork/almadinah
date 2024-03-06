@@ -46,7 +46,7 @@ const IBMPlexSans = localFont({
 });
 
 
-export default function Layout({ children }) {
+export default function Layout({ children, }) {
   const router = useRouter();
   const combinedStyles = {
     ...IBMPlexSans.style,
@@ -55,18 +55,13 @@ export default function Layout({ children }) {
 
   return (
     <>
-      {/* {router.pathname !== '/search' &&
-        <Navbar />
-      } */}
-      <main style={combinedStyles} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} className={styles.main}>
+      <main style={combinedStyles} dir={router.locale === 'ar' || 'ur' ? 'rtl' : 'ltr'} className={styles.main}>
         {children}
       </main >
 
       {!router.pathname.includes('/topic-details/[id]') &&
         <Footer />
-
       }
-
     </>
   )
 }

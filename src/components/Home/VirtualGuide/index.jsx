@@ -5,11 +5,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 
 // import required modules
 
-const VirtualGuide = ({ guidData, dataStaticWords, }) => {
+const VirtualGuide = ({ guidData, dataStaticWords, dir }) => {
   const router = useRouter();
   const [currentVideoSrc, setCurrentVideoSrc] = useState("https://almadinah.io/Areas/07122023501009265.mp4");
   const [activeVideoId, setActiveVideoId] = useState(null);
@@ -59,7 +60,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, }) => {
 
   return (
     <>
-      <section id='virtual_guide' className={`${styles.virtual_guide} ${router.pathname.includes('/virtual-guide') ? styles.virtualPage : ''}`} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
+      <section id='virtual_guide' className={`${styles.virtual_guide} ${router.pathname.includes('/virtual-guide') ? styles.virtualPage : ''}`} dir={dir} >
         <div className={styles.shape}>
           <Image src='/assets/images/shape_BG.png' width={868} height={463} />
         </div>
@@ -72,7 +73,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, }) => {
               <div className={styles.guide}>
                 <p>{dataStaticWords.guideVirtual}</p>
               </div>
-              <div className={`${styles.sec_title} sec_title`}>
+              <Link href={`/virtual-guide`} className={`${styles.sec_title} sec_title`}>
 
                 {router.pathname.includes('/virtual-guide')
 
@@ -82,7 +83,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, }) => {
                   <h3>ماذا تريد أن تعرف عنه؟</h3>
 
                 }
-              </div>
+              </Link>
 
               <div id="vertical_swiper">
                 <div className={styles.boxes_container}>
@@ -143,7 +144,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, }) => {
                   pagination={{
                     clickable: true,
                   }}
-                  dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
+                  dir={dir}
                   className={styles.swiper}
                 >
                   {
@@ -194,10 +195,10 @@ const VirtualGuide = ({ guidData, dataStaticWords, }) => {
                 </video>
               </div>
 
-              <div className={`${styles.sec_title} sec_title`}>
+              <Link href={`/virtual-guide`} className={`${styles.sec_title} sec_title`}>
                 <p>{dataStaticWords.guideVirtual}</p>
-                <h3>ماذا تريد أن تعرف عنه؟</h3>
-              </div>
+                <h3>ماذا تريد أن تعرف </h3>
+              </Link>
 
             </div>
 

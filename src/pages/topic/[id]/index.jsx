@@ -16,7 +16,7 @@ import { FreeMode } from 'swiper/modules';
 
 
 
-const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, dataAllLangs }) => {
+const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, dataAllLangs, dir }) => {
   const router = useRouter();
   const getRandomWidth = (min, max) => Math.floor(Math.random() * (max - min + 40)) + min;
   const breakpoints = {
@@ -54,7 +54,7 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
 
       <HeaderSection parentName={dataMainTopic[0]?.parentName} dataAllLangs={dataAllLangs} />
 
-      <section id='city_facilities' className={styles.city_facilities} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
+      <section id='city_facilities' className={styles.city_facilities} dir={dir}>
         <div className="container">
           <div className={styles.sec_container}>
             {dataSubCategory?.secondaryTopics.length > 0 &&
@@ -68,7 +68,7 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
                   modules={[FreeMode,]}
 
                   breakpoints={breakpoints}
-                  dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
+                  dir={dir}
                   centeredSlides={false}
                   slidesPerView={'auto'}
 
@@ -221,14 +221,17 @@ export async function getStaticProps({ params, locale }) {
   );
   const dataAllLangs = await responseAllLangs?.json();
 
+  const currentLanguage = languages.find((lang) => lang.shortCut === locale);
+  const dir = currentLanguage?.isRtl ? "rtl" : "ltr";
+
   return {
     props: {
       dataMainTopic,
       dataSubTopic,
       dataSubCategory,
       dataStaticWords,
-      dataAllLangs
-      // dataSubCategory is not included here since it's only used conditionally
+      dataAllLangs,
+      dir
     },
   };
 }

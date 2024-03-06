@@ -16,7 +16,8 @@ const LandingPage = ({ topics,
   dataStaticWords,
   dataAllLangs,
   foods,
-  industries
+  industries,
+  dir
 
 
 }) => {
@@ -24,22 +25,26 @@ const LandingPage = ({ topics,
 
   return (
     <>
-      <HeaderSection dataAllLangs={dataAllLangs} topics={topics} dataStaticWords={dataStaticWords} />
+      <HeaderSection dir={dir} dataAllLangs={dataAllLangs} topics={topics} dataStaticWords={dataStaticWords} />
       <ExploreSec topics={topics}
         dataStaticWords={dataStaticWords}
         dataDrobTopic={dataDrobTopic}
         dataLandmarksTopic={dataLandmarksTopic}
         dataFacilitiesTopic={dataFacilitiesTopic}
+        dir={dir}
       />
       <Map />
-      <VirtualGuide guidData={guidData} dataStaticWords={dataStaticWords} />
+      <VirtualGuide
+        dir={dir}
+        guidData={guidData} dataStaticWords={dataStaticWords} />
       <Industries
+        dir={dir}
         foods={foods}
         industries={industries}
         dataStaticWords={dataStaticWords}
       />
 
-      <ShareMomentSec />
+      <ShareMomentSec dir={dir} />
     </>
   )
 }

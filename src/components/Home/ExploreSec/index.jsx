@@ -18,7 +18,8 @@ const ExploreSec = ({ topics,
   dataDrobTopic,
   dataLandmarksTopic,
   dataFacilitiesTopic,
-  dataStaticWords
+  dataStaticWords,
+  dir
 }) => {
   const [hoveredIndex, setHoveredIndex] = useState(-1);
 
@@ -97,7 +98,7 @@ const ExploreSec = ({ topics,
 
 
   return (
-    <section id='explore' className={styles.explore} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
+    <section id='explore' className={styles.explore} dir={dir}>
 
       <motion.div
         initial={{ opacity: 0, x: -100 }}
@@ -272,7 +273,7 @@ const ExploreSec = ({ topics,
             }}
             className={styles.swiper_container}
             centeredSlides={false}
-            dir={`${router.locale === 'ar' ? 'rlt' : 'ltr'}`}
+            dir={dir}
           >
             {orderedCombinedTopics?.map((box, index) => (
               <SwiperSlide className={styles.slider} key={index}>

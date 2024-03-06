@@ -11,7 +11,8 @@ import { IoIosArrowBack } from 'react-icons/io';
 const Industries = ({
   foods
   , industries,
-  dataStaticWords
+  dataStaticWords,
+  dir
 }) => {
   const router = useRouter()
   const breakpoints = {
@@ -44,7 +45,7 @@ const Industries = ({
 
   return (
     <>
-      <section id='foods' dir={router.locale === 'ar' ? 'rtl' : 'ltr'} className={styles.foods}>
+      <section id='foods' dir={dir} className={styles.foods}>
         <div className={styles.swiper_container}>
 
           <div className="container">
@@ -75,7 +76,7 @@ const Industries = ({
 
           <Swiper
             breakpoints={breakpoints}
-            dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
+            dir={dir}
             centeredSlides={false}
             pagination={{
               clickable: true,
@@ -120,7 +121,7 @@ const Industries = ({
 
 
 
-      <section id='industries' dir={router.locale === 'ar' ? 'rtl' : 'ltr'} className={styles.industries}>
+      <section id='industries' dir={dir} className={styles.industries}>
 
         <div className={styles.swiper_container}>
           <div className="container">
@@ -151,7 +152,7 @@ const Industries = ({
 
           <Swiper
             breakpoints={breakpoints}
-            dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
+            dir={dir}
             centeredSlides={false}
             pagination={{
               clickable: true,

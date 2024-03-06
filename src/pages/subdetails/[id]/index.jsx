@@ -9,7 +9,7 @@ import Header from '@/components/Home/Topic/SubDetails/Header'
 const Subdetails = (
   { dataStaticWords,
     dataMainTopic,
-    dataAllLangs,
+    dir,
     dataContentDetails,
     dataContentDetailsGuide,
     dataDrobTopic }
@@ -24,7 +24,7 @@ const Subdetails = (
       </Head>
 
       <Navbar cName={'absolute_nav'} dataDrobTopic={dataDrobTopic} parentName={dataMainTopic[0].parentName} dataMainTopic={dataMainTopic} />
-      <Header dataContentDetails={dataContentDetails} dataStaticWords={dataStaticWords} dataContentDetailsGuide={dataContentDetailsGuide} />
+      <Header dir={dir} dataContentDetails={dataContentDetails} dataStaticWords={dataStaticWords} dataContentDetailsGuide={dataContentDetailsGuide} />
 
     </>
   )
@@ -74,6 +74,9 @@ export async function getServerSideProps({ params, locale }) {
   const dataMainTopic = await responseMainTopic.json();
 
 
+  const currentLanguage = languages.find((lang) => lang.shortCut === locale);
+  const dir = currentLanguage?.isRtl ? "rtl" : "ltr";
+
 
 
   return {
@@ -83,7 +86,8 @@ export async function getServerSideProps({ params, locale }) {
       dataAllLangs,
       dataContentDetails,
       dataDrobTopic,
-      dataContentDetailsGuide
+      dataContentDetailsGuide,
+      dir
     },
   };
 }

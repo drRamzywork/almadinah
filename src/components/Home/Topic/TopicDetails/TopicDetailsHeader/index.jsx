@@ -228,7 +228,7 @@ import Link from 'next/link';
 import { IoIosArrowBack } from 'react-icons/io';
 import { useRouter } from 'next/router';
 
-const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
+const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir }) => {
   const router = useRouter();
   const currentContent = dataContentDetails.currentContent;
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -305,7 +305,7 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
 
 
   return (
-    <header dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} className={styles.topic_details_header} id='topic_details_header'>
+    <header dir={dir} className={styles.topic_details_header} id='topic_details_header'>
       <Swiper
         direction={'vertical'}
         slidesPerView={1}

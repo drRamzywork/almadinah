@@ -1,9 +1,9 @@
 import HederPages from '@/components/HeaderPages'
 import VirtualGuide from '@/components/Home/VirtualGuide'
-import Navbar from '@/components/Navbar'
+import Head from 'next/head'
 import React from 'react'
 
-const VirtualGuidePage = ({ dataContentDetailsGuide, dataStaticWords, dataAllLangs, }) => {
+const VirtualGuidePage = ({ dataContentDetailsGuide, dataStaticWords, dataAllLangs, dir }) => {
 
   return (
     <>
@@ -13,9 +13,9 @@ const VirtualGuidePage = ({ dataContentDetailsGuide, dataStaticWords, dataAllLan
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <HederPages dataContentDetailsGuide={dataContentDetailsGuide} dataAllLangs={dataAllLangs} parentName={dataStaticWords.guideVirtual} />
+      <HederPages dir={dir} dataContentDetailsGuide={dataContentDetailsGuide} dataAllLangs={dataAllLangs} parentName={dataStaticWords.guideVirtual} />
 
-      <VirtualGuide dataStaticWords={dataStaticWords} guidData={dataContentDetailsGuide} />
+      <VirtualGuide dir={dir} dataStaticWords={dataStaticWords} guidData={dataContentDetailsGuide} />
 
     </>
   )
@@ -24,7 +24,7 @@ const VirtualGuidePage = ({ dataContentDetailsGuide, dataStaticWords, dataAllLan
 export default VirtualGuidePage
 
 
-export async function getServerSideProps({ params, locale }) {
+export async function getServerSideProps({ locale }) {
   const languagesConfig = require("../../../public/locales/languagesDetails.json");
   const langId = languagesConfig.filter((lang) => lang.shortCut === locale)[0].id;
   // languagesConfig[locale]?.id ||
@@ -42,11 +42,20 @@ export async function getServerSideProps({ params, locale }) {
 
 
 
+
+  const res = await fetch('https://api.almadinah.io/api/Settings/GetAllLanguages?pagenum=1&pagesize=50');
+  const languages = await res.json();
+
+  const currentLanguage = languages.find(lang => lang.shortCut === locale);
+  const dir = currentLanguage?.isRtl ? 'rtl' : 'ltr';
+
+
   return {
     props: {
       dataStaticWords,
       dataAllLangs,
-      dataContentDetailsGuide
+      dataContentDetailsGuide,
+      dir
     },
   };
 }

@@ -14,7 +14,7 @@ import Gallery from '@/svgs/Gallery';
 import Threehundred from '@/svgs/Threehundred';
 import { IoIosClose } from 'react-icons/io';
 
-const Header = ({ dataContentDetails, dataStaticWords, }) => {
+const Header = ({ dataContentDetails, dataStaticWords, dir }) => {
   const router = useRouter();
   const currentContent = dataContentDetails.currentContent;
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -38,7 +38,7 @@ const Header = ({ dataContentDetails, dataStaticWords, }) => {
   };
 
   return (
-    <header dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} className={`${styles.topic_details_header} ${styles.topic_details_header2}`} id='topic_details_header'>
+    <header dir={dir} className={`${styles.topic_details_header} ${styles.topic_details_header2}`} id='topic_details_header'>
 
       <motion.div
         initial={{ opacity: 0, y: -50 }}

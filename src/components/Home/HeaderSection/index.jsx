@@ -20,7 +20,7 @@ const images =
 
 
 
-const HeaderSection = ({ parentName, topics, dataAllLangs, dataStaticWords }) => {
+const HeaderSection = ({ parentName, topics, dataAllLangs, dataStaticWords, dir }) => {
   const router = useRouter()
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -59,7 +59,7 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, dataStaticWords }) =>
 
           <header id={'header'} className={styles.header}
             style={{ background: currentImage.bgColor, height: router.pathname === '/details/[id]' && '519px' }}
-            dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
+            dir={dir}
           >
             <Navbar dataAllLangs={dataAllLangs} />
 
@@ -169,7 +169,7 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, dataStaticWords }) =>
 
       {
         route.pathname === '/' &&
-        <section id='hero' className={styles.hero} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
+        <section id='hero' className={styles.hero} dir={dir} >
           <motion.div
             initial={{ opacity: 0, y: -100 }}
             animate={{ opacity: 1, y: 0 }}

@@ -10,6 +10,7 @@ export default function Home({
   dataFacilitiesTopic,
   dataStaticWords,
   dataAllLangs,
+  dir,
 }) {
   const foods = topics.filter((topic) => topic.id === 7)[0];
   const industries = topics.filter((topic) => topic.id === 6)[0];
@@ -31,6 +32,7 @@ export default function Home({
         dataAllLangs={dataAllLangs}
         foods={foods}
         industries={industries}
+        dir={dir}
       />
     </>
   );
@@ -71,6 +73,14 @@ export async function getServerSideProps({ locale }) {
   );
   const dataAllLangs = await responseAllLangs?.json();
 
+  const res = await fetch(
+    "https://api.almadinah.io/api/Settings/GetAllLanguages?pagenum=1&pagesize=50"
+  );
+  const languages = await res.json();
+
+  const currentLanguage = languages.find((lang) => lang.shortCut === locale);
+  const dir = currentLanguage?.isRtl ? "rtl" : "ltr";
+
   return {
     props: {
       topics: data,
@@ -79,6 +89,7 @@ export async function getServerSideProps({ locale }) {
       dataFacilitiesTopic,
       dataStaticWords,
       dataAllLangs,
+      dir,
     },
   };
 }
