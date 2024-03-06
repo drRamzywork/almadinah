@@ -13,6 +13,7 @@ const Industries = ({
   , industries,
   dataStaticWords,
   dir
+
 }) => {
   const router = useRouter()
   const breakpoints = {

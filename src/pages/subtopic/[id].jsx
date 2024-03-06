@@ -192,12 +192,23 @@ export async function getStaticProps({ params, locale }) {
   const responseSubTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${params.id}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
   const dataSubTopic = await responseSubTopic.json();
 
+
+  const res = await fetch(
+    "https://api.almadinah.io/api/Settings/GetAllLanguages?pagenum=1&pagesize=50"
+  );
+  const languages = await res.json();
+
+  const currentLanguage = languages?.find((lang) => lang?.shortCut === locale);
+  const dir = currentLanguage?.isRtl ? "rtl" : "ltr";
+
+
   return {
     props: {
       dataMainTopic,
       dataSubTopic,
       dataSubCategory,
-      dataStaticWords
+      dataStaticWords,
+      dir
     },
 
     revalidate: 10,
