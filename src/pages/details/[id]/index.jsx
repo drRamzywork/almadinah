@@ -7,17 +7,14 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentDetailsGuide }) => {
-
   const icon = dataContentDetails.currentContent.icon;
   const features = dataContentDetails.currentContent.relatedFeatures;
-  console.log(dataContentDetails, "dataContentDetailsGuides")
-
   const router = useRouter();
 
   return (
     <>
       <Head>
-        <title>{dataMainTopic[0]?.parentName}</title>
+        <title>{dataContentDetails.currentContent.name}</title>
         <meta charSet="UTF-8" />
         <meta
           name="viewport"

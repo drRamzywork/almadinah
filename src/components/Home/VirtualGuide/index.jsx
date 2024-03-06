@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 
 // import required modules
 
-const VirtualGuide = ({ guidData, dataStaticWords }) => {
+const VirtualGuide = ({ guidData, dataStaticWords, }) => {
   const router = useRouter();
   const [currentVideoSrc, setCurrentVideoSrc] = useState("https://almadinah.io/Areas/07122023501009265.mp4");
   const [activeVideoId, setActiveVideoId] = useState(null);
@@ -59,7 +59,7 @@ const VirtualGuide = ({ guidData, dataStaticWords }) => {
 
   return (
     <>
-      <section id='virtual_guide' className={styles.virtual_guide} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
+      <section id='virtual_guide' className={`${styles.virtual_guide} ${router.pathname.includes('/virtual-guide') ? styles.virtualPage : ''}`} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
         <div className={styles.shape}>
           <Image src='/assets/images/shape_BG.png' width={868} height={463} />
         </div>
@@ -73,7 +73,15 @@ const VirtualGuide = ({ guidData, dataStaticWords }) => {
                 <p>{dataStaticWords.guideVirtual}</p>
               </div>
               <div className={`${styles.sec_title} sec_title`}>
-                <h3>ماذا تريد أن تعرف عنه؟</h3>
+
+                {router.pathname.includes('/virtual-guide')
+
+                  ?
+                  < h3 > اختر معلم</h3>
+                  :
+                  <h3>ماذا تريد أن تعرف عنه؟</h3>
+
+                }
               </div>
 
               <div id="vertical_swiper">
@@ -202,7 +210,7 @@ const VirtualGuide = ({ guidData, dataStaticWords }) => {
 
 
         <div className={styles.shadow} />
-      </section>
+      </section >
 
     </>
 

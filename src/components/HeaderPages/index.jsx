@@ -69,7 +69,11 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
 
 
             </div>
-            {dataContentDetails.tourGuide !== null &&
+
+
+            {
+              !router.pathname.includes('/virtual-guide') &&
+              dataContentDetails.tourGuide !== null &&
               <div className={styles.icons_container}>
                 <Link href={'#'} className={`${styles.icon} ${showAudio ? styles.active : ''}`} onClick={() => setShowAudio(prev => !prev)}>
                   <Microphone />

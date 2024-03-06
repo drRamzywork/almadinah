@@ -793,7 +793,11 @@ header#inner_header {
     }
   }
   .lines {
-    top: -98% !important;
+    top: -48% !important;
+
+    img {
+      width: 2000px;
+    }
   }
 
   .cloud {
