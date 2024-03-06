@@ -73,12 +73,12 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir }) => {
               <div className={styles.guide}>
                 <p>{dataStaticWords.guideVirtual}</p>
               </div>
-              <Link href={`/virtual-guide`} className={`${styles.sec_title} sec_title`}>
+              <Link href={`/virtual-guide`} className={`${styles.sec_title}   sec_title`}>
 
                 {router.pathname.includes('/virtual-guide')
 
                   ?
-                  < h3 > اختر معلم</h3>
+                  < h3 className='pb-3'> اختر معلم</h3>
                   :
                   <h3>ماذا تريد أن تعرف عنه؟</h3>
 

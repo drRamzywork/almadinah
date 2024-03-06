@@ -55,9 +55,13 @@ export async function getServerSideProps({ params, locale }) {
   );
   const dataDrobTopic = await responseDrobTopic.json();
 
-  const currentLanguage = languages.find((lang) => lang.shortCut === locale);
-  const dir = currentLanguage?.isRtl ? "rtl" : "ltr";
+  const res = await fetch(
+    "https://api.almadinah.io/api/Settings/GetAllLanguages?pagenum=1&pagesize=50"
+  );
+  const languages = await res.json();
 
+  const currentLanguage = languages?.find((lang) => lang?.shortCut === locale);
+  const dir = currentLanguage?.isRtl ? "rtl" : "ltr";
 
   return {
     props: {
