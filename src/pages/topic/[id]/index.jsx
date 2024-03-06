@@ -230,7 +230,6 @@ export async function getStaticProps({ params, locale }) {
   const dir = currentLanguage?.isRtl ? "rtl" : "ltr";
 
 
-
   return {
     props: {
       dataMainTopic,
