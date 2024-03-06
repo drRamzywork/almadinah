@@ -75,7 +75,8 @@ footer.footer {
 footer.home {
   margin-top: -45px !important;
   position: relative;
-  z-index: 55;
+  // z-index: 55;
+  padding-top: 50px;
 
   @media screen and (min-width: 992px) {
     z-index: 57;
