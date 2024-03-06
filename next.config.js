@@ -47,7 +47,7 @@ const nextConfig = {
   i18n: {
     defaultLocale: "ar",
     locales,
-    localeDetection: true,
+    localeDetection: false,
   },
 };
 

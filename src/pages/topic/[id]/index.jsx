@@ -221,8 +221,15 @@ export async function getStaticProps({ params, locale }) {
   );
   const dataAllLangs = await responseAllLangs?.json();
 
-  const currentLanguage = languages.find((lang) => lang.shortCut === locale);
+  const res = await fetch(
+    "https://api.almadinah.io/api/Settings/GetAllLanguages?pagenum=1&pagesize=50"
+  );
+  const languages = await res.json();
+
+  const currentLanguage = languages?.find((lang) => lang?.shortCut === locale);
   const dir = currentLanguage?.isRtl ? "rtl" : "ltr";
+
+
 
   return {
     props: {
