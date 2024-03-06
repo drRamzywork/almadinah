@@ -13,35 +13,41 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic 
   const router = useRouter();
 
   // User action setting language to the cookies
-  const changeLanguage = (lng) => {
-    // i18n.changeLanguage(language);
-    // const date = new Date();
-    // date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000)); // Set cookie to expire in 1 year
-    // const expires = "; expires=" + date.toUTCString();
-    // document.cookie = `NEXT_LOCALE=${language}; path=/; expires=${expires}; SameSite=Lax`; // Update your cookie setting line
-    localStorage?.setItem('NEXT_LOCALE', lng);
-    // sessionStorage.setItem('NEXT_LOCALE', lng);
-  };
 
 
 
+
+
+  // function handleClick(lng) {
+  //   // Simply omit context parameter.
+  //   // Parse
+
+  //   // Set
+
+
+  //   setCookie(null, 'NEXT_LOCALE', lng.id, {
+  //     maxAge: 30 * 24 * 60 * 60,
+  //     path: '/',
+  //   })
+
+  //   // Destroy
+  //   // destroyCookie(null, 'cookieName')
+  // }
 
 
   function handleClick(lng) {
-    // Simply omit context parameter.
-    // Parse
-
-    // Set
-
-
     setCookie(null, 'NEXT_LOCALE', lng.id, {
       maxAge: 30 * 24 * 60 * 60,
       path: '/',
-    })
+    });
 
-    // Destroy
-    // destroyCookie(null, 'cookieName')
+    // Build the URL for the selected language
+    const newPath = buildLocaleSwitchUrl(lng.shortCut);
+
+    // Navigate to the new URL, which will trigger a page refresh and apply the new locale
+    router.push(newPath);
   }
+
 
 
   const { asPath, locale } = router;

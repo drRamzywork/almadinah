@@ -305,7 +305,7 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
 
 
   return (
-    <header className={styles.topic_details_header} id='topic_details_header'>
+    <header dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} className={styles.topic_details_header} id='topic_details_header'>
       <Swiper
         direction={'vertical'}
         slidesPerView={1}
@@ -507,11 +507,6 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
 
                           <div className={styles.desc}>
 
-                            <p>{step.placeDescription}
-
-                              الإنطلاق من منطقة مصليات العيد في الجهة الجنوبية
-                              من المسجد النبوي
-                            </p>
 
                           </div>
 
@@ -530,9 +525,8 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords }) => {
 
                             <div className={styles.desc2}>
 
-                              <p>{step.name}
-                                الإنطلاق من منطقة مصليات العيد في الجهة الجنوبية
-                                من المسجد النبوي
+                              <p>
+                                {step.name}
                               </p>
 
                             </div>

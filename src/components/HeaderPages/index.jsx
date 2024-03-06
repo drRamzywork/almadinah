@@ -26,14 +26,10 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
   const [showAudio, setShowAudio] = useState(false)
   const [showGuide, setShowGuide] = useState(false)
   return (
+
     <header className={'header_details'} id={styles.inner_header} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
       <Navbar dataAllLangs={dataAllLangs} />
-
       <div className={styles.details_image}>
-
-
-
-
         <Swiper
           // centeredSlides={true}
           autoplay={{
@@ -42,9 +38,7 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
           }}
           effect={'fade'}
           spaceBetween={30}
-
           modules={[Autoplay, Pagination, Navigation, EffectFade]}
-
           className="mySwiper"
         >
           {images1?.map((image, index) => (
@@ -139,9 +133,28 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
               transition={{ duration: 1 }}
               className={styles.video}>
 
-              <video controls src={dataContentDetailsGuide.tourGuide}>
+              {/* <video controls src={dataContentDetailsGuide.tourGuide}>
                 Your browser does not support the audio element.
-              </video>
+              </video> */}
+
+
+
+
+
+
+              <figure data-delay="250" data-cues="fadeIn" className="rounded mt-n21 mt-lg-n23 mb-16 mb-md-18 position-relative">
+                <a data-glightbox href={dataContentDetailsGuide.tourGuide} className="btn btn-circle btn-white btn-play ripple mx-auto position-absolute" style={{
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  zIndex: 3
+                }}>
+                  <i className="icn-caret-right" />
+                </a>
+
+                <video controls loop muted autoPlay playsInline src={dataContentDetailsGuide.tourGuide} poster="/assets/photos/movie3.jpg" className="w-100 rounded caption-overlay d-block" />
+              </figure>
+
 
 
               <div className={styles.close_icon} onClick={() => setShowGuide(false)}>
@@ -170,6 +183,7 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
       </div>
 
     </header>
+
   )
 }
 

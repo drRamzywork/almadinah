@@ -23,24 +23,14 @@ const Header = ({ dataContentDetails, dataStaticWords, }) => {
   const wheelREf = useRef(null);
   const features = currentContent.relatedFeatures;
 
-
   const [showAudio, setShowAudio] = useState(false)
   const [showGuide, setShowGuide] = useState(false)
 
-
-
-
-
-
-
-
   // Steps control
-
   const details = dataContentDetails.currentContent;
 
 
   // images control
-
   const [activeImage, setActiveImage] = useState(null);
 
   const toggleActive = (imageUrl) => {
@@ -48,7 +38,7 @@ const Header = ({ dataContentDetails, dataStaticWords, }) => {
   };
 
   return (
-    <header className={`${styles.topic_details_header} ${styles.topic_details_header2}`} id='topic_details_header'>
+    <header dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} className={`${styles.topic_details_header} ${styles.topic_details_header2}`} id='topic_details_header'>
 
       <motion.div
         initial={{ opacity: 0, y: -50 }}
@@ -162,8 +152,6 @@ const Header = ({ dataContentDetails, dataStaticWords, }) => {
 
 
                 <div className={styles.middle_box2}>
-
-
                   <div className={styles.desc}>
                     <p>
                       {details.description}

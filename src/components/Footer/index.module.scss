@@ -1,14 +1,12 @@
 footer.footer {
   background: #ffffff;
   border-radius: 48px 48px 0px 0px;
-  padding-top: 56px;
-  padding-bottom: 56px;
+  padding-top: 26px;
+  padding-bottom: 16px;
   margin-top: 24px;
 
   @media screen and (max-width: 450px) {
     border-radius: 32px 24px 0px 0px;
-    padding-top: 34px;
-    padding-bottom: 34px;
   }
 
   .sec_container {

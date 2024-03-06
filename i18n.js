@@ -9,7 +9,10 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: "ar",
+    lng: "ar",
     debug: true,
+    whitelist: Languages,
+
     interpolation: {
       escapeValue: false,
     },

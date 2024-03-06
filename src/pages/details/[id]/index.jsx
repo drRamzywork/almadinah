@@ -4,12 +4,16 @@ import { motion } from 'framer-motion'
 import Map from '@/components/Home/Map'
 import HederPages from '@/components/HeaderPages'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentDetailsGuide }) => {
 
   const icon = dataContentDetails.currentContent.icon;
   const features = dataContentDetails.currentContent.relatedFeatures;
   console.log(dataContentDetails, "dataContentDetailsGuides")
+
+  const router = useRouter();
+
   return (
     <>
       <Head>

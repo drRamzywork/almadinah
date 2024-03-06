@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 const Footer = () => {
   const router = useRouter();
   return (
-    <footer id='footer' className={`${styles.footer} ${router.pathname === '/' ? styles.home : ''} ${router.pathname.includes('/subdetails/') && styles.top} `}>
+    <footer id='footer' dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} className={`${styles.footer} ${router.pathname === '/' ? styles.home : ''} ${router.pathname.includes('/subdetails/') && styles.top} `}>
       <div className="container">
         <div className={styles.sec_container}>
 
