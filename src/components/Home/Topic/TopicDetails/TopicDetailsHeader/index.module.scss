@@ -396,6 +396,8 @@ header.topic_details_header {
                 width: 40px;
                 height: 40px;
                 object-fit: contain;
+                filter: grayscale(100%) sepia(100%) hue-rotate(160deg)
+                  saturate(300%) brightness(100%);
 
                 @media screen and (max-width: 992px) {
                   width: 24px;
@@ -499,7 +501,7 @@ header.topic_details_header {
             border-radius: 24px;
             background: #50a99a;
             cursor: pointer !important;
-            box-shadow: 0px 16px 56px 0px rgba(98, 165, 167, 0.5);
+            box-shadow: 0px 3px 6px 0px rgba(98, 165, 167, 0.5);
             transition: all 0.3s ease-in-out;
             cursor: pointer;
             color: #fff;

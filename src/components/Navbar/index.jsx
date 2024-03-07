@@ -12,29 +12,6 @@ import { parseCookies, setCookie, destroyCookie } from 'nookies'
 const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic, dir }) => {
   const router = useRouter();
 
-  // User action setting language to the cookies
-
-
-
-
-
-  // function handleClick(lng) {
-  //   // Simply omit context parameter.
-  //   // Parse
-
-  //   // Set
-
-
-  //   setCookie(null, 'NEXT_LOCALE', lng.id, {
-  //     maxAge: 30 * 24 * 60 * 60,
-  //     path: '/',
-  //   })
-
-  //   // Destroy
-  //   // destroyCookie(null, 'cookieName')
-  // }
-
-
   function handleClick(lng) {
     setCookie(null, 'NEXT_LOCALE', lng.id, {
       maxAge: 30 * 24 * 60 * 60,
@@ -47,8 +24,6 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic,
     // Navigate to the new URL, which will trigger a page refresh and apply the new locale
     router.push(newPath);
   }
-
-
 
   const { asPath, locale } = router;
 

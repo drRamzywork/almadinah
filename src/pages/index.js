@@ -14,6 +14,8 @@ export default function Home({
 }) {
   const foods = topics.filter((topic) => topic.id === 7)[0];
   const industries = topics.filter((topic) => topic.id === 6)[0];
+
+  console.log(dataStaticWords, "dataAllLangs");
   return (
     <>
       <Head>
@@ -43,38 +45,38 @@ export async function getServerSideProps({ locale }) {
   const langId = languagesConfig.filter((lang) => lang.shortCut === locale)[0]
     .id;
 
-  const apiUrl = `https://api.almadinah.io/api/Topics/GetMainTopics?lang=${langId}&ContentSamplesToReturn=6&pagenum=1&pagesize=50`;
+  const apiUrl = `https://api.visitmadinahsa.com/api/Topics/GetMainTopics?lang=${langId}&ContentSamplesToReturn=6&pagenum=1&pagesize=50`;
 
   const response = await fetch(apiUrl);
   const data = await response.json();
 
   const responseStaticWords = await fetch(
-    `https://api.almadinah.io/api/Settings/GetStaticWords?lang=${langId}`
+    `https://api.visitmadinahsa.com/api/Settings/GetStaticWords?lang=${langId}`
   );
   const dataStaticWords = await responseStaticWords.json();
 
   const responseDrobTopic = await fetch(
-    `https://api.almadinah.io/api/Contents/GetContents?topicId=${2}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`
+    `https://api.visitmadinahsa.com/api/Contents/GetContents?topicId=${2}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`
   );
   const dataDrobTopic = await responseDrobTopic.json();
 
   const responseLandmarksTopic = await fetch(
-    `https://api.almadinah.io/api/Contents/GetContents?topicId=8&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`
+    `https://api.visitmadinahsa.com/api/Contents/GetContents?topicId=8&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`
   );
   const dataLandmarksTopic = await responseLandmarksTopic.json();
 
   const responseFacilitiesTopic = await fetch(
-    `https://api.almadinah.io/api/Contents/GetContents?topicId=14&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`
+    `https://api.visitmadinahsa.com/api/Contents/GetContents?topicId=14&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`
   );
   const dataFacilitiesTopic = await responseFacilitiesTopic?.json();
 
   const responseAllLangs = await fetch(
-    `https://api.almadinah.io/api/Settings/GetAllLanguages?pagenum=1&pagesize=50`
+    `https://api.visitmadinahsa.com/api/Settings/GetAllLanguages?pagenum=1&pagesize=50`
   );
   const dataAllLangs = await responseAllLangs?.json();
 
   const res = await fetch(
-    "https://api.almadinah.io/api/Settings/GetAllLanguages?pagenum=1&pagesize=50"
+    "https://api.visitmadinahsa.com/api/Settings/GetAllLanguages?pagenum=1&pagesize=50"
   );
   const languages = await res.json();
 

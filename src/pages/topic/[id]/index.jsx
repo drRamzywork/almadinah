@@ -52,7 +52,7 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <HeaderSection parentName={dataMainTopic[0]?.parentName} dataAllLangs={dataAllLangs} />
+      <HeaderSection dir={dir} parentName={dataMainTopic[0]?.parentName} dataAllLangs={dataAllLangs} />
 
       <section id='city_facilities' className={styles.city_facilities} dir={dir}>
         <div className="container">
@@ -66,12 +66,10 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
                 <Swiper
                   FreeMode={true}
                   modules={[FreeMode,]}
-
                   breakpoints={breakpoints}
                   dir={dir}
                   centeredSlides={false}
                   slidesPerView={'auto'}
-
                   className={styles.swiper_container}
                 >
 
@@ -108,7 +106,7 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
             }
 
             <div className={styles.boxes_container}>
-
+              {console.log(dataMainTopic, "dataMainTopic")}
               {dataMainTopic.map((topic, index) => (
                 <motion.div
                   initial={{ opacity: 0, x: -100 }}

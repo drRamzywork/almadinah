@@ -42,6 +42,7 @@ const nextConfig = {
       { protocol: "https", hostname: "www.dropbox.com" },
       { protocol: "https", hostname: "dl.dropboxusercontent.com" },
       { protocol: "https", hostname: "almadinah.io" },
+      { protocol: "https", hostname: "visitmadinahsa.com" },
     ],
   },
   i18n: {

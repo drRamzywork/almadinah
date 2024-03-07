@@ -13,7 +13,7 @@ import { useRouter } from 'next/router'
 import { FreeMode } from 'swiper/modules';
 
 
-const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords, dir }) => {
+const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords, dir, dataAllLangs }) => {
   const router = useRouter();
   const getRandomWidth = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
   const query = router.query.id
@@ -21,29 +21,44 @@ const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords, dir }) => {
 
   const breakpoints = {
     300: {
-      slidesPerView: 2.2,
       spaceBetween: 16,
+
+
     },
     400: {
-      slidesPerView: 2.2,
       spaceBetween: 16,
+
+
+    },
+    500: {
+      spaceBetween: 16,
+
+
     },
     607: {
-      slidesPerView: 2.2,
       spaceBetween: 16,
+
+
+
     },
     700: {
-      slidesPerView: 2.2,
       spaceBetween: 16,
+
+
+
     },
     1200: {
-      slidesPerView: 5,
       spaceBetween: 24,
+
+
     },
     1300: {
-      slidesPerView: 5,
       spaceBetween: 24,
+
+
     },
+
+
 
   }
   return (
@@ -54,7 +69,7 @@ const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords, dir }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <HeaderSection parentName={title} />
+      <HeaderSection parentName={title} dir={dir} dataAllLangs={dataAllLangs} />
       <section id='city_facilities' className={styles.city_facilities} dir={dir}>
 
         <div className="container">
@@ -70,6 +85,7 @@ const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords, dir }) => {
                 className={styles.swiper_container}
                 FreeMode={true}
                 modules={[FreeMode,]}
+                slidesPerView={'auto'}
 
               >
 
@@ -193,6 +209,16 @@ export async function getStaticProps({ params, locale }) {
   const dataSubTopic = await responseSubTopic.json();
 
 
+
+
+
+  // Langs
+
+  const responseAllLangs = await fetch(
+    `https://api.almadinah.io/api/Settings/GetAllLanguages?pagenum=1&pagesize=50`
+  );
+  const dataAllLangs = await responseAllLangs?.json();
+
   const res = await fetch(
     "https://api.almadinah.io/api/Settings/GetAllLanguages?pagenum=1&pagesize=50"
   );
@@ -208,7 +234,8 @@ export async function getStaticProps({ params, locale }) {
       dataSubTopic,
       dataSubCategory,
       dataStaticWords,
-      dir
+      dir,
+      dataAllLangs,
     },
 
     revalidate: 10,

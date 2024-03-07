@@ -78,9 +78,9 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir }) => {
                 {router.pathname.includes('/virtual-guide')
 
                   ?
-                  < h3 className='pb-3'> اختر معلم</h3>
+                  < h3 className='pb-3'> {dataStaticWords.choseLandMark}</h3>
                   :
-                  <h3>ماذا تريد أن تعرف عنه؟</h3>
+                  <h3>{dataStaticWords.needToKnow}</h3>
 
                 }
               </Link>
@@ -206,13 +206,8 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir }) => {
 
           </div>
         </div>
-
-
-
-
         <div className={styles.shadow} />
       </section >
-
     </>
 
   )

@@ -61,7 +61,7 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
             style={{ background: currentImage.bgColor, height: router.pathname === '/details/[id]' && '519px' }}
             dir={dir}
           >
-            <Navbar dataAllLangs={dataAllLangs} />
+            <Navbar dataAllLangs={dataAllLangs} dir={dir} />
 
 
             <div className={`${styles.top_cloud} ${router.pathname === '/details/[id]' && styles.right}`}>

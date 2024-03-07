@@ -374,6 +374,7 @@ section.virtual_guide[dir="ltr"]:not(.virtualPage) {
   position: relative;
   margin-top: 128px;
   padding-bottom: 128px;
+
   @media screen and (max-width: 992px) {
     margin-top: -24px;
     padding-bottom: 0px;
@@ -384,6 +385,7 @@ section.virtual_guide[dir="ltr"]:not(.virtualPage) {
     left: unset;
     bottom: 138px;
     z-index: -1;
+
     img {
       object-fit: contain;
       transform: scale(-1);
@@ -394,6 +396,7 @@ section.virtual_guide[dir="ltr"]:not(.virtualPage) {
       }
     }
   }
+
   .sec_container {
     display: flex;
     align-items: flex-end;
@@ -460,7 +463,7 @@ section.virtual_guide[dir="ltr"]:not(.virtualPage) {
           font-weight: 500;
           line-height: 38px;
           letter-spacing: 0em;
-          text-align: right;
+          text-align: left;
           color: #9fa0b9;
         }
       }

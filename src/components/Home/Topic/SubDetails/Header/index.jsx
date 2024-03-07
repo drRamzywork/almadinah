@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
@@ -15,11 +15,7 @@ import Threehundred from '@/svgs/Threehundred';
 import { IoIosClose } from 'react-icons/io';
 
 const Header = ({ dataContentDetails, dataStaticWords, dir }) => {
-  const router = useRouter();
   const currentContent = dataContentDetails.currentContent;
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const stepsData = currentContent.drobSteps;
-  const swiperRef = useRef(null);
   const wheelREf = useRef(null);
   const features = currentContent.relatedFeatures;
 
@@ -41,8 +37,8 @@ const Header = ({ dataContentDetails, dataStaticWords, dir }) => {
     <header dir={dir} className={`${styles.topic_details_header} ${styles.topic_details_header2}`} id='topic_details_header'>
 
       <motion.div
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, }}
+        animate={{ opacity: 1, }}
         transition={{ duration: 1 }}
         className={styles.swiper_container}
       >
@@ -51,8 +47,8 @@ const Header = ({ dataContentDetails, dataStaticWords, dir }) => {
 
 
             className={styles.main_image_slider}>
-            <motion.img initial={{ opacity: 0, y: -50 }}
-              animate={{ opacity: 1, y: 0 }}
+            <motion.img initial={{ opacity: 0, }}
+              animate={{ opacity: 1, }}
               transition={{ duration: 1 }}
               src={details?.icon?.includes(',') ? details?.icon?.split(',')[0] : details?.icon} alt="" />
           </motion.div>
@@ -65,33 +61,36 @@ const Header = ({ dataContentDetails, dataStaticWords, dir }) => {
               <div className={styles.text_container}>
 
                 <div className={styles.features_container}>
-                  <div className={styles.guide_video}>
+
+                  {details.tourGuide !== null &&
+                    <div className={styles.guide_video}>
 
 
-                    <Link href={'#'} className={styles.icon} onClick={() => setShowGuide(prev => !prev)}>
+                      <Link href={'#'} className={styles.icon} onClick={() => setShowGuide(prev => !prev)}>
 
-                      <img src="/assets/images/guide.png" alt="" />
+                        <img src="/assets/images/guide.png" alt="" />
 
-                      <p className={styles.guide} >
-                        المرشد الافتراضي
-                      </p>
-
-
-
-                    </Link>
-                  </div>
-
-                  <div className={styles.audio_container}>
-                    <Link href={'#'} className={styles.icon} onClick={() => setShowAudio(prev => !prev)}>
-                      <Microphone />
-                      <p className={styles.guide}>
-                        التسجيل الصوتي
-                      </p>
+                        <p className={styles.guide} >
+                          {dataStaticWords.guideVirtual}
+                        </p>
 
 
+                      </Link>
+                    </div>
+                  }
 
-                    </Link>
-                  </div>
+                  {details?.sound !== null &&
+                    <div className={styles.audio_container}>
+                      <Link href={'#'} className={styles.icon} onClick={() => setShowAudio(prev => !prev)}>
+                        <Microphone />
+                        <p className={styles.guide}>
+                          {dataStaticWords.voiceRecord}
+                          {console.log(dataStaticWords)}
+                        </p>
+
+                      </Link>
+                    </div>
+                  }
 
                   <div className={styles.gallery}>
                     <div className={styles.icon}>
@@ -128,10 +127,9 @@ const Header = ({ dataContentDetails, dataStaticWords, dir }) => {
                 }
 
 
-
                 {showGuide &&
                   <motion.div
-                    initial={{ opacity: 0, y: 100 }}
+                    initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 1 }}

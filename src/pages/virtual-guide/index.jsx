@@ -29,21 +29,21 @@ export async function getServerSideProps({ locale }) {
   const langId = languagesConfig.filter((lang) => lang.shortCut === locale)[0].id;
   // languagesConfig[locale]?.id ||
   const responseAllLangs = await fetch(
-    `https://api.almadinah.io/api/Settings/GetAllLanguages?pagenum=1&pagesize=50`
+    `https://api.visitmadinahsa.com/api/Settings/GetAllLanguages?pagenum=1&pagesize=50`
   );
   const dataAllLangs = await responseAllLangs?.json();
 
-  const responseStaticWords = await fetch(`https://api.almadinah.io/api/Settings/GetStaticWords?lang=${langId}`);
+  const responseStaticWords = await fetch(`https://api.visitmadinahsa.com/api/Settings/GetStaticWords?lang=${langId}`);
   const dataStaticWords = await responseStaticWords.json();
 
   // Fetch main topics with the initial topicId
-  const responseContentDetailsGuide = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=4&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
+  const responseContentDetailsGuide = await fetch(`https://api.visitmadinahsa.com/api/Contents/GetContents?topicId=4&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
   const dataContentDetailsGuide = await responseContentDetailsGuide.json();
 
 
 
 
-  const res = await fetch('https://api.almadinah.io/api/Settings/GetAllLanguages?pagenum=1&pagesize=50');
+  const res = await fetch('https://api.visitmadinahsa.com/api/Settings/GetAllLanguages?pagenum=1&pagesize=50');
   const languages = await res.json();
 
   const currentLanguage = languages.find(lang => lang.shortCut === locale);
