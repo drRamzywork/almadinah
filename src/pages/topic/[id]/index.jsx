@@ -106,7 +106,6 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
             }
 
             <div className={styles.boxes_container}>
-              {console.log(dataMainTopic, "dataMainTopic")}
               {dataMainTopic.map((topic, index) => (
                 <motion.div
                   initial={{ opacity: 0, x: -100 }}

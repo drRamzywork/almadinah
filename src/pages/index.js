@@ -15,7 +15,6 @@ export default function Home({
   const foods = topics.filter((topic) => topic.id === 7)[0];
   const industries = topics.filter((topic) => topic.id === 6)[0];
 
-  console.log(dataStaticWords, "dataAllLangs");
   return (
     <>
       <Head>
