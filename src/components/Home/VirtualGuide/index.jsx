@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './index.module.scss'
 import Image from 'next/image'
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -15,6 +15,8 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
   const [currentVideoSrc, setCurrentVideoSrc] = useState(defaultVideoSrc);
   const [activeVideoId, setActiveVideoId] = useState(null);
   const [muted, setMuted] = useState(false);
+  const [autoPlay, setAutoPlay] = useState(false);
+  const sectionRef = useRef(null);
 
   function chunkArray(myArray, chunkSize) {
     const results = [];
@@ -30,20 +32,51 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
     setCurrentVideoSrc(videoUrl);
 
   };
+  console.log(autoPlay, "autoPlay")
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      const [entry] = entries;
+      // Autoplay and unmute the video if the section is intersecting (in view)
+      setAutoPlay(entry.isIntersecting);
+    }, {
+      root: null,
+      threshold: 0.1,
+    });
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+
+
+  useEffect(() => {
+    const video = document.querySelector('video');
+    if (!video) return;
+
+    if (autoPlay) {
+      video.muted = false; // Unmute when the video is supposed to autoplay
+      video.play().catch(err => console.error("Error playing the video:", err));
+    } else {
+      video.muted = true; // Optional: Mute when not in view or not autoplaying
+    }
+  }, [autoPlay, currentVideoSrc]); // React to changes in autoplay state and source
+
 
 
 
   useEffect(() => {
     const videoElement = document.querySelector('video');
-    console.log(currentVideoSrc, "currentVideoSrc")
-    console.log(muted, "currentVideoSrc")
-    if (currentVideoSrc) {
-      setMuted(false)
-    }
+
 
     const handleScroll = async () => {
       if (document.pictureInPictureElement) {
-
 
         return; // Do nothing if already in PiP mode
       }
@@ -67,7 +100,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
 
   return (
     <>
-      <section id='virtual_guide' className={`${styles.virtual_guide} ${router.pathname.includes('/virtual-guide') ? styles.virtualPage : ''}`} dir={dir} >
+      <section ref={sectionRef} id='virtual_guide' className={`${styles.virtual_guide} ${router.pathname.includes('/virtual-guide') ? styles.virtualPage : ''}`} dir={dir} >
         <div className={styles.shape}>
           <Image src='/assets/images/shape_BG.png' width={868} height={463} />
         </div>
@@ -189,12 +222,11 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
             <div className={styles.video_container}>
               <div className={styles.img_container}>
                 <img src="/assets/images/Background_hands_web.png" alt="" />
-
+                {console.log(muted, "muted")}
                 <video
                   key={currentVideoSrc}
-                  muted={muted}
-                  // loop
-                  autoPlay
+                  muted={!autoPlay}
+                  autoPlay={autoPlay}
                   controls
                 >
                   <source src={currentVideoSrc} type="video/mp4" />

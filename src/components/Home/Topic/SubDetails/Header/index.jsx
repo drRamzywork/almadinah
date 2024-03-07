@@ -146,13 +146,15 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
                       </Link>
                     </div>
                   }
+                  {details?.sound !== null &&
+                    <div className={styles.gallery} onClick={() => setIsFullscreenSwiperOpen(true)}>
+                      <div className={styles.icon}>
+                        <Gallery />
 
-                  <div className={styles.gallery} onClick={() => setIsFullscreenSwiperOpen(true)}>
-                    <div className={styles.icon}>
-                      <Gallery />
-
+                      </div>
                     </div>
-                  </div>
+                  }
+
                   <div className={styles.three_hundred}>
                     <div className={styles.icon}>
 

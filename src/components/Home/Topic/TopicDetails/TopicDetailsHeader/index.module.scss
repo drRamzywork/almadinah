@@ -894,6 +894,11 @@ header.topic_details_header {
   }
 }
 
+header.topic_details_header2 {
+  @media screen and (min-width: 1500px) {
+    height: 100vh;
+  }
+}
 // +++++++++++++++++++++++ LTR +++++++++++++++++++++++
 header.topic_details_header[dir="ltr"] {
   .sec_container2,
