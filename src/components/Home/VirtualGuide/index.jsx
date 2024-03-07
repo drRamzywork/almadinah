@@ -14,6 +14,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir }) => {
   const router = useRouter();
   const [currentVideoSrc, setCurrentVideoSrc] = useState("https://almadinah.io/Areas/07122023501009265.mp4");
   const [activeVideoId, setActiveVideoId] = useState(null);
+  const [muted, setMuted] = useState(false);
 
   function chunkArray(myArray, chunkSize) {
     const results = [];
@@ -33,6 +34,9 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir }) => {
 
   useEffect(() => {
     const videoElement = document.querySelector('video'); // Adjust the selector if needed
+    console.log(currentVideoSrc, "currentVideoSrc")
+    console.log(muted, "currentVideoSrc")
+
 
     const handleScroll = async () => {
       if (document.pictureInPictureElement) {
@@ -185,7 +189,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir }) => {
 
                 <video
                   key={currentVideoSrc}
-                  // muted
+                  muted={false}
                   // loop
                   autoPlay
                   controls
