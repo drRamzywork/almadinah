@@ -3,7 +3,9 @@ import VirtualGuide from '@/components/Home/VirtualGuide'
 import Head from 'next/head'
 import React from 'react'
 
-const VirtualGuidePage = ({ dataContentDetailsGuide, dataStaticWords, dataAllLangs, dir }) => {
+const VirtualGuidePage = ({ dataContentDetailsGuide, dataStaticWords, dataAllLangs, dir, topics }) => {
+
+  const defaultVideoSrc = topics?.filter((topic) => topic.id === 4)[0].icon;
 
   return (
     <>
@@ -15,7 +17,7 @@ const VirtualGuidePage = ({ dataContentDetailsGuide, dataStaticWords, dataAllLan
 
       <HederPages dir={dir} dataContentDetailsGuide={dataContentDetailsGuide} dataAllLangs={dataAllLangs} parentName={dataStaticWords.guideVirtual} />
 
-      <VirtualGuide dir={dir} dataStaticWords={dataStaticWords} guidData={dataContentDetailsGuide} />
+      <VirtualGuide dir={dir} dataStaticWords={dataStaticWords} guidData={dataContentDetailsGuide} defaultVideoSrc={defaultVideoSrc} />
 
     </>
   )
@@ -40,9 +42,6 @@ export async function getServerSideProps({ locale }) {
   const responseContentDetailsGuide = await fetch(`https://api.visitmadinahsa.com/api/Contents/GetContents?topicId=4&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
   const dataContentDetailsGuide = await responseContentDetailsGuide.json();
 
-
-
-
   const res = await fetch('https://api.visitmadinahsa.com/api/Settings/GetAllLanguages?pagenum=1&pagesize=50');
   const languages = await res.json();
 
@@ -50,12 +49,18 @@ export async function getServerSideProps({ locale }) {
   const dir = currentLanguage?.isRtl ? 'rtl' : 'ltr';
 
 
+  const apiUrl = `https://api.visitmadinahsa.com/api/Topics/GetMainTopics?lang=${langId}&ContentSamplesToReturn=6&pagenum=1&pagesize=50`;
+
+  const response = await fetch(apiUrl);
+  const topics = await response.json();
+
   return {
     props: {
       dataStaticWords,
       dataAllLangs,
       dataContentDetailsGuide,
-      dir
+      dir,
+      topics
     },
   };
 }

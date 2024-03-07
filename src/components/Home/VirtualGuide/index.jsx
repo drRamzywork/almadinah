@@ -10,9 +10,9 @@ import Link from 'next/link';
 
 // import required modules
 
-const VirtualGuide = ({ guidData, dataStaticWords, dir }) => {
+const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
   const router = useRouter();
-  const [currentVideoSrc, setCurrentVideoSrc] = useState("https://almadinah.io/Areas/07122023501009265.mp4");
+  const [currentVideoSrc, setCurrentVideoSrc] = useState(defaultVideoSrc);
   const [activeVideoId, setActiveVideoId] = useState(null);
   const [muted, setMuted] = useState(false);
 
@@ -32,14 +32,19 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir }) => {
   };
 
 
+
   useEffect(() => {
-    const videoElement = document.querySelector('video'); // Adjust the selector if needed
+    const videoElement = document.querySelector('video');
     console.log(currentVideoSrc, "currentVideoSrc")
     console.log(muted, "currentVideoSrc")
-
+    if (currentVideoSrc) {
+      setMuted(false)
+    }
 
     const handleScroll = async () => {
       if (document.pictureInPictureElement) {
+
+
         return; // Do nothing if already in PiP mode
       }
 
@@ -54,12 +59,10 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir }) => {
 
     window.addEventListener('scroll', handleScroll);
 
-    // Cleanup on component unmount
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [currentVideoSrc]); // Empty dependency array means this effect runs once on mount
-
+  }, [currentVideoSrc]);
 
 
   return (
@@ -152,7 +155,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir }) => {
                   className={styles.swiper}
                 >
                   {
-                    guidData.map((topic, index) => (
+                    guidData?.map((topic, index) => (
                       <SwiperSlide
                         className={styles.swiper_slide_box} key={index}>
                         <div
@@ -189,7 +192,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir }) => {
 
                 <video
                   key={currentVideoSrc}
-                  muted={false}
+                  muted={muted}
                   // loop
                   autoPlay
                   controls

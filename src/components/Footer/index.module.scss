@@ -99,3 +99,11 @@ footer.home {
 .stickyTop {
   margin-top: 0 !important;
 }
+
+footer.foote[dir="ltr"] {
+  .sec_container {
+    .logo {
+      flex-direction: row !important;
+    }
+  }
+}

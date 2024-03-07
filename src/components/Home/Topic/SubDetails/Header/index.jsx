@@ -14,7 +14,7 @@ import Gallery from '@/svgs/Gallery';
 import Threehundred from '@/svgs/Threehundred';
 import { IoIosClose } from 'react-icons/io';
 
-const Header = ({ dataContentDetails, dataStaticWords, dir }) => {
+const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
   const fullscreenSwiperRef = useRef(null);
   const currentContent = dataContentDetails.currentContent;
   const wheelREf = useRef(null);
@@ -60,7 +60,7 @@ const Header = ({ dataContentDetails, dataStaticWords, dir }) => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isFullscreenSwiperOpen]); // Depend on `isFullscreenSwiperOpen` to add/remove the listener appropriately
+  }, [isFullscreenSwiperOpen]);
 
 
   // Refs for the containers

@@ -19,7 +19,9 @@ const LandingPage = ({ topics,
   industries,
   dir
 }) => {
-  const guidData = topics?.filter((topic) => topic.id === 4)[0].contents;
+  const guidData = topics?.filter((topic) => topic.id === 4)[0]?.contents;
+  const defaultVideoSrc = topics?.filter((topic) => topic.id === 4)[0]?.icon;
+  console.log(defaultVideoSrc, "defaultVideoSrc22222")
 
   return (
     <>
@@ -34,6 +36,7 @@ const LandingPage = ({ topics,
       <Map />
       <VirtualGuide
         dir={dir}
+        defaultVideoSrc={defaultVideoSrc}
         guidData={guidData} dataStaticWords={dataStaticWords} />
       <Industries
         dir={dir}
@@ -45,6 +48,7 @@ const LandingPage = ({ topics,
       <ShareMomentSec dir={dir} dataStaticWords={dataStaticWords} />
     </>
   )
+
 }
 
 export default LandingPage

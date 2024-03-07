@@ -8,7 +8,7 @@ const Footer = () => {
 
 
   return (
-    <footer id='footer' dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} className={`${styles.footer} ${router.pathname === '/' ? styles.home : ''} ${router.pathname.includes('/subdetails/') && styles.top} ${router.pathname.includes('/virtual-guide') && styles.stickyTop} `}>
+    <footer id='footer' dir={"ltr"} className={`${styles.footer} ${router.pathname === '/' ? styles.home : ''} ${router.pathname.includes('/subdetails/') && styles.top} ${router.pathname.includes('/virtual-guide') && styles.stickyTop} `}>
       <div className="container">
         <div className={styles.sec_container}>
 

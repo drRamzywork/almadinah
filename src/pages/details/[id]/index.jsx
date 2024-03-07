@@ -69,8 +69,6 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
 
             <div className={styles.text_container}>
               {dataContentDetails?.currentContent?.descriptionBigList?.map((item, index) => {
-                // Use a switch statement if you have a limited set of tags
-                // or use React.createElement if you have many different tags.
                 switch (item.tagName) {
                   case 'h4':
                     return <motion.h4
@@ -93,12 +91,7 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
                     return <span key={index}>Unknown tag</span>;
                 }
               })}
-
             </div>
-
-
-
-
 
           </div>
         </div>
