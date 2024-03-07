@@ -376,7 +376,6 @@ header.topic_details_header {
           display: flex;
           gap: 34px;
           // justify-content: space-between;
-
           @media screen and (max-width: 992px) {
             padding-bottom: 0px;
             gap: 16px;
@@ -388,8 +387,36 @@ header.topic_details_header {
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            position: relative;
             @media screen and (max-width: 992px) {
               flex-direction: row;
+            }
+
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+              p {
+                transition: all 0.3s ease-in-out;
+                position: absolute;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 1;
+                top: 41px;
+                padding: 8px 16px;
+                border-radius: 24px;
+                background-color: var(--main-white-color);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                color: #8e8eae;
+                text-align: center;
+                font-size: 18px;
+                font-weight: 600;
+                line-height: 1;
+                width: auto;
+                max-width: 180px;
+              }
             }
             .icon_container {
               img {
@@ -408,7 +435,8 @@ header.topic_details_header {
 
             p {
               margin-top: 8px;
-
+              display: none;
+              overflow: 0;
               margin-bottom: 0;
               color: #fff;
               text-align: center;
@@ -822,6 +850,42 @@ header.topic_details_header {
 
   .sec_container2 {
     height: auto;
+  }
+
+  .gallery_Image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 99999;
+    display: flex;
+    // background-color: red;
+    backdrop-filter: blur(16px);
+    padding-top: 16px;
+    padding-bottom: 16px;
+    img {
+      width: 100%;
+      object-fit: contain;
+      border-radius: 24px !important;
+
+      @media screen and (max-width: 992px) {
+        height: 100%;
+      }
+    }
+
+    .close_icon {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 999;
+      cursor: pointer;
+      svg {
+        color: var(--main-white-color);
+        width: 50px;
+        height: 50px;
+      }
+    }
   }
 }
 .topic_details_header {

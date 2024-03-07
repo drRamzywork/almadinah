@@ -210,6 +210,44 @@ header#topic_details_header{
   
   
   
+  .gallery_Image .swiper-button-prev,
+  .gallery_Image .swiper-button-next{
+    &:after{
+      color: var(--main-green-color);
+    }
+  }
+
+
+  .gallery_Image{
+    // background-color: red;
+    .swiper-slide{
+
+    }
+  }
+
+  .gallery_Image .swiper-pagination {
+    background-color: transparent;
+    background:unset !important;
+    backdrop-filter:unset;
+    height: unset;
+    padding: 0;
+    flex-direction: row;
+    transform: unset;
+    align-items: center;
+    justify-content: center;
+    
+    @media screen and (max-width:992px) {
+      top: unset;
+      bottom: 30%;
+
+    }
+    .swiper-pagination-bullet{
+      cursor: pointer;
+    z-index: 9999;
+    }
+  }
+    
+
   .swiper-pagination{
     display: inline-flex;
     height: 100%;
@@ -257,30 +295,27 @@ position: relative;
   
   
   .swiper-pagination-bullet{
-
-   
-    margin-bottom: 16px;
+      margin-bottom: 16px;
       position: relative;
       opacity: 1 !important;
       width: 24px !important;
       height: 24px !important;
       display: flex;
-    
       align-items: center;
       flex-direction: row;
     
       border-radius: 32px;
-    background: rgba(255, 255, 255, 0.30) !important;
-    backdrop-filter: blur(4px) ;
-    transition: all 0.3s ease-in-out;
+      background: rgba(255, 255, 255, 0.30) !important;
+      backdrop-filter: blur(4px) ;
+      transition: all 0.3s ease-in-out;
 
  
 
 
     @media screen and (max-width:992px) {
-  margin-bottom: 12px ;
-      
-    }
+       margin-bottom: 12px ;
+  
+  }
 
 
     p{

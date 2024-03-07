@@ -13,8 +13,8 @@ const Footer = () => {
         <div className={styles.sec_container}>
 
           <div className={styles.logo}>
-            <Image src='/assets/images/development_logo.png' width={267.18} height={70} />
             <Image src='/assets/svgs/dark_logo.svg' width={118.83} height={56} />
+            <Image src='/assets/images/development_logo.png' width={267.18} height={70} />
 
           </div>
 
@@ -25,7 +25,7 @@ const Footer = () => {
               <div className={styles.icon_container}>
                 <Image src='/assets/svgs/contact.svg' width={20} height={20} />
               </div>
-              <p className='ms-4'>تواصل معنا</p>
+              <p >تواصل معنا</p>
 
             </div>
             <p className={styles.copyright}> &copy; الحقوق محفوظة لموقع المدينة</p>

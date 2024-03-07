@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import { IoIosClose } from 'react-icons/io';
 import { motion } from 'framer-motion';
 import { i18n } from 'next-i18next';
-import { parseCookies, setCookie, destroyCookie } from 'nookies'
+import { setCookie, } from 'nookies'
 
 const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic, dir }) => {
   const router = useRouter();

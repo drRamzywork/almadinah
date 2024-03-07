@@ -1,11 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css/navigation';
+import { Swiper, SwiperSlide, } from 'swiper/react';
 import styles from '../../TopicDetails/TopicDetailsHeader/index.module.scss';
 import { motion } from 'framer-motion';
-import { Mousewheel, Pagination, } from 'swiper/modules';
+import { Mousewheel, Pagination, Navigation } from 'swiper/modules';
 import Link from 'next/link';
 import { IoIosArrowBack } from 'react-icons/io';
 import { useRouter } from 'next/router';
@@ -15,6 +15,7 @@ import Threehundred from '@/svgs/Threehundred';
 import { IoIosClose } from 'react-icons/io';
 
 const Header = ({ dataContentDetails, dataStaticWords, dir }) => {
+  const fullscreenSwiperRef = useRef(null);
   const currentContent = dataContentDetails.currentContent;
   const wheelREf = useRef(null);
   const features = currentContent.relatedFeatures;
@@ -25,13 +26,65 @@ const Header = ({ dataContentDetails, dataStaticWords, dir }) => {
   // Steps control
   const details = dataContentDetails.currentContent;
 
-
   // images control
   const [activeImage, setActiveImage] = useState(null);
 
+  // images control 2
+  const [activeImageUrl, setActiveImageUrl] = useState(null);
+  const [isFullscreenSwiperOpen, setIsFullscreenSwiperOpen] = useState(false);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+
   const toggleActive = (imageUrl) => {
-    setActiveImage(activeImage === imageUrl ? null : imageUrl);
+    const index = details?.icon?.split(',').findIndex((url) => url === imageUrl);
+    setActiveImageIndex(index); // Set the index of the active image
+    setActiveImageUrl(imageUrl); // Set the active image URL
+    setIsFullscreenSwiperOpen(!isFullscreenSwiperOpen); // Toggle visibility of the fullscreen Swiper
   };
+
+
+
+
+  const handleClickOutside = (event) => {
+    if (fullscreenSwiperRef.current && !fullscreenSwiperRef.current.contains(event.target)) {
+      setIsFullscreenSwiperOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    // Only add the listener if the fullscreen Swiper is open
+    if (isFullscreenSwiperOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    // Cleanup the event listener
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isFullscreenSwiperOpen]); // Depend on `isFullscreenSwiperOpen` to add/remove the listener appropriately
+
+
+  // Refs for the containers
+  const audioRef = useRef(null);
+  const guideRef = useRef(null);
+
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (audioRef.current && !audioRef.current.contains(event.target)) {
+        setShowAudio(false);
+      }
+      if (guideRef.current && !guideRef.current.contains(event.target)) {
+        setShowGuide(false);
+      }
+    }
+
+    // Add event listener
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // Remove event listener on cleanup
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []); // Empty dependency array means this effect runs once on mount
+
 
   return (
     <header dir={dir} className={`${styles.topic_details_header} ${styles.topic_details_header2}`} id='topic_details_header'>
@@ -50,7 +103,10 @@ const Header = ({ dataContentDetails, dataStaticWords, dir }) => {
             <motion.img initial={{ opacity: 0, }}
               animate={{ opacity: 1, }}
               transition={{ duration: 1 }}
-              src={details?.icon?.includes(',') ? details?.icon?.split(',')[0] : details?.icon} alt="" />
+              src={details?.icon?.includes(',') ? details?.icon?.split(',')[0] : details?.icon} alt=""
+
+
+            />
           </motion.div>
         }
 
@@ -85,14 +141,13 @@ const Header = ({ dataContentDetails, dataStaticWords, dir }) => {
                         <Microphone />
                         <p className={styles.guide}>
                           {dataStaticWords.voiceRecord}
-                          {console.log(dataStaticWords)}
                         </p>
 
                       </Link>
                     </div>
                   }
 
-                  <div className={styles.gallery}>
+                  <div className={styles.gallery} onClick={() => setIsFullscreenSwiperOpen(true)}>
                     <div className={styles.icon}>
                       <Gallery />
 
@@ -109,6 +164,7 @@ const Header = ({ dataContentDetails, dataStaticWords, dir }) => {
 
                 {showAudio &&
                   <motion.div
+                    ref={audioRef}
                     initial={{ opacity: 0, }}
                     animate={{ opacity: 1, }}
                     exit={{ opacity: 0 }}
@@ -129,6 +185,7 @@ const Header = ({ dataContentDetails, dataStaticWords, dir }) => {
 
                 {showGuide &&
                   <motion.div
+                    ref={guideRef}
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
@@ -180,7 +237,7 @@ const Header = ({ dataContentDetails, dataStaticWords, dir }) => {
                         <div className={styles.icon_container}>
                           <img src={f.icon} alt={f.name} />
                         </div>
-                        {/* <p>{f.name}</p> */}
+                        <p>{f.name}</p>
                       </div>
                     )
                   }
@@ -201,7 +258,6 @@ const Header = ({ dataContentDetails, dataStaticWords, dir }) => {
                       spaceBetween={16}
                       mousewheel={true}
                       modules={[Mousewheel, Pagination,]}
-
                       className={styles.swiper_container}
 
                     >
@@ -232,6 +288,48 @@ const Header = ({ dataContentDetails, dataStaticWords, dir }) => {
           </div>
         </div>
       </motion.div >
+
+
+
+      {isFullscreenSwiperOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className={styles.gallery_Image}
+          id='gallery_Image'
+
+
+        >
+
+          <Swiper
+            key={`fullscreen-swiper-${isFullscreenSwiperOpen}`}
+            spaceBetween={16}
+            slidesPerView={1}
+            initialSlide={activeImageIndex}
+            navigation={true}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[Pagination, Navigation]}
+            className="gallery_Image"
+            dir={dir}
+            centeredSlides={true}
+          >
+
+            {details?.icon?.split(',').map((imageUrl, index) => (
+              <SwiperSlide key={index}>
+                <img src={imageUrl} alt='' />
+
+
+                <div className={styles.close_icon} onClick={() => setIsFullscreenSwiperOpen(false)}>
+                  <IoIosClose />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </motion.div>
+      )}
 
     </header >
   )

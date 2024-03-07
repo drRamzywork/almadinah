@@ -47,8 +47,6 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 1 }}
-
-
               className={styles.desc_container}>
               <p>
                 {dataContentDetails.currentContent.description}
@@ -62,7 +60,7 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
                     <div className={styles.icon_container}>
                       <img src={f.icon} alt={f.name} />
                     </div>
-                    {/* <p>{f.name}</p> */}
+                    <p>{f.name}</p>
                   </div>
                 )
 

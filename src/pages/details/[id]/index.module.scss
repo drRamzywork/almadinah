@@ -43,38 +43,67 @@ section.details {
       align-items: center;
       justify-content: center;
       border-bottom: 1px solid rgba(142, 142, 174, 0.2980392157);
-      padding-bottom: 70px;
+      padding-bottom: 24px;
+      padding-top: 24px;
       // flex-wrap: wrap;
+
+      gap: 72px;
 
       @media screen and (max-width: 992px) {
         padding-bottom: 34px;
+        padding-top: 34px;
         overflow-y: scroll;
+        gap: 16px;
       }
 
       .box {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        margin-top: 40px;
-        &:not(:first-child) {
-          margin-right: 72px;
-          @media screen and (max-width: 992px) {
-            margin-right: 32px;
-            margin-top: 24px;
+
+        position: relative;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          p {
+            transition: all 0.3s ease-in-out;
+            position: absolute;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            top: 41px;
+            padding: 8px 16px;
+            border-radius: 24px;
+            background-color: var(--main-white-color);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #8e8eae;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1;
+            width: auto;
+            max-width: 180px;
           }
         }
+
         .icon_container {
           img {
             width: 40px;
             height: 40px;
             object-fit: contain;
+            filter: grayscale(100%) sepia(100%) hue-rotate(860deg)
+              saturate(1700%) brightness(100%);
           }
         }
 
         p {
           margin-top: 8px;
-
+          display: none;
+          transition: all 0.3s ease-in-out;
+          opacity: 0;
           margin-bottom: 0;
           color: #8e8eae;
           text-align: center;
@@ -86,10 +115,10 @@ section.details {
       }
     }
     .text_container {
-      margin-top: 70px;
+      margin-top: 24px;
       // background: red;
       // border-top: 1px solid #8e8eae4c;
-      margin-bottom: 128px;
+      margin-bottom: 28px;
       text-align: justify;
       width: 70%;
 

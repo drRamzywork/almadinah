@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { IoIosArrowBack, IoIosClose } from "react-icons/io";
 import { useRouter } from 'next/router'
@@ -25,6 +25,29 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
   const router = useRouter();
   const [showAudio, setShowAudio] = useState(false)
   const [showGuide, setShowGuide] = useState(false)
+
+
+
+  // Refs for the containers
+  const audioRef = useRef(null);
+  const guideRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (audioRef.current && !audioRef.current.contains(event.target)) {
+        setShowAudio(false);
+      }
+      if (guideRef.current && !guideRef.current.contains(event.target)) {
+        setShowGuide(false);
+      }
+    }
+
+    // Add event listener
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // Remove event listener on cleanup
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
 
@@ -118,7 +141,9 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
               animate={{ opacity: 1, }}
               exit={{ opacity: 0 }}
               transition={{ duration: 1 }}
-              className={styles.audio}>
+              className={styles.audio}
+              ref={audioRef}
+            >
 
               <audio controls src={dataContentDetailsGuide.sound}>
                 Your browser does not support the audio element.
@@ -139,6 +164,7 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 1 }}
+              ref={guideRef}
               className={styles.video}>
 
               {/* <video controls src={dataContentDetailsGuide.tourGuide}>

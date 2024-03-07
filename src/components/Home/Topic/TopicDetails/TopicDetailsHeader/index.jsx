@@ -315,6 +315,7 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir }) => {
         className="mySwiper"
         onSlideChange={(swiper) => handleSlideChange(swiper)}
         ref={swiperRef}
+        id='swiperSteps'
       >
         <SwiperSlide >
           <motion.div
