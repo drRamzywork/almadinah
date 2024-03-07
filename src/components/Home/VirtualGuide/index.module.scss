@@ -672,7 +672,7 @@ section.virtual_guide[dir="ltr"]:not(.virtualPage) {
             display: none;
           }
           color: #9fa0b9;
-          text-align: right;
+          text-align: left;
           font-size: 18px;
           font-style: normal;
           font-weight: 500;
@@ -682,7 +682,7 @@ section.virtual_guide[dir="ltr"]:not(.virtualPage) {
         h3 {
           @media screen and (max-width: 992px) {
             color: #383969;
-            text-align: right;
+            text-align: left;
             font-size: 32.5px;
             font-style: normal;
             font-weight: 800;

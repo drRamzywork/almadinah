@@ -18,8 +18,6 @@ const LandingPage = ({ topics,
   foods,
   industries,
   dir
-
-
 }) => {
   const guidData = topics?.filter((topic) => topic.id === 4)[0].contents;
 
@@ -44,7 +42,7 @@ const LandingPage = ({ topics,
         dataStaticWords={dataStaticWords}
       />
 
-      <ShareMomentSec dir={dir} />
+      <ShareMomentSec dir={dir} dataStaticWords={dataStaticWords} />
     </>
   )
 }

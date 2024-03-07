@@ -185,9 +185,9 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir }) => {
 
                 <video
                   key={currentVideoSrc}
-                  muted
-                  loop
-                  // autoPlay
+                  // muted
+                  // loop
+                  autoPlay
                   controls
                 >
                   <source src={currentVideoSrc} type="video/mp4" />
@@ -197,7 +197,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir }) => {
 
               <Link href={`/virtual-guide`} className={`${styles.sec_title} sec_title`}>
                 <p>{dataStaticWords.guideVirtual}</p>
-                <h3>ماذا تريد أن تعرف </h3>
+                <h3>{dataStaticWords.needToKnow}</h3>
               </Link>
 
             </div>

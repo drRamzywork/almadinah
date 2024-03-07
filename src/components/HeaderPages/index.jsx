@@ -186,7 +186,12 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
                   <i className="icn-caret-right" />
                 </a>
 
-                <video controls loop muted autoPlay playsInline src={dataContentDetailsGuide.tourGuide} poster="/assets/photos/movie3.jpg" className="w-100 rounded caption-overlay d-block" />
+                <video
+                  controls
+                  loop
+                  autoPlay
+                  playsInline
+                  src={dataContentDetailsGuide.tourGuide} poster="/assets/photos/movie3.jpg" className="w-100 rounded caption-overlay d-block" />
               </figure>
 
 

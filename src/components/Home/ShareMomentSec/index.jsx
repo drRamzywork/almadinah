@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { IoIosArrowBack } from "react-icons/io";
 import { useRouter } from 'next/router';
 
-const ShareMomentSec = ({ dir }) => {
+const ShareMomentSec = ({ dir, dataStaticWords }) => {
   const router = useRouter();
   const getRandomWidth = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
@@ -22,7 +22,7 @@ const ShareMomentSec = ({ dir }) => {
               <Image src={'/assets/svgs/Star.svg'} width={300} height={300} />
             </div> */}
             <div className={styles.title}>
-              <h3>شارك لحظاتك في المدينة</h3>
+              <h3>{dataStaticWords.shareMomentTitle}</h3>
             </div>
 
             <div className={styles.icon_container}>

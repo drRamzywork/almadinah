@@ -39,7 +39,7 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
       <HederPages dir={dir} dataContentDetailsGuide={dataContentDetailsGuide.currentContent} dataContentDetails={dataContentDetails.currentContent} dataAllLangs={dataAllLangs} icon={icon} parentName={dataContentDetails.
         currentContent.name} categoryName={dataMainTopic[0]?.parentName} />
 
-      <section id='details' className={styles.details}>
+      <section dir={dir} id='details' className={styles.details}>
         <div className="container p-3">
           <div className={styles.sec_container}>
             <motion.div
