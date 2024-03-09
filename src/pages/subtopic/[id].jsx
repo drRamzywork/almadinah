@@ -18,6 +18,7 @@ const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords, dir, dataAll
   const getRandomWidth = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
   const query = router.query.id
   const title = dataSubCategory?.secondaryTopics?.filter((category) => category.id === Number(query))[0]?.name;
+  const routerID = Number(router.query.id);
 
   const breakpoints = {
     300: {
@@ -61,6 +62,8 @@ const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords, dir, dataAll
 
 
   }
+
+
   return (
     <>
       <Head>
@@ -127,7 +130,14 @@ const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords, dir, dataAll
 
                   key={index}
                   className={styles.box}>
-                  <Link href={Number(router.query.id) === 2 ? `/topic-details/${topic.id}` : (Number(router.query.id) === 1 || 13 ? `/subdetails/${topic.id}` : `/details/${topic.id}`)}>
+                  <Link href={
+                    routerID === 2
+                      ? `/topic-details/${topic.id}`
+                      : (routerID === 1 || routerID === 13
+                        ? `/subdetails/${topic.id}`
+                        : `/details/${topic.id}`
+                      )
+                  }>
                     <div className={styles.img_container}>
                       <Image src={topic.icon.includes(',') ? topic.icon.split(',')[0] : topic.icon} width={233} height={166} />
                     </div>

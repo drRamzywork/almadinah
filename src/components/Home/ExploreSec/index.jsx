@@ -7,7 +7,6 @@ import PalmTree from '@/svgs/PalmTree';
 import { FaArrowLeft } from 'react-icons/fa';
 import { IoIosArrowBack } from 'react-icons/io';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -23,7 +22,6 @@ const ExploreSec = ({ topics,
 }) => {
   const [hoveredIndex, setHoveredIndex] = useState(-1);
 
-  const router = useRouter();
 
   const boxVariants = {
     normal: {
@@ -38,10 +36,9 @@ const ExploreSec = ({ topics,
     },
   };
 
-
   const desiredIds = [1, 13, 2];
   const filteredTopics = topics.filter(topic => desiredIds.includes(topic.id));
-
+  { console.log(dataDrobTopic, "dataDrobTopic") }
 
   const filteredDrobTopics = dataDrobTopic?.slice(0, 3);
   const filteredLandmarksTopic = dataLandmarksTopic?.slice(0, 3);
@@ -81,7 +78,6 @@ const ExploreSec = ({ topics,
         subTopics = []; // Default to an empty array if no match is found
     }
 
-    // Return a new object combining the main topic with its corresponding subtopics
     return {
       ...mainTopic,
       subTopics,
@@ -185,19 +181,22 @@ const ExploreSec = ({ topics,
                     transition={{ duration: 0.5 }}
 
                     className={`${styles.inner_boxes_container} d-flex`}>
+
                     {box?.subTopics?.map((subTopic, idx) =>
-                      <Link href={`${subTopic.parentId === 2 ? `/topic-details/${subTopic.id}` : `/subdetails/${subTopic.id}`}`} className={styles.small_box}>
+                      <Link key={idx} href={`${subTopic.parentId === 2 ? `/topic-details/${subTopic.id}` : `/subdetails/${subTopic.id}`}`} className={styles.small_box}>
                         <div className={styles.img_container}>
                           <img src={subTopic.icon.includes(',') ? subTopic.icon.split(',')[0] : subTopic.icon} alt={subTopic.name} />
                         </div>
 
                         <div className={styles.hours_container}>
                           <p>
-                            12 ساعة
+                            {subTopic.tourHours <= 1 && (`${subTopic.tourHours} ${dataStaticWords.hour} `)}
+                            {subTopic.tourHours > 1 && (`${subTopic.tourHours} ${dataStaticWords.hours} `)}
+                            {subTopic.totalMinutes && (`${subTopic.totalMinutes} ${dataStaticWords.minute} `)}
                           </p>
                         </div>
 
-                        <div className={styles.category_container}>
+                        {/* <div className={styles.category_container}>
                           <div className={styles.category}>
                             <p>
                               12 ساعة
@@ -206,7 +205,7 @@ const ExploreSec = ({ topics,
                           <div className={styles.icon_container}>
                             <PalmTree />
                           </div>
-                        </div>
+                        </div> */}
 
                         <div className={styles.card_bottom}>
                           <div className={styles.title}>
@@ -236,14 +235,6 @@ const ExploreSec = ({ topics,
                     </div>
 
                   </motion.div>}
-
-
-
-
-
-
-
-
 
               </div >
             </motion.div >
@@ -321,7 +312,11 @@ const ExploreSec = ({ topics,
                             <div className={styles.clock}>
                               <Alarm />
                             </div>
-                            <p>h{subTopic.tourHours}</p>
+                            <p>
+                              {subTopic.tourHours <= 1 && (`${subTopic.tourHours} ${dataStaticWords.hour} `)}
+                              {subTopic.tourHours > 1 && (`${subTopic.tourHours} ${dataStaticWords.hours} `)}
+                              {subTopic.totalMinutes && (`${subTopic.totalMinutes} ${dataStaticWords.minute} `)}
+                            </p>
                           </div>
 
                         }

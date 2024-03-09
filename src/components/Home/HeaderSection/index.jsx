@@ -37,13 +37,10 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((currentIndex) => (currentIndex + 1) % images.length);
-    }, 5000); // Rotate images every 9 seconds
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
-
-
-  // Animation variants for framer-motion
   const imageVariants = {
     hidden: { opacity: 0.5, scale: 0.95 },
     visible: { opacity: 1, scale: 1 },

@@ -352,9 +352,6 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir }) => {
                             {step.tourHours <= 1 && (`${step.tourHours} ${dataStaticWords.hour} `)}
                             {step.tourHours > 1 && (`${step.tourHours} ${dataStaticWords.hours} `)}
                             {step.totalMinutes && (`${step.totalMinutes} ${dataStaticWords.minute} `)}
-
-
-
                           </p>
                         </div>
 

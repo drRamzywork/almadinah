@@ -43,8 +43,6 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
   };
 
 
-
-
   const handleClickOutside = (event) => {
     if (fullscreenSwiperRef.current && !fullscreenSwiperRef.current.contains(event.target)) {
       setIsFullscreenSwiperOpen(false);
@@ -96,10 +94,9 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
         transition={{ duration: 1 }}
         className={styles.swiper_container}
       >
+
         {details.icon !== null &&
           <motion.div
-
-
             className={styles.main_image_slider}>
             <motion.img initial={{ opacity: 0, }}
               animate={{ opacity: 1, }}
@@ -248,10 +245,7 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
                   }
 
                 </div>
-
               </div>
-
-
 
               <div className={styles.details_container}>
                 <div id="vertical_swiper" className={styles.vertical_swiper}>
@@ -281,6 +275,7 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
                 </div>
 
               </div>
+
               {
                 activeImage && (
                   <div className={styles.fullScreenImage} onClick={() => setActiveImage(null)}>
@@ -337,7 +332,6 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
 
 
       {show360 &&
-
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -349,12 +343,10 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
         >
           <iframe width="100%" height="100%" allowfullscreen="true" allow="accelerometer; magnetometer; gyroscope" src={details.video}></iframe>
 
-
           <div className={styles.close_icon} onClick={() => setShow360(false)}>
             <IoIosClose />
           </div>
         </motion.div>
-
       }
 
 
