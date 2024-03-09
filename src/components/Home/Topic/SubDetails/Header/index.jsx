@@ -22,6 +22,7 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
 
   const [showAudio, setShowAudio] = useState(false)
   const [showGuide, setShowGuide] = useState(false)
+  const [show360, setShow360] = useState(false)
 
   // Steps control
   const details = dataContentDetails.currentContent;
@@ -146,7 +147,7 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
                       </Link>
                     </div>
                   }
-                  {details?.sound !== null &&
+                  {details?.icon !== null &&
                     <div className={styles.gallery} onClick={() => setIsFullscreenSwiperOpen(true)}>
                       <div className={styles.icon}>
                         <Gallery />
@@ -154,14 +155,17 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
                       </div>
                     </div>
                   }
+                  {details?.video !== null &&
+                    <div className={styles.three_hundred} onClick={() => setShow360(true)}>
+                      <div className={styles.icon}>
 
-                  <div className={styles.three_hundred}>
-                    <div className={styles.icon}>
+                        <Threehundred />
+                      </div>
 
-                      <Threehundred />
                     </div>
+                  }
 
-                  </div>
+
                 </div>
 
                 {showAudio &&
@@ -173,7 +177,10 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
                     transition={{ duration: 0.5 }}
                     className={styles.audio}>
 
-                    <audio controls src={details?.sound}>
+                    <audio
+                      autoPlay
+                      controls src={details?.sound}
+                    >
                       Your browser does not support the audio element.
                     </audio>
 
@@ -202,11 +209,9 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
                   </motion.div>
                 }
 
-
                 <div className={styles.title}>
                   <h2>{details.name}</h2>
                 </div>
-
 
                 <div className={styles.middle_box2}>
                   <div className={styles.desc}>
@@ -229,8 +234,6 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
 
 
                 </div>
-
-
 
                 <div className={`mt-3 ${styles.boxes_container}`}>
                   {features &&
@@ -322,8 +325,6 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
             {details?.icon?.split(',').map((imageUrl, index) => (
               <SwiperSlide key={index}>
                 <img src={imageUrl} alt='' />
-
-
                 <div className={styles.close_icon} onClick={() => setIsFullscreenSwiperOpen(false)}>
                   <IoIosClose />
                 </div>
@@ -332,6 +333,30 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
           </Swiper>
         </motion.div>
       )}
+
+
+
+      {show360 &&
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className={styles.gallery_Image}
+          id='gallery_Image'
+
+
+        >
+          <iframe width="100%" height="100%" allowfullscreen="true" allow="accelerometer; magnetometer; gyroscope" src={details.video}></iframe>
+
+
+          <div className={styles.close_icon} onClick={() => setShow360(false)}>
+            <IoIosClose />
+          </div>
+        </motion.div>
+
+      }
+
 
     </header >
   )
