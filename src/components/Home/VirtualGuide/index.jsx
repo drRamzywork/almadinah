@@ -32,7 +32,6 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
     setCurrentVideoSrc(videoUrl);
 
   };
-  console.log(autoPlay, "autoPlay")
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
       const [entry] = entries;
@@ -222,7 +221,6 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
             <div className={styles.video_container}>
               <div className={styles.img_container}>
                 <img src="/assets/images/Background_hands_web.png" alt="" />
-                {console.log(muted, "muted")}
                 <video
                   key={currentVideoSrc}
                   muted={!autoPlay}

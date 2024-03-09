@@ -38,7 +38,6 @@ const ExploreSec = ({ topics,
 
   const desiredIds = [1, 13, 2];
   const filteredTopics = topics.filter(topic => desiredIds.includes(topic.id));
-  { console.log(dataDrobTopic, "dataDrobTopic") }
 
   const filteredDrobTopics = dataDrobTopic?.slice(0, 3);
   const filteredLandmarksTopic = dataLandmarksTopic?.slice(0, 3);
