@@ -378,9 +378,9 @@ header.topic_details_header {
           // justify-content: space-between;
           @media screen and (max-width: 992px) {
             padding-bottom: 0px;
-            gap: 16px;
+            gap: 24px;
             width: 100%;
-            overflow: scroll;
+            // overflow: scroll;
           }
           .box {
             display: flex;
@@ -409,7 +409,7 @@ header.topic_details_header {
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
-                color: #8e8eae;
+                color: var(--main-green-color) !important;
                 text-align: center;
                 font-size: 18px;
                 font-weight: 600;
@@ -423,8 +423,8 @@ header.topic_details_header {
                 width: 40px;
                 height: 40px;
                 object-fit: contain;
-                filter: grayscale(100%) sepia(100%) hue-rotate(160deg)
-                  saturate(300%) brightness(100%);
+                filter: grayscale(100%) sepia(100%) hue-rotate(130deg)
+                  saturate(1210%) brightness(40%);
 
                 @media screen and (max-width: 992px) {
                   width: 24px;
@@ -434,11 +434,11 @@ header.topic_details_header {
             }
 
             p {
+              transition: all 0.3s ease-in-out;
               margin-top: 8px;
               display: none;
               overflow: 0;
               margin-bottom: 0;
-              color: #fff;
               text-align: center;
               font-size: 18px;
               font-style: normal;
@@ -1174,12 +1174,12 @@ header.topic_details_header[dir="ltr"] {
         .boxes_container {
           display: flex;
           // gap: 34px;
-          justify-content: space-between;
+          // justify-content: space-between;
           @media screen and (max-width: 992px) {
             padding-bottom: 0px;
-            gap: 16px;
+            // gap: 16px;
             width: 100%;
-            overflow: scroll;
+            // overflow-y: scroll;
           }
           .box {
             display: flex;

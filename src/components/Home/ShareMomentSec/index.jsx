@@ -51,7 +51,7 @@ const ShareMomentSec = ({ dir, dataStaticWords }) => {
 
           <div className={styles.btn_container}>
             <button>
-              <p>صور أكثر لزوار المدينة</p>
+              <p>{dataStaticWords.morePhotosForVisitors}</p>
               <div className={styles.icon_container}>
                 <IoIosArrowBack />
               </div>
@@ -65,8 +65,8 @@ const ShareMomentSec = ({ dir, dataStaticWords }) => {
             </div>
 
             <div className={styles.desc}>
-              <p>حمل تطبيق المدينة،</p>
-              <p>وشاركنا لقطاتك في المدينة!</p>
+              <p>{dataStaticWords.downloadTheCityApplication}</p>
+              <p>{dataStaticWords.shareWithUs}</p>
             </div>
 
             <div className={styles.link_container}>
@@ -74,7 +74,7 @@ const ShareMomentSec = ({ dir, dataStaticWords }) => {
                 <Image src='/assets/svgs/apple.svg' width={28.43} height={34} />
               </div>
               <div className={styles.text_container}>
-                <p>حمل التطبيق</p>
+                <p>{dataStaticWords.downloadApplication}</p>
                 <p>App Store</p>
               </div>
             </div>

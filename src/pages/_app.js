@@ -1,15 +1,13 @@
 import Layout from "@/components/Layout";
 import "@/styles/globals.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { appWithTranslation, useTranslation } from "next-i18next";
+import { appWithTranslation } from "next-i18next";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 
-function App({ Component, pageProps }) {
-  const { i18n } = useTranslation();
-
+function App({ Component, pageProps, dataStaticWords }) {
   return (
     <LanguageProvider>
-      <Layout>
+      <Layout dataStaticWords={dataStaticWords}>
         <Component {...pageProps} />
       </Layout>
     </LanguageProvider>

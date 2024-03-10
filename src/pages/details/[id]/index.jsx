@@ -4,12 +4,11 @@ import { motion } from 'framer-motion'
 import Map from '@/components/Home/Map'
 import HederPages from '@/components/HeaderPages'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
+import Marquee from "react-fast-marquee";
 
-const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentDetailsGuide, dir }) => {
+const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentDetailsGuide, dir, dataStaticWords }) => {
   const icon = dataContentDetails.currentContent.icon;
   const features = dataContentDetails.currentContent.relatedFeatures;
-  const router = useRouter();
 
   return (
     <>
@@ -36,8 +35,9 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
         <meta name="twitter:image" content="/assets/images/dark_logo.png" />
       </Head>
 
-      <HederPages dir={dir} dataContentDetailsGuide={dataContentDetailsGuide.currentContent} dataContentDetails={dataContentDetails.currentContent} dataAllLangs={dataAllLangs} icon={icon} parentName={dataContentDetails.
+      <HederPages dataStaticWords={dataStaticWords} dir={dir} dataContentDetailsGuide={dataContentDetailsGuide.currentContent} dataContentDetails={dataContentDetails.currentContent} dataAllLangs={dataAllLangs} icon={icon} parentName={dataContentDetails.
         currentContent.name} categoryName={dataMainTopic[0]?.parentName} />
+
 
       <section dir={dir} id='details' className={styles.details}>
         <div className="container p-3">
@@ -60,11 +60,23 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
                     <div className={styles.icon_container}>
                       <img src={f.icon} alt={f.name} />
                     </div>
-                    <p>{f.name}</p>
+
+                    <p style={{ overflow: 'hidden' }}>
+                      {
+                        // Split the text by spaces to count words
+                        f.name.split(' ').length > 3 ? (
+                          <Marquee pauseOnHover={false} speed={16}>
+                            {f.name}
+                          </Marquee>
+                        ) : (
+                          <span>{f.name}</span> // Display text without marquee for 3 words or less
+                        )
+                      }
+                    </p>
                   </div>
                 )
-
               }
+
             </div>
 
             <div className={styles.text_container}>
@@ -115,29 +127,29 @@ export async function getServerSideProps({ params, locale }) {
   const langId = languagesConfig.filter((lang) => lang.shortCut === locale)[0].id;
   // languagesConfig[locale]?.id ||
   const responseAllLangs = await fetch(
-    `https://api.almadinah.io/api/Settings/GetAllLanguages?pagenum=1&pagesize=50`
+    `https://api.visitmadinahsa.com/api/Settings/GetAllLanguages?pagenum=1&pagesize=50`
   );
   const dataAllLangs = await responseAllLangs?.json();
 
-  const responseStaticWords = await fetch(`https://api.almadinah.io/api/Settings/GetStaticWords?lang=${langId}`);
+  const responseStaticWords = await fetch(`https://api.visitmadinahsa.com/api/Settings/GetStaticWords?lang=${langId}`);
   const dataStaticWords = await responseStaticWords.json();
 
   // Fetch main topics with the initial topicId
 
-  const responseContentDetails = await fetch(`https://api.almadinah.io/api/Contents/GetContentDetails?contentId=${params.id}&lang=${langId}&suggestions=0`);
+  const responseContentDetails = await fetch(`https://api.visitmadinahsa.com/api/Contents/GetContentDetails?contentId=${params.id}&lang=${langId}&suggestions=0`);
   const dataContentDetails = await responseContentDetails.json();
 
-  const responseContentDetailsGuide = await fetch(`https://api.almadinah.io/api/Contents/GetContentDetails?contentId=${params.id}&lang=${langId}&suggestions=0&video360=true&guide=true
+  const responseContentDetailsGuide = await fetch(`https://api.visitmadinahsa.com/api/Contents/GetContentDetails?contentId=${params.id}&lang=${langId}&suggestions=0&video360=true&guide=true
   `);
   const dataContentDetailsGuide = await responseContentDetailsGuide.json();
 
 
-  const responseMainTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${dataContentDetails.currentContent.topicIdFk}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=true`);
+  const responseMainTopic = await fetch(`https://api.visitmadinahsa.com/api/Contents/GetContents?topicId=${dataContentDetails.currentContent.topicIdFk}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=true`);
   const dataMainTopic = await responseMainTopic.json();
 
 
   const res = await fetch(
-    "https://api.almadinah.io/api/Settings/GetAllLanguages?pagenum=1&pagesize=50"
+    "https://api.visitmadinahsa.com/api/Settings/GetAllLanguages?pagenum=1&pagesize=50"
   );
   const languages = await res.json();
 

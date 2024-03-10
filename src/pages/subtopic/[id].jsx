@@ -158,15 +158,21 @@ const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords, dir, dataAll
 
             <div className={styles.boxes_container_mobile}>
               {dataSubTopic?.map((topic, index) => (
-                <Link href={`/details/${topic.id}`}
+                <Link href={
+                  routerID === 2
+                    ? `/topic-details/${topic.id}`
+                    : (routerID === 1 || routerID === 13
+                      ? `/subdetails/${topic.id}`
+                      : `/details/${topic.id}`
+                    )
+                }
                   className={styles.box} key={index}
                   style={{
-                    width: `164px`,
-                    height: `${getRandomWidth(140, 240)}px`, // Set the height for all boxes
+                    width: `100%`,
+                    height: `${getRandomWidth(144, 340)}px`,
                   }}>
                   <div className={styles.img_container}>
-                    {/* <Image src={'/assets/images/place.png'} width={233} height={166} />
-                     */}
+
                     <Image src={topic.icon.includes(',') ? topic.icon.split(',')[0] : topic.icon} layout="fill" objectFit="cover" />
 
                   </div>
@@ -188,7 +194,7 @@ export default SubTopic
 
 
 export async function getStaticPaths() {
-  const response = await fetch('https://api.almadinah.io/api/Topics/GetMainTopics?lang=2&ContentSamplesToReturn=0&pagenum=1&pagesize=50');
+  const response = await fetch('https://api.visitmadinahsa.com/api/Topics/GetMainTopics?lang=2&ContentSamplesToReturn=0&pagenum=1&pagesize=50');
   const topics = await response.json();
 
   const paths = topics.map(topic => ({
@@ -205,17 +211,17 @@ export async function getStaticProps({ params, locale }) {
   const langId = languagesConfig.filter((lang) => lang.shortCut === locale)[0].id;
   // languagesConfig[locale]?.id ||
 
-  const responseStaticWords = await fetch(`https://api.almadinah.io/api/Settings/GetStaticWords?lang=${langId}`);
+  const responseStaticWords = await fetch(`https://api.visitmadinahsa.com/api/Settings/GetStaticWords?lang=${langId}`);
   const dataStaticWords = await responseStaticWords.json();
 
   // Fetch main topics with the initial topicId
-  const responseMainTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${params.id}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
+  const responseMainTopic = await fetch(`https://api.visitmadinahsa.com/api/Contents/GetContents?topicId=${params.id}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
   const dataMainTopic = await responseMainTopic.json();
 
-  const responseSubCategory = await fetch(`https://api.almadinah.io/api/Topics/GetSubCategories?topicId=${dataMainTopic[0]?.parentId}&lang=${langId}&ContentSamplesToReturn=0&pagenum=1&pagesize=50`);
+  const responseSubCategory = await fetch(`https://api.visitmadinahsa.com/api/Topics/GetSubCategories?topicId=${dataMainTopic[0]?.parentId}&lang=${langId}&ContentSamplesToReturn=0&pagenum=1&pagesize=50`);
   const dataSubCategory = await responseSubCategory.json();
 
-  const responseSubTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${params.id}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
+  const responseSubTopic = await fetch(`https://api.visitmadinahsa.com/api/Contents/GetContents?topicId=${params.id}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
   const dataSubTopic = await responseSubTopic.json();
 
 
@@ -225,12 +231,12 @@ export async function getStaticProps({ params, locale }) {
   // Langs
 
   const responseAllLangs = await fetch(
-    `https://api.almadinah.io/api/Settings/GetAllLanguages?pagenum=1&pagesize=50`
+    `https://api.visitmadinahsa.com/api/Settings/GetAllLanguages?pagenum=1&pagesize=50`
   );
   const dataAllLangs = await responseAllLangs?.json();
 
   const res = await fetch(
-    "https://api.almadinah.io/api/Settings/GetAllLanguages?pagenum=1&pagesize=50"
+    "https://api.visitmadinahsa.com/api/Settings/GetAllLanguages?pagenum=1&pagesize=50"
   );
   const languages = await res.json();
 

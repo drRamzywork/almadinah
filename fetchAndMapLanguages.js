@@ -5,7 +5,7 @@ const path = require("path");
 async function fetchAndMapLanguages() {
   try {
     const response = await fetch(
-      "https://api.almadinah.io/api/Settings/GetAllLanguages?pagenum=1&pagesize=50"
+      "https://api.visitmadinahsa.com/api/Settings/GetAllLanguages?pagenum=1&pagesize=50"
     );
     const languages = await response.json();
 

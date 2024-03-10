@@ -4,7 +4,7 @@ const path = require("path");
 const https = require("https");
 
 const apiURL =
-  "https://api.almadinah.io/api/Settings/GetAllLanguages?pagenum=1&pagesize=50";
+  "https://api.visitmadinahsa.com/api/Settings/GetAllLanguages?pagenum=1&pagesize=50";
 const outputPath = path.join(process.cwd(), "public/locales/allLanguages.json");
 
 https

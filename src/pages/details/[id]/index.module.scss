@@ -47,14 +47,12 @@ section.details {
       padding-bottom: 24px;
       padding-top: 24px;
       // flex-wrap: wrap;
-
       gap: 72px;
 
       @media screen and (max-width: 992px) {
         padding-bottom: 34px;
         padding-top: 34px;
-        overflow-y: scroll;
-        gap: 16px;
+        gap: 24px;
       }
 
       .box {
@@ -80,7 +78,7 @@ section.details {
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            color: #8e8eae;
+            color: var(--main-green-color);
             text-align: center;
             font-size: 18px;
             font-weight: 600;
@@ -95,8 +93,13 @@ section.details {
             width: 40px;
             height: 40px;
             object-fit: contain;
-            filter: grayscale(100%) sepia(100%) hue-rotate(860deg)
-              saturate(1700%) brightness(100%);
+            // filter: grayscale(100%) sepia(100%) hue-rotate(860deg)
+            //   saturate(1700%) brightness(100%);
+            // filter: grayscale(100%) sepia(100%) hue-rotate(160deg)
+            //   saturate(1700%) brightness(90%);
+
+            filter: grayscale(100%) sepia(100%) hue-rotate(160deg)
+              saturate(2410%) brightness(40%);
           }
         }
 

@@ -187,7 +187,7 @@ export default Topic
 
 
 export async function getStaticPaths() {
-  const response = await fetch('https://api.almadinah.io/api/Topics/GetMainTopics?lang=2&ContentSamplesToReturn=0&pagenum=1&pagesize=50');
+  const response = await fetch('https://api.visitmadinahsa.com/api/Topics/GetMainTopics?lang=2&ContentSamplesToReturn=0&pagenum=1&pagesize=50');
   const topics = await response.json();
 
   const paths = topics.map(topic => ({
@@ -204,45 +204,45 @@ export async function getStaticProps({ params, locale }) {
   const langId = languagesConfig.filter((lang) => lang.shortCut === locale)[0].id;
 
   const responseStaticWords = await fetch(
-    `https://api.almadinah.io/api/Settings/GetStaticWords?lang=${langId}
+    `https://api.visitmadinahsa.com/api/Settings/GetStaticWords?lang=${langId}
     `
   );
   const dataStaticWords = await responseStaticWords.json();
 
 
   // Fetch main topics with the initial topicId
-  let responseMainTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${params.id}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
+  let responseMainTopic = await fetch(`https://api.visitmadinahsa.com/api/Contents/GetContents?topicId=${params.id}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
   let dataMainTopic = await responseMainTopic.json();
 
-  const responseSubCategory = await fetch(`https://api.almadinah.io/api/Topics/GetSubCategories?topicId=${params.id}&lang=${langId}&ContentSamplesToReturn=0&pagenum=1&pagesize=50`);
+  const responseSubCategory = await fetch(`https://api.visitmadinahsa.com/api/Topics/GetSubCategories?topicId=${params.id}&lang=${langId}&ContentSamplesToReturn=0&pagenum=1&pagesize=50`);
   const dataSubCategory = await responseSubCategory.json();
   // If dataMainTopic array is empty, fetch the subcategory to get a new topicId
   if (!dataMainTopic.length) { // Assuming dataMainTopic is an array and checking its length
-    const responseSubCategory = await fetch(`https://api.almadinah.io/api/Topics/GetSubCategories?topicId=${params.id}&lang=${langId}&ContentSamplesToReturn=0&pagenum=1&pagesize=50`);
+    const responseSubCategory = await fetch(`https://api.visitmadinahsa.com/api/Topics/GetSubCategories?topicId=${params.id}&lang=${langId}&ContentSamplesToReturn=0&pagenum=1&pagesize=50`);
     const dataSubCategory = await responseSubCategory.json();
 
     // Check if secondaryTopics array is not empty and has an id
     if (dataSubCategory.secondaryTopics && dataSubCategory.secondaryTopics.length > 0) {
       const newTopicId = dataSubCategory.secondaryTopics[0].id;
       // Use the newTopicId to fetch main topics again
-      responseMainTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=${newTopicId}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
+      responseMainTopic = await fetch(`https://api.visitmadinahsa.com/api/Contents/GetContents?topicId=${newTopicId}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
       dataMainTopic = await responseMainTopic.json();
     }
   }
 
   // Fetch subtopics (assuming this is necessary regardless of the previous condition)
-  const responseSubTopic = await fetch(`https://api.almadinah.io/api/Contents/GetContents?topicId=8&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
+  const responseSubTopic = await fetch(`https://api.visitmadinahsa.com/api/Contents/GetContents?topicId=8&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`);
   const dataSubTopic = await responseSubTopic.json();
 
 
 
   const responseAllLangs = await fetch(
-    `https://api.almadinah.io/api/Settings/GetAllLanguages?pagenum=1&pagesize=50`
+    `https://api.visitmadinahsa.com/api/Settings/GetAllLanguages?pagenum=1&pagesize=50`
   );
   const dataAllLangs = await responseAllLangs?.json();
 
   const res = await fetch(
-    "https://api.almadinah.io/api/Settings/GetAllLanguages?pagenum=1&pagesize=50"
+    "https://api.visitmadinahsa.com/api/Settings/GetAllLanguages?pagenum=1&pagesize=50"
   );
   const languages = await res.json();
 

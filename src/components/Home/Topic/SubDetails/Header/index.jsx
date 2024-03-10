@@ -13,6 +13,7 @@ import Microphone from '@/svgs/Microphone';
 import Gallery from '@/svgs/Gallery';
 import Threehundred from '@/svgs/Threehundred';
 import { IoIosClose } from 'react-icons/io';
+import Marquee from 'react-fast-marquee';
 
 const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
   const fullscreenSwiperRef = useRef(null);
@@ -88,10 +89,7 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
   return (
     <header dir={dir} className={`${styles.topic_details_header} ${styles.topic_details_header2}`} id='topic_details_header'>
 
-      <motion.div
-        initial={{ opacity: 0, }}
-        animate={{ opacity: 1, }}
-        transition={{ duration: 1 }}
+      <div
         className={styles.swiper_container}
       >
 
@@ -239,7 +237,18 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
                         <div className={styles.icon_container}>
                           <img src={f.icon} alt={f.name} />
                         </div>
-                        <p>{f.name}</p>
+
+                        <p style={{ overflow: 'hidden' }}>
+                          {
+                            f.name.split(' ').length > 3 ? (
+                              <Marquee pauseOnHover={false} speed={16}>
+                                {f.name}
+                              </Marquee>
+                            ) : (
+                              <span>{f.name}</span>
+                            )
+                          }
+                        </p>
                       </div>
                     )
                   }
@@ -287,7 +296,7 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
             </div>
           </div>
         </div>
-      </motion.div >
+      </div >
 
 
 

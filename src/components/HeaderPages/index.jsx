@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { IoIosArrowBack, IoIosClose } from "react-icons/io";
 import { useRouter } from 'next/router'
 import { motion } from 'framer-motion';
 import Link from 'next/link'
@@ -20,13 +19,11 @@ import Navbar from '../Navbar';
 
 
 
-const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAllLangs, categoryName, parentName, dir }) => {
+const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAllLangs, categoryName, parentName, dir, dataStaticWords }) => {
   const images1 = icon?.includes(',') ? icon.split(',') : [icon];
   const router = useRouter();
   const [showAudio, setShowAudio] = useState(false)
   const [showGuide, setShowGuide] = useState(false)
-
-
 
   // Refs for the containers
   const audioRef = useRef(null);
@@ -51,14 +48,10 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
 
   return (
 
-    <header className={'header_details'} id={styles.inner_header}
-
-      dir={dir}
-    >
+    <header className={'header_details'} id={styles.inner_header} dir={dir} >
       <Navbar dataAllLangs={dataAllLangs} />
       <div className={styles.details_image}>
         <Swiper
-          // centeredSlides={true}
           autoplay={{
             delay: 3000,
             disableOnInteraction: false,
@@ -105,7 +98,7 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
                 <Link href={'#'} className={`${styles.icon} ${showAudio ? styles.active : ''}`} onClick={() => setShowAudio(prev => !prev)}>
                   <Microphone />
                   <p className={styles.guide}>
-                    التسجيل الصوتي
+                    {dataStaticWords.voiceRecord}
                   </p>
 
 
@@ -117,12 +110,8 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
                   onClick={() => setShowGuide(prev => !prev)}>
                   <Guide />
                   <p className={styles.guide} >
-                    المرشد الافتراضي
+                    {dataStaticWords.guideVirtual}
                   </p>
-
-
-
-
                 </Link>
 
               </div>
@@ -145,13 +134,11 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
               ref={audioRef}
             >
 
-              <audio controls src={dataContentDetailsGuide.sound}>
+              <audio autoPlay controls src={dataContentDetailsGuide.sound}>
                 Your browser does not support the audio element.
               </audio>
 
-              <div className={styles.close_icon} onClick={() => setShowAudio(false)}>
-                <IoIosClose />
-              </div>
+
 
             </motion.div>
 
@@ -195,10 +182,10 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
               </figure>
 
 
-
+              {/* 
               <div className={styles.close_icon} onClick={() => setShowGuide(false)}>
                 <IoIosClose />
-              </div>
+              </div> */}
             </motion.div>
 
           }

@@ -22,6 +22,10 @@ section.Share_Moment_Sec {
       height: 100%;
       opacity: 0.2;
       object-fit: cover;
+
+      @media screen and (max-width: 992px) {
+        display: none;
+      }
     }
   }
 
@@ -64,6 +68,7 @@ section.Share_Moment_Sec {
 
         @media screen and (max-width: 992px) {
           margin: 0;
+          z-index: 11;
         }
       }
 
@@ -89,12 +94,41 @@ section.Share_Moment_Sec {
       justify-content: center;
       margin-top: 48px;
 
+      @media screen and (max-width: 992px) {
+        width: 100%;
+      }
+
       .box {
         margin: 24px;
         overflow: hidden;
         border-radius: 24px;
+        @media screen and (max-width: 992px) {
+          width: 100% !important;
+          margin: 0 !important;
+          margin-bottom: 24px !important;
+          height: 200px !important;
+        }
+
+        &:nth-child(1) {
+          @media screen and (max-width: 992px) {
+            display: none;
+          }
+        }
+        &:nth-child(2) {
+          @media screen and (max-width: 992px) {
+            display: none;
+          }
+        }
+        &:nth-child(3) {
+          @media screen and (max-width: 992px) {
+            display: none;
+          }
+        }
 
         img {
+          @media screen and (max-width: 992px) {
+            object-fit: cover;
+          }
         }
       }
     }
@@ -147,6 +181,7 @@ section.Share_Moment_Sec {
 
       @media screen and (max-width: 992px) {
         flex-direction: column;
+        width: 100%;
       }
 
       .logo {
@@ -309,12 +344,13 @@ section.Share_Moment_Sec[dir="ltr"] {
         display: flex;
         border: none;
         border-radius: 32px;
+        align-items: center;
         p {
-          font-size: 24px;
-          font-weight: 600;
+          font-size: 16px;
+          font-weight: 800;
           line-height: 36px;
           letter-spacing: 0em;
-          text-align: right;
+          text-align: left;
           color: var(--main-white-color);
           margin-bottom: 0;
         }
@@ -342,7 +378,6 @@ section.Share_Moment_Sec[dir="ltr"] {
       padding-left: 32px;
       display: flex;
       border-radius: 32px;
-      width: 722px;
       justify-content: space-between;
       align-items: center;
       position: relative;
@@ -363,18 +398,19 @@ section.Share_Moment_Sec[dir="ltr"] {
       }
 
       .desc {
+        @media screen and (max-width: 992px) {
+          margin-top: 16px;
+        }
+
         p {
           font-size: 28px;
           font-weight: 800;
           line-height: 36px;
           letter-spacing: 0em;
-          text-align: right;
-          &:first-child {
-            color: #383969;
-          }
+          text-align: left;
 
-          &:last-child {
-            color: #50a99a;
+          @media screen and (max-width: 992px) {
+            font-size: 17;
           }
         }
       }

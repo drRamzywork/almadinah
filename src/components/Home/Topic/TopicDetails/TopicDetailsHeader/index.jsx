@@ -13,10 +13,9 @@ import { Alarm } from '@/svgs/Alarm';
 import Mouse from '@/svgs/Mouse';
 import Link from 'next/link';
 import { IoIosArrowBack } from 'react-icons/io';
-import { useRouter } from 'next/router';
+import Marquee from "react-fast-marquee";
 
 const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir }) => {
-  const router = useRouter();
   const currentContent = dataContentDetails.currentContent;
   const [currentIndex, setCurrentIndex] = useState(0)
   const stepsData = currentContent.drobSteps;
@@ -106,8 +105,8 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir }) => {
       >
         <SwiperSlide >
           <motion.div
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, }}
+            animate={{ opacity: 1, }}
             transition={{ duration: 0.5 }}
             className={styles.swiper_container}
           >
@@ -132,7 +131,18 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir }) => {
                             <div className={styles.icon_container}>
                               <img src={f.icon} alt={f.name} />
                             </div>
-                            <p>{f.name}</p>
+
+                            <p style={{ overflow: 'hidden' }}>
+                              {
+                                f.name.split(' ').length > 3 ? (
+                                  <Marquee pauseOnHover={false} speed={16}>
+                                    {f.name}
+                                  </Marquee>
+                                ) : (
+                                  <span>{f.name}</span>
+                                )
+                              }
+                            </p>
                           </div>
                         )
                       }
@@ -323,7 +333,7 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir }) => {
                             </div>
 
                             <button className={styles.btn_container}>
-                              <p>اسحب</p>
+                              <p>{dataStaticWords.pull}</p>
                             </button>
 
 

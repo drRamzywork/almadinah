@@ -8,7 +8,7 @@ export const LanguageProvider = ({ children }) => {
   // Fetch languages when the component mounts
   useEffect(() => {
     fetch(
-      "https://api.almadinah.io/api/Settings/GetAllLanguages?pagenum=1&pagesize=50"
+      "https://api.visitmadinahsa.com/api/Settings/GetAllLanguages?pagenum=1&pagesize=50"
     )
       .then((response) => response.json())
       .then((data) => {

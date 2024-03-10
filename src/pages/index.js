@@ -11,7 +11,6 @@ export default function Home({
   dataStaticWords,
   dataAllLangs,
   dir,
-  dataSubCategory,
 }) {
   const foods = topics.filter((topic) => topic.id === 7)[0];
   const industries = topics.filter((topic) => topic.id === 6)[0];
@@ -106,7 +105,7 @@ export async function getServerSideProps({ locale }) {
   const dir = currentLanguage?.isRtl ? "rtl" : "ltr";
 
   const responseSubCategory = await fetch(
-    `https://api.almadinah.io/api/Topics/GetSubCategories?topicId=${1}&lang=${langId}&ContentSamplesToReturn=0&pagenum=1&pagesize=50`
+    `https://api.visitmadinahsa.com/api/Topics/GetSubCategories?topicId=${1}&lang=${langId}&ContentSamplesToReturn=0&pagenum=1&pagesize=50`
   );
   const dataSubCategory = await responseSubCategory.json();
 

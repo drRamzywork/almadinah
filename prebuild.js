@@ -3,7 +3,7 @@ const fs = require("fs");
 const https = require("https");
 
 const apiURL =
-  "https://api.almadinah.io/api/Settings/GetAllLanguages?pagenum=1&pagesize=50";
+  "https://api.visitmadinahsa.com/api/Settings/GetAllLanguages?pagenum=1&pagesize=50";
 
 https
   .get(apiURL, (resp) => {
