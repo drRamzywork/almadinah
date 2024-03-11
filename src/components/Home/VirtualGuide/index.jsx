@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { IoIosClose } from 'react-icons/io';
 import { Mousewheel, Pagination, Scrollbar, FreeMode } from 'swiper/modules';
+import { motion } from 'framer-motion';
 
 
 const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
@@ -106,6 +107,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
         <div className={styles.shape}>
           <Image src='/assets/images/shape_BG.png' width={868} height={463} />
         </div>
+
         <div className="container">
 
           <div className={styles.sec_container}>
@@ -251,18 +253,28 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
               </Link>
 
             </div>
+
           </div>
 
         </div>
+
         <div className={styles.shadow} />
       </section >
 
       {showGuide &&
-        <div className={styles.video_layer}>
+        <motion.div
+          initial={{ opacity: 0, y: -100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+
+          className={styles.video_layer} dir={dir}>
           <div className="container">
             <div className={styles.title}>
               <p>{dataStaticWords.guideVirtual}</p>
-              <div className={styles.close_icon} onClick={() => setShowGuide(false)}>
+              <div className={styles.close_icon} onClick={() => {
+                setCurrentVideoSrc('')
+                setShowGuide(false)
+              }}>
                 <IoIosClose />
               </div>
             </div>
@@ -282,8 +294,9 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
               Your browser does not support the video tag.
             </video>
           </div>
-        </div>
+        </motion.div>
       }
+
     </>
 
   )

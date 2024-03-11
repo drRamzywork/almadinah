@@ -155,7 +155,6 @@ section.virtual_guide {
               font-weight: 600;
               line-height: 24px;
               letter-spacing: 0em;
-              text-align: right;
             }
             .icon_container {
               display: none !important;
@@ -175,7 +174,6 @@ section.virtual_guide {
         }
 
         .box.active {
-          // background-color: red;
           border-color: var(--main-green-color);
           transform: scale(1);
 
@@ -307,12 +305,10 @@ section.virtual_guide {
         h3 {
           @media screen and (max-width: 992px) {
             color: #383969;
-            text-align: right;
             font-size: 32.5px;
             font-style: normal;
             font-weight: 800;
             line-height: 120%; /* 39px */
-            max-width: 180px;
           }
         }
       }
@@ -321,7 +317,6 @@ section.virtual_guide {
 }
 
 section.virtualPage {
-  // background-color: red;
   margin-top: 40px;
   padding-bottom: 0;
   @media screen and (max-width: 992px) {
@@ -428,8 +423,6 @@ section.virtualPage {
     }
 
     .close_icon {
-      // background-color: red;
-
       svg {
         width: 40px;
         height: 40px;
@@ -446,7 +439,6 @@ section.virtualPage {
   .video_container {
     width: fit-content;
     border-radius: 25.58px;
-    // background-color: red;
     align-self: center;
     video {
       width: 280px;
@@ -614,7 +606,7 @@ section.virtual_guide[dir="ltr"]:not(.virtualPage) {
             margin-top: 16px;
 
             h5 {
-              text-align: left;
+              text-align: left !important;
             }
             .icon_container {
               width: 40px;
@@ -633,7 +625,6 @@ section.virtual_guide[dir="ltr"]:not(.virtualPage) {
         }
 
         .box.active {
-          // background-color: red;
           border-color: var(--main-green-color);
           transform: scale(1);
 
@@ -775,7 +766,6 @@ section.virtual_guide[dir="ltr"]:not(.virtualPage) {
             font-style: normal;
             font-weight: 800;
             line-height: 120%; /* 39px */
-            max-width: 180px;
           }
         }
       }
