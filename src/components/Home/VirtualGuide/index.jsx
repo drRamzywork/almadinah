@@ -261,7 +261,9 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
         <div className={styles.shadow} />
       </section >
 
-      {showGuide &&
+
+      {router.pathname === '/virtual-guide' &&
+        showGuide &&
         <motion.div
           initial={{ opacity: 0, y: -100 }}
           animate={{ opacity: 1, y: 0 }}
@@ -287,7 +289,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
             <video
               key={currentVideoSrc}
               muted={!autoPlay}
-              autoPlay={autoPlay}
+              autoPlay={false}
               controls
             >
 

@@ -407,7 +407,11 @@ section.virtualPage {
   background-color: #fafafa;
   display: flex;
   flex-direction: column;
+  display: none;
 
+  @media screen and (max-width: 992px) {
+    display: block;
+  }
   .title {
     margin-top: 40px;
     display: flex;
@@ -439,12 +443,14 @@ section.virtualPage {
   .video_container {
     width: fit-content;
     border-radius: 25.58px;
-    align-self: center;
+    display: flex;
+    width: 100%;
     video {
       width: 280px;
       height: 600px;
       border-radius: 25.58px;
       object-fit: cover;
+      margin: auto;
     }
   }
 }
