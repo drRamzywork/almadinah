@@ -98,6 +98,7 @@ section.virtual_guide {
         }
 
         h3 {
+          text-align: unset;
         }
       }
 
@@ -323,6 +324,11 @@ section.virtualPage {
   // background-color: red;
   margin-top: 40px;
   padding-bottom: 0;
+  @media screen and (max-width: 992px) {
+  }
+
+  .topics_container {
+  }
 
   .shape {
     display: none;
@@ -345,17 +351,32 @@ section.virtualPage {
     .guide {
       display: none;
     }
+  }
 
+  .video_container {
+    align-items: flex-start !important;
     .sec_title {
+      width: 100%;
+
+      @media screen and (max-width: 992px) {
+        margin-bottom: 0 !important;
+      }
+
+      p {
+        display: none;
+      }
       h3 {
         text-align: unset;
       }
     }
-  }
 
-  .video_container {
     .img_container {
       background-image: unset !important;
+
+      @media screen and (max-width: 992px) {
+        display: none;
+      }
+
       img {
         display: none;
       }
@@ -365,6 +386,73 @@ section.virtualPage {
         height: 616px !important;
         border-radius: 24px !important;
       }
+    }
+  }
+
+  .mobile_Slider {
+    @media screen and (max-width: 992px) {
+      display: none !important;
+    }
+  }
+
+  .boxes_container {
+    @media screen and (max-width: 992px) {
+      display: block !important;
+    }
+  }
+}
+
+.video_layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 999;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    p {
+      font-size: 20px;
+      font-weight: 500;
+      color: #9fa0b9;
+    }
+    h3 {
+    }
+
+    .close_icon {
+      // background-color: red;
+
+      svg {
+        width: 40px;
+        height: 40px;
+        color: #9596cc;
+      }
+    }
+  }
+
+  h3 {
+    text-align: unset !important;
+    margin-bottom: 24px;
+  }
+
+  .video_container {
+    width: fit-content;
+    border-radius: 25.58px;
+    // background-color: red;
+    align-self: center;
+    video {
+      width: 280px;
+      height: 600px;
+      border-radius: 25.58px;
+      object-fit: cover;
     }
   }
 }

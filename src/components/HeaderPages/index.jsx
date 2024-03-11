@@ -154,12 +154,6 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
               ref={guideRef}
               className={styles.video}>
 
-              {/* <video controls src={dataContentDetailsGuide.tourGuide}>
-                Your browser does not support the audio element.
-              </video> */}
-
-
-
 
 
 
@@ -181,11 +175,6 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
                   src={dataContentDetailsGuide.tourGuide} poster="/assets/photos/movie3.jpg" className="w-100 rounded caption-overlay d-block" />
               </figure>
 
-
-              {/* 
-              <div className={styles.close_icon} onClick={() => setShowGuide(false)}>
-                <IoIosClose />
-              </div> */}
             </motion.div>
 
           }

@@ -6,15 +6,16 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { IoIosClose } from 'react-icons/io';
+import { Mousewheel, Pagination, Scrollbar, FreeMode } from 'swiper/modules';
 
-
-// import required modules
 
 const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
   const router = useRouter();
   const [currentVideoSrc, setCurrentVideoSrc] = useState(defaultVideoSrc);
   const [activeVideoId, setActiveVideoId] = useState(null);
-  const [muted, setMuted] = useState(false);
+  const [topic, setTopic] = useState(null);
+  const [showGuide, setShowGuide] = useState(false);
   const [autoPlay, setAutoPlay] = useState(false);
   const sectionRef = useRef(null);
 
@@ -27,11 +28,13 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
   }
 
 
-  const handleSlideClick = (videoUrl, videoId) => {
+  const handleSlideClick = (videoUrl, videoId, topicName) => {
+    setShowGuide(true)
     setActiveVideoId(videoId)
     setCurrentVideoSrc(videoUrl);
-
+    setTopic(topicName);
   };
+
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
       const [entry] = entries;
@@ -106,7 +109,6 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
         <div className="container">
 
           <div className={styles.sec_container}>
-
             <div className={styles.topics_container}>
               <div className={styles.shadow} />
               <div className={styles.guide}>
@@ -115,7 +117,6 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
               <Link href={`/virtual-guide`} className={`${styles.sec_title}   sec_title`}>
 
                 {router.pathname.includes('/virtual-guide')
-
                   ?
                   < h3 className='pb-3'> {dataStaticWords.choseLandMark}</h3>
                   :
@@ -135,6 +136,10 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
                     slidesPerView={2.3}
                     spaceBetween={16}
 
+
+                    modules={[Mousewheel, FreeMode]}
+                    freeMode={true}
+
                     className={styles.swiper_container}
                   >
                     {
@@ -144,7 +149,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
                           <div className="d-flex ">
                             {pair.map((topic) => (
                               <div
-                                onClick={() => handleSlideClick(topic.tourGuide, topic.id)}
+                                onClick={() => handleSlideClick(topic.tourGuide, topic.id, topic.name)}
                                 className={`${styles.box} ${activeVideoId === topic.id ? styles.active : ''}`} key={topic.id}>
                                 <div className={styles.img_container}>
                                   <Image src={topic.icon.includes(',') ? topic.icon.split(',')[0] : topic.icon} width={233} height={166} />
@@ -234,17 +239,51 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
 
               <Link href={`/virtual-guide`} className={`${styles.sec_title} sec_title`}>
                 <p>{dataStaticWords.guideVirtual}</p>
-                <h3>{dataStaticWords.needToKnow}</h3>
+
+
+                {router.pathname.includes('/virtual-guide')
+                  ?
+                  < h3 className='pb-3'> {dataStaticWords.choseLandMark}</h3>
+                  :
+                  <h3>{dataStaticWords.needToKnow}</h3>
+
+                }
               </Link>
 
             </div>
-
-
-
           </div>
+
         </div>
         <div className={styles.shadow} />
       </section >
+
+      {showGuide &&
+        <div className={styles.video_layer}>
+          <div className="container">
+            <div className={styles.title}>
+              <p>{dataStaticWords.guideVirtual}</p>
+              <div className={styles.close_icon} onClick={() => setShowGuide(false)}>
+                <IoIosClose />
+              </div>
+            </div>
+            <div className="sec_title">
+              <h3 >{topic}</h3>
+            </div>
+          </div>
+
+          <div className={styles.video_container}>
+            <video
+              key={currentVideoSrc}
+              muted={!autoPlay}
+              autoPlay={autoPlay}
+              controls
+            >
+              <source src={currentVideoSrc} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      }
     </>
 
   )

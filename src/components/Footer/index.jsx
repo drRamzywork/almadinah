@@ -41,13 +41,10 @@ const Footer = () => {
   return (
     <footer id='footer' dir={"ltr"} className={`${styles.footer} ${router.pathname === '/' ? styles.home : ''} ${router.pathname.includes('/subdetails/') && styles.top} ${router.pathname.includes('/virtual-guide') && styles.stickyTop} `}>
       <div className="container">
-        <div
-          transition={{ duration: 0.5 }} className={styles.sec_container}>
-
+        <div transition={{ duration: 0.5 }} className={styles.sec_container}>
           <div className={styles.logo}>
             <Image src='/assets/svgs/dark_logo.svg' width={118.83} height={56} />
             <Image src='/assets/images/development_logo.png' width={267.18} height={70} />
-
           </div>
 
           <hr />
@@ -62,6 +59,7 @@ const Footer = () => {
             <p className={styles.copyright}> {dataStaticWords?.allRightsReserved}</p>
 
           </div>
+
         </div>
 
       </div>
