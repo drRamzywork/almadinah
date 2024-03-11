@@ -290,6 +290,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
               autoPlay={autoPlay}
               controls
             >
+
               <source src={currentVideoSrc} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
