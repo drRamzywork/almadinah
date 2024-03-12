@@ -86,6 +86,9 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
   }, []); // Empty dependency array means this effect runs once on mount
 
 
+
+
+
   return (
     <header dir={dir} className={`${styles.topic_details_header} ${styles.topic_details_header2}`} id='topic_details_header'>
 
@@ -116,17 +119,11 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
 
                   {details.tourGuide !== null &&
                     <div className={styles.guide_video}>
-
-
                       <Link href={'#'} className={styles.icon} onClick={() => setShowGuide(prev => !prev)}>
-
                         <img src="/assets/images/guide.png" alt="" />
-
                         <p className={styles.guide} >
                           {dataStaticWords.guideVirtual}
                         </p>
-
-
                       </Link>
                     </div>
                   }
@@ -165,7 +162,6 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
 
                 {showAudio &&
                   <motion.div
-                    ref={audioRef}
                     initial={{ opacity: 0, }}
                     animate={{ opacity: 1, }}
                     exit={{ opacity: 0 }}
@@ -175,32 +171,31 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
                     <audio
                       autoPlay
                       controls src={details?.sound}
+                      ref={audioRef}
                     >
                       Your browser does not support the audio element.
                     </audio>
 
-                    <div className={styles.close_icon} onClick={() => setShowAudio(false)}>
-                      <IoIosClose />
-                    </div>
 
                   </motion.div>
                 }
 
+                {console.log(details.tourGuide, "details.tourGuide")}
+
 
                 {showGuide &&
                   <motion.div
-                    ref={guideRef}
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 1 }}
                     className={styles.video}>
-                    <video controls src={details.tourGuide}>
+                    <video
+                      ref={guideRef}
+                      autoPlay controls src={details.tourGuide}>
                       Your browser does not support the audio element.
                     </video>
-                    <div className={styles.close_icon} onClick={() => setShowGuide(false)}>
-                      <IoIosClose />
-                    </div>
+
                   </motion.div>
                 }
 

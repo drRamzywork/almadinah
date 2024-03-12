@@ -1079,7 +1079,7 @@ section.hero[dir="ltr"] {
 
         @media screen and (max-width: 992px) {
           width: 125.845px;
-          height: auto;
+          // height: auto;
           margin-right: 11px;
           margin-bottom: 11px;
         }
@@ -1205,7 +1205,7 @@ section.hero[dir="ltr"] {
     .box {
       &:first-child {
         @media screen and (max-width: 992px) {
-          height: auto;
+          // height: auto;
           width: 180px;
         }
       }
