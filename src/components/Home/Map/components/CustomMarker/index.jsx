@@ -1,5 +1,5 @@
 
-import Rectangle from '../../rectangle';
+import Rectangle from '../../Rectangle';
 import styles from './index.module.scss'
 const CustomMarker = ({ imageUrl, location, center }) => {
   console.log(location, "location")
