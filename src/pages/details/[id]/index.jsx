@@ -6,6 +6,15 @@ import HederPages from '@/components/HeaderPages'
 import Head from 'next/head'
 import Marquee from "react-fast-marquee";
 
+
+import dynamic from 'next/dynamic';
+
+
+
+const MapWithNoSSR = dynamic(() => import('@/components/Home/Map'), {
+  ssr: false, // Disable server-side rendering for the map
+});
+
 const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentDetailsGuide, dir, dataStaticWords }) => {
   const icon = dataContentDetails.currentContent.icon;
   const features = dataContentDetails.currentContent.relatedFeatures;
@@ -111,7 +120,7 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
 
       {dataContentDetails.currentContent.lat !== null &&
         <section id='map_location'>
-          <Map dataContentDetails={dataContentDetails.currentContent} />
+          <MapWithNoSSR dataContentDetails={dataContentDetails.currentContent} />
         </section>
       }
 

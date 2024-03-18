@@ -1,0 +1,28 @@
+.map_container {
+  margin-top: -150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media screen and (max-width: 992px) {
+    margin-top: 24px;
+  }
+
+  .map {
+    width: 1040px;
+    height: 500px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0px 16px 176px 0px #38396926;
+
+    @media screen and (max-width: 992px) {
+      width: 445px;
+      height: 250px;
+      border-radius: 16px;
+      box-shadow: 0px 16px 176px 0px rgba(56, 57, 105, 0.15);
+    }
+
+    @media screen and (max-width: 400px) {
+      width: 100%;
+    }
+  }
+}

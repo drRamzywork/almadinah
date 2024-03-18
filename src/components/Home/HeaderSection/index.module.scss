@@ -764,8 +764,8 @@ header#inner_header {
 
           .guide {
             position: absolute;
-            bottom: 100%; /* Adjust this value to position the tooltip */
-            left: 50%; /* Center the tooltip */
+            bottom: 100%;
+            left: 50%;
             transform: translateX(-50%);
             white-space: nowrap;
             opacity: 0;
@@ -777,7 +777,6 @@ header#inner_header {
             font-weight: 600;
             font-size: 15px;
             color: var(--main-green-color);
-            /* additional styling for your tooltip */
           }
 
           &:hover .guide {

@@ -6,7 +6,13 @@ import Map from '../Home/Map'
 import VirtualGuide from '../Home/VirtualGuide'
 import ShareMomentSec from '../Home/ShareMomentSec'
 import Industries from '../Home/Industries'
+import dynamic from 'next/dynamic';
 
+
+
+const MapWithNoSSR = dynamic(() => import('../Home/Map'), {
+  ssr: false, // Disable server-side rendering for the map
+});
 
 
 const LandingPage = ({ topics,
@@ -32,7 +38,7 @@ const LandingPage = ({ topics,
         dataFacilitiesTopic={dataFacilitiesTopic}
         dir={dir}
       />
-      <Map />
+      <MapWithNoSSR />
       <VirtualGuide
         dir={dir}
         defaultVideoSrc={defaultVideoSrc}
