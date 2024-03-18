@@ -60,15 +60,12 @@ const Map = ({ dataContentDetails }) => {
 
   if (!isLoaded) return <div>Loading Maps...</div>;
 
-
   const icon = dataContentDetails?.icon;
   const images1 = icon?.includes(',') ? icon.split(',') : [icon];
 
 
   return (
     <div className={styles.map_container}>
-      {console.log(images1[0], "dataContentDetails")}
-
       <motion.div
         initial={{ opacity: 0, y: -100 }}
         animate={{ opacity: 1, y: 0 }}
@@ -82,7 +79,6 @@ const Map = ({ dataContentDetails }) => {
           zoom={13}
           options={options}
         >
-          <h1></h1>
           {router.pathname === '/' ? <>
             {markers.map((marker, index) => (
               <OverlayView
