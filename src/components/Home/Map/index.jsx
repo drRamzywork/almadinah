@@ -61,7 +61,7 @@ const Map = ({ dataContentDetails }) => {
   if (!isLoaded) return <div>Loading Maps...</div>;
 
 
-  const icon = dataContentDetails.icon;
+  const icon = dataContentDetails?.icon;
   const images1 = icon?.includes(',') ? icon.split(',') : [icon];
 
 
