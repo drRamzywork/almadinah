@@ -54,7 +54,7 @@ const Map = ({ dataContentDetails }) => {
 
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY, // Use your env variable here
+    googleMapsApiKey: 'AIzaSyC0fUYASQXlqfp1d5EFSIT7_0lg0_OIxq0',
     libraries: ["places"],
   });
 
