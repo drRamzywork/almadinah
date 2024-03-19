@@ -23,7 +23,8 @@ const LandingPage = ({ topics,
   dataAllLangs,
   foods,
   industries,
-  dir
+  dir,
+  dataMapData
 }) => {
   const guidData = topics?.filter((topic) => topic.id === 4)[0]?.contents;
   const defaultVideoSrc = topics?.filter((topic) => topic.id === 4)[0]?.icon;
@@ -38,7 +39,7 @@ const LandingPage = ({ topics,
         dataFacilitiesTopic={dataFacilitiesTopic}
         dir={dir}
       />
-      <MapWithNoSSR />
+      <MapWithNoSSR dataMapData={dataMapData} />
       <VirtualGuide
         dir={dir}
         defaultVideoSrc={defaultVideoSrc}

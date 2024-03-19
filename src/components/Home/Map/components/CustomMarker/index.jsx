@@ -1,7 +1,7 @@
 
 import Rectangle from '../../Rectangle';
 import styles from './index.module.scss'
-const CustomMarker = ({ imageUrl, location, center }) => {
+const CustomMarker = ({ imageUrl, location, center, name }) => {
 
   const onMarkerClick = () => {
     const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${center.lat},${center.lng}`;
@@ -14,6 +14,7 @@ const CustomMarker = ({ imageUrl, location, center }) => {
       id={styles.mapMark}>
       <img src={imageUrl}
         onClick={onMarkerClick}
+        alt={name}
       />
 
       <div className={styles.arrow_container}>

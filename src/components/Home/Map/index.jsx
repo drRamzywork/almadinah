@@ -23,27 +23,23 @@ const options = {
   zoomControl: true,
 };
 
-const markers = [
-  { id: 1, lat: 24.7136, lng: 46.6753, name: 'Place One', imageUrl: '/assets/images/place.png' },
-  { id: 2, lat: 24.746, lng: 46.7400, name: 'Place Two', imageUrl: '/assets/images/place.png' },
-  { id: 2, lat: 24.699, lng: 46.7400, name: 'Place Two', imageUrl: '/assets/images/place.png' },
-  { id: 2, lat: 24.7146, lng: 46.7400, name: 'Place Two', imageUrl: '/assets/images/place.png' },
-  { id: 3, lat: 24.7176, lng: 46.6243, name: 'Place Three', imageUrl: '/assets/images/place.png' },
-  // Add more markers as needed
-];
 
-const Map = ({ dataContentDetails }) => {
+
+
+const Map = ({ dataContentDetails, dataMapData }) => {
   const router = useRouter();
 
+  // console.log(dataMapData, "dataMapDatadataMapData")
   const onMarkerClick = () => {
     const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${center.lat},${center.lng}`;
     window.open(directionsUrl, '_blank');
   };
 
 
+
   const center = {
-    lat: dataContentDetails ? parseFloat(dataContentDetails.lat) : 24.7136,
-    lng: dataContentDetails ? parseFloat(dataContentDetails.lng) : 46.6753,
+    lat: dataContentDetails ? parseFloat(dataContentDetails.lat) : 24.470901,
+    lng: dataContentDetails ? parseFloat(dataContentDetails.lng) : 39.612236,
   };
 
 
@@ -76,18 +72,20 @@ const Map = ({ dataContentDetails }) => {
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
           center={center}
-          zoom={13}
+          zoom={10}
           options={options}
         >
+
+
           {router.pathname === '/' ? <>
-            {markers.map((marker, index) => (
+            {dataMapData.map((marker, index) => (
               <OverlayView
                 key={index}
                 position={{ lat: marker.lat, lng: marker.lng }}
                 mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
                 onClick={onMarkerClick}
               >
-                <CustomMarker center={center} imageUrl={marker.imageUrl} />
+                <CustomMarker center={center} imageUrl={marker.icon.includes(',') ? marker.icon.split(',')[0] : marker.icon} name={marker.name} />
               </OverlayView>
             ))}
           </> : <>

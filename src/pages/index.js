@@ -11,6 +11,7 @@ export default function Home({
   dataStaticWords,
   dataAllLangs,
   dir,
+  dataMapData,
 }) {
   const foods = topics.filter((topic) => topic.id === 7)[0];
   const industries = topics.filter((topic) => topic.id === 6)[0];
@@ -54,6 +55,7 @@ export default function Home({
         foods={foods}
         industries={industries}
         dir={dir}
+        dataMapData={dataMapData}
       />
     </>
   );
@@ -78,6 +80,11 @@ export async function getServerSideProps({ locale }) {
     `https://api.visitmadinahsa.com/api/Contents/GetContents?topicId=${2}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`
   );
   const dataDrobTopic = await responseDrobTopic.json();
+
+  const responseMapData = await fetch(
+    `https://api.visitmadinahsa.com/api/Contents/GetContents?lang=${langId}&pagenum=1&pagesize=50&withLatLng=true`
+  );
+  const dataMapData = await responseMapData.json();
 
   const responseLandmarksTopic = await fetch(
     `https://api.visitmadinahsa.com/api/Contents/GetContents?topicId=8&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`
@@ -117,6 +124,7 @@ export async function getServerSideProps({ locale }) {
       dataAllLangs,
       dir,
       dataSubCategory,
+      dataMapData,
     },
   };
 }
