@@ -1,22 +1,17 @@
-import HeaderSection from '@/components/Home/HeaderSection'
-import TopicDetailsHeader from '@/components/Home/Topic/TopicDetails/TopicDetailsHeader'
-import Navbar from '@/components/Navbar'
-import React from 'react'
-import styles from './index.module.scss'
+import TopicDetailsHeader from '@/components/Home/Topic/TopicDetails/TopicDetailsHeader';
+import Navbar from '@/components/Navbar';
+import React, { useState } from 'react';
+
 const TopicDetails = ({ dataStaticWords,
-  dataMainTopic,
-  dataAllLangs,
   dataContentDetails,
-  dataSubTopic,
   dir,
   dataDrobTopic }) => {
-
-
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <>
-      <Navbar dir={dir} cName={'absolute_nav'} dataDrobTopic={dataDrobTopic} />
-      <TopicDetailsHeader dir={dir} dataContentDetails={dataContentDetails} dataStaticWords={dataStaticWords} />
+    < >
+      <Navbar isOpen={isOpen} setIsOpen={setIsOpen} dir={dir} cName={'absolute_nav'} dataDrobTopic={dataDrobTopic} />
+      <TopicDetailsHeader isOpen={isOpen} setIsOpen={setIsOpen} dir={dir} dataContentDetails={dataContentDetails} dataStaticWords={dataStaticWords} />
     </>
   )
 }
@@ -30,7 +25,7 @@ export default TopicDetails
 export async function getServerSideProps({ params, locale }) {
   const languagesConfig = require("../../../../public/locales/languagesDetails.json");
   const langId = languagesConfig.filter((lang) => lang.shortCut === locale)[0].id;
-  // languagesConfig[locale]?.id ||
+
   const responseAllLangs = await fetch(
     `https://api.visitmadinahsa.com/api/Settings/GetAllLanguages?pagenum=1&pagesize=50`
   );
@@ -38,8 +33,6 @@ export async function getServerSideProps({ params, locale }) {
 
   const responseStaticWords = await fetch(`https://api.visitmadinahsa.com/api/Settings/GetStaticWords?lang=${langId}`);
   const dataStaticWords = await responseStaticWords.json();
-
-  // Fetch main topics with the initial topicId
 
   const responseContentDetails = await fetch(`https://api.visitmadinahsa.com/api/Contents/GetContentDetails?contentId=${params.id}&lang=${langId}&suggestions=0&video360=false&guide=false`);
   const dataContentDetails = await responseContentDetails.json();

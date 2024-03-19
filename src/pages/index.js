@@ -15,8 +15,6 @@ export default function Home({
   const foods = topics.filter((topic) => topic.id === 7)[0];
   const industries = topics.filter((topic) => topic.id === 6)[0];
 
-  // console.log(dataFacilitiesTopic, "mainId");
-  console.log(dataLandmarksTopic[0].parentId, "mainId2");
   return (
     <>
       <Head>

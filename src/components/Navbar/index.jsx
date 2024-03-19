@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 import { i18n } from 'next-i18next';
 import { setCookie, } from 'nookies'
 
-const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic, dir }) => {
+const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic, dir, setIsOpen, isOpen }) => {
   const router = useRouter();
 
   function handleClick(lng) {
@@ -84,9 +84,13 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic,
             <Link href={`${contentID !== undefined ? `/topic/${contentID?.parentId}` : `/topic/${contentID2?.parentId}`}`} className={styles.main_title}>
               <h1>{contentID?.parentName} {parentName}</h1>
             </Link>
-            <Link href={`${contentID !== undefined ? `/topic/${contentID?.parentId}` : `/topic/${contentID2?.parentId}`}`} className={styles.close_icon} >
-              <IoIosClose />
-            </Link>
+
+            <div className={styles.close_icon} >
+              {isOpen &&
+                <IoIosClose onClick={() => setIsOpen(false)} />
+              }
+
+            </div>
           </>
 
           :

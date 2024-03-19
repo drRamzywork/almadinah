@@ -180,7 +180,6 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
                   </motion.div>
                 }
 
-                {console.log(details.tourGuide, "details.tourGuide")}
 
 
                 {showGuide &&

@@ -946,6 +946,63 @@ header.header[dir="ltr"] {
           }
         }
       }
+
+      .audio {
+        position: absolute;
+        top: 150px;
+        left: 75px;
+        z-index: 111;
+        z-index: 9999999;
+
+        @media screen and (max-width: 992px) {
+          left: 35px;
+          // bottom: unset;
+          top: 50px;
+        }
+        transform: rotate(90deg) !important;
+
+        audio {
+          position: relative;
+          z-index: 9999;
+          @media screen and (max-width: 992px) {
+            width: 200px;
+            padding: 8px 0px 10px 13px;
+          }
+
+          transition: all 0.3s ease-in-out;
+          &:hover {
+            width: 300px;
+          }
+        }
+
+        .close_icon {
+          z-index: 9999;
+          position: absolute;
+          top: 10px;
+          right: -3px;
+          cursor: pointer;
+
+          svg {
+            color: var(--main-green-color);
+            width: 30px;
+            height: 30px;
+          }
+        }
+      }
+      .video {
+        left: unset;
+        right: 280px;
+        @media screen and (max-width: 992px) {
+          right: 163px;
+        }
+
+        .close_icon {
+          right: unset;
+          left: 0;
+          svg {
+          }
+        }
+      }
     }
 
     .left_side {
