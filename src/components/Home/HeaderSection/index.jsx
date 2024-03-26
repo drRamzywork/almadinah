@@ -31,7 +31,7 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
   const guidData = topics?.filter((topic) => topic.id === 4)[0];
   const marafeqData = topics?.filter((topic) => topic.id === 13)[0];
 
-
+  console.log(masjedData, "masjedData")
 
 
   useEffect(() => {

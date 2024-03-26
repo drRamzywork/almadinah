@@ -95,16 +95,11 @@ const Map = ({ dataContentDetails, dataMapData }) => {
               position={center}
               mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
               onClick={onMarkerClick}
-
             >
               <CustomMarker center={center} imageUrl={images1[0]} />
             </OverlayView>
-
-          </>}
-
-
-
-
+          </>
+          }
         </GoogleMap>
       </motion.div>
     </div>

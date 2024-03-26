@@ -40,7 +40,7 @@ const ShareMomentSec = ({ dir, dataStaticWords }) => {
                 className={styles.box}
                 style={{
                   width: `${getRandomWidth(138, 318)}px`,
-                  height: '164px', // Set the height for all boxes
+                  height: '164px',
                 }}
               >
                 <img src={'/assets/images/place.png'} alt="place" style={{ width: '100%', height: '100%' }} />

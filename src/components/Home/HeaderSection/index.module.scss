@@ -363,8 +363,9 @@ section.hero {
 
           p {
             color: var(--main-white-color);
+
             @media screen and (max-width: 992px) {
-              font-size: 15px;
+              font-size: 18.766px;
             }
           }
         }
@@ -377,7 +378,7 @@ section.hero {
         box-shadow: inset 0px -20px 9px 20px #dfc4b47a;
 
         @media screen and (max-width: 992px) {
-          width: 95.845px;
+          // width: 95.845px;
           height: 78.764px;
           margin-right: 11px;
           margin-bottom: 11px;
@@ -394,9 +395,9 @@ section.hero {
             color: var(--main-purble-color);
             @media screen and (max-width: 992px) {
               margin-bottom: auto;
-              width: 40%;
-              font-size: 15px;
-              font-weight: 600;
+              // width: 40%;
+              font-size: 18.766px;
+              // font-weight: 600;
             }
           }
         }
@@ -1190,6 +1191,7 @@ section.hero[dir="ltr"] {
             @media screen and (max-width: 992px) {
               font-size: 18.766px;
             }
+
             color: var(--main-green-color);
           }
           .arrow_container {

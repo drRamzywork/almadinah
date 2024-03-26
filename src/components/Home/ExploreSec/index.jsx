@@ -257,7 +257,7 @@ const ExploreSec = ({ topics,
 
           <Swiper
             slidesPerView={1.3}
-            spaceBetween={16}
+            spaceBetween={26}
             pagination={{
               clickable: true,
             }}
@@ -298,34 +298,43 @@ const ExploreSec = ({ topics,
                     <Link href={`${subTopic.parentId === 2 ? `/topic-details/${subTopic.id}` : `/subdetails/${subTopic.id}`}`} key={idx} className={styles.small_box}>
                       <div className={styles.img_container}>
                         <img src={subTopic.icon.includes(',') ? subTopic.icon.split(',')[0] : subTopic.icon} alt={subTopic.name} />
-                      </div>
-                      <div className={styles.text_container}>
-                        <div className={styles.title}>
-                          <p >
-                            {subTopic.name}
-                          </p>
+
+
+                        <div className={styles.text_container}>
+
+                          {subTopic.tourHours !== null &&
+                            <div className={styles.horus_container}>
+                              <div className={styles.clock}>
+                                <Alarm />
+                              </div>
+                              <p>
+                                {subTopic.tourHours <= 1 && (`${subTopic.tourHours} ${dataStaticWords.hour} `)}
+                                {subTopic.tourHours > 1 && (`${subTopic.tourHours} ${dataStaticWords.hours} `)}
+                                {subTopic.totalMinutes && (`${subTopic.totalMinutes} ${dataStaticWords.minute} `)}
+                              </p>
+                            </div>
+
+                          }
 
                         </div>
-                        {subTopic.tourHours !== null &&
-                          <div className={styles.horus_container}>
-                            <div className={styles.clock}>
-                              <Alarm />
-                            </div>
-                            <p>
-                              {subTopic.tourHours <= 1 && (`${subTopic.tourHours} ${dataStaticWords.hour} `)}
-                              {subTopic.tourHours > 1 && (`${subTopic.tourHours} ${dataStaticWords.hours} `)}
-                              {subTopic.totalMinutes && (`${subTopic.totalMinutes} ${dataStaticWords.minute} `)}
-                            </p>
-                          </div>
 
-                        }
+                      </div>
+                      <div className={styles.title}>
+                        <p >
+                          {subTopic.name}
+                        </p>
 
+
+                        <div className={styles.arrow_containerr}>
+                          <ArrowLeft />
+                        </div>
                       </div>
 
 
-                      <div className={styles.arrow_containerr}>
-                        <ArrowLeft />
-                      </div>
+
+
+
+
 
 
                     </Link>
