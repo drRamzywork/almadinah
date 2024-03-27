@@ -101,6 +101,34 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
   }, [currentVideoSrc]);
 
 
+  const breakpoints = {
+    300: {
+      slidesPerView: 1.8,
+      spaceBetween: 24,
+    },
+    400: {
+      slidesPerView: 1.8,
+      spaceBetween: 24,
+    },
+    607: {
+      slidesPerView: 2.3,
+      spaceBetween: 24,
+    },
+    700: {
+      slidesPerView: 3.2,
+      spaceBetween: 24,
+    },
+    1200: {
+      slidesPerView: 3.5,
+      spaceBetween: 24,
+    },
+    1300: {
+      slidesPerView: 4.5,
+      spaceBetween: 24,
+    },
+
+  }
+
   return (
     <>
       <section ref={sectionRef} id='virtual_guide' className={`${styles.virtual_guide} ${router.pathname.includes('/virtual-guide') ? styles.virtualPage : ''}`} dir={dir} >
@@ -108,7 +136,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
           <Image src='/assets/images/shape_BG.png' width={868} height={463} />
         </div>
 
-        <div className="container">
+        <div className={`container ${styles.container}`}>
 
           <div className={styles.sec_container}>
             <div className={styles.topics_container}>
@@ -184,7 +212,8 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
 
               <div className={styles.mobile_Slider}>
                 <Swiper
-                  slidesPerView={1.8}
+                  // slidesPerView={1.8}
+                  breakpoints={breakpoints}
                   // spaceBetween={16}
                   centeredSlides={false}
                   pagination={{
@@ -223,36 +252,39 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
                 </Swiper>
               </div>
             </div>
-
-
             <div className={styles.video_container}>
-              <div className={styles.img_container}>
-                <img src="/assets/images/Background_hands_web.png" alt="" />
-                <video
-                  key={currentVideoSrc}
-                  muted={!autoPlay}
-                  autoPlay={autoPlay}
-                  controls
-                >
-                  <source src={currentVideoSrc} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
+              <div className="container">
+                <div className={styles.img_container}>
+                  <img src="/assets/images/Background_hands_web.png" alt="" />
+                  <video
+                    key={currentVideoSrc}
+                    muted={!autoPlay}
+                    autoPlay={autoPlay}
+                    controls
+                  >
+                    <source src={currentVideoSrc} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div >
 
-              <Link href={`/virtual-guide`} className={`${styles.sec_title} sec_title`}>
-                <p>{dataStaticWords.guideVirtual}</p>
+              <div className="container">
+                <Link href={`/virtual-guide`} className={`${styles.sec_title} sec_title`}>
+                  <p>{dataStaticWords.guideVirtual}</p>
 
 
-                {router.pathname.includes('/virtual-guide')
-                  ?
-                  < h3 className='pb-3'> {dataStaticWords.choseLandMark}</h3>
-                  :
-                  <h3>{dataStaticWords.needToKnow}</h3>
+                  {router.pathname.includes('/virtual-guide')
+                    ?
+                    < h3 className='pb-3'> {dataStaticWords.choseLandMark}</h3>
+                    :
+                    <h3>{dataStaticWords.needToKnow}</h3>
 
-                }
-              </Link>
+                  }
+                </Link>
+              </div >
 
             </div>
+
 
           </div>
 

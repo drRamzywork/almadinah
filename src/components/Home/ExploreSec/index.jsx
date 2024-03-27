@@ -44,8 +44,7 @@ const ExploreSec = ({ topics,
   const filteredFacilitiesTopic = dataFacilitiesTopic.slice(0, 3);
 
   const combinedTopics = filteredTopics.map((mainTopic, index) => {
-    // Determine which subtopics array corresponds to the current main topic
-    // This example assumes the order matches directly between the main topics and each set of filtered subtopics
+
     let subTopics;
     let imagePath;
     let iconSlide;
@@ -87,7 +86,6 @@ const ExploreSec = ({ topics,
 
   const order = [2, 1, 13];
 
-  // Rearrange combinedTopics based on the defined order
   const orderedCombinedTopics = order.map(id => combinedTopics.find(topic => topic.id === id));
 
 
@@ -242,10 +240,7 @@ const ExploreSec = ({ topics,
           </>
         ))
         }
-
       </motion.div >
-
-
 
       <div className="container">
         <motion.div
@@ -348,7 +343,6 @@ const ExploreSec = ({ topics,
           </Swiper>
         </motion.div>
       </div>
-
 
     </section >
 

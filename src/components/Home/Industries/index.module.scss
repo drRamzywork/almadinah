@@ -1,6 +1,9 @@
 section.foods,
 section.industries {
   margin-top: 64px;
+  @media screen and (max-width: 992px) {
+    margin-top: 114px;
+  }
 
   .swiper_container {
     position: relative;
@@ -22,6 +25,7 @@ section.industries {
 
       @media screen and (max-width: 992px) {
         top: 65px;
+        // height: 50px;
       }
     }
     .sec_header {
@@ -76,7 +80,16 @@ section.industries {
           line-height: 120%; /* 24px */
         }
         .arrow_container {
+          background-color: #9c1a2d3e;
+          width: 28px;
+          height: 28px;
+          display: flex;
+          border-radius: 50%;
+
           svg {
+            margin: auto;
+            width: 24px;
+            height: 24px;
           }
         }
       }
@@ -85,8 +98,6 @@ section.industries {
     .swiper_slide_box {
       .box {
         display: flex;
-        width: 287.5px;
-        height: 321px;
 
         padding: 16px;
         flex-direction: column;
@@ -94,71 +105,63 @@ section.industries {
         align-items: flex-end;
         gap: 16px;
         position: relative;
-        border-radius: 24px;
-        background: #fff;
-        backdrop-filter: blur(12px);
-        margin: 10px;
-        z-index: 999;
-
-        @media screen and (max-width: 992px) {
-          // width: 164.5px;
-          // height: 200px;
-
-          width: 231.24px;
-          height: 166px;
-        }
 
         .img_container {
-          position: absolute;
+          position: relative;
           top: 0;
           right: 0;
           width: 100%;
           height: 100%;
-          border-radius: 24px;
+          border-radius: 12px;
           z-index: -1;
 
           img {
             object-fit: cover;
+            border-radius: 12px;
+            width: 287.5px;
+            height: 321px;
             border-radius: 24px;
-            width: 100%;
-            height: 100%;
-
-            border-radius: 24px;
-            // background: #fff;
             box-shadow: 0px 24px 64px 0px rgba(56, 57, 105, 0.05);
             filter: blur(0.5px);
+
+            @media screen and (max-width: 992px) {
+              width: 181px;
+              height: 126px;
+              border-radius: 12px;
+            }
           }
         }
 
-        &::after {
-          content: "";
-          position: absolute;
-          bottom: -1px;
-          right: 0;
-          width: 100%;
-          height: 40px;
-          background: linear-gradient(
-            180deg,
-            #fafafa 0%,
-            rgba(250, 250, 250, 0) 100%
-          );
-          transform: rotate(180deg);
-          border-radius: 24px 24px 0px 0px;
-        }
+        // &::after {
+        //   content: "";
+        //   position: absolute;
+        //   bottom: -1px;
+        //   right: 0;
+        //   width: 100%;
+        //   height: 40px;
+        //   background: linear-gradient(
+        //     180deg,
+        //     #fafafa 0%,
+        //     rgba(250, 250, 250, 0) 100%
+        //   );
+        //   transform: rotate(180deg);
+        //   border-radius: 24px 24px 0px 0px;
+
+        // }
 
         .title {
           width: 100%;
 
           h5 {
-            color: #fff;
+            color: var(--main-purble-color);
             text-align: right;
             font-size: 24px;
             font-style: normal;
-            font-weight: 600;
-            line-height: 120%; /* 19.2px */
+            font-weight: 800;
+            // line-height: 120%; /* 19.2px */
 
             @media screen and (max-width: 992px) {
-              font-size: 16px;
+              // font-size: 16px;
             }
           }
         }
@@ -190,7 +193,10 @@ section.industries[dir="ltr"] {
     .sec_header {
       .title {
         h3 {
-          font-size: 22px;
+          // font-size: 22px;
+          @media screen and (max-width: 992px) {
+            font-size: 24px;
+          }
         }
         .img_container {
           img {
@@ -223,78 +229,32 @@ section.industries[dir="ltr"] {
 
     .swiper_slide_box {
       .box {
-        display: flex;
-        width: 287.5px;
-        height: 321px;
-        padding: 16px;
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: flex-end;
-        gap: 16px;
-        position: relative;
-        border-radius: 24px;
-        background: #fff;
-        backdrop-filter: blur(12px);
-        margin: 10px;
-        z-index: 999;
-
-        @media screen and (max-width: 992px) {
-          width: 164.5px;
-          height: 200px;
-        }
-
         .img_container {
-          position: absolute;
-          top: 0;
-          right: 0;
-          width: 100%;
-          height: 100%;
-          border-radius: 24px;
-          z-index: -1;
-
           img {
-            object-fit: cover;
-            border-radius: 24px;
-            width: 100%;
-            height: 100%;
-
-            border-radius: 24px;
-            // background: #fff;
-            box-shadow: 0px 24px 64px 0px rgba(56, 57, 105, 0.05);
-            filter: blur(0.5px);
           }
         }
 
-        &::after {
-          content: "";
-          position: absolute;
-          bottom: -1px;
-          right: 0;
-          width: 100%;
-          height: 40px;
-          background: linear-gradient(
-            180deg,
-            #fafafa 0%,
-            rgba(250, 250, 250, 0) 100%
-          );
-          transform: rotate(180deg);
-          border-radius: 24px 24px 0px 0px;
-        }
+        // &::after {
+        //   content: "";
+        //   position: absolute;
+        //   bottom: -1px;
+        //   right: 0;
+        //   width: 100%;
+        //   height: 40px;
+        //   background: linear-gradient(
+        //     180deg,
+        //     #fafafa 0%,
+        //     rgba(250, 250, 250, 0) 100%
+        //   );
+        //   transform: rotate(180deg);
+        //   border-radius: 24px 24px 0px 0px;
+        // }
 
         .title {
           width: 100%;
 
           h5 {
-            color: #fff;
-            text-align: right;
-            font-size: 24px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: 120%; /* 19.2px */
-
-            @media screen and (max-width: 992px) {
-              font-size: 16px;
-            }
+            text-align: left;
           }
         }
       }

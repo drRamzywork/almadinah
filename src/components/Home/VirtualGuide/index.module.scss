@@ -21,6 +21,10 @@ section.virtual_guide {
       }
     }
   }
+
+  .container {
+    padding-left: 0 !important;
+  }
   .sec_container {
     display: flex;
     align-items: flex-end;
@@ -198,8 +202,8 @@ section.virtual_guide {
 
       .mobile_Slider {
         display: none;
-        padding-right: 18px;
         @media screen and (max-width: 992px) {
+          padding-right: 18px;
           display: block;
           margin-top: 70px;
         }
@@ -503,6 +507,13 @@ section.virtual_guide[dir="ltr"]:not(.virtualPage) {
     }
   }
 
+  .container {
+    @media screen and (max-width: 992px) {
+      padding-left: unset;
+      padding-right: 0px !important;
+    }
+  }
+
   .sec_container {
     display: flex;
     align-items: flex-end;
@@ -526,19 +537,6 @@ section.virtual_guide[dir="ltr"]:not(.virtualPage) {
       }
 
       .shadow {
-        // position: absolute;
-        // bottom: 0;
-        // right: 0;
-        // background: linear-gradient(
-        //   180deg,
-        //   #fafafa 0%,
-        //   rgba(250, 250, 250, 0) 100%
-        // );
-        // width: 618px;
-        // height: 142px;
-        // z-index: 222;
-        // transform: rotate(180deg);
-
         position: absolute;
         bottom: -2px;
         right: unset;
@@ -597,40 +595,16 @@ section.virtual_guide[dir="ltr"]:not(.virtualPage) {
         }
 
         .box {
-          width: 265px;
-          // height: 256px;
-          overflow: hidden;
-          padding: 16px;
-          border: 1px solid var(--main-white-color);
-          border-radius: 32px;
-          background-color: var(--main-white-color);
-          box-shadow: 0px 24px 64px 0px #3839690d;
-          margin-right: 16px;
-          margin-bottom: 16px;
-          transition: transform 0.3s ease-in-out, border-color 0.5s ease-in-out;
-          border: 2px solid transparent;
-          transform: scale(0.92);
-
           cursor: pointer;
           &:first-child {
             margin-right: 0;
           }
 
           .img_container {
-            width: 100%;
-            // height: 100%;
             img {
-              border-radius: 32px;
-              width: 100%;
-              // height: 100%;
             }
           }
           .title {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 16px;
-
             h5 {
               text-align: left !important;
             }
@@ -666,6 +640,9 @@ section.virtual_guide[dir="ltr"]:not(.virtualPage) {
         display: none;
         @media screen and (max-width: 992px) {
           display: block;
+          padding-right: 0;
+          padding-left: 18px;
+          margin-top: 40px;
         }
 
         .box {

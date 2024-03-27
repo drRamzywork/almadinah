@@ -18,11 +18,11 @@ const Industries = ({
   const router = useRouter()
   const breakpoints = {
     300: {
-      slidesPerView: 1.4,
+      slidesPerView: 1.8,
       spaceBetween: 24,
     },
     400: {
-      slidesPerView: 1.4,
+      slidesPerView: 1.8,
       spaceBetween: 24,
     },
     607: {
@@ -30,7 +30,7 @@ const Industries = ({
       spaceBetween: 24,
     },
     700: {
-      slidesPerView: 2.2,
+      slidesPerView: 4.2,
       spaceBetween: 24,
     },
     1200: {
@@ -57,13 +57,13 @@ const Industries = ({
               <div className={styles.title}>
                 <div className={styles.img_container}>
                   <Image src={foods.icon} width={150} height={150} alt={foods.name} />
-
                 </div>
+
                 <h3 style={{ color: foods.titlesColor }}>{foods.name}</h3>
               </div>
 
               <Link href={`/topic/${foods.id}`} className={styles.see_all}>
-                <p style={{ color: foods.titlesColor }}>{dataStaticWords.displayAll}</p>
+                {/* <p style={{ color: foods.titlesColor }}>{dataStaticWords.displayAll}</p> */}
 
                 <div className={styles.arrow_container}>
                   <IoIosArrowBack style={{ color: foods.titlesColor }} />
@@ -123,7 +123,6 @@ const Industries = ({
 
 
       <section id='industries' dir={dir} className={styles.industries}>
-
         <div className={styles.swiper_container}>
           <div className="container">
 
@@ -139,7 +138,7 @@ const Industries = ({
               </div>
 
               <Link href={`/topic/${industries.id}`} className={styles.see_all}>
-                <p style={{ color: industries.titlesColor }}>{dataStaticWords.displayAll}</p>
+                {/* <p style={{ color: industries.titlesColor }}>{dataStaticWords.displayAll}</p> */}
 
                 <div className={styles.arrow_container}>
                   <IoIosArrowBack style={{ color: industries.titlesColor }} />
@@ -179,17 +178,9 @@ const Industries = ({
               ))
             }
 
-
-
-
-
-
-
           </Swiper>
 
         </div>
-
-
       </section >
     </>
   )
