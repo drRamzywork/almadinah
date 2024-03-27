@@ -39,7 +39,7 @@ const LandingPage = ({ topics,
         dataFacilitiesTopic={dataFacilitiesTopic}
         dir={dir}
       />
-      <MapWithNoSSR dataMapData={dataMapData} />
+      {/* <MapWithNoSSR dataMapData={dataMapData} /> */}
       <VirtualGuide
         dir={dir}
         defaultVideoSrc={defaultVideoSrc}
@@ -50,7 +50,6 @@ const LandingPage = ({ topics,
         industries={industries}
         dataStaticWords={dataStaticWords}
       />
-
       <ShareMomentSec dir={dir} dataStaticWords={dataStaticWords} />
     </>
   )

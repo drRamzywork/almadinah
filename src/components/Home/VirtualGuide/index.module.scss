@@ -147,6 +147,9 @@ section.virtual_guide {
           .img_container {
             img {
               border-radius: 24px;
+              @media screen and (max-width: 992px) {
+                border-radius: 12px;
+              }
             }
           }
           .title {
@@ -181,6 +184,7 @@ section.virtual_guide {
         }
 
         .box.active {
+          // border: 1px solid var(--main-green-color);
           border-color: var(--main-green-color);
           transform: scale(1);
 
@@ -194,16 +198,18 @@ section.virtual_guide {
 
       .mobile_Slider {
         display: none;
+        padding-right: 18px;
         @media screen and (max-width: 992px) {
           display: block;
+          margin-top: 70px;
         }
 
         .box {
           // width: 164px !important;
           .img_container {
             img {
-              width: 231.24px;
-              height: 166px;
+              width: 181px;
+              height: 126px;
             }
           }
           .title {
@@ -220,6 +226,7 @@ section.virtual_guide {
     .video_container {
       // position: relative;
       // width: 100%;
+
       @media screen and (max-width: 992px) {
         width: 100%;
         display: flex;
@@ -229,6 +236,9 @@ section.virtual_guide {
       }
 
       .img_container {
+        @media screen and (max-width: 992px) {
+          margin-top: 50px;
+        }
         img {
           width: 100px;
           height: 220px;

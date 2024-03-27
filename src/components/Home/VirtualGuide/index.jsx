@@ -184,7 +184,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
 
               <div className={styles.mobile_Slider}>
                 <Swiper
-                  slidesPerView={1.5}
+                  slidesPerView={1.8}
                   // spaceBetween={16}
                   centeredSlides={false}
                   pagination={{
