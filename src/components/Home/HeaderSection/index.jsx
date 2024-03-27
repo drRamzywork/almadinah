@@ -22,7 +22,6 @@ const images =
 
 const HeaderSection = ({ parentName, topics, dataAllLangs, dataStaticWords, dir }) => {
   const router = useRouter()
-
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentImage = images[currentIndex];
   const route = useRouter()
@@ -217,7 +216,7 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
                 </div>
 
                 <div className={styles.text_container}>
-                  <p style={{ width: '100px ' }}>{guidData.name}</p>
+                  <p >{guidData.name}</p>
                   <div className={styles.arrow_container}>
                     <IoIosArrowBack />
                   </div>

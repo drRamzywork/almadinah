@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { IoIosClose } from 'react-icons/io';
 import { motion } from 'framer-motion';
-import { i18n } from 'next-i18next';
 import { setCookie, } from 'nookies'
 
 const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic, dir, setIsOpen, isOpen }) => {
@@ -53,7 +52,7 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic,
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [navMenu]); // Depend on navMenu so that the effect runs when it changes
+  }, [navMenu]);
 
 
   const buildLocaleSwitchUrl = (targetLocale) => {
@@ -89,10 +88,8 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic,
               {isOpen &&
                 <IoIosClose onClick={() => setIsOpen(false)} />
               }
-
             </div>
           </>
-
           :
           <>
             <form className="d-flex " role="search" >
@@ -114,6 +111,7 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic,
                   {router.locale.toLocaleUpperCase()}
                 </p>
               </div>
+
               {
                 currentLangData?.image !== null &&
                 <div className={styles.img_container}>
@@ -127,14 +125,8 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic,
                 variants={variants}
                 transition={{ duration: 0.5, type: "tween" }}
                 className={styles.nav_menu_container}
-
               >
-                <div className={styles.links} onClick={() => setNavMenu(false)}
-
-                >
-
-
-
+                <div className={styles.links} onClick={() => setNavMenu(false)}>
                   {dataAllLangs?.map((language) => {
                     if (router.locale !== language.shortCut) {
                       return (
@@ -161,17 +153,11 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic,
                       );
                     }
                   })}
-
-
-
                 </div>
               </motion.div>
 
             </div>
-
           </>
-
-
 
         }
       </div >
