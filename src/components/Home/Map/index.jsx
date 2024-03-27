@@ -72,10 +72,9 @@ const Map = ({ dataContentDetails, dataMapData }) => {
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
           center={center}
-          zoom={10}
+          zoom={15}
           options={options}
         >
-
 
           {router.pathname === '/' ? <>
             {dataMapData.map((marker, index) => (
@@ -100,6 +99,7 @@ const Map = ({ dataContentDetails, dataMapData }) => {
             </OverlayView>
           </>
           }
+
         </GoogleMap>
       </motion.div>
     </div>
