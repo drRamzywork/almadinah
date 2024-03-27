@@ -184,7 +184,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
 
               <div className={styles.mobile_Slider}>
                 <Swiper
-                  slidesPerView={2.2}
+                  slidesPerView={1.5}
                   // spaceBetween={16}
                   centeredSlides={false}
                   pagination={{
@@ -201,12 +201,12 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
                           onClick={() => handleSlideClick(topic.tourGuide, topic.id)}
                           className={`${styles.box} ${activeVideoId === topic.id ? styles.active : ''}`} >
                           <div className={styles.img_container}>
-                            <Image src={topic.icon.includes(',') ? topic.icon.split(',')[0] : topic.icon} width={233} height={166} />
+                            <Image src={topic.icon.includes(',') ? topic.icon.split(',')[0] : topic.icon} width={233} height={166} alt={topic.name} />
                           </div>
                           <div className={styles.title}>
                             <h5>{topic.name}</h5>
                             <div className={styles.icon_container}>
-                              <Image src={'/assets/svgs/guide_icon.svg'} width={233} height={166} />
+                              <Image src={'/assets/svgs/guide_icon.svg'} width={233} height={166} alt={topic.name} />
                             </div>
                           </div>
                         </div>

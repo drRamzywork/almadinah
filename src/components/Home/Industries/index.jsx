@@ -18,11 +18,11 @@ const Industries = ({
   const router = useRouter()
   const breakpoints = {
     300: {
-      slidesPerView: 2.3,
+      slidesPerView: 1.4,
       spaceBetween: 24,
     },
     400: {
-      slidesPerView: 2.1,
+      slidesPerView: 1.4,
       spaceBetween: 24,
     },
     607: {
