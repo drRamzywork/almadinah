@@ -30,7 +30,6 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
   const guidData = topics?.filter((topic) => topic.id === 4)[0];
   const marafeqData = topics?.filter((topic) => topic.id === 13)[0];
 
-  console.log(masjedData, "masjedData")
 
 
   useEffect(() => {
@@ -175,9 +174,12 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
 
             <div className={styles.boxes_container}>
               <Link href={`/topic/${masjedData.id}`} className={styles.box}>
-                <div className={styles.icon_container}>
-                  <Image src={masjedData?.icon} width={20} height={24} />
+                <div className={styles.background_image}>
+                  <Image src={masjedData.imageForSecBackground} width={
+                    201} height={165} />
                 </div>
+
+
                 <div className={styles.text_container} >
                   <p >{masjedData?.name}</p>
                   <div className={styles.arrow_container}>

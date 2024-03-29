@@ -253,35 +253,33 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
               </div>
             </div>
             <div className={styles.video_container}>
-              <div className="container">
-                <div className={styles.img_container}>
-                  <img src="/assets/images/Background_hands_web.png" alt="" />
-                  <video
-                    key={currentVideoSrc}
-                    muted={!autoPlay}
-                    autoPlay={autoPlay}
-                    controls
-                  >
-                    <source src={currentVideoSrc} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-              </div >
+              {/* <div className="container"> */}
+              <div className={styles.img_container}>
+                <img src="/assets/images/Background_hands_web.png" alt="" />
+                <video
+                  key={currentVideoSrc}
+                  muted={!autoPlay}
+                  autoPlay={autoPlay}
+                  controls
+                >
+                  <source src={currentVideoSrc} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              {/* </div > */}
 
-              <div className="container">
-                <Link href={`/virtual-guide`} className={`${styles.sec_title} sec_title`}>
-                  <p>{dataStaticWords.guideVirtual}</p>
+              <Link href={`/virtual-guide`} className={`${styles.sec_title} sec_title`}>
+                <h3>{dataStaticWords.guideVirtual}</h3>
 
 
-                  {router.pathname.includes('/virtual-guide')
-                    ?
-                    < h3 className='pb-3'> {dataStaticWords.choseLandMark}</h3>
-                    :
-                    <h3>{dataStaticWords.needToKnow}</h3>
+                {router.pathname.includes('/virtual-guide')
+                  ?
+                  < h3 className='pb-3'> {dataStaticWords.choseLandMark}</h3>
+                  :
+                  <p className='m-0 mt-3'>{dataStaticWords.needToKnow}</p>
 
-                  }
-                </Link>
-              </div >
+                }
+              </Link>
 
             </div>
 

@@ -23,7 +23,9 @@ section.virtual_guide {
   }
 
   .container {
-    padding-left: 0 !important;
+    @media screen and (max-width: 992px) {
+      // padding-left: 0;
+    }
   }
   .sec_container {
     display: flex;
@@ -48,19 +50,6 @@ section.virtual_guide {
       }
 
       .shadow {
-        // position: absolute;
-        // bottom: 0;
-        // right: 0;
-        // background: linear-gradient(
-        //   180deg,
-        //   #fafafa 0%,
-        //   rgba(250, 250, 250, 0) 100%
-        // );
-        // width: 618px;
-        // height: 142px;
-        // z-index: 222;
-        // transform: rotate(180deg);
-
         position: absolute;
         bottom: -2px;
         right: -10px;
@@ -141,6 +130,9 @@ section.virtual_guide {
             margin: 0;
             transform: unset;
             overflow: unset;
+            box-shadow: unset;
+            border-radius: 0;
+            overflow: unset;
           }
 
           cursor: pointer;
@@ -188,9 +180,9 @@ section.virtual_guide {
         }
 
         .box.active {
-          // border: 1px solid var(--main-green-color);
-          border-color: var(--main-green-color);
-          transform: scale(1);
+          img {
+            border-color: var(--main-green-color) !important;
+          }
 
           .title {
             h5 {
@@ -214,6 +206,9 @@ section.virtual_guide {
             img {
               width: 181px;
               height: 126px;
+
+              border: 3px solid transparent;
+              transition: all 0.3s ease-in-out;
             }
           }
           .title {
@@ -331,7 +326,8 @@ section.virtual_guide {
             font-size: 32.5px;
             font-style: normal;
             font-weight: 800;
-            line-height: 120%; /* 39px */
+            text-align: right;
+            line-height: 120%;
           }
         }
       }
@@ -509,7 +505,6 @@ section.virtual_guide[dir="ltr"]:not(.virtualPage) {
 
   .container {
     @media screen and (max-width: 992px) {
-      padding-left: unset;
       padding-right: 0px !important;
     }
   }
@@ -540,17 +535,13 @@ section.virtual_guide[dir="ltr"]:not(.virtualPage) {
         position: absolute;
         bottom: -2px;
         right: unset;
-        left: -10px;
+        left: 0px;
         background: linear-gradient(
           180deg,
           #fafafa 0%,
           rgba(250, 250, 250, 0) 100%
         );
-        width: 88%;
-        height: 113px;
-        z-index: 222;
-        transform: rotate(180deg);
-        border-radius: 0 0 32px 32px;
+        width: 59% !important;
 
         @media screen and (max-width: 992px) {
           display: none;
@@ -625,12 +616,8 @@ section.virtual_guide[dir="ltr"]:not(.virtualPage) {
         }
 
         .box.active {
-          border-color: var(--main-green-color);
-          transform: scale(1);
-
           .title {
             h5 {
-              color: var(--main-green-color);
             }
           }
         }
@@ -765,7 +752,7 @@ section.virtual_guide[dir="ltr"]:not(.virtualPage) {
             font-size: 32.5px;
             font-style: normal;
             font-weight: 800;
-            line-height: 120%; /* 39px */
+            line-height: 120%;
           }
         }
       }
