@@ -197,15 +197,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
                       ))
                     }
 
-
-
-
-
-
-
                   </Swiper>
-
-
 
                 </div>
               </div>
@@ -213,8 +205,8 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
               <div className={styles.mobile_Slider}>
                 <Swiper
                   // slidesPerView={1.8}
-                  breakpoints={breakpoints}
                   // spaceBetween={16}
+                  breakpoints={breakpoints}
                   centeredSlides={false}
                   pagination={{
                     clickable: true,
@@ -232,12 +224,14 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
                           <div className={styles.img_container}>
                             <Image src={topic.icon.includes(',') ? topic.icon.split(',')[0] : topic.icon} width={233} height={166} alt={topic.name} />
                           </div>
+
                           <div className={styles.title}>
                             <h5>{topic.name}</h5>
                             <div className={styles.icon_container}>
                               <Image src={'/assets/svgs/guide_icon.svg'} width={233} height={166} alt={topic.name} />
                             </div>
                           </div>
+
                         </div>
                       </SwiperSlide>
                     ))
@@ -258,7 +252,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
                 <img src="/assets/images/Background_hands_web.png" alt="" />
                 <video
                   key={currentVideoSrc}
-                  muted={!autoPlay}
+                  muted
                   autoPlay={autoPlay}
                   controls
                 >
@@ -317,8 +311,8 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
 
           <div className={styles.video_container}>
             <video
+              muted
               key={currentVideoSrc}
-              muted={!autoPlay}
               autoPlay={false}
               controls
             >
