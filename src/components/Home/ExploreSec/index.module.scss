@@ -1,7 +1,8 @@
 section.explore {
   position: relative;
   @media screen and (max-width: 992px) {
-    padding-top: 200px;
+    // padding-top: 200px;
+    padding-top: 50px;
   }
   .sec_title {
     position: absolute;
@@ -15,7 +16,10 @@ section.explore {
     z-index: 99;
 
     @media screen and (max-width: 992px) {
-      margin-top: 151px;
+      // margin-top: 151px;
+      margin-top: 0px;
+      margin-bottom: 52px;
+      position: relative;
     }
     h3 {
     }
