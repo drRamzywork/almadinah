@@ -119,18 +119,18 @@ nav#navbar {
 
     .nav_menu_container {
       position: absolute;
-      right: -29%;
+      right: 0%;
       top: 120%;
       z-index: 999;
       .links {
-        // background: rgba(255, 255, 255, 0.3);
+        // background-color: #387a8ad9;
+        // background: rgba(255, 255, 255, 0.1);
 
-        background-color: #387a8ad9;
-        border-radius: 24px;
-        padding: 16px;
-        align-items: center;
-        width: 160px;
-        border: 2px solid white;
+        // border-radius: 24px;
+        // padding: 16px;
+        // align-items: center;
+        // width: 160px;
+        // border: 2px solid white;
 
         @media screen and (max-width: 992px) {
           height: 200px;
@@ -138,12 +138,13 @@ nav#navbar {
         }
       }
       .link {
-        width: 100%;
+        width: 105px;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
+        align-items: center;
         text-decoration: none;
-        border: 1px solid #50a99a;
         margin-bottom: 8px;
+        background-color: rgba(255, 255, 255, 0.1);
         p {
           font-family: var(--IBMP-font);
           font-size: 18px;
@@ -154,12 +155,12 @@ nav#navbar {
         border-radius: 24px;
         padding: 8px;
 
-        align-items: center;
         transition: all 0.3s ease-in-out;
         &:hover {
           background-color: rgb(28 26 26 / 11%);
         }
         .icon_container {
+          display: none;
           width: 24px;
           height: 24px;
 
@@ -231,19 +232,18 @@ nav#navbar[dir="ltr"] {
     }
 
     .nav_menu_container {
-      right: 10%;
+      right: -10%;
       top: 120%;
 
       .links {
         border-radius: 24px;
-        padding: 24px;
+        padding: 14px;
         align-items: center;
-        width: 260px;
+        width: 135px;
       }
       .link {
         width: 100%;
         display: flex;
-        justify-content: space-between;
         text-decoration: none;
         p {
           font-family: var(--IBMP-font);
