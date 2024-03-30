@@ -49,7 +49,6 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
       {
         router.pathname === '/details/[id]' ?
           <></>
-
           :
 
           <header id={'header'} className={styles.header}
@@ -160,7 +159,6 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
           </header >
 
       }
-
 
       {
         route.pathname === '/' &&
