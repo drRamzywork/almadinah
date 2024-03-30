@@ -11,6 +11,9 @@ section.city_facilities {
     width: auto;
     align-items: center;
 
+    @media screen and (max-width: 992px) {
+      margin-bottom: 17px;
+    }
     .swiper_container {
       align-items: center;
     }
@@ -18,11 +21,11 @@ section.city_facilities {
       width: fit-content !important;
 
       .box {
-        background-color: rgb(0 5 255 / 15%);
+        // background-color: rgb(0 5 255 / 15%);
         padding: 8px 16px 8px 24px;
         display: flex;
         border-radius: 40px;
-        border: 3px solid var(--main-white-color);
+        // border: 3px solid var(--main-white-color);
         cursor: pointer;
         min-height: 60px;
         transition: var(--main-transation);
@@ -35,7 +38,7 @@ section.city_facilities {
         @media screen and (max-width: 992px) {
           padding: 5.36px 10.7px 5.36px 10px;
           // width: 167px;
-          border: 1px solid var(--main-white-color);
+          // border: 1px solid var(--main-white-color);
         }
         .title {
           p {
@@ -47,7 +50,7 @@ section.city_facilities {
             line-height: 24px;
             letter-spacing: 0em;
             text-align: right;
-            color: var(--main-white-color);
+            color: var(--main-purble-color);
             @media screen and (max-width: 992px) {
               font-size: 16.071px;
             }
@@ -79,12 +82,13 @@ section.city_facilities {
         }
       }
       .box.active {
-        background-color: rgb(56 57 105 / 29%);
+        // background-color: rgb(56 57 105 / 29%);
         border-color: transparent;
         cursor: not-allowed;
         .title {
           p {
             color: var(--main-purble-color);
+            font-size: 24px;
           }
         }
 
