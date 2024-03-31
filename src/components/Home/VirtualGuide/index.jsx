@@ -141,14 +141,13 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
               <div className={styles.guide}>
                 <p>{dataStaticWords.guideVirtual}</p>
               </div>
-              <Link href={`/virtual-guide`} className={`${styles.sec_title}   sec_title`}>
+              <Link href={`/topic/4`} className={`${styles.sec_title}   sec_title`}>
 
                 {router.pathname.includes('/virtual-guide')
                   ?
                   < h3 className='pb-3'> {dataStaticWords.choseLandMark}</h3>
                   :
                   <h3>{dataStaticWords.needToKnow}</h3>
-
                 }
               </Link>
 
