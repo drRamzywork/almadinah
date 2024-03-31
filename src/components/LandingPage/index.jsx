@@ -7,6 +7,7 @@ import VirtualGuide from '../Home/VirtualGuide'
 import ShareMomentSec from '../Home/ShareMomentSec'
 import Industries from '../Home/Industries'
 import dynamic from 'next/dynamic';
+import SwiperSection from '../Home/SwiperSection'
 
 
 
@@ -32,6 +33,10 @@ const LandingPage = ({ topics,
   return (
     <>
       <HeaderSection dir={dir} dataAllLangs={dataAllLangs} topics={topics} dataStaticWords={dataStaticWords} />
+
+      <SwiperSection topics={topics} dir={dir}
+        dataStaticWords={dataStaticWords} />
+
       <ExploreSec topics={topics}
         dataStaticWords={dataStaticWords}
         dataDrobTopic={dataDrobTopic}
@@ -40,16 +45,20 @@ const LandingPage = ({ topics,
         dir={dir}
       />
       {/* <MapWithNoSSR dataMapData={dataMapData} /> */}
+
       <VirtualGuide
         dir={dir}
         defaultVideoSrc={defaultVideoSrc}
         guidData={guidData} dataStaticWords={dataStaticWords} />
+
+
       <Industries
         dir={dir}
         foods={foods}
         industries={industries}
         dataStaticWords={dataStaticWords}
       />
+
       <ShareMomentSec dir={dir} dataStaticWords={dataStaticWords} />
     </>
   )

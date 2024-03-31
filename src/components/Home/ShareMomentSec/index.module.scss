@@ -96,6 +96,8 @@ section.Share_Moment_Sec {
 
       @media screen and (max-width: 992px) {
         width: 100%;
+        margin-top: 10px;
+        margin-bottom: 16px;
       }
 
       .box {
@@ -103,10 +105,11 @@ section.Share_Moment_Sec {
         overflow: hidden;
         border-radius: 24px;
         @media screen and (max-width: 992px) {
-          width: 100% !important;
+          // width: 100% !important;
+          // margin: 0 !important;
+          // margin-bottom: 24px !important;
+          // height: 200px !important;
           margin: 0 !important;
-          margin-bottom: 24px !important;
-          height: 200px !important;
         }
 
         &:nth-child(1) {
@@ -128,6 +131,9 @@ section.Share_Moment_Sec {
         img {
           @media screen and (max-width: 992px) {
             object-fit: cover;
+            width: 215px !important;
+            height: 134px !important;
+            border-radius: 12px;
           }
         }
       }
@@ -326,7 +332,6 @@ section.Share_Moment_Sec[dir="ltr"] {
       flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      margin-top: 48px;
       .box {
         margin: 24px;
         overflow: hidden;

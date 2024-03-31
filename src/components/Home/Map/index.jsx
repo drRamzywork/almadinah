@@ -29,7 +29,6 @@ const options = {
 const Map = ({ dataContentDetails, dataMapData }) => {
   const router = useRouter();
 
-  // console.log(dataMapData, "dataMapDatadataMapData")
   const onMarkerClick = () => {
     const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${center.lat},${center.lng}`;
     window.open(directionsUrl, '_blank');

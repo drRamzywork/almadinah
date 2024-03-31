@@ -20,7 +20,6 @@ const markers = [
   // Add more markers as needed
 ];
 
-console.log(markers, "markers")
 
 const Map = ({ dataContentDetails }) => {
   const center = {

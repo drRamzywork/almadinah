@@ -64,7 +64,6 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
     if (!video) return;
 
     if (autoPlay) {
-      video.muted = false; // Unmute when the video is supposed to autoplay
       video.play().catch(err => console.error("Error playing the video:", err));
     } else {
       video.muted = true; // Optional: Mute when not in view or not autoplaying
@@ -246,6 +245,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
                 </Swiper>
               </div>
             </div>
+
             <div className={styles.video_container}>
               {/* <div className="container"> */}
               <div className={styles.img_container}>

@@ -12,8 +12,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import { Autoplay, Pagination, Navigation, EffectFade } from 'swiper/modules';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
+
 import styles from '../Home/HeaderSection/index.module.scss';
 import Navbar from '../Navbar';
 
