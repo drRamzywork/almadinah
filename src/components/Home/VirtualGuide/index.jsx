@@ -259,7 +259,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
               </div>
               {/* </div > */}
 
-              <Link href={`/virtual-guide`} className={`${styles.sec_title} sec_title`}>
+              <Link href={`/topic/4`} className={`${styles.sec_title} sec_title`}>
                 <h3>{dataStaticWords.guideVirtual}</h3>
 
 
