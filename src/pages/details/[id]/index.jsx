@@ -18,6 +18,7 @@ const MapWithNoSSR = dynamic(() => import('@/components/Home/Map'), {
 const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentDetailsGuide, dir, dataStaticWords }) => {
   const icon = dataContentDetails.currentContent.icon;
   const features = dataContentDetails.currentContent.relatedFeatures;
+  const images1 = icon?.includes(',') ? icon.split(',') : [icon];
 
   return (
     <>
@@ -28,20 +29,20 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
           name="viewport"
           content="width=device-width, initial-scale=1.0"
         />
-        <meta name="description" content="المدينة" />
+        <meta name="description" content={dataContentDetails.currentContent.name} />
         <link rel="icon" href="/favicon.ico" />
 
         {/* Open Graph Meta Tags */}
-        <meta property="og:title" content="المدينة" />
-        <meta property="og:description" content="المدينة" />
-        <meta property="og:image" content="/assets/images/dark_logo.png" />
+        <meta property="og:title" content={dataContentDetails.currentContent.name} />
+        <meta property="og:description" content={dataContentDetails.currentContent.name} />
+        <meta property="og:image" content={images1} />
         <meta property="og:url" content="https://almadinah.io/" />
         <meta property="og:type" content="website" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="المدينة" />
-        <meta name="twitter:description" content="المدينة" />
-        <meta name="twitter:image" content="/assets/images/dark_logo.png" />
+        <meta name="twitter:title" content={dataContentDetails.currentContent.name} />
+        <meta name="twitter:description" content={dataContentDetails.currentContent.name} />
+        <meta name="twitter:image" content={images1} />
       </Head>
 
       <HederPages dataStaticWords={dataStaticWords} dir={dir} dataContentDetailsGuide={dataContentDetailsGuide.currentContent} dataContentDetails={dataContentDetails.currentContent} dataAllLangs={dataAllLangs} icon={icon} parentName={dataContentDetails.

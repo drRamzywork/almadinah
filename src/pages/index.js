@@ -22,23 +22,24 @@ export default function Home({
         <title>{dataStaticWords.siteName}</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content={dataStaticWords.siteName} />
+        <meta name="description" content={dataStaticWords.aboutText} />
         <link rel="icon" href="/favicon.ico" />
 
         {/* Open Graph Meta Tags */}
         <meta property="og:title" content={dataStaticWords.siteName} />
-        <meta property="og:description" content={dataStaticWords.siteName} />
-        <meta property="og:url" content={dataStaticWords.siteName} />
+        <meta property="og:description" content={dataStaticWords.aboutText} />
+        <meta property="og:url" content="https://almadinah-five.vercel.app" />
         <meta property="og:type" content="website" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={dataStaticWords.siteName} />
-        <meta name="twitter:description" content={dataStaticWords.siteName} />
-
         <meta
           property="og:image"
           content="https://almadinah-five.vercel.app/assets/images/dark_logo.png"
         />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={dataStaticWords.siteName} />
+        <meta name="twitter:description" content={dataStaticWords.aboutText} />
         <meta
           name="twitter:image"
           content="https://almadinah-five.vercel.app/assets/images/dark_logo.png"

@@ -13,9 +13,6 @@ import { useRouter } from 'next/router'
 import { FreeMode } from 'swiper/modules';
 
 
-
-
-
 const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, dataAllLangs, dir }) => {
   const router = useRouter();
   const getRandomWidth = (min, max) => Math.floor(Math.random() * (max - min + 40)) + min;
