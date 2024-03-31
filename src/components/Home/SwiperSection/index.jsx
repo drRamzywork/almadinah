@@ -13,11 +13,11 @@ const SwiperSection = ({ topics, dir, dataStaticWords }) => {
 
   const breakpoints = {
     300: {
-      slidesPerView: 1.8,
+      slidesPerView: 1.5,
       spaceBetween: 24,
     },
     400: {
-      slidesPerView: 1.8,
+      slidesPerView: 1.5,
       spaceBetween: 24,
     },
     607: {

@@ -28,7 +28,6 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
     return results;
   }
 
-
   const handleSlideClick = (videoUrl, videoId, topicName) => {
     setShowGuide(true)
     setActiveVideoId(videoId)
@@ -39,7 +38,6 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
       const [entry] = entries;
-      // Autoplay and unmute the video if the section is intersecting (in view)
       setAutoPlay(entry.isIntersecting);
     }, {
       root: null,
