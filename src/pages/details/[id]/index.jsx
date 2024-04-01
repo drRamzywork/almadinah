@@ -63,7 +63,7 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
               </p>
             </motion.div>
 
-            <div className={styles.boxes_container}>
+            {/* <div className={styles.boxes_container}>
               {features &&
                 features.map((f, idx) =>
                   <div className={styles.box} key={idx}>
@@ -73,13 +73,12 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
 
                     <p style={{ overflow: 'hidden' }}>
                       {
-                        // Split the text by spaces to count words
                         f.name.split(' ').length > 3 ? (
                           <Marquee pauseOnHover={false} speed={16}>
                             {f.name}
                           </Marquee>
                         ) : (
-                          <span>{f.name}</span> // Display text without marquee for 3 words or less
+                          <span>{f.name}</span>
                         )
                       }
                     </p>
@@ -87,7 +86,7 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
                 )
               }
 
-            </div>
+            </div> */}
 
             <div className={styles.text_container}>
               {dataContentDetails?.currentContent?.descriptionBigList?.map((item, index) => {

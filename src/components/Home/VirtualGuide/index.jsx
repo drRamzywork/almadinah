@@ -19,6 +19,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
   const [showGuide, setShowGuide] = useState(false);
   const [autoPlay, setAutoPlay] = useState(false);
   const sectionRef = useRef(null);
+  const getRandomWidth = (min, max) => Math.floor(Math.random() * (max - min + 40)) + min;
 
   function chunkArray(myArray, chunkSize) {
     const results = [];
@@ -141,7 +142,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
               <div className={styles.guide}>
                 <p>{dataStaticWords.guideVirtual}</p>
               </div>
-              <Link href={`/topic/4`} className={`${styles.sec_title}   sec_title`}>
+              <Link href={`/virtual-guide`} className={`${styles.sec_title}   sec_title`}>
 
                 {router.pathname.includes('/virtual-guide')
                   ?
@@ -150,6 +151,9 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
                   <h3>{dataStaticWords.needToKnow}</h3>
                 }
               </Link>
+
+
+
 
               <div id="vertical_swiper">
                 <div className={styles.boxes_container}>
@@ -198,10 +202,10 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
                 </div>
               </div>
 
+
+
               <div className={styles.mobile_Slider}>
                 <Swiper
-                  // slidesPerView={1.8}
-                  // spaceBetween={16}
                   breakpoints={breakpoints}
                   centeredSlides={false}
                   pagination={{
@@ -232,15 +236,39 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
                       </SwiperSlide>
                     ))
                   }
-
-
-
-
-
-
-
                 </Swiper>
+
+
+
               </div>
+              {router.pathname.includes('/virtual-guide') &&
+                <div className={styles.boxes_container_mobile}>
+                  {
+                    guidData?.map((topic, index) => (
+
+                      <div
+
+                        onClick={() => handleSlideClick(topic.tourGuide, topic.id, topic.name)}
+                        className={`${styles.box} `} key={topic.id}
+                        style={{
+                          width: `100 % `,
+                          height: `${getRandomWidth(144, 340)}px`,
+                        }}>
+
+                        <div className={styles.img_container}>
+                          <img src={topic.icon.includes(',') ? topic.icon.split(',')[0] : topic.icon} alt={`Image ${index}`} />
+                        </div>
+
+                        <div className={styles.title}>
+                          <h5>{topic.name} </h5>
+                        </div>
+
+                      </div>
+                    ))
+                  }
+
+                </div>
+              }
             </div>
 
             <div className={styles.video_container}>
@@ -259,8 +287,10 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
               </div>
               {/* </div > */}
 
-              <Link href={`/topic/4`} className={`${styles.sec_title} sec_title`}>
-                <h3>{dataStaticWords.guideVirtual}</h3>
+              <Link href={`/virtual-guide`} className={`${styles.sec_title} sec_title`}>
+                {router.pathname === '/' &&
+                  <h3>{dataStaticWords.guideVirtual}</h3>
+                }
 
 
                 {router.pathname.includes('/virtual-guide')
@@ -268,22 +298,18 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
                   < h3 className='pb-3'> {dataStaticWords.choseLandMark}</h3>
                   :
                   <p className='m-0 mt-3'>{dataStaticWords.needToKnow}</p>
-
                 }
+
               </Link>
-
             </div>
-
-
           </div>
-
         </div>
-
         <div className={styles.shadow} />
       </section >
 
 
-      {router.pathname === '/virtual-guide' &&
+      {
+        router.pathname === '/virtual-guide' &&
         showGuide &&
         <motion.div
           initial={{ opacity: 0, y: -100 }}
@@ -308,9 +334,9 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
 
           <div className={styles.video_container}>
             <video
-              muted
+              muted={false}
               key={currentVideoSrc}
-              autoPlay={false}
+              autoPlay={true}
               controls
             >
 
@@ -320,10 +346,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
           </div>
         </motion.div>
       }
-
     </>
-
   )
 }
-
 export default VirtualGuide

@@ -96,7 +96,7 @@ header.topic_details_header {
         left: 0;
         width: 100vw;
         height: 100vh;
-        z-index: 4Q; /* High value to ensure it's above everything */
+        z-index: 4Q;
 
         background: rgba(255, 255, 255, 0.01);
         -webkit-backdrop-filter: blur(8px);
@@ -375,24 +375,26 @@ header.topic_details_header {
         .boxes_container {
           display: flex;
           gap: 34px;
-          // justify-content: space-between;
+
           @media screen and (max-width: 992px) {
             padding-bottom: 0px;
             gap: 24px;
             width: 100%;
+            justify-content: center;
             // overflow: scroll;
           }
+
           .box {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             position: relative;
+            transition: all 0.3s ease-in-out;
+
             @media screen and (max-width: 992px) {
               flex-direction: row;
             }
-
-            transition: all 0.3s ease-in-out;
 
             &:hover {
               p {
@@ -418,6 +420,7 @@ header.topic_details_header {
                 max-width: 180px;
               }
             }
+
             .icon_container {
               img {
                 width: 40px;
@@ -427,8 +430,8 @@ header.topic_details_header {
                   saturate(1210%) brightness(140%);
 
                 @media screen and (max-width: 992px) {
-                  width: 24px;
-                  height: 24px;
+                  width: 30px;
+                  height: 30px;
                 }
               }
             }
@@ -510,9 +513,6 @@ header.topic_details_header {
               @media screen and (max-width: 992px) {
                 max-width: 100% !important;
                 margin: 0;
-                white-space: nowrap; /* Prevent text from wrapping onto multiple lines */
-                overflow: hidden; /* Hide overflow text */
-                text-overflow: ellipsis; /* Add ellipsis to indicate text overflow */
                 width: 100%;
               }
             }
@@ -864,6 +864,11 @@ header.topic_details_header {
     backdrop-filter: blur(16px);
     // padding-top: 16px;
     padding-bottom: 16px;
+
+    @media screen and (max-width: 992px) {
+      height: 120vh;
+    }
+
     img {
       width: 100%;
       object-fit: contain;
@@ -880,6 +885,10 @@ header.topic_details_header {
       right: 0;
       z-index: 999;
       cursor: pointer;
+      @media screen and (max-width: 992px) {
+        top: 15%;
+      }
+
       svg {
         color: var(--main-white-color);
         width: 50px;
@@ -1278,9 +1287,6 @@ header.topic_details_header[dir="ltr"] {
               @media screen and (max-width: 992px) {
                 max-width: 100% !important;
                 margin: 0;
-                white-space: nowrap; /* Prevent text from wrapping onto multiple lines */
-                overflow: hidden; /* Hide overflow text */
-                text-overflow: ellipsis; /* Add ellipsis to indicate text overflow */
                 width: 100%;
               }
             }

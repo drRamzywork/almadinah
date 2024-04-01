@@ -71,6 +71,9 @@ body {
 
 #virtual_guide {
   #vertical_swiper{
+    @media screen and (max-width:992px) {
+      display: none;
+    }
     .swiper-slide {
       height: fit-content !important;
     }
@@ -214,7 +217,11 @@ header#topic_details_header{
   .gallery_Image .swiper-button-prev,
   .gallery_Image .swiper-button-next{
     &:after{
-      color: var(--main-green-color);
+      color: var(--main-white-color);
+      @media screen and (max-width:992px) {
+        font-size: 24px;
+      }
+
     }
   }
 

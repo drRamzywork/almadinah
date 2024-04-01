@@ -220,6 +220,99 @@ section.virtual_guide {
           }
         }
       }
+
+      .boxes_container_mobile {
+        @media screen and (min-width: 992px) {
+          display: none;
+        }
+        margin-top: 14px !important;
+        // justify-content: space-between;
+
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+
+        @media screen and (max-width: 992px) {
+          align-items: flex-start;
+          column-count: 2;
+          column-gap: 16px;
+          width: 100%;
+          display: block;
+        }
+
+        .box {
+          break-inside: avoid;
+          display: inline-block;
+          page-break-inside: avoid;
+          -webkit-column-break-inside: avoid;
+          text-decoration: none;
+          padding: 0;
+          border-radius: 24px;
+          position: relative;
+          z-index: 2;
+          transition: var(--main-transation);
+          align-items: flex-end;
+          display: flex;
+          padding: 16px;
+          margin-left: 0px;
+          margin-bottom: 16px;
+
+          @media screen and (max-width: 992px) {
+            break-inside: avoid; // Prevents the box from being split across columns
+            margin-bottom: 16px; // Spacing between boxes
+            // width: 100%;
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.5;
+            border-radius: 16px;
+
+            background: linear-gradient(
+              143.2deg,
+              rgba(142, 142, 174, 0.1) 0%,
+              rgba(142, 142, 174, 0.1) 0.01%,
+              #8e8eae 100%
+            );
+          }
+
+          .img_container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+
+            img {
+              object-fit: cover;
+              border-radius: 16px;
+
+              @media screen and (max-width: 992px) {
+                width: 100%;
+                height: 100%;
+              }
+            }
+          }
+
+          .title {
+            h5 {
+              font-size: 16px;
+              font-weight: 600;
+              line-height: 19px;
+              letter-spacing: 0em;
+              text-align: right;
+              color: var(--main-white-color);
+            }
+          }
+        }
+      }
     }
 
     .video_container {
@@ -433,7 +526,8 @@ section.virtualPage {
 
   @media screen and (max-width: 992px) {
     display: flex;
-    justify-content: center;
+    position: fixed;
+    // justify-content: center;
   }
   .title {
     margin-top: 40px;

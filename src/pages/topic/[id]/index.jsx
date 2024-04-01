@@ -43,7 +43,6 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
   const routerID = Number(router.query.id);
 
 
-  { console.log(dataMainTopic[0], "dataMainTopic") }
   return (
     <>
       <Head>
