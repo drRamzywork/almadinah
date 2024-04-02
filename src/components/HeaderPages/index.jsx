@@ -50,24 +50,26 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
 
     <header className={'header_details'} id={styles.inner_header} dir={dir} >
       <Navbar dataAllLangs={dataAllLangs} />
-      <div className={styles.details_image}>
-        <Swiper
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
-          effect={'fade'}
-          spaceBetween={30}
-          modules={[Autoplay, Pagination, Navigation, EffectFade]}
-          className="mySwiper"
-        >
-          {images1?.map((image, index) => (
-            <SwiperSlide key={index}>
-              <img src={image} alt="" />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+      {router.pathname !== '/virtual-guide' &&
+        <div className={styles.details_image}>
+          <Swiper
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            effect={'fade'}
+            spaceBetween={30}
+            modules={[Autoplay, Pagination, Navigation, EffectFade]}
+            className="mySwiper"
+          >
+            {images1?.map((image, index) => (
+              <SwiperSlide key={index}>
+                <img src={image} alt="" />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      }
 
       <div className="container">
         <div className={styles.banner_container}>
@@ -91,7 +93,7 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
             </div>
 
 
-            {
+            {/* {
               !router.pathname.includes('/virtual-guide') &&
               dataContentDetails.tourGuide !== null &&
               <div className={styles.icons_container}>
@@ -116,8 +118,7 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
 
               </div>
 
-
-            }
+            } */}
 
 
 

@@ -147,10 +147,13 @@ box-shadow: 0px 16px 176px 0px #38396926;
 }
 .header_details{
   overflow: hidden;
+  position: relative;
   .swiper{
     overflow: unset !important;
 
   }
+
+
 }
 
 // +++++

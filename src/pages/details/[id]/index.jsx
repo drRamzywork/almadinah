@@ -52,7 +52,7 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
       <section dir={dir} id='details' className={styles.details}>
         <div className="container p-3">
           <div className={styles.sec_container}>
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: -100 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
@@ -61,7 +61,7 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
               <p>
                 {dataContentDetails.currentContent.description}
               </p>
-            </motion.div>
+            </motion.div> */}
 
             {/* <div className={styles.boxes_container}>
               {features &&

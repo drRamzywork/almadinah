@@ -1,5 +1,7 @@
 header.header,
 header#inner_header {
+  padding-top: 120px;
+
   width: 100%;
   height: 612px;
   position: relative;
@@ -176,8 +178,14 @@ header#inner_header {
       .main_title2 {
         margin-top: 50px;
 
+        p {
+          @media screen and (max-width: 992px) {
+            font-size: 22px !important;
+          }
+        }
+
         @media screen and (max-width: 992px) {
-          margin-top: 90px !important;
+          margin-top: 192px !important;
         }
         h2 {
           @media screen and (max-width: 992px) {
@@ -609,6 +617,24 @@ header#inner_header {
         width: 500px;
         height: 100%;
         object-fit: cover;
+      }
+    }
+
+    @media screen and (max-width: 992px) {
+      &::before {
+        position: absolute;
+        content: "";
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 183px;
+        background: linear-gradient(
+          180deg,
+          rgba(56, 57, 105, -0.4),
+          rgb(56 57 105 / 94%) 81.5%,
+          rgb(56 57 106)
+        );
+        z-index: 999;
       }
     }
   }

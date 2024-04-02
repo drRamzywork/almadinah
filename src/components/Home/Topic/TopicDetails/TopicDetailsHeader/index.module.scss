@@ -293,8 +293,9 @@ header.topic_details_header {
 
           @media screen and (max-width: 992px) {
             right: unset;
-            left: -44px;
-            transform: rotate(90deg) !important;
+            left: -151px;
+            width: 100%;
+            top: 87px;
           }
           audio {
             width: 300px;
@@ -430,8 +431,8 @@ header.topic_details_header {
                   saturate(1210%) brightness(140%);
 
                 @media screen and (max-width: 992px) {
-                  width: 30px;
-                  height: 30px;
+                  width: 40px;
+                  height: 40px;
                 }
               }
             }
@@ -1105,7 +1106,6 @@ header.topic_details_header[dir="ltr"] {
           @media screen and (max-width: 992px) {
             left: unset;
             right: -44px;
-            transform: rotate(90deg) !important;
           }
           audio {
             width: 300px;

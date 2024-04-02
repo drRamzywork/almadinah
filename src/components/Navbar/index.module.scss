@@ -1,11 +1,17 @@
 nav#navbar {
-  padding-top: 50px;
+  padding-top: 16px;
   z-index: 9999;
+  backdrop-filter: blur(16px);
+  background: linear-gradient(
+    rgba(56, 122, 138, 0.3) 0%,
+    rgba(211, 193, 189, 0) 129.34%
+  );
+
+  padding-bottom: 16px;
+
   @media screen and (max-width: 992px) {
     padding-right: 0 !important;
     padding-left: 0 !important;
-    padding-bottom: 0 !important;
-    padding-top: 24px;
   }
   .navbar_logo {
     @media screen and (max-width: 992px) {

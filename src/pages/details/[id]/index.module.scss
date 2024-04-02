@@ -2,43 +2,6 @@ section.details {
   .sec_container {
     position: relative;
 
-    .desc_container {
-      width: 100%;
-      display: flex;
-      padding: 40px;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 16px;
-      align-self: stretch;
-
-      border-radius: 32px;
-      border: 1px solid #fff;
-      background: #fff;
-      box-shadow: 0px 24px 64px 0px rgba(56, 57, 105, 0.05);
-      backdrop-filter: blur(12px);
-      margin-top: -100px;
-      position: relative;
-      z-index: 999;
-
-      @media screen and (max-width: 992px) {
-        padding: 16px 8px;
-        margin-top: -25px;
-      }
-      p {
-        align-self: stretch;
-        color: #8e8eae;
-        text-align: justify;
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 150%; /* 36px */
-
-        @media screen and (max-width: 992px) {
-          font-size: 16px;
-        }
-      }
-    }
-
     .boxes_container {
       display: flex;
       align-items: center;
@@ -142,7 +105,7 @@ section.details {
         font-size: 32px;
         font-style: normal;
         font-weight: 500;
-        line-height: 100%; /* 32px */
+        line-height: 100%;
 
         @media screen and (min-width: 992px) {
           margin-top: 64px;
@@ -151,6 +114,7 @@ section.details {
         @media screen and (max-width: 992px) {
           font-size: 24px;
           text-align: unset;
+          margin-top: 34px;
         }
       }
 
@@ -169,25 +133,21 @@ section.details {
       }
 
       li {
-        color: var(--main-blue-color);
-        font-size: 16px;
-        font-weight: 600;
-        margin-top: 14px;
+        color: #8e8eae;
+        font-size: 24px;
+        font-weight: 500;
+        font-size: 24px;
+
+        @media screen and (max-width: 992px) {
+          font-size: 16px;
+        }
       }
     }
   }
 }
+
 section.details[dir="ltr"] {
   .sec_container {
-    .desc_container {
-      p {
-        @media screen and (max-width: 992px) {
-          font-size: 16px;
-          text-align: center;
-        }
-      }
-    }
-
     .boxes_container {
       .box {
         &:hover {

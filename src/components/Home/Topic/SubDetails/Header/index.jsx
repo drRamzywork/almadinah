@@ -24,6 +24,9 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
   const [showAudio, setShowAudio] = useState(false)
   const [showGuide, setShowGuide] = useState(false)
   const [show360, setShow360] = useState(false)
+  // Refs for the containers
+  const audioRef = useRef(null);
+  const guideRef = useRef(null);
 
   // Steps control
   const details = dataContentDetails.currentContent;
@@ -50,40 +53,42 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
     }
   };
 
-  useEffect(() => {
-    // Only add the listener if the fullscreen Swiper is open
-    if (isFullscreenSwiperOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
+  // useEffect(() => {
+  //   // Only add the listener if the fullscreen Swiper is open
+  //   if (isFullscreenSwiperOpen) {
+  //     document.addEventListener('mousedown', handleClickOutside);
+  //   }
 
-    // Cleanup the event listener
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isFullscreenSwiperOpen]);
+  //   // Cleanup the event listener
+  //   return () => {
+  //     document.removeEventListener('mousedown', handleClickOutside);
+  //   };
+  // }, [isFullscreenSwiperOpen]);
 
 
-  // Refs for the containers
-  const audioRef = useRef(null);
-  const guideRef = useRef(null);
+
 
 
   useEffect(() => {
-    function handleClickOutside(event) {
+    function handleClickOutsideBoxes(event) {
       if (audioRef.current && !audioRef.current.contains(event.target)) {
         setShowAudio(false);
       }
+
+
       if (guideRef.current && !guideRef.current.contains(event.target)) {
         setShowGuide(false);
       }
     }
 
     // Add event listener
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutsideBoxes);
 
     // Remove event listener on cleanup
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []); // Empty dependency array means this effect runs once on mount
+    return () => document.removeEventListener('mousedown', handleClickOutsideBoxes);
+  }, []);
+
+
 
 
 
@@ -119,26 +124,26 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
 
                   {details.tourGuide !== null &&
                     <div className={styles.guide_video}>
-                      <Link href={'#'} className={styles.icon} onClick={() => setShowGuide(prev => !prev)}>
+                      <div className={styles.icon} onClick={() => setShowGuide(prev => !prev)}>
                         <img src="/assets/images/guide.png" alt="" />
                         <p className={styles.guide} >
                           {dataStaticWords.guideVirtual}
                         </p>
-                      </Link>
+                      </div>
                     </div>
                   }
 
                   {details?.sound !== null &&
-                    <div className={styles.audio_container}>
-                      <Link href={'#'} className={styles.icon} onClick={() => setShowAudio(prev => !prev)}>
+                    <div className={styles.audio_container} >
+                      <div className={styles.icon} onClick={() => setShowAudio(prev => !prev)}>
                         <Microphone />
                         <p className={styles.guide}>
                           {dataStaticWords.voiceRecord}
                         </p>
-
-                      </Link>
+                      </div>
                     </div>
                   }
+
                   {details?.icon !== null &&
                     <div className={styles.gallery} onClick={() => setIsFullscreenSwiperOpen(true)}>
                       <div className={styles.icon}>
@@ -147,10 +152,10 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
                       </div>
                     </div>
                   }
+
                   {details?.video !== null &&
                     <div className={styles.three_hundred} onClick={() => setShow360(true)}>
                       <div className={styles.icon}>
-
                         <Threehundred />
                       </div>
 

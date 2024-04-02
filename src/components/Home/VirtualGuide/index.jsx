@@ -165,11 +165,8 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
                     }}
                     slidesPerView={2.3}
                     spaceBetween={16}
-
-
                     modules={[Mousewheel, FreeMode]}
                     freeMode={true}
-
                     className={styles.swiper_container}
                   >
                     {
@@ -327,6 +324,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
                 <IoIosClose />
               </div>
             </div>
+
             <div className="sec_title">
               <h3 >{topic}</h3>
             </div>
@@ -344,6 +342,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
               Your browser does not support the video tag.
             </video>
           </div>
+
         </motion.div>
       }
     </>
