@@ -597,7 +597,6 @@ header#inner_header {
     position: absolute;
     top: 0;
     right: 0;
-
     width: 100%;
     height: 100%;
     z-index: -1;
@@ -624,7 +623,7 @@ header#inner_header {
 
     @media screen and (max-width: 992px) {
       overflow: hidden;
-
+      border-radius: 0px 0px 32px 32px;
       &::before {
         position: absolute;
         content: "";
@@ -632,6 +631,7 @@ header#inner_header {
         left: 0;
         width: 100%;
         height: 183px;
+        border-radius: 0px 0px 32px 32px;
         background: linear-gradient(
           180deg,
           rgba(56, 57, 105, -0.4),
