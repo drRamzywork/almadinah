@@ -12,7 +12,10 @@ nav#navbar {
   @media screen and (max-width: 992px) {
     padding-right: 0 !important;
     padding-left: 0 !important;
+    padding-top: 6px;
+    padding-bottom: 6px;
   }
+
   .navbar_logo {
     @media screen and (max-width: 992px) {
       flex-grow: 1;
@@ -20,6 +23,14 @@ nav#navbar {
     .logo {
       img {
         object-fit: contain;
+      }
+    }
+
+    img {
+      @media screen and (max-width: 992px) {
+        width: 112px;
+        object-fit: contain;
+        height: 40px;
       }
     }
   }
@@ -94,6 +105,13 @@ nav#navbar {
     cursor: pointer;
     position: relative;
     z-index: 999999;
+
+    @media screen and (max-width: 992px) {
+      width: 85px;
+      height: 33px;
+      padding-top: 4px;
+    }
+
     .icon_container {
       svg {
         width: 24px;
@@ -188,6 +206,15 @@ nav#navbar {
       color: #ffffff;
     }
   }
+}
+
+.hidden {
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+#navbar {
+  transition: transform 0.3s ease-in-out;
 }
 
 // ++++++++LTR++++++++++++

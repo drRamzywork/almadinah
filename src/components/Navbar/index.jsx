@@ -11,6 +11,27 @@ import { setCookie, } from 'nookies'
 const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic, dir, setIsOpen, isOpen }) => {
   const router = useRouter();
 
+
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [hidden, setHidden] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Hide navbar when scrolling down, show when scrolling up
+      setHidden(currentScrollY > lastScrollY);
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
+
+
   function handleClick(lng) {
     setCookie(null, 'NEXT_LOCALE', lng.id, {
       maxAge: 30 * 24 * 60 * 60,
@@ -71,7 +92,7 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic,
   const contentID2 = dataMainTopic?.find(topic => topic.contentIdFK === Number(router.query.id));
 
   return (
-    <nav className={`navbar fixed-top  ${cName}`} id={styles.navbar} dir={dir}>
+    <nav className={`navbar fixed-top ${cName} ${hidden ? styles.hidden : ''}`} id={styles.navbar} dir={dir}>
       <div className='container '>
 
         <Link href={'/'} className={`${styles.navbar_logo} navbar-brand`}>

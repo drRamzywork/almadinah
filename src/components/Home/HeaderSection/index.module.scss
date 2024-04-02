@@ -621,6 +621,8 @@ header#inner_header {
     }
 
     @media screen and (max-width: 992px) {
+      overflow: hidden;
+
       &::before {
         position: absolute;
         content: "";
