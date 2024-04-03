@@ -49,7 +49,7 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
   return (
 
     <header className={'header_details'} id={styles.inner_header} dir={dir} >
-      <Navbar dataAllLangs={dataAllLangs} />
+      <Navbar dataAllLangs={dataAllLangs} dir={dir} />
       {router.pathname !== '/virtual-guide' &&
         <div className={styles.details_image}>
           <Swiper

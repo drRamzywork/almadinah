@@ -89,6 +89,7 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
             </div> */}
 
             <div className={styles.text_container}>
+              {console.log(dataContentDetails?.currentContent?.descriptionBigList, "dataContentDetails?.currentContent?.descriptionBigList")}
               {dataContentDetails?.currentContent?.descriptionBigList?.map((item, index) => {
                 switch (item.tagName) {
                   case 'h4':

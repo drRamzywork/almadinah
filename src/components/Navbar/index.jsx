@@ -133,12 +133,12 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic,
                 </p>
               </div>
 
-              {
+              {/* {
                 currentLangData?.image !== null &&
                 <div className={styles.img_container}>
                   <Image src={currentLangData?.image} alt="Language flag" width={20} height={20} />
                 </div>
-              }
+              } */}
 
               <motion.div
                 initial="closed"

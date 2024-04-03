@@ -30,13 +30,10 @@
 header.topic_details_header {
   position: relative;
 
-  /* Ensure content inside the header has a higher z-index if necessary */
-
   * {
     user-select: none !important;
   }
   width: 100%;
-  // height: 100vh;
   .main_image_slider {
     position: absolute;
     top: 0;
@@ -134,6 +131,10 @@ header.topic_details_header {
             position: relative;
           }
 
+          @media screen and (max-width: 992px) {
+            margin-bottom: 0;
+            margin-top: 0px;
+          }
           .guide_video {
             margin-bottom: 8px;
             .icon {
@@ -293,7 +294,7 @@ header.topic_details_header {
           @media screen and (max-width: 992px) {
             right: unset;
             // left: -151px;
-            left: 11px;
+            left: -39px;
             width: 100%;
             top: 87px;
           }
@@ -369,6 +370,7 @@ header.topic_details_header {
 
             @media screen and (max-width: 992px) {
               font-size: 35px;
+
               margin-bottom: 0;
             }
           }
@@ -846,6 +848,10 @@ header.topic_details_header {
       padding-right: 0 !important;
       padding-bottom: 70px;
 
+      @media screen and (max-width: 992px) {
+        padding-bottom: 0;
+      }
+
       .middle_box2 {
         align-items: flex-start !important;
       }
@@ -1173,12 +1179,7 @@ header.topic_details_header[dir="ltr"] {
             margin-bottom: 24px;
           }
           h2 {
-            color: #fff;
             text-align: left;
-            font-size: 50px;
-            font-style: normal;
-            font-weight: 800;
-            line-height: 100%; /* 108px */
 
             @media screen and (max-width: 992px) {
               font-size: 35px;
@@ -1622,7 +1623,6 @@ header.topic_details_header[dir="ltr"] {
 
     .slideContent2 {
       padding-left: 0 !important;
-      padding-bottom: 70px;
 
       .middle_box2 {
         align-items: flex-start !important;

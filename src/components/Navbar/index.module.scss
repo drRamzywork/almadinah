@@ -1,13 +1,18 @@
 nav#navbar {
-  padding-top: 16px;
+  padding-top: 8px !important;
   z-index: 9999;
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(2px);
   background: linear-gradient(
-    rgba(56, 122, 138, 0.3) 0%,
-    rgba(211, 193, 189, 0) 129.34%
+    rgba(56, 122, 138, 1.3) 0%,
+    rgb(255 255 255 / 0%) 100%
   );
 
-  padding-bottom: 16px;
+  // linear-gradient(
+  //   rgba(56, 122, 138, 0.3) 0%,
+  //   rgba(211, 193, 189, 0) 129.34%
+  // );
+
+  padding-bottom: 8px !important;
 
   @media screen and (max-width: 992px) {
     padding-right: 0 !important;
@@ -19,6 +24,7 @@ nav#navbar {
   .navbar_logo {
     @media screen and (max-width: 992px) {
       flex-grow: 1;
+      margin-right: 0 !important;
     }
     .logo {
       img {
@@ -94,7 +100,7 @@ nav#navbar {
     display: flex;
     // align-items: center;
     justify-content: space-between;
-    width: 105px;
+    width: 76px;
     height: 43px;
     border-radius: 24px !important;
     padding-top: 9px;
@@ -162,7 +168,7 @@ nav#navbar {
         }
       }
       .link {
-        width: 105px;
+        width: 76px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -248,7 +254,7 @@ nav#navbar[dir="ltr"] {
 
   .lang_container {
     padding-right: 13px;
-    padding-left: 8px;
+    padding-left: 13px;
     .icon_container {
       svg {
       }
@@ -265,19 +271,9 @@ nav#navbar[dir="ltr"] {
     }
 
     .nav_menu_container {
-      right: -10%;
-      top: 120%;
-
       .links {
-        border-radius: 24px;
-        padding: 14px;
-        align-items: center;
-        width: 135px;
       }
       .link {
-        width: 100%;
-        display: flex;
-        text-decoration: none;
         p {
           font-family: var(--IBMP-font);
           font-size: 18px;

@@ -182,15 +182,18 @@ header#inner_header {
         p {
           @media screen and (max-width: 992px) {
             font-size: 22px !important;
+            color: #d3c1bd !important;
           }
         }
 
         @media screen and (max-width: 992px) {
           margin-top: 282px !important;
         }
+
         h2 {
           @media screen and (max-width: 992px) {
             font-size: 36px !important;
+            font-weight: 500 !important;
           }
         }
       }
@@ -635,10 +638,11 @@ header#inner_header {
         border-radius: 0px 0px 32px 32px;
         background: linear-gradient(
           180deg,
-          rgba(56, 57, 105, -0.4),
-          rgb(56 57 105 / 94%) 81.5%,
-          rgb(56 57 106)
+          rgba(211, 193, 189, -0.4),
+          rgb(211 193 189 / 94%) 81.5%,
+          rgb(211 193 189)
         );
+
         z-index: 999;
       }
     }
@@ -988,12 +992,9 @@ header.header[dir="ltr"] {
         @media screen and (max-width: 992px) {
           margin-top: 16px;
         }
+
         h2 {
-          color: var(--main-white-color);
           font-size: 80px;
-          font-weight: 800;
-          line-height: 80px;
-          letter-spacing: 0em;
           text-align: left !important;
           @media screen and (max-width: 992px) {
             font-size: 44px;
