@@ -231,7 +231,7 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
 
                 <div className={`mt-3 ${styles.boxes_container}`}>
                   {features &&
-                    features.map((f, idx) =>
+                    features.slice(0, 6).map((f, idx) =>
                       <div className={styles.box} key={idx}>
                         <div className={styles.icon_container}>
                           <img src={f.icon} alt={f.name} />

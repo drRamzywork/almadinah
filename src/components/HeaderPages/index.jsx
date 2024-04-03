@@ -19,13 +19,13 @@ import Navbar from '../Navbar';
 
 
 
-const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAllLangs, categoryName, parentName, dir, dataStaticWords }) => {
+const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAllLangs, categoryName, parentName, dir, dataStaticWords, parentID
+  , dataMainTopic }) => {
   const images1 = icon?.includes(',') ? icon.split(',') : [icon];
   const router = useRouter();
   const [showAudio, setShowAudio] = useState(false)
   const [showGuide, setShowGuide] = useState(false)
 
-  // Refs for the containers
   const audioRef = useRef(null);
   const guideRef = useRef(null);
 
@@ -45,6 +45,15 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
     // Remove event listener on cleanup
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+
+
+
+  const textLayerColor = parentID === 20 && "linear-gradient(180deg,rgb(55, 122, 138,0),rgb(55, 122, 138,.94) 81.5%, #377A8A)"
+    || parentID === 1 && "linear-gradient(180deg,rgb(56, 57, 105,0),rgb(56, 57, 105,.94) 81.5%,#383969)"
+    || parentID === 13 && "linear-gradient(180deg,rgb(211, 193, 189,0),rgb(211, 193, 189,.94) 81.5%, #D3C1BD)"
+    || parentID === 6 | 7 && 'linear-gradient(180deg,rgb(80, 81, 127,0),rgb(80, 81, 127,.94) 81.5%, #50517F)'
+
 
   return (
 
@@ -68,6 +77,8 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
               </SwiperSlide>
             ))}
           </Swiper>
+
+          <div className={styles.layer} style={{ background: textLayerColor }} />
         </div>
       }
 

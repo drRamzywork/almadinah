@@ -12,13 +12,14 @@ import dynamic from 'next/dynamic';
 
 
 const MapWithNoSSR = dynamic(() => import('@/components/Home/Map'), {
-  ssr: false, // Disable server-side rendering for the map
+  ssr: false,
 });
 
 const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentDetailsGuide, dir, dataStaticWords }) => {
   const icon = dataContentDetails.currentContent.icon;
   const features = dataContentDetails.currentContent.relatedFeatures;
   const images1 = icon?.includes(',') ? icon.split(',') : [icon];
+
 
   return (
     <>
@@ -45,8 +46,11 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
         <meta name="twitter:image" content={images1} />
       </Head>
 
-      <HederPages dataStaticWords={dataStaticWords} dir={dir} dataContentDetailsGuide={dataContentDetailsGuide.currentContent} dataContentDetails={dataContentDetails.currentContent} dataAllLangs={dataAllLangs} icon={icon} parentName={dataContentDetails.
-        currentContent.name} categoryName={dataMainTopic[0]?.parentName} />
+      <HederPages
+        parentID={dataMainTopic.length > 0 ? dataMainTopic[0].parentId : dataContentDetails.mainTopicId}
+        dataStaticWords={dataStaticWords} dir={dir} dataContentDetailsGuide={dataContentDetailsGuide.currentContent} dataContentDetails={dataContentDetails.currentContent} dataAllLangs={dataAllLangs} icon={icon} parentName={dataContentDetails.
+          currentContent.name} categoryName={dataMainTopic[0]?.parentName} />
+
 
 
       <section dir={dir} id='details' className={styles.details}>
@@ -89,7 +93,7 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
             </div> */}
 
             <div className={styles.text_container}>
-              {console.log(dataContentDetails?.currentContent?.descriptionBigList, "dataContentDetails?.currentContent?.descriptionBigList")}
+
               {dataContentDetails?.currentContent?.descriptionBigList?.map((item, index) => {
                 switch (item.tagName) {
                   case 'h4':
