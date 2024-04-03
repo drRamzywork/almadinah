@@ -1,23 +1,3 @@
-// /** @type {import('next').NextConfig} */
-// const nextConfig = {
-//   reactStrictMode: true,
-//   images: {
-//     remotePatterns: [
-//       { protocol: "https", hostname: "www.dropbox.com" },
-//       { protocol: "https", hostname: "dl.dropboxusercontent.com" },
-//       { protocol: "https", hostname: "almadinah.io" },
-//     ],
-//   },
-
-//   i18n: {
-//     defaultLocale: "ar",
-//     locales: ["en", "ar"],
-//     localeDetection: true,
-//   },
-// };
-
-// module.exports = nextConfig;
-
 const fs = require("fs");
 const path = require("path");
 
@@ -41,8 +21,8 @@ const nextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "www.dropbox.com" },
       { protocol: "https", hostname: "dl.dropboxusercontent.com" },
-      { protocol: "https", hostname: "almadinah.io" },
       { protocol: "https", hostname: "visitmadinahsa.com" },
+      { protocol: "https", hostname: "almadinah.io" },
     ],
   },
   i18n: {

@@ -117,11 +117,14 @@ header#inner_header {
       display: none;
     }
   }
-
+  .banner {
+    @media screen and (max-width: 992px) {
+      height: 100%;
+    }
+  }
   .banner_container {
     // margin-top: 104px;
     margin-top: 12px;
-    height: 100%;
     width: 100%;
     transition: "background-color 1s ease";
     position: relative;
@@ -132,6 +135,7 @@ header#inner_header {
 
     @media screen and (max-width: 992px) {
       margin-top: 80px;
+      height: 100%;
     }
 
     .right_side {
@@ -190,7 +194,7 @@ header#inner_header {
         @media screen and (max-width: 992px) {
           // margin-top: 254px !important;
           margin-top: auto !important;
-          margin-bottom: auto;
+          margin-bottom: 5px;
         }
 
         h2 {

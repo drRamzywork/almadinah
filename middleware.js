@@ -13,16 +13,15 @@ export function middleware(request) {
     }
 
     if (!url.pathname.startsWith(`/${localeCookie}`)) {
-      // Redirect to the locale specified in the cookie if it's not already in the path
       url.pathname = `/${localeCookie}${url.pathname}`;
       return NextResponse.redirect(url);
     }
   } else {
-    // If there's no cookie, you might decide to do nothing, redirect to the default locale, or handle it in another way
-    // This is optional and depends on your application's requirements
+
+    // 
   }
 }
 
 export const config = {
-  matcher: "*", // Adjust this matcher to specify paths the middleware should apply to
+  matcher: "*"
 };

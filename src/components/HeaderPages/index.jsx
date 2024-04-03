@@ -55,6 +55,7 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
     || parentID === 6 | 7 && 'linear-gradient(180deg,rgb(80, 81, 127,0),rgb(80, 81, 127,.94) 81.5%, #50517F)'
 
 
+
   return (
 
     <header className={'header_details'} id={styles.inner_header} dir={dir} >
@@ -82,7 +83,7 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
         </div>
       }
 
-      <div className="container">
+      <div className={`container ${styles.banner}`}>
         <div className={styles.banner_container}>
           <motion.div
             initial={{ opacity: 0, x: -100 }}

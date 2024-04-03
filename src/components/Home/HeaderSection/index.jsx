@@ -44,6 +44,7 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
     visible: { opacity: 1, scale: 1 },
   };
 
+
   return (
     <>
       {

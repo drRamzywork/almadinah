@@ -37,7 +37,7 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
         <meta property="og:title" content={dataContentDetails.currentContent.name} />
         <meta property="og:description" content={dataContentDetails.currentContent.name} />
         <meta property="og:image" content={images1} />
-        <meta property="og:url" content="https://almadinah.io/" />
+        <meta property="og:url" content="https://visitmadinahsa.com/" />
         <meta property="og:type" content="website" />
 
         <meta name="twitter:card" content="summary_large_image" />
