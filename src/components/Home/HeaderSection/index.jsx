@@ -51,113 +51,114 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
         router.pathname === '/details/[id]' ?
           <></>
           :
-
-          <header id={'header'} className={styles.header}
-            style={{ background: currentImage.bgColor, height: router.pathname === '/details/[id]' && '519px' }}
-            dir={dir}
-          >
+          <>
             <Navbar dataAllLangs={dataAllLangs} dir={dir} />
+            <header id={'header'} className={styles.header}
+              style={{ background: currentImage.bgColor, height: router.pathname === '/details/[id]' && '519px' }}
+              dir={dir}>
 
 
-            <div className={`${styles.top_cloud} ${router.pathname === '/details/[id]' && styles.right}`}>
-              <Image src={'/assets/bannerImgs/cloud2.png'} width={1440} height={413} />
-
-            </div>
-
-            <div className="container">
-
-              <div className={styles.banner_container} >
-
-
-
-                <motion.div
-                  initial={{ opacity: 0, x: -100 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 1 }}
-
-                  className={`${styles.right_side} ${router.pathname !== '/' ? styles.right_side2 : ''}`}>
-
-
-                  <div className={styles.main_title}>
-                    <h2>
-                      {router.pathname === '/' ?
-
-                        dataStaticWords.siteName
-                        :
-                        parentName && parentName
-
-                      }
-                    </h2>
-
-                  </div>
-
-
-
-
-                </motion.div>
-
-                {router.pathname !== '/details/[id]' &&
-
-                  <div className={`${styles.left_side}`} >
-                    <motion.div
-                      key={currentImage.imgSrc} // Key changes on image change, triggering re-render
-                      initial="hidden"
-                      animate="visible"
-                      variants={imageVariants}
-                      transition={{ duration: 1 }} // Smooth transition over 1 second
-
-
-                      className={`${styles.main_img_container}`}>
-
-                      <img src={currentImage.imgSrc} width={539} height={546.45} alt="Banner Image"
-                      />
-
-                      <div className={styles.birds}>
-                        <Image src={'/assets/bannerImgs/birds.svg'} width={128} height={82} />
-                      </div>
-
-
-
-                    </motion.div>
-
-
-                    <div className={styles.shape} style={{ background: currentImage.shapeColor }} />
-
-
-                  </div>
-
-                }
+              <div className={`${styles.top_cloud} ${router.pathname === '/details/[id]' && styles.right}`}>
+                <Image src={'/assets/bannerImgs/cloud2.png'} width={1440} height={413} />
 
               </div>
 
-            </div>
+              <div className="container">
+
+                <div className={styles.banner_container} >
 
 
-            <motion.div
-              key={currentImage.imgSrc} // Key changes on image change, triggering re-render
-              initial="hidden"
-              animate="visible"
-              variants={imageVariants}
-              transition={{ duration: 1 }} // Smooth transition over 1 second
 
-              className={`${styles.blur_img}`}
+                  <motion.div
+                    initial={{ opacity: 0, x: -100 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 1 }}
 
-            >
-              <Image src={currentImage.imgSrc} width={1440} height={413} />
-            </motion.div>
+                    className={`${styles.right_side} ${router.pathname !== '/' ? styles.right_side2 : ''}`}>
 
 
-            < div className={styles.lines}>
-              <Image src={'/assets/bannerImgs/Lines.svg'} width={8169.95} height={2105.82} />
+                    <div className={styles.main_title}>
+                      <h2>
+                        {router.pathname === '/' ?
 
-            </div>
+                          dataStaticWords.siteName
+                          :
+                          parentName && parentName
 
-            <div className={styles.cloud}>
-              <Image src={'/assets/bannerImgs/cloud2.png'} width={1440} height={413} />
-            </div>
+                        }
+                      </h2>
 
-          </header >
+                    </div>
+
+
+
+
+                  </motion.div>
+
+                  {router.pathname !== '/details/[id]' &&
+
+                    <div className={`${styles.left_side}`} >
+                      <motion.div
+                        key={currentImage.imgSrc} // Key changes on image change, triggering re-render
+                        initial="hidden"
+                        animate="visible"
+                        variants={imageVariants}
+                        transition={{ duration: 1 }} // Smooth transition over 1 second
+
+
+                        className={`${styles.main_img_container}`}>
+
+                        <img src={currentImage.imgSrc} width={539} height={546.45} alt="Banner Image"
+                        />
+
+                        <div className={styles.birds}>
+                          <Image src={'/assets/bannerImgs/birds.svg'} width={128} height={82} />
+                        </div>
+
+
+
+                      </motion.div>
+
+
+                      <div className={styles.shape} style={{ background: currentImage.shapeColor }} />
+
+
+                    </div>
+
+                  }
+
+                </div>
+
+              </div>
+
+
+              <motion.div
+                key={currentImage.imgSrc} // Key changes on image change, triggering re-render
+                initial="hidden"
+                animate="visible"
+                variants={imageVariants}
+                transition={{ duration: 1 }} // Smooth transition over 1 second
+
+                className={`${styles.blur_img}`}
+
+              >
+                <Image src={currentImage.imgSrc} width={1440} height={413} />
+              </motion.div>
+
+
+              < div className={styles.lines}>
+                <Image src={'/assets/bannerImgs/Lines.svg'} width={8169.95} height={2105.82} />
+
+              </div>
+
+              <div className={styles.cloud}>
+                <Image src={'/assets/bannerImgs/cloud2.png'} width={1440} height={413} />
+              </div>
+
+            </header >
+          </>
+
 
       }
 
@@ -254,6 +255,7 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
       }
 
     </>
+
   )
 }
 

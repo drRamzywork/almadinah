@@ -11,9 +11,9 @@ nav#navbar {
   //   rgba(56, 122, 138, 0.3) 0%,
   //   rgba(211, 193, 189, 0) 129.34%
   // );
-
   padding-bottom: 8px !important;
-
+  border: unset !important;
+  z-index: 10000000;
   @media screen and (max-width: 992px) {
     padding-right: 0 !important;
     padding-left: 0 !important;
@@ -174,7 +174,12 @@ nav#navbar {
         align-items: center;
         text-decoration: none;
         margin-bottom: 8px;
-        background-color: rgba(255, 255, 255, 0.1);
+        background: linear-gradient(
+          to top,
+          rgb(56, 122, 138) 0%,
+          rgba(255, 255, 255, 0) 111%
+        );
+
         p {
           font-family: var(--IBMP-font);
           font-size: 18px;
@@ -217,6 +222,15 @@ nav#navbar {
 .hidden {
   transform: translateY(-100%);
   transition: transform 0.3s ease-in-out;
+
+  .lang_container {
+    .nav_menu_container {
+      display: none;
+      .link {
+        display: none;
+      }
+    }
+  }
 }
 
 #navbar {

@@ -10,8 +10,6 @@ import { setCookie, } from 'nookies'
 
 const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic, dir, setIsOpen, isOpen }) => {
   const router = useRouter();
-
-
   const [lastScrollY, setLastScrollY] = useState(0);
   const [hidden, setHidden] = useState(false);
 
@@ -91,17 +89,21 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic,
   const contentID = dataDrobTopic?.find(topic => topic.contentIdFK === Number(router.query.id));
   const contentID2 = dataMainTopic?.find(topic => topic.contentIdFK === Number(router.query.id));
 
+
+
+
   return (
-    <nav className={`navbar fixed-top ${cName} ${hidden ? styles.hidden : ''}`} id={styles.navbar} dir={dir}>
-      <div className='container '>
+    <nav className={`navbar fixed-top ${cName} ${!router.pathname.includes('subdetails') && hidden ? styles.hidden : ''
+      }`} id={styles.navbar} dir={dir}>
+      <div className='container'>
 
         <Link href={'/'} className={`${styles.navbar_logo} navbar-brand`}>
           <Image className={styles.logo} src={'/assets/images/Logo_white.png'} width={118.64} height={56} />
         </Link>
 
-        {router.pathname.includes('/topic-details') || router.pathname.includes('/subdetails') ?
+        {router.pathname.includes('/topic-details') || router.pathname.includes('subdetails') ?
           <>
-            <Link href={`${contentID !== undefined ? `/topic/${contentID?.parentId}` : `/topic/${contentID2?.parentId}`}`} className={styles.main_title}>
+            <Link href={`${contentID !== undefined ? `/topic/${contentID?.parentId}` : `/topic/${contentID2?.parentId}`} `} className={styles.main_title}>
               <h1>{contentID?.parentName} {parentName}</h1>
             </Link>
 
@@ -153,7 +155,7 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic,
                       return (
                         <a
                           href={buildLocaleSwitchUrl(language.shortCut)}
-                          key={language.id} className={`${styles.link}`} onClick={() => handleClick(language)}>
+                          key={language.id} className={`${styles.link} `} onClick={() => handleClick(language)}>
 
 
                           <p >
@@ -164,7 +166,7 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic,
                             {language.image && (
                               <Image
                                 src={language.image}
-                                alt={`Flag of ${language.name}`}
+                                alt={`Flag of ${language.name} `}
                                 width={20.7}
                                 height={12.88}
                               />
@@ -179,7 +181,6 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic,
 
             </div>
           </>
-
         }
       </div >
 

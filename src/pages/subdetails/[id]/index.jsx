@@ -24,7 +24,7 @@ const Subdetails = (
       </Head>
 
       <Navbar cName={'absolute_nav'} dataDrobTopic={dataDrobTopic} parentName={dataMainTopic[0]?.parentName} dataMainTopic={dataMainTopic} />
-      <Header dir={dir} dataContentDetails={dataContentDetails} dataStaticWords={dataStaticWords} dataContentDetailsGuide={dataContentDetailsGuide} />
+      <Header parentID={dataMainTopic.length > 0 ? dataMainTopic[0].parentId : dataContentDetails.mainTopicId} dir={dir} dataContentDetails={dataContentDetails} dataStaticWords={dataStaticWords} dataContentDetailsGuide={dataContentDetailsGuide} />
 
     </>
   )

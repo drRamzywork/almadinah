@@ -8,14 +8,13 @@ import { motion } from 'framer-motion';
 import { Mousewheel, Pagination, Navigation } from 'swiper/modules';
 import Link from 'next/link';
 import { IoIosArrowBack } from 'react-icons/io';
-import { useRouter } from 'next/router';
 import Microphone from '@/svgs/Microphone';
 import Gallery from '@/svgs/Gallery';
 import Threehundred from '@/svgs/Threehundred';
 import { IoIosClose } from 'react-icons/io';
 import Marquee from 'react-fast-marquee';
 
-const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
+const Header = ({ dataContentDetails, dataStaticWords, dir, parentID }) => {
   const fullscreenSwiperRef = useRef(null);
   const currentContent = dataContentDetails.currentContent;
   const wheelREf = useRef(null);
@@ -47,28 +46,6 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
   };
 
 
-  const handleClickOutside = (event) => {
-    if (fullscreenSwiperRef.current && !fullscreenSwiperRef.current.contains(event.target)) {
-      setIsFullscreenSwiperOpen(false);
-    }
-  };
-
-  // useEffect(() => {
-  //   // Only add the listener if the fullscreen Swiper is open
-  //   if (isFullscreenSwiperOpen) {
-  //     document.addEventListener('mousedown', handleClickOutside);
-  //   }
-
-  //   // Cleanup the event listener
-  //   return () => {
-  //     document.removeEventListener('mousedown', handleClickOutside);
-  //   };
-  // }, [isFullscreenSwiperOpen]);
-
-
-
-
-
   useEffect(() => {
     function handleClickOutsideBoxes(event) {
       if (audioRef.current && !audioRef.current.contains(event.target)) {
@@ -89,18 +66,17 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
   }, []);
 
 
+  const textLayerColor = parentID === 20 && "linear-gradient(180deg,rgb(55, 122, 138,0),rgb(55, 122, 138,.94) 81.5%, #377A8A)"
+    || parentID === 1 && "linear-gradient(180deg,rgb(56, 57, 105,0),rgb(56, 57, 105,.94) 81.5%,#383969)"
+    || parentID === 13 && "linear-gradient(180deg,rgb(211, 193, 189,0),rgb(211, 193, 189,.94) 81.5%, #D3C1BD)"
+    || parentID === 6 | 7 && 'linear-gradient(180deg,rgb(80, 81, 127,0),rgb(80, 81, 127,.94) 81.5%, #50517F)'
 
 
-
-
-
+  console.log(textLayerColor, "parentID")
   return (
     <header dir={dir} className={`${styles.topic_details_header} ${styles.topic_details_header2}`} id='topic_details_header'>
 
-      <div
-        className={styles.swiper_container}
-      >
-
+      <div className={styles.swiper_container}>
         {details.icon !== null &&
           <motion.div
             className={styles.main_image_slider}>
@@ -108,9 +84,9 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
               animate={{ opacity: 1, }}
               transition={{ duration: 1 }}
               src={details?.icon?.includes(',') ? details?.icon?.split(',')[0] : details?.icon} alt=""
-
-
             />
+
+            <div className={styles.layer} style={{ background: textLayerColor }} />
           </motion.div>
         }
 
@@ -123,7 +99,7 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
                 <div className={styles.features_container}>
 
                   {details.tourGuide !== null &&
-                    <div className={styles.guide_video}>
+                    <div className={`${styles.guide_video} ${showGuide ? styles.active : ''}`} >
                       <div className={styles.icon} onClick={() => setShowGuide(prev => !prev)}>
                         <img src="/assets/images/guide.png" alt="" />
                         <p className={styles.guide} >
@@ -132,9 +108,8 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
                       </div>
                     </div>
                   }
-
                   {details?.sound !== null &&
-                    <div className={styles.audio_container} >
+                    <div className={`${styles.audio_container} ${showAudio ? styles.active : ''}`} >
                       <div className={styles.icon} onClick={() => setShowAudio(prev => !prev)}>
                         <Microphone />
                         <p className={styles.guide}>
@@ -337,8 +312,6 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
         </motion.div>
       )}
 
-
-
       {show360 &&
         <motion.div
           initial={{ opacity: 0 }}
@@ -356,7 +329,6 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, }) => {
           </div>
         </motion.div>
       }
-
 
     </header >
   )

@@ -86,7 +86,6 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir, isOpen, 
 
 
   // fullscreen image gallery Swiper control
-
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isFullscreenSwiperOpen, setIsFullscreenSwiperOpen] = useState(false);
 
@@ -98,6 +97,9 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir, isOpen, 
     setIsOpen(true)
 
   };
+
+
+
 
   return (
     <header dir={dir} className={styles.topic_details_header} id='topic_details_header'>
@@ -304,6 +306,7 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir, isOpen, 
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 1 }}
                       src={step?.image?.includes(',') ? step?.image?.split(',')[0] : step?.image} alt="" />
+
                   </motion.div>
                 }
 
