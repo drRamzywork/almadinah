@@ -138,10 +138,13 @@ header#inner_header {
       position: relative;
       z-index: 2;
 
+      @media screen and (max-width: 992px) {
+        height: 100%;
+      }
+
       @media screen and (min-width: 992px) {
         // margin-top: 0!important;
         // margin-bottom: calc(100px - -247px) !important;
-
         .right_side2 {
           margin-top: auto;
           transform: none;
@@ -182,12 +185,14 @@ header#inner_header {
         p {
           @media screen and (max-width: 992px) {
             font-size: 22px !important;
-            color: #d3c1bd !important;
+            // color: #d3c1bd !important;
           }
         }
 
         @media screen and (max-width: 992px) {
-          margin-top: 282px !important;
+          // margin-top: 254px !important;
+          margin-top: auto !important;
+          margin-bottom: auto;
         }
 
         h2 {
