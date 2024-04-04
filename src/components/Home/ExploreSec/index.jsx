@@ -64,7 +64,7 @@ const ExploreSec = ({ topics,
 
 
         break;
-      case 13: // Assuming ID 13 corresponds to Facilities Topic
+      case 13:
         subTopics = filteredFacilitiesTopic;
         imagePath = '/assets/images/Bage_middle.png';
         iconSlide = '/assets/svgs/Vector_icon.svg';

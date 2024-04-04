@@ -48,11 +48,6 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir, isOpen, 
     }
   }
 
-
-
-
-
-
   // Steps control
   const firstStep = stepsData !== null ? stepsData[0] : dataContentDetails.currentContent;
   const lastStep = stepsData !== null ? stepsData[stepsData.length - 1] : [];
@@ -283,13 +278,9 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir, isOpen, 
                   ))}
                 </Swiper>
               </motion.div>
-
             }
-
-
           </motion.div>
         </SwiperSlide>
-
 
         {stepsDataFiltred.map((step, index) => {
           return (
@@ -307,6 +298,7 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir, isOpen, 
                       transition={{ duration: 1 }}
                       src={step?.image?.includes(',') ? step?.image?.split(',')[0] : step?.image} alt="" />
 
+                    <div className={styles.layer} />
                   </motion.div>
                 }
 
@@ -351,23 +343,22 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir, isOpen, 
                   <div className="container d-flex h-100">
                     <div className={styles.slideContent}>
                       <div className={styles.text_container}>
-                        <div className={styles.title}>
+
+                        <div className={`${styles.title} d-none d-md-block`}>
                           <h2>{step.placeName}</h2>
                         </div>
 
                         <div className={styles.middle_box2}>
-
-
                           <div className={styles.desc}>
-
-
                           </div>
 
 
 
                           <div className={styles.info_container}>
-
-                            <Link href={`/details/${step.linkContentId} `} className={styles.btn_container}>
+                            <div className={styles.title}>
+                              <h2>{step.placeName}</h2>
+                            </div>
+                            <Link href={`/subdetails/${step.linkContentId} `} className={styles.btn_container}>
                               <p>{dataStaticWords.more}</p>
 
                               <div className={styles.arrow_container}>
@@ -481,7 +472,6 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir, isOpen, 
             </SwiperSlide >
           )
         })}
-
       </Swiper >
 
     </header >

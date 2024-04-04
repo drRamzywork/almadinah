@@ -74,10 +74,10 @@ const Map = ({ dataContentDetails, dataMapData }) => {
           zoom={15}
           options={options}
         >
-          <h1></h1>
 
           {router.pathname === '/' ? <>
             {dataMapData.map((marker, index) => (
+
               <OverlayView
                 key={index}
                 position={{ lat: marker.lat, lng: marker.lng }}
@@ -88,7 +88,6 @@ const Map = ({ dataContentDetails, dataMapData }) => {
               </OverlayView>
             ))}
           </> : <>
-
 
             <OverlayView
               position={center}

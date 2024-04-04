@@ -72,31 +72,31 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
 
 
 
-  useEffect(() => {
-    const videoElement = document.querySelector('video');
+  // useEffect(() => {
+  //   const videoElement = document.querySelector('video');
 
 
-    const handleScroll = async () => {
-      if (document.pictureInPictureElement) {
+  //   const handleScroll = async () => {
+  //     if (document.pictureInPictureElement) {
 
-        return; // Do nothing if already in PiP mode
-      }
+  //       return; // Do nothing if already in PiP mode
+  //     }
 
-      try {
-        if (videoElement && !videoElement.paused && document.pictureInPictureEnabled && !document.pictureInPictureElement) {
-          await videoElement.requestPictureInPicture();
-        }
-      } catch (error) {
-        console.error('Error trying to toggle Picture-in-Picture mode:', error);
-      }
-    };
+  //     try {
+  //       if (videoElement && !videoElement.paused && document.pictureInPictureEnabled && !document.pictureInPictureElement) {
+  //         await videoElement.requestPictureInPicture();
+  //       }
+  //     } catch (error) {
+  //       console.error('Error trying to toggle Picture-in-Picture mode:', error);
+  //     }
+  //   };
 
-    window.addEventListener('scroll', handleScroll);
+  //   window.addEventListener('scroll', handleScroll);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [currentVideoSrc]);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, [currentVideoSrc]);
 
 
   const breakpoints = {

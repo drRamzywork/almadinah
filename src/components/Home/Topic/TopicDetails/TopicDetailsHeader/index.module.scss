@@ -55,10 +55,9 @@ header.topic_details_header {
       width: 100%;
       height: 100%;
       background: linear-gradient(
-        180deg,
-        rgba(211, 193, 189, 12.6) 0%,
-        rgba(211, 193, 189, -8.4) 49.5%,
-        rgba(255, 193, 189, 0.7) 100%
+        rgba(55, 122, 138, 0),
+        rgba(55, 122, 138, 0.94) 81.5%,
+        rgb(55, 122, 138)
       );
       z-index: 1;
     }
@@ -77,7 +76,7 @@ header.topic_details_header {
       display: flex;
       align-items: flex-start;
       // justify-content: flex-start;
-      padding-right: 172px;
+      // padding-right: 172px;
       height: 100%;
       width: 100%;
       margin-top: 172px;
@@ -124,8 +123,8 @@ header.topic_details_header {
           flex-direction: column;
           align-items: center;
           margin-bottom: 24px;
-          // gap: 24px;
           width: fit-content;
+
           @media screen and (min-width: 992px) {
             // overflow-x: scroll !important;
             position: relative;
@@ -323,7 +322,7 @@ header.topic_details_header {
           @media screen and (max-width: 992px) {
             right: unset;
             // left: -151px;
-            left: -26px;
+            left: -37px;
             width: 100%;
             top: 87px;
           }
@@ -503,6 +502,10 @@ header.topic_details_header {
           align-items: center;
           margin-top: 40px;
 
+          @media screen and (max-width: 992px) {
+            width: 100%;
+            margin-top: auto;
+          }
           .icon_container {
             width: 24px;
             height: 24px;
@@ -631,7 +634,7 @@ header.topic_details_header {
 
         .middle_box {
           @media screen and (max-width: 992px) {
-            margin-top: auto;
+            margin-top: 0;
             margin-right: 0 !important;
             margin-left: 0 !important;
           }
@@ -640,7 +643,6 @@ header.topic_details_header {
         .middle_box2 {
           width: 100%;
           margin: 0 !important;
-
           height: 100%;
 
           @media screen and (max-width: 992px) {
@@ -890,6 +892,67 @@ header.topic_details_header {
     }
   }
 
+  .sec_container {
+    .slideContent {
+      .text_container {
+        .middle_box {
+          @media screen and (max-width: 992px) {
+            // margin-top: 0 !important;
+          }
+        }
+        .title {
+          @media screen and (max-width: 992px) {
+            width: 100%;
+            margin-top: auto;
+            // display: none;
+
+            h2 {
+              text-align: center !important;
+            }
+          }
+        }
+        .middle_box2 {
+          @media screen and (max-width: 999px) {
+            align-items: center;
+            justify-content: center;
+          }
+          .text_container {
+            .title {
+              display: block;
+              @media screen and (max-width: 999px) {
+                // display: none;
+              }
+            }
+          }
+
+          .info_container {
+            @media screen and (max-width: 992px) {
+              margin-top: 0 !important;
+              margin-bottom: 0 !important;
+              height: 100%;
+              justify-content: center;
+            }
+            .title {
+              display: none;
+              margin-top: 0;
+
+              @media screen and (max-width: 999px) {
+                display: block;
+                margin-top: 0 !important;
+              }
+            }
+          }
+        }
+
+        .boxes_container {
+          @media screen and (max-width: 992px) {
+            margin-bottom: 24px;
+          }
+        }
+      }
+    }
+  }
+
   .sec_container2 {
     // height: auto;
   }
@@ -939,6 +1002,7 @@ header.topic_details_header {
     }
   }
 }
+
 .topic_details_header {
   .fullScreenImage {
     top: 0 !important;
@@ -957,8 +1021,8 @@ header.topic_details_header[dir="ltr"] {
     .slideContent,
     .slideContent2 {
       // justify-content: flex-start;
-      padding-right: 0px;
-      padding-left: 172px;
+      // padding-right: 0px;
+      // padding-left: 172px;
 
       @media screen and (max-width: 992px) {
         margin-top: 80px;
@@ -1268,8 +1332,6 @@ header.topic_details_header[dir="ltr"] {
 
         .middle_box2,
         .middle_box {
-          width: 365px;
-          margin: auto;
           display: flex;
           flex-direction: column;
           align-items: center;

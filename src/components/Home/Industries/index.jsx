@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { IoIosArrowBack } from 'react-icons/io';
 
@@ -15,7 +14,6 @@ const Industries = ({
   dir
 
 }) => {
-  const router = useRouter()
   const breakpoints = {
     300: {
       slidesPerView: 1.8,
@@ -51,7 +49,7 @@ const Industries = ({
 
           <div className="container">
 
-            <div className={styles.sec_header}>
+            <Link href={`/topic/${foods.id}`} className={styles.sec_header}>
 
 
               <div className={styles.title}>
@@ -62,15 +60,15 @@ const Industries = ({
                 <h3 style={{ color: foods.titlesColor }}>{foods.name}</h3>
               </div>
 
-              <Link href={`/topic/${foods.id}`} className={styles.see_all}>
+              <div className={styles.see_all}>
                 {/* <p style={{ color: foods.titlesColor }}>{dataStaticWords.displayAll}</p> */}
 
                 <div className={styles.arrow_container}>
                   <IoIosArrowBack style={{ color: foods.titlesColor }} />
                 </div>
-              </Link>
+              </div>
 
-            </div>
+            </Link>
 
           </div >
 
@@ -126,7 +124,7 @@ const Industries = ({
         <div className={styles.swiper_container}>
           <div className="container">
 
-            <div className={styles.sec_header}>
+            <Link href={`/topic/${industries.id}`} className={styles.sec_header}>
 
 
               <div className={styles.title}>
@@ -137,15 +135,15 @@ const Industries = ({
                 <h3 style={{ color: industries.titlesColor }}>{industries.name}</h3>
               </div>
 
-              <Link href={`/topic/${industries.id}`} className={styles.see_all}>
+              <div className={styles.see_all}>
                 {/* <p style={{ color: industries.titlesColor }}>{dataStaticWords.displayAll}</p> */}
 
                 <div className={styles.arrow_container}>
                   <IoIosArrowBack style={{ color: industries.titlesColor }} />
                 </div>
-              </Link>
+              </div>
 
-            </div>
+            </Link>
 
           </div >
 
