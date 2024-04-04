@@ -57,14 +57,14 @@ const Industries = ({
                   <Image src={foods.icon} width={150} height={150} alt={foods.name} />
                 </div>
 
-                <h3 style={{ color: foods.titlesColor }}>{foods.name}</h3>
+                <h3 >{foods.name}</h3>
               </div>
 
               <div className={styles.see_all}>
                 {/* <p style={{ color: foods.titlesColor }}>{dataStaticWords.displayAll}</p> */}
 
                 <div className={styles.arrow_container}>
-                  <IoIosArrowBack style={{ color: foods.titlesColor }} />
+                  <IoIosArrowBack />
                 </div>
               </div>
 
@@ -132,14 +132,14 @@ const Industries = ({
                   <Image src={industries.icon} width={150} height={150} alt={industries.name} />
 
                 </div>
-                <h3 style={{ color: industries.titlesColor }}>{industries.name}</h3>
+                <h3 >{industries.name}</h3>
               </div>
 
               <div className={styles.see_all}>
-                {/* <p style={{ color: industries.titlesColor }}>{dataStaticWords.displayAll}</p> */}
+                {/* <p >{dataStaticWords.displayAll}</p> */}
 
                 <div className={styles.arrow_container}>
-                  <IoIosArrowBack style={{ color: industries.titlesColor }} />
+                  <IoIosArrowBack />
                 </div>
               </div>
 

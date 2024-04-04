@@ -3,6 +3,7 @@ section.industries {
   margin-top: 64px;
   @media screen and (max-width: 992px) {
     margin-top: 100px;
+    margin-bottom: 25px;
   }
 
   .swiper_container {
@@ -11,7 +12,7 @@ section.industries {
     &::after {
       content: "";
       position: absolute;
-      right: -80px;
+      right: -83px;
       top: 60.5px;
       width: 282px;
       height: 96px;
@@ -21,7 +22,7 @@ section.industries {
 
       border-radius: 0px 189.55px 189.55px 120px;
       opacity: 0.1;
-      background: #f59836;
+      background: #50517f;
 
       @media screen and (max-width: 992px) {
         top: 65px;
@@ -46,8 +47,11 @@ section.industries {
         h3 {
           font-size: 68px;
           font-weight: 800;
+          color: #50517f;
+
           @media screen and (max-width: 992px) {
             font-size: 32px;
+            margin-right: 14px;
           }
         }
         .img_container {
@@ -77,10 +81,15 @@ section.industries {
           font-size: 20px;
           font-style: normal;
           font-weight: 600;
-          line-height: 120%; /* 24px */
+          line-height: 120%;
+          color: #50517f;
         }
         .arrow_container {
-          background-color: rgb(156 26 45 / 6%);
+          background: linear-gradient(
+            rgba(56, 122, 138, 0.3) 0%,
+            rgba(211, 193, 189, 0) 129.34%
+          );
+
           width: 28px;
           height: 28px;
           display: flex;
@@ -90,6 +99,7 @@ section.industries {
             margin: auto;
             width: 24px;
             height: 24px;
+            color: #50517f;
           }
         }
       }
