@@ -277,6 +277,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
                   muted
                   autoPlay={autoPlay}
                   controls
+
                 >
                   <source src={currentVideoSrc} type="video/mp4" />
                   Your browser does not support the video tag.
