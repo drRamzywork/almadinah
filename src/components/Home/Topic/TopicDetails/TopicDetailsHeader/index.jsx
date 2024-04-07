@@ -5,7 +5,7 @@ import 'swiper/css/scrollbar';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './index.module.scss';
 import { motion } from 'framer-motion';
-import { Mousewheel, Pagination, Navigation, FreeMode } from 'swiper/modules';
+import { Mousewheel, Pagination, Navigation, FreeMode, EffectCoverflow } from 'swiper/modules';
 import { FaLocationDot } from "react-icons/fa6";
 import ArrowDown from '@/svgs/ArrowDown';
 import { Alarm } from '@/svgs/Alarm';
@@ -102,7 +102,14 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir, isOpen, 
         spaceBetween={0}
         mousewheel={true}
         pagination={pagination}
-        modules={[Mousewheel, Pagination]}
+        modules={[Mousewheel, Pagination, EffectCoverflow]}
+        coverflowEffect={{
+          rotate: 0,
+          stretch: 0,
+          depth: 100,
+          modifier: 2,
+          slideShadows: false,
+        }}
         className="mySwiper"
         onSlideChange={(swiper) => handleSlideChange(swiper)}
         ref={swiperRef}
@@ -380,9 +387,13 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir, isOpen, 
                               </div>
                             </Link>
 
-                            <div className={styles.mouse_container}>
-                              <Mouse />
-                            </div>
+                            {index !== stepsDataFiltred.length - 1 && (
+                              <div className={styles.mouse_container}>
+                                <Mouse />
+                              </div>
+
+                            )}
+
                             {index !== stepsDataFiltred.length - 1 && (
                               <button className={styles.btn_container}>
                                 <p>{dataStaticWords.pull}</p>
