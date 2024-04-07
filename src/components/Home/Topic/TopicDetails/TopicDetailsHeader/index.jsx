@@ -58,9 +58,7 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir, isOpen, 
   // images control
   const [activeImage, setActiveImage] = useState(null);
 
-  const toggleActive = (imageUrl) => {
-    setActiveImage(activeImage === imageUrl ? null : imageUrl);
-  };
+
 
 
 
@@ -120,6 +118,7 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir, isOpen, 
             {firstStep.image !== null &&
               <div className={styles.main_image_slider}>
                 <img src={currentContent.icon.includes(',') ? currentContent.icon.split(',')[0] : currentContent.icon} alt="" />
+                <div className={styles.layer} />
               </div>
             }
 
@@ -131,29 +130,9 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir, isOpen, 
                       <h2>{currentContent.name}</h2>
                     </div>
 
-                    <div className={styles.boxes_container}>
-                      {features &&
-                        features.map((f, idx) =>
-                          <div className={styles.box} key={idx}>
-                            <div className={styles.icon_container}>
-                              <img src={f.icon} alt={f.name} />
-                            </div>
 
-                            <p style={{ overflow: 'hidden' }}>
-                              {
-                                f.name.split(' ').length > 3 ? (
-                                  <Marquee pauseOnHover={false} speed={16}>
-                                    {f.name}
-                                  </Marquee>
-                                ) : (
-                                  <span>{f.name}</span>
-                                )
-                              }
-                            </p>
-                          </div>
-                        )
-                      }
-                    </div>
+
+
                     <div className={styles.middle_box}>
                       <div className={styles.icon_container} >
                         <FaLocationDot />
@@ -166,6 +145,30 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir, isOpen, 
 
                       <div className={styles.box_desc}>
                         <p> {firstStep.name}</p>
+                      </div>
+
+                      <div className={styles.boxes_container}>
+                        {features &&
+                          features.map((f, idx) =>
+                            <div className={styles.box} key={idx}>
+                              <div className={styles.icon_container}>
+                                <img src={f.icon} alt={f.name} />
+                              </div>
+
+                              <p style={{ overflow: 'hidden' }}>
+                                {
+                                  f.name.split(' ').length > 3 ? (
+                                    <Marquee pauseOnHover={false} speed={16}>
+                                      {f.name}
+                                    </Marquee>
+                                  ) : (
+                                    <span>{f.name}</span>
+                                  )
+                                }
+                              </p>
+                            </div>
+                          )
+                        }
                       </div>
 
 
@@ -358,13 +361,7 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir, isOpen, 
                             <div className={styles.title}>
                               <h2>{step.placeName}</h2>
                             </div>
-                            <Link href={`/subdetails/${step.linkContentId} `} className={styles.btn_container}>
-                              <p>{dataStaticWords.more}</p>
 
-                              <div className={styles.arrow_container}>
-                                <IoIosArrowBack />
-                              </div>
-                            </Link>
 
 
                             <div className={styles.desc2}>
@@ -375,18 +372,28 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir, isOpen, 
 
                             </div>
 
+                            <Link href={`/subdetails/${step.linkContentId} `} className={styles.btn_container}>
+                              <p>{dataStaticWords.more}</p>
+
+                              <div className={styles.arrow_container}>
+                                <IoIosArrowBack />
+                              </div>
+                            </Link>
+
                             <div className={styles.mouse_container}>
                               <Mouse />
                             </div>
+                            {index !== stepsDataFiltred.length - 1 && (
+                              <button className={styles.btn_container}>
+                                <p>{dataStaticWords.pull}</p>
+                              </button>
+                            )}
+                            {index !== stepsDataFiltred.length - 1 && (
+                              <span className={styles.arrow_container}>
+                                <ArrowDown />
+                              </span>
+                            )}
 
-                            <button className={styles.btn_container}>
-                              <p>{dataStaticWords.pull}</p>
-                            </button>
-
-
-                            <span className={styles.arrow_container}>
-                              <ArrowDown />
-                            </span>
                           </div>
 
                         </div>
@@ -472,6 +479,7 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir, isOpen, 
             </SwiperSlide >
           )
         })}
+
       </Swiper >
 
     </header >
