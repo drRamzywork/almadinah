@@ -72,7 +72,7 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, parentID }) => {
     || parentID === 6 | 7 && 'linear-gradient(180deg,rgb(80, 81, 127,0),rgb(80, 81, 127,.94) 81.5%, #50517F)'
 
 
-  console.log(textLayerColor, "parentID")
+  console.log(dir, "dirssss")
   return (
     <header dir={dir} className={`${styles.topic_details_header} ${styles.topic_details_header2}`} id='topic_details_header'>
 
@@ -194,7 +194,7 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, parentID }) => {
                   <Link href={`/details/${details.id}`} className={styles.btn_container}>
                     <p>{dataStaticWords.more}</p>
 
-                    <div className={styles.arrow_container}>
+                    <div className={styles.arrow_container} style={{ transform: dir === "ltr" && "rotate(180deg)" }}>
                       <IoIosArrowBack />
                     </div>
                   </Link>

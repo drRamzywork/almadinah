@@ -48,6 +48,7 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir, isOpen, 
     }
   }
 
+
   // Steps control
   const firstStep = stepsData !== null ? stepsData[0] : dataContentDetails.currentContent;
   const lastStep = stepsData !== null ? stepsData[stepsData.length - 1] : [];
@@ -281,7 +282,7 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir, isOpen, 
                   {firstStep?.image?.split(',').map((url, index) => (
                     <SwiperSlide key={index}>
                       <img src={url} alt='' />
-                      <div className={styles.close_icon} >
+                      <div className={styles.close_icon} onClick={() => setIsOpen(false)} >
                         <IoIosClose />
                       </div>
                     </SwiperSlide>
@@ -339,9 +340,9 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir, isOpen, 
                       {step?.image?.split(',').map((url, index) => (
                         <SwiperSlide key={index}>
                           <img src={url} alt='' />
-                          <div className={styles.close_icon} >
-                            <IoIosClose />
-                          </div>
+                          {/* <div className={styles.close_icon} > */}
+                          {/* <IoIosClose /> */}
+                          {/* </div> */}
                         </SwiperSlide>
                       ))}
                     </Swiper>
@@ -382,7 +383,7 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir, isOpen, 
                             <Link href={`/subdetails/${step.linkContentId} `} className={styles.btn_container}>
                               <p>{dataStaticWords.more}</p>
 
-                              <div className={styles.arrow_container}>
+                              <div className={styles.arrow_container} style={{ transform: dir === "ltr" && "rotate(180deg)" }}>
                                 <IoIosArrowBack />
                               </div>
                             </Link>

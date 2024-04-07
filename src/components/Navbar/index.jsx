@@ -108,9 +108,9 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic,
             </Link>
 
             <div className={styles.close_icon} >
-              {isOpen &&
+              {/* {isOpen &&
                 <IoIosClose onClick={() => setIsOpen(false)} />
-              }
+              } */}
             </div>
           </>
           :
