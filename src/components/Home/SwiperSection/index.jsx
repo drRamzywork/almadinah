@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './index.module.scss';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -29,17 +29,34 @@ const SwiperSection = ({ topics, dir, dataStaticWords }) => {
       spaceBetween: 24,
     },
     1200: {
-      slidesPerView: 3.5,
+      slidesPerView: 4.4,
       spaceBetween: 24,
     },
     1300: {
-      slidesPerView: 4.5,
+      slidesPerView: 4.4,
       spaceBetween: 24,
     },
 
   }
 
   const masjedData = topics?.filter((topic) => topic.id === 20)[0];
+
+
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile(); // Check on mount if it's mobile
+    window.addEventListener('resize', checkMobile); // Add resize listener
+
+    return () => {
+      window.removeEventListener('resize', checkMobile); // Cleanup listener
+    };
+  }, []);
+
+  console.log(isMobile, "isMobile")
 
   return (
     <>
@@ -56,7 +73,8 @@ const SwiperSection = ({ topics, dir, dataStaticWords }) => {
             </div>
           </div>
           <div className={styles.swiper_section}>
-            <Swiper
+
+            {isMobile ? <Swiper
               modules={[Navigation, EffectCoverflow]}
               breakpoints={breakpoints}
               dir={dir}
@@ -92,7 +110,46 @@ const SwiperSection = ({ topics, dir, dataStaticWords }) => {
 
                 </SwiperSlide>
               ))}
-            </Swiper>
+            </Swiper> : <Swiper
+              modules={[Navigation, EffectCoverflow]}
+              breakpoints={breakpoints}
+              dir={dir}
+              // centeredSlides={true}
+              // initialSlide={1}
+              // // effect="coverflow"
+              // coverflowEffect={{
+              //   rotate: 0,
+              //   stretch: 0,
+              //   depth: 100,
+              //   modifier: 2,
+              //   slideShadows: false,
+              // }}
+              pagination={{
+                clickable: true,
+              }}
+              className={styles.swiper}
+            >
+              {masjedData.contents?.map((image, index) => (
+                <SwiperSlide key={index}>
+                  <Link href={`/details/${image.id}`}>
+
+                    <div className={styles.img_container}>
+
+                      <img src={image.icon.split(',')[0]} alt={image.name} />
+                    </div>
+                    <div className={styles.title}>
+                      <p>{image.name}</p>
+
+
+                    </div>
+                  </Link>
+
+                </SwiperSlide>
+              ))}
+            </Swiper>}
+
+
+
           </div>
         </div>
       </section>

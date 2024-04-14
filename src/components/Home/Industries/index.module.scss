@@ -64,7 +64,7 @@ section.industries {
             right: 20px;
 
             @media screen and (max-width: 992px) {
-              top: -17px;
+              top: -7px;
               right: 35px;
               width: 48px;
               height: 48px;
@@ -133,6 +133,10 @@ section.industries {
             border-radius: 12px;
             width: 287.5px;
             height: 321px;
+
+            width: 315px;
+            height: 234px;
+
             border-radius: 24px;
             box-shadow: 0px 24px 64px 0px rgba(56, 57, 105, 0.05);
             filter: blur(0.5px);

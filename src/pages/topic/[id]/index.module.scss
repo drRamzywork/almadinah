@@ -4,6 +4,7 @@ section.city_facilities {
   z-index: 9999;
   @media screen and (max-width: 450px) {
     margin-top: 20px;
+    z-index: unset !important;
   }
   .filter_container {
     margin-bottom: 32px;

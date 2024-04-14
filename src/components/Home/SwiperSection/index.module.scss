@@ -1,5 +1,8 @@
 section.masjid_an_nabawy {
-  display: none;
+  // display: none;
+  @media screen and (min-width: 450px) {
+    margin-bottom: 50px;
+  }
   @media screen and (max-width: 450px) {
     display: block;
   }
@@ -43,6 +46,11 @@ section.masjid_an_nabawy {
             border-radius: 12px;
 
             object-fit: cover;
+
+            @media screen and (min-width: 992px) {
+              width: 315px;
+              height: 234px;
+            }
           }
         }
 

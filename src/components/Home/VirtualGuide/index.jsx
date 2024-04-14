@@ -135,7 +135,6 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
         </div>
 
         <div className={`container ${styles.container}`}>
-
           <div className={styles.sec_container}>
             <div className={styles.topics_container}>
               <div className={styles.shadow} />
@@ -274,8 +273,8 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
                 <img src="/assets/images/Background_hands_web.png" alt="" />
                 <video
                   key={currentVideoSrc}
-                  muted
-                  autoPlay={autoPlay}
+                  // muted
+                  autoPlay={false}
                   controls
 
                 >

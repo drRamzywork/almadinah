@@ -162,7 +162,8 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
 
       }
 
-      {
+
+      {/* {
         route.pathname === '/' &&
         <section id='hero' className={styles.hero} dir={dir} >
           <motion.div
@@ -252,7 +253,7 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
             </div>
           </motion.div>
         </section>
-      }
+      }  */}
 
     </>
 
