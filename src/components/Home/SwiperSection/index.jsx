@@ -33,7 +33,11 @@ const SwiperSection = ({ topics, dir, dataStaticWords }) => {
       spaceBetween: 24,
     },
     1300: {
-      slidesPerView: 4.4,
+      slidesPerView: 4.2,
+      spaceBetween: 24,
+    },
+    1500: {
+      slidesPerView: 5,
       spaceBetween: 24,
     },
 

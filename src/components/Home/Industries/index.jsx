@@ -36,7 +36,7 @@ const Industries = ({
       spaceBetween: 24,
     },
     1300: {
-      slidesPerView: 4.5,
+      slidesPerView: 4.2,
       spaceBetween: 24,
     },
 
