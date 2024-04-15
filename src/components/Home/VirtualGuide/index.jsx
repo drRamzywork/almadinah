@@ -36,6 +36,13 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
     setTopic(topicName);
   };
 
+  const handleSlideClickDeskTop = (videoUrl, videoId, topicName) => {
+    setActiveVideoId(videoId)
+    setCurrentVideoSrc(videoUrl);
+    setTopic(topicName);
+  };
+
+
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
       const [entry] = entries;
@@ -65,38 +72,13 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
     if (autoPlay) {
       video.play().catch(err => console.error("Error playing the video:", err));
     } else {
-      video.muted = true; // Optional: Mute when not in view or not autoplaying
+      video.muted = true;
     }
-  }, [autoPlay, currentVideoSrc]); // React to changes in autoplay state and source
+  }, [autoPlay, currentVideoSrc]);
 
 
 
 
-  // useEffect(() => {
-  //   const videoElement = document.querySelector('video');
-
-
-  //   const handleScroll = async () => {
-  //     if (document.pictureInPictureElement) {
-
-  //       return; // Do nothing if already in PiP mode
-  //     }
-
-  //     try {
-  //       if (videoElement && !videoElement.paused && document.pictureInPictureEnabled && !document.pictureInPictureElement) {
-  //         await videoElement.requestPictureInPicture();
-  //       }
-  //     } catch (error) {
-  //       console.error('Error trying to toggle Picture-in-Picture mode:', error);
-  //     }
-  //   };
-
-  //   window.addEventListener('scroll', handleScroll);
-
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, [currentVideoSrc]);
 
 
   const breakpoints = {
@@ -129,6 +111,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
 
   return (
     <>
+
       <section ref={sectionRef} id='virtual_guide' className={`${styles.virtual_guide} ${router.pathname.includes('/virtual-guide') ? styles.virtualPage : ''}`} dir={dir} >
         <div className={styles.shape}>
           <Image src='/assets/images/shape_BG.png' width={868} height={463} />
@@ -175,7 +158,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
                           <div className="d-flex ">
                             {pair.map((topic) => (
                               <div
-                                onClick={() => handleSlideClick(topic.tourGuide, topic.id, topic.name)}
+                                onClick={() => handleSlideClickDeskTop(topic.tourGuide, topic.id, topic.name)}
                                 className={`${styles.box} ${activeVideoId === topic.id ? styles.active : ''}`} key={topic.id}>
                                 <div className={styles.img_container}>
                                   <Image src={topic.icon.includes(',') ? topic.icon.split(',')[0] : topic.icon} width={233} height={166} />
@@ -237,6 +220,8 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
 
 
               </div>
+
+
               {router.pathname.includes('/virtual-guide') &&
                 <div className={styles.boxes_container_mobile}>
                   {
@@ -314,6 +299,7 @@ const VirtualGuide = ({ guidData, dataStaticWords, dir, defaultVideoSrc }) => {
           transition={{ duration: 0.5 }}
 
           className={styles.video_layer} dir={dir}>
+
           <div className="container">
             <div className={styles.title}>
               <p>{dataStaticWords.guideVirtual}</p>
