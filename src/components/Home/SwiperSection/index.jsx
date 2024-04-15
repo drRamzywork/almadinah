@@ -36,7 +36,6 @@ const SwiperSection = ({ topics, dir, dataStaticWords }) => {
       slidesPerView: 4.4,
       spaceBetween: 24,
     },
-
   }
 
   const masjedData = topics?.filter((topic) => topic.id === 20)[0];
