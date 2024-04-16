@@ -194,6 +194,11 @@ const ExploreSec = ({ topics,
 
                     <Swiper
                       slidesPerView={1.8}
+                      breakpoints={{
+                        1550: {
+                          slidesPerView: 2.8
+                        },
+                      }}
                       pagination={{
                         clickable: true,
                       }}

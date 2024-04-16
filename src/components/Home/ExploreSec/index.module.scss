@@ -195,6 +195,9 @@ section.explore {
 
             backdrop-filter: blur(3px);
             transform: rotate(180deg);
+            @media screen and (min-width: 1550px) {
+              display: none;
+            }
           }
 
           &:before {
@@ -247,6 +250,10 @@ section.explore {
         align-items: center;
         width: 50%;
         position: relative;
+
+        @media screen and (min-width: 1550px) {
+          width: 70%;
+        }
 
         .small_box {
           border-radius: 24px;
