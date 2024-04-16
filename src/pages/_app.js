@@ -6,6 +6,8 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { motion } from "framer-motion";
+
 function App({ Component, pageProps, dataStaticWords }) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -29,14 +31,21 @@ function App({ Component, pageProps, dataStaticWords }) {
     <>
       {isLoading && (
         <div className="loader">
-          <Image
-            className={"logo"}
-            src={"/assets/images/dark_logo.png"}
-            width={118.64}
-            height={56}
-            quality={75}
-            priority={false}
-          />
+          <motion.div
+            initial={{ opacity: 0, scale: 0, x: -100 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            exit={{ opacity: 0, scale: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Image
+              className={"logo"}
+              src={"/assets/images/dark_logo.png"}
+              width={118.64}
+              height={56}
+              quality={75}
+              priority={false}
+            />
+          </motion.div>
         </div>
       )}
 
