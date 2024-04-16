@@ -205,10 +205,15 @@ const ExploreSec = ({ topics,
 
 
                       {box?.subTopics?.map((subTopic, idx) =>
-                        <SwiperSlide>
+                        <SwiperSlide key={idx}>
 
 
-                          <Link key={idx} href={`${subTopic.parentId === 2 ? `/topic-details/${subTopic.id}` : `/subdetails/${subTopic.id}`}`} className={styles.small_box}>
+                          <Link href={
+                            subTopic.parentId === 2 ? `/topic-details/${subTopic.id}` :
+                              subTopic.parentId === 3 ? `/details/${subTopic.id}` :
+                                `/subdetails/${subTopic.id}`
+                          }
+                            className={styles.small_box}>
                             <div className={styles.img_container}>
                               <img src={subTopic.icon.includes(',') ? subTopic.icon.split(',')[0] : subTopic.icon} alt={subTopic.name} />
                             </div>
@@ -327,7 +332,12 @@ const ExploreSec = ({ topics,
                     <p>{box?.translatedDesc}</p>
                   </Link>
                   {box?.subTopics?.map((subTopic, idx) =>
-                    <Link href={`${subTopic.parentId === 2 ? `/topic-details/${subTopic.id}` : `/subdetails/${subTopic.id}`}`} key={idx} className={styles.small_box}>
+                    <Link href={
+                      subTopic.parentId === 2 ? `/topic-details/${subTopic.id}` :
+                        subTopic.parentId === 3 ? `/details/${subTopic.id}` :
+                          `/subdetails/${subTopic.id}`
+                    }
+                      key={idx} className={styles.small_box}>
                       <div className={styles.img_container}>
                         <img src={subTopic.icon.includes(',') ? subTopic.icon.split(',')[0] : subTopic.icon} alt={subTopic.name} />
 
