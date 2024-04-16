@@ -12,9 +12,11 @@ export default function Home({
   dataAllLangs,
   dir,
   dataMapData,
+  taqweemAlmadinah,
 }) {
   const foods = topics.filter((topic) => topic.id === 7)[0];
   const industries = topics.filter((topic) => topic.id === 6)[0];
+  console.log(topics, "topics");
 
   return (
     <>
@@ -57,6 +59,7 @@ export default function Home({
         industries={industries}
         dir={dir}
         dataMapData={dataMapData}
+        taqweemAlmadinah={taqweemAlmadinah}
       />
     </>
   );
@@ -81,6 +84,11 @@ export async function getServerSideProps({ locale }) {
     `https://api.visitmadinahsa.com/api/Contents/GetContents?topicId=${2}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`
   );
   const dataDrobTopic = await responseDrobTopic.json();
+
+  const responseTaqweemAlmadinah = await fetch(
+    `https://api.visitmadinahsa.com/api/Contents/GetContents?topicId=${23}&lang=${langId}&pagenum=1&pagesize=50&withLatLng=false`
+  );
+  const taqweemAlmadinah = await responseTaqweemAlmadinah.json();
 
   const responseMapData = await fetch(
     `https://api.visitmadinahsa.com/api/Contents/GetContents?lang=${langId}&pagenum=1&pagesize=50&withLatLng=true`
@@ -126,6 +134,7 @@ export async function getServerSideProps({ locale }) {
       dir,
       dataSubCategory,
       dataMapData,
+      taqweemAlmadinah,
     },
   };
 }

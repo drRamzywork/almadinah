@@ -106,11 +106,17 @@ section.explore {
         }
       }
 
-      &:last-child {
-        .title {
-          h5 {
-            color: #d3c1bd;
-          }
+      // &:last-child {
+      // .title {
+      //   h5 {
+      //     color: #d3c1bd;
+      //   }
+      // }
+      // }
+
+      .title {
+        h5 {
+          color: #d3c1bd;
         }
       }
 
@@ -166,6 +172,40 @@ section.explore {
         display: flex;
         align-items: center;
         justify-content: center;
+
+        .inner_boxes_container__swiper_container {
+          padding-top: 24px;
+          position: relative;
+          overflow: hidden; // Ensures the pseudo-elements don't extend outside the container
+
+          &:before {
+            content: "";
+            position: absolute;
+            top: 24px;
+            bottom: 0;
+            width: 24px;
+            z-index: 2;
+
+            // background: linear-gradient(
+            //   to left,
+            //   rgba(255, 255, 255, 0.472) 0%,
+            //   transparent 100%
+            // );
+            background: linear-gradient(to left, #e5e6ee 0%, transparent 100%);
+
+            backdrop-filter: blur(3px);
+            transform: rotate(180deg);
+          }
+
+          &:before {
+            left: -2px;
+          }
+
+          &:after {
+            right: 0;
+            background: linear-gradient(to left, #e5e6ee 0%, transparent 100%);
+          }
+        }
       }
 
       .text_container {
@@ -205,7 +245,7 @@ section.explore {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 100%;
+        width: 50%;
         position: relative;
 
         .small_box {
@@ -215,6 +255,7 @@ section.explore {
           overflow: hidden;
           position: relative;
           transition: all 0.3s ease-in-out;
+          display: block;
           &::after {
             content: "";
             position: absolute;
@@ -396,6 +437,16 @@ section.explore {
         .title {
           h5 {
             color: #9596cc !important;
+          }
+        }
+      }
+    }
+
+    &:nth-child(3) {
+      .swiper_slide_box {
+        .title {
+          h5 {
+            color: #d3c1bd !important;
           }
         }
       }
@@ -751,7 +802,8 @@ section.explore[dir="ltr"] {
       }
       .title {
         h5 {
-          text-align: left !important;
+          text-align: center !important;
+          font-size: 32px;
         }
       }
 
@@ -759,7 +811,7 @@ section.explore[dir="ltr"] {
         min-width: 300px;
 
         p {
-          font-size: 24px;
+          font-size: 20px;
           font-weight: 500;
           line-height: 34px;
           letter-spacing: 0em;
@@ -768,11 +820,28 @@ section.explore[dir="ltr"] {
         }
       }
 
+      .inner_boxes_container__swiper_container {
+        padding-top: 24px;
+        position: relative;
+        overflow: hidden; // Ensures the pseudo-elements don't extend outside the container
+
+        &:before {
+          background: linear-gradient(to left, #e5e6ee 0%, transparent 100%);
+
+          backdrop-filter: blur(3px);
+          transform: rotate(0deg);
+        }
+
+        &:before {
+          left: unset !important;
+          right: -2px;
+        }
+      }
+
       .inner_boxes_container {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 100%;
         position: relative;
 
         .small_box {
@@ -885,7 +954,7 @@ section.explore[dir="ltr"] {
               margin-bottom: 0;
               p {
                 color: var(--main-white-color);
-                font-size: 16px;
+                font-size: 12px;
                 font-weight: 800;
                 margin-bottom: 0;
               }
@@ -909,7 +978,8 @@ section.explore[dir="ltr"] {
         .btn_container {
           position: absolute;
           bottom: -80px;
-          left: 0;
+          left: unset;
+          right: 0;
           display: flex;
           align-items: center;
           justify-content: space-between;

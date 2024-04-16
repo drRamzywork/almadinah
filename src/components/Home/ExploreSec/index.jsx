@@ -18,7 +18,8 @@ const ExploreSec = ({ topics,
   dataLandmarksTopic,
   dataFacilitiesTopic,
   dataStaticWords,
-  dir
+  dir,
+  taqweemAlmadinah
 }) => {
   const [hoveredIndex, setHoveredIndex] = useState(-1);
 
@@ -36,19 +37,21 @@ const ExploreSec = ({ topics,
     },
   };
 
-  const desiredIds = [1, 13, 2];
+  const desiredIds = [1, 13, 2, 3];
   const filteredTopics = topics.filter(topic => desiredIds.includes(topic.id));
 
   const filteredDrobTopics = dataDrobTopic?.slice(0, 3);
+  const filteredtaqweemAlmadinah = taqweemAlmadinah?.slice(0, 3);
   const filteredLandmarksTopic = dataLandmarksTopic?.slice(0, 3);
   const filteredFacilitiesTopic = dataFacilitiesTopic.slice(0, 3);
+
 
   const combinedTopics = filteredTopics.map((mainTopic, index) => {
 
     let subTopics;
     let imagePath;
     let iconSlide;
-
+    console.log(mainTopic.id, "mainTopic.id")
     switch (mainTopic.id) {
       case 2: // Assuming ID 1 corresponds to Drob Topics
         subTopics = filteredDrobTopics;
@@ -64,18 +67,26 @@ const ExploreSec = ({ topics,
 
 
         break;
+
+
+
+
       case 13:
         subTopics = filteredFacilitiesTopic;
         imagePath = '/assets/images/Bage_middle.png';
         iconSlide = '/assets/svgs/Vector_icon.svg';
-
-
-
         break;
-      default:
-        subTopics = []; // Default to an empty array if no match is found
-    }
 
+      case 3:
+        subTopics = filteredtaqweemAlmadinah;
+        imagePath = '/assets/images/Bage_middle.png';
+        iconSlide = '/assets/svgs/Vector_icon.svg';
+        break;
+
+
+      default:
+        subTopics = [];
+    }
     return {
       ...mainTopic,
       subTopics,
@@ -84,7 +95,8 @@ const ExploreSec = ({ topics,
     };
   });
 
-  const order = [2, 1, 13];
+  const order = [2, 1, 13, 3];
+
 
   const orderedCombinedTopics = order.map(id => combinedTopics.find(topic => topic.id === id));
 
@@ -102,7 +114,7 @@ const ExploreSec = ({ topics,
           <h3>{dataStaticWords.discover} {dataStaticWords.siteName}</h3>
 
           <div className={styles.icon_container}>
-            <Image width={208.76} height={209.51} src='/assets/svgs/Safe_Icon.svg' />
+            <Image width={208.76} height={209.51} src='/assets/svgs/Safe_Icon.svg' alt='safe icon' />
           </div>
         </div>
       </motion.div>
@@ -125,7 +137,7 @@ const ExploreSec = ({ topics,
               variants={boxVariants}
             >
               <div className={styles.background_image}>
-                <img width={208.76} height={209.51} src={box?.imagePath} />
+                <img width={208.76} height={209.51} src={box?.imagePath} alt='icon' />
               </div>
 
               <motion.div
@@ -139,9 +151,6 @@ const ExploreSec = ({ topics,
                   animate={{ opacity: 1, }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.5 }}
-
-
-
                   width={208.76} height={209.51} src={box?.iconSlide} />
               </motion.div>
 
@@ -170,30 +179,49 @@ const ExploreSec = ({ topics,
                 ) :
                   ''
                 }
+
+
                 {hoveredIndex === index &&
+
+
                   <motion.div
                     initial={{ opacity: 0, x: -100 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5 }}
 
-                    className={`${styles.inner_boxes_container} d-flex`}>
+                    className={`${styles.inner_boxes_container}`}>
 
-                    {box?.subTopics?.map((subTopic, idx) =>
-                      <Link key={idx} href={`${subTopic.parentId === 2 ? `/topic-details/${subTopic.id}` : `/subdetails/${subTopic.id}`}`} className={styles.small_box}>
-                        <div className={styles.img_container}>
-                          <img src={subTopic.icon.includes(',') ? subTopic.icon.split(',')[0] : subTopic.icon} alt={subTopic.name} />
-                        </div>
+                    <Swiper
+                      slidesPerView={1.8}
+                      pagination={{
+                        clickable: true,
+                      }}
+                      className={styles.inner_boxes_container__swiper_container}
+                      centeredSlides={false}
+                      dir={dir}
+                    >
 
-                        <div className={styles.hours_container}>
-                          <p>
-                            {subTopic.tourHours <= 1 && (`${subTopic.tourHours} ${dataStaticWords.hour} `)}
-                            {subTopic.tourHours > 1 && (`${subTopic.tourHours} ${dataStaticWords.hours} `)}
-                            {subTopic.totalMinutes && (`${subTopic.totalMinutes} ${dataStaticWords.minute} `)}
-                          </p>
-                        </div>
 
-                        {/* <div className={styles.category_container}>
+
+                      {box?.subTopics?.map((subTopic, idx) =>
+                        <SwiperSlide>
+
+
+                          <Link key={idx} href={`${subTopic.parentId === 2 ? `/topic-details/${subTopic.id}` : `/subdetails/${subTopic.id}`}`} className={styles.small_box}>
+                            <div className={styles.img_container}>
+                              <img src={subTopic.icon.includes(',') ? subTopic.icon.split(',')[0] : subTopic.icon} alt={subTopic.name} />
+                            </div>
+
+                            <div className={styles.hours_container}>
+                              <p>
+                                {subTopic.tourHours <= 1 && (`${subTopic.tourHours} ${dataStaticWords.hour} `)}
+                                {subTopic.tourHours > 1 && (`${subTopic.tourHours} ${dataStaticWords.hours} `)}
+                                {subTopic.totalMinutes && (`${subTopic.totalMinutes} ${dataStaticWords.minute} `)}
+                              </p>
+                            </div>
+
+                            {/* <div className={styles.category_container}>
                           <div className={styles.category}>
                             <p>
                               12 ساعة
@@ -204,21 +232,27 @@ const ExploreSec = ({ topics,
                           </div>
                         </div> */}
 
-                        <div className={styles.card_bottom}>
-                          <div className={styles.title}>
-                            <p>
-                              {subTopic.name}
-                            </p>
+                            <div className={styles.card_bottom}>
+                              <div className={styles.title}>
+                                <p>
+                                  {subTopic.name}
+                                </p>
 
-                          </div>
+                              </div>
 
-                          <div className={styles.icon_container}>
-                            <FaArrowLeft />
-                          </div>
+                              <div className={styles.icon_container}>
+                                <FaArrowLeft />
+                              </div>
 
-                        </div>
-                      </Link>
-                    )}
+                            </div>
+                          </Link>
+                        </SwiperSlide>
+
+                      )}
+
+
+
+                    </Swiper >
 
                     <div className={styles.btn_container}>
                       <Link href={`/topic/${box.id}`}>
@@ -231,7 +265,10 @@ const ExploreSec = ({ topics,
                       </div>
                     </div>
 
-                  </motion.div>}
+                  </motion.div>
+
+
+                }
 
               </div >
             </motion.div >

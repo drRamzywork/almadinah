@@ -201,10 +201,6 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
 
       </div>
 
-      < div className={styles.lines}>
-        <Image src={'/assets/bannerImgs/Lines.svg'} width={8169.95} height={2105.82} />
-
-      </div>
 
       <div className={styles.cloud}>
         <Image src={'/assets/bannerImgs/cloud2.png'} width={1440} height={413} />

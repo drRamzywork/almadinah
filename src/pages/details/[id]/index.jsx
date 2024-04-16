@@ -56,41 +56,7 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
       <section dir={dir} id='details' className={styles.details}>
         <div className="container p-3">
           <div className={styles.sec_container}>
-            {/* <motion.div
-              initial={{ opacity: 0, y: -100 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1 }}
-              className={styles.desc_container}>
-              <p>
-                {dataContentDetails.currentContent.description}
-              </p>
-            </motion.div> */}
 
-            {/* <div className={styles.boxes_container}>
-              {features &&
-                features.map((f, idx) =>
-                  <div className={styles.box} key={idx}>
-                    <div className={styles.icon_container}>
-                      <img src={f.icon} alt={f.name} />
-                    </div>
-
-                    <p style={{ overflow: 'hidden' }}>
-                      {
-                        f.name.split(' ').length > 3 ? (
-                          <Marquee pauseOnHover={false} speed={16}>
-                            {f.name}
-                          </Marquee>
-                        ) : (
-                          <span>{f.name}</span>
-                        )
-                      }
-                    </p>
-                  </div>
-                )
-              }
-
-            </div> */}
 
             <div className={styles.text_container}>
 

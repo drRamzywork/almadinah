@@ -1,11 +1,11 @@
 section.city_facilities {
-  margin-top: -150px;
-  position: relative;
-  z-index: 9999;
+  // margin-top: -150px;
+  margin-top: 20px;
+
   @media screen and (max-width: 450px) {
-    margin-top: 20px;
     z-index: unset !important;
   }
+
   .filter_container {
     margin-bottom: 32px;
     display: flex;
@@ -35,15 +35,15 @@ section.city_facilities {
         align-items: center;
         justify-content: center;
 
+        padding: 5.36px 10.7px 5.36px 10px;
+        border: none;
         @media screen and (max-width: 992px) {
-          padding: 5.36px 10.7px 5.36px 10px;
           // width: 167px;
-          border: none;
           // border: 1px solid var(--main-white-color);
         }
 
+        background-color: transparent;
         @media screen and (min-width: 450px) {
-          background-color: transparent;
         }
         .title {
           p {
@@ -55,11 +55,10 @@ section.city_facilities {
             line-height: 24px;
             letter-spacing: 0em;
             text-align: right;
-            color: var(--main-white-color);
+            color: var(--main-purble-color);
 
             @media screen and (max-width: 992px) {
               font-size: 16.071px;
-              color: var(--main-purble-color);
             }
           }
         }

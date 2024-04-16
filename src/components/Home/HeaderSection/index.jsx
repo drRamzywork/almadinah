@@ -63,7 +63,7 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
 
               </div>
 
-              <div className="container">
+              <div className="container h-100">
 
                 <div className={styles.banner_container} >
 
@@ -147,10 +147,7 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
               </motion.div>
 
 
-              < div className={styles.lines}>
-                <Image src={'/assets/bannerImgs/Lines.svg'} width={8169.95} height={2105.82} />
 
-              </div>
 
               <div className={styles.cloud}>
                 <Image src={'/assets/bannerImgs/cloud2.png'} width={1440} height={413} />
@@ -163,97 +160,6 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
       }
 
 
-      {/* {
-        route.pathname === '/' &&
-        <section id='hero' className={styles.hero} dir={dir} >
-          <motion.div
-            initial={{ opacity: 0, y: -100 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
-            className="container">
-
-            <div className={styles.boxes_container}>
-              <Link href={`/topic/${masjedData.id}`} className={styles.box}>
-                <div className={styles.background_image}>
-                  <Image src={masjedData.imageForSecBackground} width={
-                    201} height={165} />
-                </div>
-
-
-                <div className={styles.text_container} >
-                  <p >{masjedData?.name}</p>
-                  <div className={styles.arrow_container}>
-                    <IoIosArrowBack />
-                  </div>
-                </div>
-              </Link>
-
-              <Link href={`/topic/${m3alemData.id}`} className={styles.box}>
-                <div className={styles.background_image}>
-                  <Image src={m3alemData.imageForSecBackground} width={
-                    201} height={165} />
-                </div>
-
-
-
-                <div className={styles.text_container}>
-                  <p>
-                    {m3alemData.name}
-                  </p>
-                  <div className={styles.arrow_container}>
-                    <IoIosArrowBack />
-                  </div>
-                </div>
-
-              </Link>
-            </div>
-
-            <div className={styles.boxes_container2}>
-
-
-              <Link href={'#virtual_guide'} className={styles.box}>
-                <div className={styles.background_image}>
-                  <Image src={'/assets/images/card_bg.png'} width={
-                    201} height={165} />
-                </div>
-
-                <div className={styles.text_container}>
-                  <p >{guidData.name}</p>
-                  <div className={styles.arrow_container}>
-                    <IoIosArrowBack />
-                  </div>
-                </div>
-
-                <div className={styles.image_container}>
-                  <Image width={124.45} height={178.6} src="/assets/images/Background_hands_mob.png" alt="" />
-
-                </div>
-              </Link>
-
-
-              <Link href={`/topic/${marafeqData.id}`} className={styles.box}>
-                <div className={styles.background_image}>
-                  <Image src={'/assets/images/tourist_attractions2.png'} width={
-                    201} height={165} />
-                </div>
-
-                <div className={styles.icon_container}>
-                  <Image src={'/assets/svgs/castle_icon.svg'} width={20} height={24} />
-                </div>
-
-
-                <div className={styles.text_container}>
-                  <p>{marafeqData.name}</p>
-
-                </div>
-
-              </Link>
-
-            </div>
-          </motion.div>
-        </section>
-      }  */}
 
     </>
 

@@ -25,11 +25,14 @@ const LandingPage = ({ topics,
   foods,
   industries,
   dir,
-  dataMapData
+  dataMapData,
+  taqweemAlmadinah
 }) => {
   const guidData = topics?.filter((topic) => topic.id === 4)[0]?.contents;
   const defaultVideoSrc = topics?.filter((topic) => topic.id === 4)[0]?.icon;
 
+
+  console.log(taqweemAlmadinah, "taqweemAlmadinah")
   return (
     <>
       <HeaderSection dir={dir} dataAllLangs={dataAllLangs} topics={topics} dataStaticWords={dataStaticWords} />
@@ -43,6 +46,7 @@ const LandingPage = ({ topics,
         dataLandmarksTopic={dataLandmarksTopic}
         dataFacilitiesTopic={dataFacilitiesTopic}
         dir={dir}
+        taqweemAlmadinah={taqweemAlmadinah}
       />
       {/* <MapWithNoSSR dataMapData={dataMapData} /> */}
 
