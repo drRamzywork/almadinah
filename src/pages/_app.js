@@ -29,11 +29,10 @@ function App({ Component, pageProps, dataStaticWords }) {
     <>
       {isLoading && (
         <div className="loader">
-          <Image
+          <img
             className={"logo"}
             src={"/assets/images/dark_logo.png"}
-            width={118.64}
-            height={56}
+            alt="almadinah"
           />
         </div>
       )}
