@@ -71,7 +71,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 // Static import for the loader image
-import loaderImage from "../public/assets/images/dark_logo.png";
+import loaderImage from "../../public/assets/images/dark_logo.png";
 
 function App({ Component, pageProps, dataStaticWords }) {
   const router = useRouter();
