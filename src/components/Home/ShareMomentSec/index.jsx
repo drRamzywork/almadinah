@@ -10,10 +10,7 @@ const ShareMomentSec = ({ dir, dataStaticWords }) => {
 
   return (
     <section id='Share_Moment_Sec' className={styles.Share_Moment_Sec} dir={dir} >
-      <div className={styles.nosie}>
-        <Image src={'/assets/svgs/Noise.svg'} width={1440} height={888} />
 
-      </div>
       <div className="container">
         <div className={styles.sec_container}>
 
