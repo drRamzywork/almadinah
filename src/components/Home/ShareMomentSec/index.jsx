@@ -15,9 +15,6 @@ const ShareMomentSec = ({ dir, dataStaticWords }) => {
         <div className={styles.sec_container}>
 
           <div className={styles.sec_title}>
-            {/* <div className={styles.star}>
-              <Image src={'/assets/svgs/Star.svg'} width={300} height={300} />
-            </div> */}
             <div className={styles.title}>
               <h3>{dataStaticWords.shareMomentTitle}</h3>
             </div>
@@ -27,7 +24,6 @@ const ShareMomentSec = ({ dir, dataStaticWords }) => {
 
             </div>
           </div>
-
 
           <div className={styles.boxes_container}>
 
@@ -43,6 +39,7 @@ const ShareMomentSec = ({ dir, dataStaticWords }) => {
                 <img src={'/assets/images/place.png'} alt="place" style={{ width: '100%', height: '100%' }} />
               </div>
             ))}
+
           </div>
 
 

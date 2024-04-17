@@ -72,10 +72,8 @@ const Header = ({ dataContentDetails, dataStaticWords, dir, parentID }) => {
     || parentID === 6 | 7 && 'linear-gradient(180deg,rgb(80, 81, 127,0),rgb(80, 81, 127,.94) 81.5%, #50517F)'
 
 
-  console.log(dir, "dirssss")
   return (
     <header dir={dir} className={`${styles.topic_details_header} ${styles.topic_details_header2}`} id='topic_details_header'>
-
       <div className={styles.swiper_container}>
         {details.icon !== null &&
           <motion.div
