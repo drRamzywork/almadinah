@@ -63,6 +63,21 @@ const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords, dir, dataAll
 
   }
 
+  function stripHtml(html) {
+    html = html.replace(/<[^>]*>?/gm, '');
+
+    // Removing common HTML entities
+    html = html.replace(/&nbsp;/gi, ' ');
+    html = html.replace(/&amp;/gi, '&');
+    html = html.replace(/&quot;/gi, '"');
+    html = html.replace(/&apos;/gi, "'");
+    html = html.replace(/&lt;/gi, '<');
+    html = html.replace(/&gt;/gi, '>');
+
+
+    return html;
+  }
+
 
   return (
     <>
@@ -147,7 +162,7 @@ const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords, dir, dataAll
                     </div>
 
                     <div className={styles.desc}>
-                      {topic.translatedDesc}
+                      {stripHtml(topic.translatedDesc)}
                     </div>
                   </Link>
 

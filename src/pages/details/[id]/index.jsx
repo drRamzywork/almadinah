@@ -8,6 +8,7 @@ import Marquee from "react-fast-marquee";
 
 
 import dynamic from 'next/dynamic';
+import { useState } from 'react'
 
 
 
@@ -19,6 +20,25 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
   const icon = dataContentDetails.currentContent.icon;
   const features = dataContentDetails.currentContent.relatedFeatures;
   const images1 = icon?.includes(',') ? icon.split(',') : [icon];
+
+  console.log(dataContentDetails, "dataContentDetails")
+
+  const [elementsData, setElementsData] = useState(dataContentDetails.currentContent.descriptionList);
+
+  const renderElements = () => {
+    return elementsData.map((item, index) => {
+      const props = { className: 'dynamic-class' };
+      if (item.url) props.href = item.url; // Adding href attribute for 'a' tags
+
+      return React.createElement(
+        item.tagName,
+        { ...props, key: index }, // Add a key for list items
+        item.tagContent
+      );
+    });
+  };
+
+  console.log(dataContentDetails.currentContent, "dataContentDetails.currentContent")
 
 
   return (
@@ -83,6 +103,14 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
                     return <span key={index}>Unknown tag</span>;
                 }
               })}
+
+
+              <div style={{ textAlign: 'center' }}>
+
+
+                {renderElements()}
+              </div>
+
             </div>
 
           </div>

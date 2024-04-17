@@ -43,6 +43,24 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
   const routerID = Number(router.query.id);
 
 
+  // function stripHtml(html) {
+  //   if (typeof window === "undefined") {
+  //     // Server-side, return original text or handle differently
+  //     return html;
+  //   }
+
+  //   // Client-side, use DOMParser
+  //   const doc = new DOMParser().parseFromString(html, "text/html");
+  //   return doc.body.textContent || "";
+  // }
+
+
+
+  function stripHtml(html) {
+    return html.replace(/<[^>]*>?/gm, '');
+  }
+
+
   return (
     <>
       <Head>
@@ -133,7 +151,9 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
                     </div>
 
                     <div className={styles.desc}>
-                      {topic.translatedDesc}
+
+                      {stripHtml(topic.translatedDesc)}
+
                     </div>
                   </Link>
 
