@@ -172,8 +172,7 @@ a{
 
 
 
-// TEST
-
+// Navbar
 .absolute_nav{
   position: absolute !important;
   top: 0;
@@ -193,7 +192,7 @@ backdrop-filter: blur(8px);
   background: transparent;
   backdrop-filter: blur(0);
   .navbar-brand{
-    display: none;
+    display: none !important;
   }
     
   h1{

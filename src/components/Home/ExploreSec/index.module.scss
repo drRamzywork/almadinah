@@ -120,6 +120,13 @@ section.explore {
         }
       }
 
+      &:nth-child(4) {
+        .title {
+          h5 {
+            color: #50517f !important;
+          }
+        }
+      }
       &:first-child {
         .inner_boxes_container {
           .small_box {

@@ -1,6 +1,10 @@
 section.details {
   .sec_container {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     .text_container {
       margin-top: 0px;
@@ -15,12 +19,15 @@ section.details {
       //   padding-left: 40px;
       // }
 
+      max-width: 50vw;
+
       @media screen and (max-width: 992px) {
         margin-top: 34px;
         padding-top: 34px;
         margin-bottom: 34px;
         width: 100%;
         padding-top: 0;
+        max-width: unset;
       }
 
       h4 {

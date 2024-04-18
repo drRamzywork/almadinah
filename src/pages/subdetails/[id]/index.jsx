@@ -2,7 +2,6 @@ import HeaderSection from '@/components/Home/HeaderSection'
 import TopicDetailsHeader from '@/components/Home/Topic/TopicDetails/TopicDetailsHeader'
 import Navbar from '@/components/Navbar'
 import React from 'react'
-import styles from '../../topic-details/[id]/index.module.scss'
 import Head from 'next/head'
 import Header from '@/components/Home/Topic/SubDetails/Header'
 

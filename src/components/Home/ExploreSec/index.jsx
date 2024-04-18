@@ -12,6 +12,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Alarm } from '@/svgs/Alarm';
 import ArrowLeft from '@/svgs/ArrowLeft';
+import { useRouter } from 'next/router';
 
 const ExploreSec = ({ topics,
   dataDrobTopic,
@@ -22,7 +23,8 @@ const ExploreSec = ({ topics,
   taqweemAlmadinah
 }) => {
   const [hoveredIndex, setHoveredIndex] = useState(-1);
-
+  const router = useRouter();
+  const routerLocale = router.locale;
 
   const boxVariants = {
     normal: {
@@ -37,8 +39,16 @@ const ExploreSec = ({ topics,
     },
   };
 
-  const desiredIds = [1, 13, 2, 3];
+  const desiredIds = [1, 13, 2,];
+  if (routerLocale === 'ar' && !desiredIds.includes(3)) {
+    desiredIds.push(3);
+  }
+
+
   const filteredTopics = topics.filter(topic => desiredIds.includes(topic.id));
+
+
+  console.log(filteredTopics, "desiredIds")
 
   const filteredDrobTopics = dataDrobTopic?.slice(0, 3);
   const filteredtaqweemAlmadinah = taqweemAlmadinah?.slice(0, 3);
@@ -47,28 +57,22 @@ const ExploreSec = ({ topics,
 
 
   const combinedTopics = filteredTopics.map((mainTopic, index) => {
-
     let subTopics;
     let imagePath;
     let iconSlide;
-    console.log(mainTopic.id, "mainTopic.id")
+
     switch (mainTopic.id) {
-      case 2: // Assuming ID 1 corresponds to Drob Topics
+      case 2:
         subTopics = filteredDrobTopics;
         imagePath = '/assets/images/roads.png';
         iconSlide = '/assets/svgs/location_flag.svg';
-
         break;
 
-      case 1: // Assuming ID 2 corresponds to Landmarks Topic
+      case 1:
         subTopics = filteredLandmarksTopic;
         imagePath = '/assets/images/Bage_Left.png';
         iconSlide = '/assets/svgs/castle_icon_purble.svg';
-
-
         break;
-
-
 
 
       case 13:
@@ -80,7 +84,7 @@ const ExploreSec = ({ topics,
       case 3:
         subTopics = filteredtaqweemAlmadinah;
         imagePath = '/assets/images/Bage_middle.png';
-        iconSlide = '/assets/svgs/Vector_icon.svg';
+        iconSlide = '/assets/images/calendar.png';
         break;
 
 
@@ -95,7 +99,11 @@ const ExploreSec = ({ topics,
     };
   });
 
-  const order = [2, 1, 13, 3];
+  const order = [2, 1, 13,];
+  if (routerLocale === 'ar' && !order.includes(3)) {
+    order.push(3);
+  }
+
 
 
   const orderedCombinedTopics = order.map(id => combinedTopics.find(topic => topic.id === id));

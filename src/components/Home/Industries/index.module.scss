@@ -28,6 +28,10 @@ section.industries {
         top: 65px;
         // height: 50px;
       }
+
+      @media screen and (min-width: 1550px) {
+        display: none;
+      }
     }
     .sec_header {
       display: flex;
@@ -55,6 +59,9 @@ section.industries {
           }
         }
         .img_container {
+          @media screen and (min-width: 1550px) {
+            display: none;
+          }
           img {
             width: 78px;
             height: 50px;

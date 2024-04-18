@@ -21,24 +21,29 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
   const features = dataContentDetails.currentContent.relatedFeatures;
   const images1 = icon?.includes(',') ? icon.split(',') : [icon];
 
-  console.log(dataContentDetails, "dataContentDetails")
 
-  const [elementsData, setElementsData] = useState(dataContentDetails.currentContent.descriptionList);
+  const [elementsData, setElementsData] = useState(dataContentDetails?.currentContent?.descriptionList);
 
   const renderElements = () => {
-    return elementsData.map((item, index) => {
-      const props = { className: 'dynamic-class' };
-      if (item.url) props.href = item.url; // Adding href attribute for 'a' tags
+    if (elementsData) {
 
-      return React.createElement(
-        item.tagName,
-        { ...props, key: index }, // Add a key for list items
-        item.tagContent
-      );
-    });
+      return elementsData.map((item, index) => {
+        const props = { className: 'dynamic-class' };
+        if (item.url) props.href = item.url;
+
+        return React.createElement(
+          item.tagName,
+          { ...props, key: index }, // Add a key for list items
+          item.tagContent
+        );
+      });
+    }
+
   };
+  const elements2 = dataContentDetails?.currentContent?.descriptionBigList;
 
-  console.log(dataContentDetails.currentContent, "dataContentDetails.currentContent")
+  console.log(elements2, 'elements2')
+
 
 
   return (
@@ -98,16 +103,12 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
                     return <span key={index}>{` `}{item.tagContent}{` `}</span>;
                   case 'li':
                     return <li key={index}>{` `}{item.tagContent}{` `}</li>;
-                  // Add more cases for different tags if needed.
                   default:
-                    return <span key={index}>Unknown tag</span>;
+                    return <span key={index}>{item.tagContent}</span>;
                 }
               })}
 
-
               <div style={{ textAlign: 'center' }}>
-
-
                 {renderElements()}
               </div>
 

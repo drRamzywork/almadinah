@@ -45,6 +45,9 @@ const Industries = ({
   return (
     <>
       <section id='foods' dir={dir} className={styles.foods}>
+
+
+
         <div className={styles.swiper_container}>
 
           <div className="container">

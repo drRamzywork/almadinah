@@ -340,9 +340,9 @@ const TopicDetailsHeader = ({ dataContentDetails, dataStaticWords, dir, isOpen, 
                       {step?.image?.split(',').map((url, index) => (
                         <SwiperSlide key={index}>
                           <img src={url} alt='' />
-                          {/* <div className={styles.close_icon} > */}
-                          {/* <IoIosClose /> */}
-                          {/* </div> */}
+                          <div className={styles.close_icon} onClick={() => setIsOpen(false)}>
+                            <IoIosClose />
+                          </div>
                         </SwiperSlide>
                       ))}
                     </Swiper>
