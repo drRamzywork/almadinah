@@ -4,6 +4,7 @@ header#inner_header {
 
   width: 100%;
   height: 612px;
+
   position: relative;
   overflow: hidden;
   z-index: 999;
@@ -587,6 +588,8 @@ section.hero {
 header#inner_header {
   background: #377a8a;
   // height: 519px;
+  height: 100vh;
+
   position: relative;
 
   @media screen and (max-width: 992px) {
@@ -917,18 +920,6 @@ header.header[dir="ltr"] {
       animation: moveCloud 60s linear infinite,
         scaleCloud 8s ease-in-out infinite alternate;
     }
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    background-image: url("/assets/svgs/Noise.svg");
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.1;
-    z-index: 22;
   }
 
   &::before {

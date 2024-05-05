@@ -20,7 +20,7 @@ import Navbar from '../Navbar';
 
 
 const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAllLangs, categoryName, parentName, dir, dataStaticWords, parentID
-  , dataMainTopic }) => {
+}) => {
   const images1 = icon?.includes(',') ? icon.split(',') : [icon];
   const router = useRouter();
   const [showAudio, setShowAudio] = useState(false)
@@ -196,15 +196,7 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
       </div>
 
 
-      <div className={`${styles.top_cloud_right} `}>
-        <Image src={'/assets/bannerImgs/cloud2.png'} width={1440} height={413} />
 
-      </div>
-
-
-      <div className={styles.cloud}>
-        <Image src={'/assets/bannerImgs/cloud2.png'} width={1440} height={413} />
-      </div>
 
     </header>
 
