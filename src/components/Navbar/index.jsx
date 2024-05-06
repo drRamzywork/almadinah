@@ -156,11 +156,19 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic,
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   onFocus={() => setShowTags(true)}
-                  onBlur={() => setTimeout(() => setShowTags(false), 200)} // Delay hiding to allow tag click
+                  onBlur={() => setTimeout(() => setShowTags(false), 200)}
                 />
-                <button className="btn" type="submit">
+                {/* <button className="btn" type="submit">
                   <Image src={'/assets/svgs/Search.svg'} alt="Search" width={24} height={24} />
-                </button>
+                </button> */}
+
+
+
+                <div className={`btn ${styles.btn}`} onClick={() => setShowTags(prev => !prev)}>
+                  <Image src={'/assets/svgs/Search.svg'} alt="Search" width={24} height={24} />
+                </div>
+
+
               </form>
               {showTags && (
                 <motion.div
@@ -169,6 +177,18 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic,
                   variants={variants}
                   transition={{ duration: 0.5, type: "tween" }}
                   className={styles.tagBox}>
+                  <form className="d-flex" role="search" onSubmit={handleSearch}>
+                    <input
+                      className={`form-control me-2 rounded bg-transparent border-1 ${styles.input_search}`}
+                      type="search"
+                      placeholder={dataStaticWords?.search}
+                      aria-label="Search"
+                      value={inputValue}
+                      onChange={(e) => setInputValue(e.target.value)}
+                      onFocus={() => setShowTags(true)}
+                      onBlur={() => setTimeout(() => setShowTags(false), 200)}
+                    />
+                  </form>
                   <div className={styles.boxes_container}>
                     {tags?.map(tag => (
                       <div key={tag} className={styles.tag} onClick={() => handleTagClick(tag)}>
