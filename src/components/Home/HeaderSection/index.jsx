@@ -52,7 +52,7 @@ const HeaderSection = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
           <></>
           :
           <>
-            <Navbar dataAllLangs={dataAllLangs} dir={dir} />
+            <Navbar dataAllLangs={dataAllLangs} dir={dir} dataStaticWords={dataStaticWords} />
             <header id={'header'} className={styles.header}
               style={{ background: currentImage.bgColor, height: router.pathname === '/details/[id]' && '519px' }}
               dir={dir}>

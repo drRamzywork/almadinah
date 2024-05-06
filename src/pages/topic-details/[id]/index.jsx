@@ -18,7 +18,7 @@ const TopicDetails = ({ dataStaticWords,
       </Head>
 
 
-      <Navbar isOpen={isOpen} setIsOpen={setIsOpen} dir={dir} cName={'absolute_nav'} dataDrobTopic={dataDrobTopic} />
+      <Navbar dataStaticWords={dataStaticWords} isOpen={isOpen} setIsOpen={setIsOpen} dir={dir} cName={'absolute_nav'} dataDrobTopic={dataDrobTopic} />
       <TopicDetailsHeader isOpen={isOpen} setIsOpen={setIsOpen} dir={dir} dataContentDetails={dataContentDetails} dataStaticWords={dataStaticWords} />
     </>
   )

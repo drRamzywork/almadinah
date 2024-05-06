@@ -22,7 +22,8 @@ const Subdetails = (
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <Navbar cName={'absolute_nav'} dataDrobTopic={dataDrobTopic} parentName={dataMainTopic[0]?.parentName} dataMainTopic={dataMainTopic} />
+      <Navbar dataStaticWords={dataStaticWords} cName={'absolute_nav'} dataDrobTopic={dataDrobTopic} parentName={dataMainTopic[0]?.parentName} dataMainTopic={dataMainTopic} />
+
       <Header parentID={dataMainTopic.length > 0 ? dataMainTopic[0].parentId : dataContentDetails.mainTopicId} dir={dir} dataContentDetails={dataContentDetails} dataStaticWords={dataStaticWords} dataContentDetailsGuide={dataContentDetailsGuide} />
 
     </>
@@ -36,6 +37,7 @@ export default Subdetails
 
 
 export async function getServerSideProps({ params, locale }) {
+
   const languagesConfig = require("../../../../public/locales/languagesDetails.json");
   const langId = languagesConfig.filter((lang) => lang.shortCut === locale)[0].id;
   // languagesConfig[locale]?.id ||
@@ -46,8 +48,6 @@ export async function getServerSideProps({ params, locale }) {
 
   const responseStaticWords = await fetch(`https://api.visitmadinahsa.com/api/Settings/GetStaticWords?lang=${langId}`);
   const dataStaticWords = await responseStaticWords.json();
-
-  // Fetch main topics with the initial topicId
 
   const responseContentDetails = await fetch(`https://api.visitmadinahsa.com/api/Contents/GetContentDetails?contentId=${params.id}&lang=${langId}&suggestions=0&video360=false&guide=false`);
   const dataContentDetails = await responseContentDetails.json();

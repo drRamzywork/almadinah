@@ -31,8 +31,6 @@ const LandingPage = ({ topics,
   const guidData = topics?.filter((topic) => topic.id === 4)[0]?.contents;
   const defaultVideoSrc = topics?.filter((topic) => topic.id === 4)[0]?.icon;
 
-
-  console.log(taqweemAlmadinah, "taqweemAlmadinah")
   return (
     <>
       <HeaderSection dir={dir} dataAllLangs={dataAllLangs} topics={topics} dataStaticWords={dataStaticWords} />

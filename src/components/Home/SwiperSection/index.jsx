@@ -55,7 +55,6 @@ const SwiperSection = ({ topics, dir, dataStaticWords }) => {
     };
   }, []);
 
-  console.log(isMobile, "isMobile")
 
   return (
     <>

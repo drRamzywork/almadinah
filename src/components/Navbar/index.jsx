@@ -8,7 +8,7 @@ import { IoIosClose } from 'react-icons/io';
 import { motion } from 'framer-motion';
 import { setCookie, } from 'nookies'
 
-const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic, dir, setIsOpen, isOpen }) => {
+const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic, dir, setIsOpen, isOpen, dataStaticWords }) => {
   const router = useRouter();
   const [lastScrollY, setLastScrollY] = useState(0);
   const [hidden, setHidden] = useState(false);
@@ -36,10 +36,8 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic,
       path: '/',
     });
 
-    // Build the URL for the selected language
     const newPath = buildLocaleSwitchUrl(lng.shortCut);
 
-    // Navigate to the new URL, which will trigger a page refresh and apply the new locale
     router.push(newPath);
   }
 
@@ -90,16 +88,40 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic,
   const contentID2 = dataMainTopic?.find(topic => topic.contentIdFK === Number(router.query.id));
 
 
+  // Search Logic
+  const [inputValue, setInputValue] = useState('');
+  const [showTags, setShowTags] = useState(false);
+
+  const tags = dataStaticWords?.searchKeywords?.split(',');
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    router.push(`/search/${encodeURIComponent(inputValue)}`);
+  };
+
+  const handleTagClick = (tag) => {
+    router.push(`/search/${encodeURIComponent(tag)}`);
+  };
+
+  //End Search Logic
+
 
 
   return (
-    <nav className={`navbar fixed-top ${cName} ${!router.pathname.includes('subdetails') && hidden ? styles.hidden : ''
-      }`} id={styles.navbar} dir={dir}>
-      <div className='container'>
+    <nav
+      className={`navbar fixed-top ${cName}
+       ${!router.pathname.includes('subdetails') && hidden ? styles.hidden : ''}`}
+      id={styles.navbar}
+      dir={dir}
+    >
 
+      <div className='container'>
         <Link href={'/'} className={`${styles.navbar_logo} navbar-brand`}>
           <Image className={styles.logo} src={'/assets/images/Logo_white.png'} width={118.64} height={56} />
         </Link>
+
+
+        {console.log(dataAllLangs, "dataAllLangs.search")}
 
         {router.pathname.includes('/topic-details') || router.pathname.includes('subdetails') ?
           <>
@@ -115,12 +137,50 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic,
           </>
           :
           <>
-            <form className="d-flex " role="search" >
+            {/* <form className="d-flex " role="search" >
               <input className="form-control me-2 rounded bg-transparent border-1" type="search" placeholder="ابحث عن كل ما تريد عن المدينة.." aria-label="Search" />
               <button className="btn " type="submit">
                 <Image src={'/assets/svgs/Search.svg'} width={24} height={24} />
               </button>
-            </form>
+            </form> */}
+
+
+
+            <div>
+              <form className="d-flex" role="search" onSubmit={handleSearch}>
+                <input
+                  className="form-control me-2 rounded bg-transparent border-1"
+                  type="search"
+                  placeholder={dataStaticWords?.search}
+                  aria-label="Search"
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  onFocus={() => setShowTags(true)}
+                  onBlur={() => setTimeout(() => setShowTags(false), 200)} // Delay hiding to allow tag click
+                />
+                <button className="btn" type="submit">
+                  <Image src={'/assets/svgs/Search.svg'} alt="Search" width={24} height={24} />
+                </button>
+              </form>
+              {showTags && (
+                <motion.div
+                  initial="closed"
+                  animate={showTags ? "open" : "closed"}
+                  variants={variants}
+                  transition={{ duration: 0.5, type: "tween" }}
+                  className={styles.tagBox}>
+                  <div className={styles.boxes_container}>
+                    {tags?.map(tag => (
+                      <div key={tag} className={styles.tag} onClick={() => handleTagClick(tag)}>
+                        {tag}
+                      </div>
+                    ))}
+                  </div>
+
+                </motion.div>
+              )}
+            </div>
+
 
             <div className={styles.lang_container}
               ref={navMenuRef}
@@ -135,12 +195,14 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic,
                 </p>
               </div>
 
-              {/* {
+              {/*
+               {
                 currentLangData?.image !== null &&
                 <div className={styles.img_container}>
                   <Image src={currentLangData?.image} alt="Language flag" width={20} height={20} />
                 </div>
-              } */}
+              }\
+              */}
 
               <motion.div
                 initial="closed"
@@ -182,6 +244,7 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic,
             </div>
           </>
         }
+
       </div >
 
     </nav>

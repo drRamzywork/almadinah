@@ -40,10 +40,6 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
     }
 
   };
-  const elements2 = dataContentDetails?.currentContent?.descriptionBigList;
-
-  console.log(elements2, 'elements2')
-
 
 
   return (
