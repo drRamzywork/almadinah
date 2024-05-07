@@ -41,6 +41,7 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
 
   };
 
+  console.log(dataContentDetails, "parentID")
   return (
     <>
       <Head>
@@ -71,7 +72,7 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
         dataContentDetails={dataContentDetails.currentContent}
         dataAllLangs={dataAllLangs}
         icon={icon}
-        parentName={dataContentDetails?.wcurrentContent?.name}
+        parentName={dataContentDetails?.currentContent?.name}
         categoryName={dataMainTopic[0]?.parentName} />
 
 
@@ -120,6 +121,7 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
           <MapWithNoSSR dataContentDetails={dataContentDetails.currentContent} />
         </section>
       }
+
     </>
   )
 }
