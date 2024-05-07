@@ -55,7 +55,7 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
     || parentID === 6 | 7 && 'linear-gradient(180deg,rgb(80, 81, 127,0),rgb(80, 81, 127,.94) 81.5%, #50517F)'
 
 
-
+  console.log(images1, "images1")
   return (
 
     <header className={'header_details'} id={styles.inner_header} dir={dir} >
@@ -103,38 +103,6 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
 
 
             </div>
-
-
-            {/* {
-              !router.pathname.includes('/virtual-guide') &&
-              dataContentDetails.tourGuide !== null &&
-              <div className={styles.icons_container}>
-                <Link href={'#'} className={`${styles.icon} ${showAudio ? styles.active : ''}`} onClick={() => setShowAudio(prev => !prev)}>
-                  <Microphone />
-                  <p className={styles.guide}>
-                    {dataStaticWords.voiceRecord}
-                  </p>
-
-
-
-                </Link>
-
-                <Link href={'#'}
-                  className={`${styles.icon} ${showGuide ? styles.active : ''}`}
-                  onClick={() => setShowGuide(prev => !prev)}>
-                  <Guide />
-                  <p className={styles.guide} >
-                    {dataStaticWords.guideVirtual}
-                  </p>
-                </Link>
-
-              </div>
-
-            } */}
-
-
-
-
           </motion.div>
 
           {showAudio &&
@@ -146,15 +114,10 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
               className={styles.audio}
               ref={audioRef}
             >
-
               <audio autoPlay controls src={dataContentDetailsGuide.sound}>
                 Your browser does not support the audio element.
               </audio>
-
-
-
             </motion.div>
-
           }
 
 
@@ -166,9 +129,6 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
               transition={{ duration: 1 }}
               ref={guideRef}
               className={styles.video}>
-
-
-
 
               <figure data-delay="250" data-cues="fadeIn" className="rounded mt-n21 mt-lg-n23 mb-16 mb-md-18 position-relative">
                 <a data-glightbox href={dataContentDetailsGuide.tourGuide} className="btn btn-circle btn-white btn-play ripple mx-auto position-absolute" style={{
@@ -189,14 +149,10 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
               </figure>
 
             </motion.div>
-
           }
 
         </div>
       </div>
-
-
-
 
     </header>
 

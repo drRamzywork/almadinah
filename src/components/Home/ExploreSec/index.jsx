@@ -101,15 +101,10 @@ const ExploreSec = ({ topics,
     order.push(3);
   }
 
-
-
   const orderedCombinedTopics = order.map(id => combinedTopics.find(topic => topic.id === id));
-
-
 
   return (
     <section id='explore' className={styles.explore} dir={dir}>
-
       <motion.div
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}
@@ -122,6 +117,7 @@ const ExploreSec = ({ topics,
             <Image width={208.76} height={209.51} src='/assets/svgs/Safe_Icon.svg' alt='safe icon' />
           </div>
         </div>
+
       </motion.div>
 
 

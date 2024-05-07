@@ -59,6 +59,7 @@ const SwiperSection = ({ topics, dir, dataStaticWords }) => {
   return (
     <>
       <section dir={dir} className={styles.masjid_an_nabawy} id='masjid_an_nabawy'>
+
         <div className={styles.section_container}>
           <div className="container">
 
@@ -150,6 +151,7 @@ const SwiperSection = ({ topics, dir, dataStaticWords }) => {
 
           </div>
         </div>
+
       </section>
     </>
   );

@@ -41,16 +41,12 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
 
   };
 
-
   return (
     <>
       <Head>
         <title>{dataContentDetails.currentContent.name}</title>
         <meta charSet="UTF-8" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content={dataContentDetails.currentContent.name} />
         <link rel="icon" href="/favicon.ico" />
 
@@ -69,9 +65,14 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
 
       <HederPages
         parentID={dataMainTopic.length > 0 ? dataMainTopic[0].parentId : dataContentDetails.mainTopicId}
-        dataStaticWords={dataStaticWords} dir={dir} dataContentDetailsGuide={dataContentDetailsGuide.currentContent} dataContentDetails={dataContentDetails.currentContent} dataAllLangs={dataAllLangs} icon={icon} parentName={dataContentDetails.
-          currentContent.name} categoryName={dataMainTopic[0]?.parentName} />
-
+        dataStaticWords={dataStaticWords}
+        dir={dir}
+        dataContentDetailsGuide={dataContentDetailsGuide.currentContent}
+        dataContentDetails={dataContentDetails.currentContent}
+        dataAllLangs={dataAllLangs}
+        icon={icon}
+        parentName={dataContentDetails?.wcurrentContent?.name}
+        categoryName={dataMainTopic[0]?.parentName} />
 
 
       <section dir={dir} id='details' className={styles.details}>
@@ -119,7 +120,6 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
           <MapWithNoSSR dataContentDetails={dataContentDetails.currentContent} />
         </section>
       }
-
     </>
   )
 }
