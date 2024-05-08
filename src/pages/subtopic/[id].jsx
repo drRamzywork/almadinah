@@ -11,6 +11,7 @@ import { motion } from 'framer-motion'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { FreeMode } from 'swiper/modules';
+import DynamicHeader from '@/components/DynamicHeader'
 
 
 const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords, dir, dataAllLangs }) => {
@@ -87,7 +88,8 @@ const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords, dir, dataAll
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <HeaderSection parentName={title} dir={dir} dataAllLangs={dataAllLangs} />
+      {/* <HeaderSection parentName={title} dir={dir} dataAllLangs={dataAllLangs} /> */}
+      <DynamicHeader parentName={title} dir={dir} dataAllLangs={dataAllLangs} />
       <section id='city_facilities' className={styles.city_facilities} dir={dir}>
 
         <div className="container">

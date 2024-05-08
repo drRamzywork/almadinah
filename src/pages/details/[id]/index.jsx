@@ -5,8 +5,6 @@ import Map from '@/components/Home/Map'
 import HederPages from '@/components/HeaderPages'
 import Head from 'next/head'
 import Marquee from "react-fast-marquee";
-
-
 import dynamic from 'next/dynamic';
 import { useState } from 'react'
 
@@ -20,8 +18,6 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
   const icon = dataContentDetails.currentContent.icon;
   const features = dataContentDetails.currentContent.relatedFeatures;
   const images1 = icon?.includes(',') ? icon.split(',') : [icon];
-
-
   const [elementsData, setElementsData] = useState(dataContentDetails?.currentContent?.descriptionList);
 
   const renderElements = () => {
@@ -73,7 +69,6 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
         icon={icon}
         parentName={dataContentDetails?.currentContent?.name}
         categoryName={dataMainTopic[0]?.parentName} />
-
 
       <section dir={dir} id='details' className={styles.details}>
         <div className="container p-3">

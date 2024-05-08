@@ -11,6 +11,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 import { FreeMode } from 'swiper/modules';
+import DynamicHeader from '@/components/DynamicHeader';
 
 
 const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, dataAllLangs, dir }) => {
@@ -69,7 +70,8 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <HeaderSection dir={dir} parentName={routerID === 4 ? dataStaticWords.guideVirtual : dataMainTopic[0]?.parentName} dataAllLangs={dataAllLangs} />
+
+      <DynamicHeader dir={dir} parentName={routerID === 4 ? dataStaticWords.guideVirtual : dataMainTopic[0]?.parentName} dataAllLangs={dataAllLangs} />
 
       <section id='city_facilities' className={styles.city_facilities} dir={dir}>
         <div className="container">
@@ -116,9 +118,6 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
 
             }
 
-
-
-
             <div className={styles.boxes_container}>
               {dataMainTopic.map((topic, index) => (
                 <motion.div
@@ -126,13 +125,8 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 1 }}
-
                   key={index}
                   className={styles.box}>
-
-
-
-
 
                   <Link href={
                     routerID === 2
@@ -160,7 +154,6 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
                 </motion.div>
               ))}
             </div>
-
 
             <div className={styles.boxes_container_mobile}>
               {dataMainTopic.map((topic, index) => (
@@ -190,7 +183,6 @@ const Topic = ({ dataMainTopic, dataSubTopic, dataSubCategory, dataStaticWords, 
               ))}
 
             </div>
-
           </div>
         </div>
 
