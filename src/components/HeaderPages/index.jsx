@@ -55,7 +55,6 @@ const HederPages = ({ dataContentDetails, dataContentDetailsGuide, icon, dataAll
     || parentID === 6 | 7 && 'linear-gradient(180deg,rgb(80, 81, 127,0),rgb(80, 81, 127,.94) 81.5%, #50517F)'
 
 
-  console.log(dataContentDetailsGuide, "images1")
   return (
 
     <header className={'header_details'} id={styles.inner_header} dir={dir} >

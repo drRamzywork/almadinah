@@ -121,7 +121,6 @@ const Navbar = ({ dataAllLangs, cName, dataDrobTopic, parentName, dataMainTopic,
         </Link>
 
 
-        {console.log(dataAllLangs, "dataAllLangs.search")}
 
         {router.pathname.includes('/topic-details') || router.pathname.includes('subdetails') ?
           <>

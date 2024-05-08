@@ -32,10 +32,6 @@ const Subdetails = (
 
 export default Subdetails
 
-
-
-
-
 export async function getServerSideProps({ params, locale }) {
 
   const languagesConfig = require("../../../../public/locales/languagesDetails.json");

@@ -41,7 +41,6 @@ const Details = ({ dataAllLangs, dataContentDetails, dataMainTopic, dataContentD
 
   };
 
-  console.log(dataContentDetails, "parentID")
   return (
     <>
       <Head>
