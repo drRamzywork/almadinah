@@ -88,9 +88,9 @@ const SubTopic = ({ dataSubTopic, dataSubCategory, dataStaticWords, dir, dataAll
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      {/* <HeaderSection parentName={title} dir={dir} dataAllLangs={dataAllLangs} /> */}
       <DynamicHeader parentName={title} dir={dir} dataAllLangs={dataAllLangs} />
       <section id='city_facilities' className={styles.city_facilities} dir={dir}>
+
 
         <div className="container">
           <div className={styles.sec_container}>

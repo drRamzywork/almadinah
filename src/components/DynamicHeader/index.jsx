@@ -54,6 +54,7 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
     { imgSrc: '/assets/m3alem/msaged/masjd9.png', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
 
   ]
+
   const abars = [
     {
       imgSrc: '/assets/m3alem/abars/abar1.png',
@@ -76,7 +77,6 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
       shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
     },
     { imgSrc: '/assets/m3alem/mwaqe3/5.png', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
-
   ]
 
   const mta7ef = [
@@ -134,6 +134,8 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
   ]
   // Marafeq
 
+  // ###
+
   // Drop
   const drop = [
     {
@@ -144,6 +146,8 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
     { imgSrc: '/assets/drop/3.png', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
   ]
   // Drop
+
+  // ###
 
   // المسجد النبوي
   const المسجد_النبوي = [
@@ -158,6 +162,8 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
       shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
     },
   ]
+
+  // ###
 
   const imagesByRouterId = {
     // M3alem
@@ -187,24 +193,18 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
     { imgSrc: '/assets/bannerImgs/rock.svg', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
   ];
 
-
-
-
   const images = imagesByRouterId[routerID] || defaultImages;
-
-
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((currentIndex) => (currentIndex + 1) % images.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [images.length]);
 
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentImage = images[currentIndex];
-
 
   const imageVariants = {
     hidden: { opacity: 0.5, scale: 0.95 },
@@ -266,7 +266,7 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
 
                     <div className={`${styles.left_side}`} >
                       <motion.div
-                        key={currentImage.imgSrc} // Key changes on image change, triggering re-render
+                        key={currentImage.imgSrc}
                         initial="hidden"
                         animate="visible"
                         variants={imageVariants}
@@ -322,7 +322,6 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
 
             </header >
           </>
-
 
       }
 
