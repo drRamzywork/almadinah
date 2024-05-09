@@ -251,6 +251,7 @@ header#inner_header {
         width: 726px;
         @media screen and (max-width: 992px) {
           min-width: unset !important;
+          width: unset;
         }
 
         &::after {
@@ -1126,7 +1127,6 @@ header.header[dir="ltr"] {
             border-radius: 0px 0px 98.61px 62.61px;
             width: 374px;
             height: 218px;
-            object-fit: contain;
           }
         }
 
