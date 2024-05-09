@@ -19,7 +19,6 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
   const routerID = Number(router.query.id);
 
   // M3alem
-
   const m3alemImages = [
     {
       imgSrc: '/assets/m3alem/abars/abar1.png',
@@ -91,28 +90,90 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
 
   // M3alem
 
+  // ###
 
+  // Marafeq
+  const mrafeq = [
+    {
+      imgSrc: '/assets/mrafeq/fa3lyat/1.png',
+      shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
+    },
+    { imgSrc: '/assets/mrafeq/montzahat/1.png', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
+    { imgSrc: '/assets/mrafeq/fa3lyat/2.png', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
+  ]
 
+  const fa3lyat = [
+    {
+      imgSrc: '/assets/mrafeq/fa3lyat/1.png',
+      shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
+    },
+    { imgSrc: '/assets/mrafeq/fa3lyat/2.png', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
+    { imgSrc: '/assets/mrafeq/fa3lyat/3.png', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
 
-  // const images = [
-  //   {
-  //     imgSrc: '/assets/bannerImgs/mosque.svg',
-  //     shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
-  //   },
-  //   { imgSrc: '/assets/bannerImgs/bulding.svg', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
-  //   { imgSrc: '/assets/bannerImgs/rock.svg', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
-  // ];
+    {
+      imgSrc: '/assets/mrafeq/fa3lyat/4.png',
+      shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
+    },
 
+  ]
 
+  const montzahat = [
+    {
+      imgSrc: '/assets/mrafeq/montzahat/1.png',
+      shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
+    },
+    { imgSrc: '/assets/mrafeq/montzahat/2.png', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
+    { imgSrc: '/assets/mrafeq/montzahat/3.png', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
 
+    {
+      imgSrc: '/assets/mrafeq/montzahat/4.png',
+      shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
+    },
+    { imgSrc: '/assets/mrafeq/montzahat/5.png', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
 
+  ]
+  // Marafeq
+
+  // Drop
+  const drop = [
+    {
+      imgSrc: '/assets/drop/1.png',
+      shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
+    },
+    { imgSrc: '/assets/drop/2.png', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
+    { imgSrc: '/assets/drop/3.png', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
+  ]
+  // Drop
+
+  // المسجد النبوي
+  const المسجد_النبوي = [
+    {
+      imgSrc: '/assets/المسجد النبوي/1.png',
+      shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
+    },
+    { imgSrc: '/assets/المسجد النبوي/2.png', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
+    { imgSrc: '/assets/المسجد النبوي/3.png', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
+    {
+      imgSrc: '/assets/المسجد النبوي/4.png',
+      shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
+    },
+  ]
 
   const imagesByRouterId = {
+    // M3alem
     1: m3alemImages,
     9: abars,
     8: msaged,
     10: mwaqe3,
-    11: mta7ef
+    11: mta7ef,
+    // Marafeq
+    13: mrafeq,
+    15: fa3lyat,
+    14: montzahat,
+    // Drop
+    2: drop,
+    // المسجد النبوي
+    20: المسجد_النبوي
 
   };
 
