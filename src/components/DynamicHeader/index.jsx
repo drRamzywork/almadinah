@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from 'react'
 import Navbar from '../Navbar'
 import Image from 'next/image'
@@ -226,7 +224,7 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
 
 
               <div className={`${styles.top_cloud} ${router.pathname === '/details/[id]' && styles.right}`}>
-                <Image src={'/assets/bannerImgs/cloud2.png'} width={1440} height={413} />
+                <img src={'/assets/bannerImgs/cloud2.png'} width={1440} height={413} />
               </div>
 
               <div className="container h-100">
@@ -276,6 +274,7 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
                         className={`${styles.main_img_container}`}>
 
                         <Image src={currentImage.imgSrc} width={539} height={546.45} alt="Banner Image"
+                          blurDataURL={currentImage.blurSrc}
                         />
 
                         <div className={styles.birds}>
