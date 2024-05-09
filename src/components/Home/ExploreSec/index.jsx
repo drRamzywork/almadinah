@@ -267,8 +267,7 @@ const ExploreSec = ({ topics,
 
                     <div className={styles.btn_container}>
                       <Link href={`/topic/${box.id}`}>
-                        {` `}       {dataStaticWords.displayAll}    {` `}
-                        {box.name}
+                        {dataStaticWords.displayAll}
                       </Link>
 
                       <div className={styles.arrow_container}>
