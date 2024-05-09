@@ -275,7 +275,7 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
 
                         className={`${styles.main_img_container}`}>
 
-                        <img src={currentImage.imgSrc} width={539} height={546.45} alt="Banner Image"
+                        <Image src={currentImage.imgSrc} width={539} height={546.45} alt="Banner Image"
                         />
 
                         <div className={styles.birds}>
