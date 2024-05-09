@@ -63,6 +63,7 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
 
 
   ]
+
   const mwaqe3 = [
     {
       imgSrc: '/assets/m3alem/mwaqe3/1.png',
@@ -77,6 +78,7 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
     { imgSrc: '/assets/m3alem/mwaqe3/5.png', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
 
   ]
+
   const mta7ef = [
     {
       imgSrc: '/assets/m3alem/mta7ef/mt7f1.png',
