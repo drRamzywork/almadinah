@@ -19,72 +19,72 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
   // M3alem
   const m3alemImages = [
     {
-      imgSrc: '/assets/m3alem/abars/abar1.png',
+      imgSrc: '/assets/m3alem/abars/abar1.webp',
       shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
     },
-    { imgSrc: '/assets/m3alem/mta7ef/mt7f2.png', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
-    { imgSrc: '/assets/m3alem/msaged/masjd1.png', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
+    { imgSrc: '/assets/m3alem/mta7ef/mt7f2.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
+    { imgSrc: '/assets/m3alem/msaged/masjd1.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
 
     {
-      imgSrc: '/assets/m3alem/mwaqe3/1.png',
+      imgSrc: '/assets/m3alem/mwaqe3/1.webp',
       shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
     },
   ]
 
   const msaged = [
     {
-      imgSrc: '/assets/m3alem/msaged/masjd1.png',
+      imgSrc: '/assets/m3alem/msaged/masjd1.webp',
       shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
     },
-    { imgSrc: '/assets/m3alem/msaged/masjd2.png', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
-    { imgSrc: '/assets/m3alem/msaged/masjd3.png', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
+    { imgSrc: '/assets/m3alem/msaged/masjd2.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
+    { imgSrc: '/assets/m3alem/msaged/masjd3.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
 
     {
-      imgSrc: '/assets/m3alem/msaged/masjd4.png',
+      imgSrc: '/assets/m3alem/msaged/masjd4.webp',
       shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
     },
-    { imgSrc: '/assets/m3alem/msaged/masjd5.png', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
-    { imgSrc: '/assets/m3alem/msaged/masjd6.png', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
+    { imgSrc: '/assets/m3alem/msaged/masjd5.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
+    { imgSrc: '/assets/m3alem/msaged/masjd6.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
 
     {
-      imgSrc: '/assets/m3alem/msaged/masjd7.png',
+      imgSrc: '/assets/m3alem/msaged/masjd7.webp',
       shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
     },
-    { imgSrc: '/assets/m3alem/msaged/masjd8.png', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
-    { imgSrc: '/assets/m3alem/msaged/masjd9.png', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
+    { imgSrc: '/assets/m3alem/msaged/masjd8.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
+    { imgSrc: '/assets/m3alem/msaged/masjd9.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
 
   ]
 
   const abars = [
     {
-      imgSrc: '/assets/m3alem/abars/abar1.png',
+      imgSrc: '/assets/m3alem/abars/abar1.webp',
       shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
     },
-    { imgSrc: '/assets/m3alem/abars/abar2.png', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
+    { imgSrc: '/assets/m3alem/abars/abar2.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
 
 
   ]
 
   const mwaqe3 = [
     {
-      imgSrc: '/assets/m3alem/mwaqe3/1.png',
+      imgSrc: '/assets/m3alem/mwaqe3/1.webp',
       shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
     },
-    { imgSrc: '/assets/m3alem/mwaqe3/2.png', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
-    { imgSrc: '/assets/m3alem/mwaqe3/3.png', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
+    { imgSrc: '/assets/m3alem/mwaqe3/2.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
+    { imgSrc: '/assets/m3alem/mwaqe3/3.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
     {
-      imgSrc: '/assets/m3alem/mwaqe3/4.png',
+      imgSrc: '/assets/m3alem/mwaqe3/4.webp',
       shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
     },
-    { imgSrc: '/assets/m3alem/mwaqe3/5.png', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
+    { imgSrc: '/assets/m3alem/mwaqe3/5.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
   ]
 
   const mta7ef = [
     {
-      imgSrc: '/assets/m3alem/mta7ef/mt7f1.png',
+      imgSrc: '/assets/m3alem/mta7ef/mt7f1.webp',
       shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
     },
-    { imgSrc: '/assets/m3alem/mta7ef/mt7f2.png', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
+    { imgSrc: '/assets/m3alem/mta7ef/mt7f2.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
 
   ];
 
@@ -95,23 +95,23 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
   // Marafeq
   const mrafeq = [
     {
-      imgSrc: '/assets/mrafeq/fa3lyat/1.png',
+      imgSrc: '/assets/mrafeq/fa3lyat/1.webp',
       shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
     },
-    { imgSrc: '/assets/mrafeq/montzahat/1.png', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
-    { imgSrc: '/assets/mrafeq/fa3lyat/2.png', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
+    { imgSrc: '/assets/mrafeq/montzahat/1.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
+    { imgSrc: '/assets/mrafeq/fa3lyat/2.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
   ]
 
   const fa3lyat = [
     {
-      imgSrc: '/assets/mrafeq/fa3lyat/1.png',
+      imgSrc: '/assets/mrafeq/fa3lyat/1.webp',
       shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
     },
-    { imgSrc: '/assets/mrafeq/fa3lyat/2.png', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
-    { imgSrc: '/assets/mrafeq/fa3lyat/3.png', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
+    { imgSrc: '/assets/mrafeq/fa3lyat/2.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
+    { imgSrc: '/assets/mrafeq/fa3lyat/3.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
 
     {
-      imgSrc: '/assets/mrafeq/fa3lyat/4.png',
+      imgSrc: '/assets/mrafeq/fa3lyat/4.webp',
       shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
     },
 
@@ -119,17 +119,17 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
 
   const montzahat = [
     {
-      imgSrc: '/assets/mrafeq/montzahat/1.png',
+      imgSrc: '/assets/mrafeq/montzahat/1.webp',
       shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
     },
-    { imgSrc: '/assets/mrafeq/montzahat/2.png', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
-    { imgSrc: '/assets/mrafeq/montzahat/3.png', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
+    { imgSrc: '/assets/mrafeq/montzahat/2.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
+    { imgSrc: '/assets/mrafeq/montzahat/3.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
 
     {
-      imgSrc: '/assets/mrafeq/montzahat/4.png',
+      imgSrc: '/assets/mrafeq/montzahat/4.webp',
       shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
     },
-    { imgSrc: '/assets/mrafeq/montzahat/5.png', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
+    { imgSrc: '/assets/mrafeq/montzahat/5.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
 
   ]
   // Marafeq
@@ -139,11 +139,11 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
   // Drop
   const drop = [
     {
-      imgSrc: '/assets/drop/1.png',
+      imgSrc: '/assets/drop/1.webp',
       shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
     },
-    { imgSrc: '/assets/drop/2.png', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
-    { imgSrc: '/assets/drop/3.png', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
+    { imgSrc: '/assets/drop/2.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
+    { imgSrc: '/assets/drop/3.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
   ]
   // Drop
 
@@ -152,13 +152,13 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
   // المسجد النبوي
   const المسجد_النبوي = [
     {
-      imgSrc: '/assets/المسجد النبوي/1.png',
+      imgSrc: '/assets/المسجد النبوي/1.webp',
       shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
     },
-    { imgSrc: '/assets/المسجد النبوي/2.png', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
-    { imgSrc: '/assets/المسجد النبوي/3.png', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
+    { imgSrc: '/assets/المسجد النبوي/2.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
+    { imgSrc: '/assets/المسجد النبوي/3.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
     {
-      imgSrc: '/assets/المسجد النبوي/4.png',
+      imgSrc: '/assets/المسجد النبوي/4.webp',
       shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
     },
   ]
@@ -195,12 +195,6 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
 
   const images = imagesByRouterId[routerID] || defaultImages;
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((currentIndex) => (currentIndex + 1) % images.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [images.length]);
 
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -211,12 +205,18 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
     visible: { opacity: 1, scale: 1 },
   };
 
-
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((currentIndex) => (currentIndex + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [images.length]);
   return (
     <>
       {
         router.pathname === '/details/[id]' ?
-          <></>
+          <>
+          </>
           :
           <>
             <Navbar dataAllLangs={dataAllLangs} dir={dir} dataStaticWords={dataStaticWords} />
@@ -261,9 +261,7 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
 
 
                   </motion.div>
-
                   {router.pathname !== '/details/[id]' &&
-
                     <div className={`${styles.left_side}`} >
                       <motion.div
                         key={currentImage.imgSrc}
@@ -292,29 +290,20 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
 
 
                     </div>
-
                   }
-
                 </div>
-
               </div>
 
-
               <motion.div
-                key={currentImage.imgSrc} // Key changes on image change, triggering re-render
+                key={currentImage.imgSrc}
                 initial="hidden"
                 animate="visible"
                 variants={imageVariants}
-                transition={{ duration: 1 }} // Smooth transition over 1 second
-
+                transition={{ duration: 1 }}
                 className={`${styles.blur_img}`}
-
               >
                 <Image src={currentImage.imgSrc} width={1440} height={413} />
               </motion.div>
-
-
-
 
               <div className={styles.cloud}>
                 <Image src={'/assets/bannerImgs/cloud2.png'} width={1440} height={413} />
@@ -322,13 +311,8 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
 
             </header >
           </>
-
       }
-
-
-
     </>
-
   )
 }
 
