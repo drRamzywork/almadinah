@@ -22,7 +22,7 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
       imgSrc: '/assets/m3alem/abars/abar1.webp',
       shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
     },
-    { imgSrc: '/assets/m3alem/mta7ef/mt7f2.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
+    { imgSrc: '/assets/m3alem/mta7ef/mt7f1.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
     { imgSrc: '/assets/m3alem/msaged/masjd1.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 122, 138, 0.3) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(90deg, rgb(183, 166, 151) 58%, rgb(55, 122, 138) 93.34%)' },
 
     {
@@ -84,8 +84,6 @@ const DynamicHeader = ({ parentName, topics, dataAllLangs, dataStaticWords, dir 
       imgSrc: '/assets/m3alem/mta7ef/mt7f1.webp',
       shapeColor: 'linear-gradient(180deg, #D3C1BD 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(271deg, #B7A697 0%, #377A8A 60.34%)'
     },
-    { imgSrc: '/assets/m3alem/mta7ef/mt7f2.webp', shapeColor: 'linear-gradient(180deg, rgba(56, 57,105, 0.4) 0%, rgba(211, 193, 189, 0) 129.34%)', bgColor: 'linear-gradient(86deg, #8E8EAE 60%, #d3c1bd00 88.34%)' },
-
   ];
 
   // M3alem
