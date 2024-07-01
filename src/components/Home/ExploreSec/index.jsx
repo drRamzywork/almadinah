@@ -39,7 +39,7 @@ const ExploreSec = ({ topics,
     },
   };
 
-  const desiredIds = [1, 13, 2,];
+  const desiredIds = [1, 13, 2, 33];
   if (routerLocale === 'ar' && !desiredIds.includes(3)) {
     desiredIds.push(3);
   }
@@ -78,12 +78,11 @@ const ExploreSec = ({ topics,
         iconSlide = '/assets/svgs/Vector_icon.svg';
         break;
 
-      case 3:
+      case 33:
         subTopics = filteredtaqweemAlmadinah;
         imagePath = '/assets/images/Bage_middle.png';
         iconSlide = '/assets/images/calendar.png';
         break;
-
 
       default:
         subTopics = [];
@@ -96,13 +95,13 @@ const ExploreSec = ({ topics,
     };
   });
 
-  const order = [2, 1, 13,];
-  if (routerLocale === 'ar' && !order.includes(3)) {
-    order.push(3);
-  }
+  const order = [2, 1, 13, 33];
+  // if (routerLocale === 'ar' && !order.includes(3)) {
+  //   order.push(3);
+  // }
 
   const orderedCombinedTopics = order.map(id => combinedTopics.find(topic => topic.id === id));
-  console.log(orderedCombinedTopics, "orderedCombinedTopics")
+  console.log(orderedCombinedTopics, "filteredTopics")
   return (
     <section id='explore' className={styles.explore} dir={dir}>
       <motion.div
