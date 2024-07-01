@@ -102,7 +102,7 @@ const ExploreSec = ({ topics,
   }
 
   const orderedCombinedTopics = order.map(id => combinedTopics.find(topic => topic.id === id));
-
+  console.log(orderedCombinedTopics, "orderedCombinedTopics")
   return (
     <section id='explore' className={styles.explore} dir={dir}>
       <motion.div
@@ -266,7 +266,7 @@ const ExploreSec = ({ topics,
                     </Swiper >
 
                     <div className={styles.btn_container}>
-                      <Link href={`/topic/${box.id}`}>
+                      <Link href={`/topic/${box?.id}`}>
                         {dataStaticWords.displayAll}
                       </Link>
 
@@ -314,11 +314,11 @@ const ExploreSec = ({ topics,
                     <img width={208.76} height={209.51} src={box?.imagePath} />
                   </div>
 
-                  <Link href={`/topic/${box.id}`} className={styles.arrow_container}>
+                  <Link href={`/topic/${box?.id}`} className={styles.arrow_container}>
                     <IoIosArrowBack />
                   </Link>
 
-                  <Link href={`/topic/${box.id}`} className={styles.topic_icon}>
+                  <Link href={`/topic/${box?.id}`} className={styles.topic_icon}>
                     <motion.img
                       initial={{ opacity: 0, }}
                       animate={{ opacity: 1, }}
@@ -328,12 +328,12 @@ const ExploreSec = ({ topics,
 
                   </Link>
 
-                  <Link href={`/topic/${box.id}`} className={styles.title}>
+                  <Link href={`/topic/${box?.id}`} className={styles.title}>
                     <h5>{box?.name}</h5>
                   </Link>
 
 
-                  <Link href={`/topic/${box.id}`} className={styles.desc}>
+                  <Link href={`/topic/${box?.id}`} className={styles.desc}>
                     <p>{box?.translatedDesc}</p>
                   </Link>
                   {box?.subTopics?.map((subTopic, idx) =>
